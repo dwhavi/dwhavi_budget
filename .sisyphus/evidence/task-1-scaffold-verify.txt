@@ -1,0 +1,10 @@
+=== Server Health Check ===
+{"success":true,"data":{"status":"ok"}}
+=== Auth Me Endpoint ===
+{"success":false,"message":"인증이 필요합니다"}
+=== Client TSC ===
+EXIT: 0 (no errors)
+=== Server TSC ===
+EXIT: 0 (no errors)
+=== Verification ===
+PASS: All scaffolding verified

@@ -1,0 +1,10 @@
+{
+  "name": "budget-app-server",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "npx tsx watch src/index.ts",
+    "build": "npx tsc",
+    "start": "node dist/index.js"
+  }
+}

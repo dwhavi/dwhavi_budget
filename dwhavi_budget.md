@@ -85,6 +85,12 @@ budget-app/
 
 - 수입/지출 등록 항목: 날짜, 금액, 카테고리, **결제수단**, 메모
 - **결제수단 선택**: 지출 입력 시 간단한 선택창에서 현금 또는 등록된 카드 중 선택
+- **하위 카테고리 지원**:
+  - 카테고리 선택 후 하위 카테고리 입력 가능 (자유 입력, 텍스트)
+  - **자동완성**: 사용자가 이전에 입력한 하위 카테고리를 기반으로 드롭다운 자동완성 제공
+  - 예시: 식비 → 점심, 저녁, 아침, 커피, 디저트, 야식...
+  - 동일 카테고리 내에서만 자동완성 후보 표시
+  - 하위 카테고리는 필수가 아닌 선택 입력
 - 기본 카테고리 제공:
   - 수입: 급여, 부수입, 용돈
   - 지출: 식비, 교통, 주거, 통신, 유흥, 쇼핑, 의료, 교육, 기타
@@ -125,6 +131,16 @@ budget-app/
 - 최근 6개월 수입 vs 지출 미니 라인/막대 차트
 - 통계 페이지 상세보기 링크 포함
 
+**⑥ 일일 예상 소비액 (요약 카드 내 표시)**
+- `잔여 금액 ÷ 잔여일 수`로 일일 예상 소비액 자동 계산
+- 요약 카드 영역에 "오늘까지 써도 되는 금액"으로 직관 표시
+- 예: 잔액 2,659,500원 ÷ 잔여 25일 = 일일 106,380원
+
+**⑦ 카드별 월별 집계 (요약 카드 하단 또는 별도 영역)**
+- 이번 달 결제수단별 총 사용 금액을 막대 차트로 표시
+- 카드명 + 금액 + 비율 노출
+- 클릭 시 해당 카드의 상세 내역 필터링
+
 ### 4. 통계 페이지
 
 - **월별 추이 차트**: 최근 6개월 수입 vs 지출 (막대/선 차트)
@@ -139,7 +155,16 @@ budget-app/
 - 기본 결제 카드 설정 가능 (is_default)
 - **현금 기본 제공**: 회원가입 시 자동으로 "현금" 결제수단 생성 (삭제 불가)
 - **소프트 삭제**: 카드 삭제 시 `deleted_at` 기록, 연동된 기록에는 유지 표시
-- 설정 페이지는 탭 구성: 카드 관리 / 예산 설정
+- 설정 페이지는 탭 구성: 카드 관리 / 예산 설정 / **고정비 관리**
+
+### 5-1. 고정비 관리
+
+- **고정비 등록**: 항목명, 금액, 결제수단, 카테고리, 결제일(매월 N일), 메모
+- **자동 등록**: 매월 설정된 결제일에 해당 월의 거래에 자동으로 추가
+- 예시: TV/인터넷(38,805원/월), 핸드폰(25,000원/월), 관리비(103,160원/월) 등
+- 고정비 목록 조회 / 수정 / 삭제
+- 당월 고정비 합계를 대시보드에 별도 표시 가능
+- 활성/비활성 토글 (일시 중단 가능)
 
 ### 6. 관리자 페이지
 
@@ -201,6 +226,7 @@ budget-app/
 | category_id | INTEGER FK → Category | |
 | payment_method_id | INTEGER FK → PaymentMethod | nullable |
 | date | DATEONLY NOT NULL | |
+| sub_category | STRING | 하위 카테고리 (선택, 자유 입력) |
 | memo | STRING | |
 | created_at | DATE | |
 | updated_at | DATE | |
@@ -232,6 +258,22 @@ budget-app/
 | month | STRING('YYYY-MM') | |
 | amount | INTEGER NOT NULL | 예산 금액 |
 
+### RecurringExpense (고정비)
+| 필드 | 타입 | 설명 |
+|------|------|------|
+| id | INTEGER PK AUTO | |
+| user_id | INTEGER FK → User | |
+| name | STRING NOT NULL | 항목명 |
+| amount | INTEGER NOT NULL | 금액 |
+| category_id | INTEGER FK → Category | |
+| payment_method_id | INTEGER FK → PaymentMethod | |
+| payment_day | INTEGER | 매월 결제일 (1~28) |
+| memo | STRING | |
+| is_active | BOOLEAN | 기본 true |
+| created_at | DATE | |
+| updated_at | DATE | |
+| deleted_at | DATE | 소프트 삭제 |
+
 ---
 
 ## API 엔드포인트
@@ -259,7 +301,8 @@ budget-app/
 ### Stats
 | 메서드 | 경로 | 설명 |
 |--------|------|------|
-| GET | /api/stats/dashboard?month=YYYY-MM | 대시보드 요약 |
+| GET | /api/stats/dashboard?month=YYYY-MM | 대시보드 요약 (일일 예상 소비액, 카드별 집계 포함) |
+| GET | /api/stats/payment-methods?month=YYYY-MM | 결제수단별 월별 사용 금액 |
 | GET | /api/stats/monthly-trend | 최근 6개월 추이 |
 | GET | /api/stats/category?month=YYYY-MM | 카테고리별 통계 |
 
@@ -276,6 +319,23 @@ budget-app/
 | POST | /api/payment-methods | 카드 등록 |
 | PUT | /api/payment-methods/:id | 카드 수정 |
 | DELETE | /api/payment-methods/:id | 카드 삭제 (소프트, 현금 제외) |
+
+### RecurringExpenses (고정비)
+| 메서드 | 경로 | 설명 |
+|--------|------|------|
+| GET | /api/recurring-expenses | 고정비 목록 |
+| POST | /api/recurring-expenses | 고정비 등록 |
+| PUT | /api/recurring-expenses/:id | 고정비 수정 |
+| DELETE | /api/recurring-expenses/:id | 고정비 삭제 (소프트) |
+| PATCH | /api/recurring-expenses/:id/toggle | 활성/비활성 토글 |
+| GET | /api/recurring-expenses/month-summary?month=YYYY-MM | 당월 고정비 합계 |
+
+### SubCategories (자동완성)
+| 메서드 | 경로 | 설명 |
+|--------|------|------|
+| GET | /api/subcategories?category_id=1&q=점 | 하위 카테고리 자동완성 검색 |
+
+- 자동완성은 사용자의 기존 Transaction에서 `sub_category` 값을 카테고리별로 그룹핑하여 반환
 
 ### Admin (role=admin 필수)
 | 메서드 | 경로 | 설명 |

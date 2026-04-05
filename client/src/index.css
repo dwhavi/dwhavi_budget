@@ -1,1 +1,104 @@
 @import "tailwindcss";
+
+/* Custom dark mode transitions */
+:root {
+  --transition-duration: 0.3s;
+}
+
+/* Smooth dark mode transitions */
+* {
+  transition: background-color var(--transition-duration) ease, 
+              color var(--transition-duration) ease,
+              border-color var(--transition-duration) ease;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1f2937;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4b5563;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6b7280;
+}
+
+/* Smooth scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Toast animation */
+@keyframes slide-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animate-slide-in {
+  animation: slide-in 0.3s ease-out;
+}
+
+/* Shimmer animation */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(59, 130, 246, 0.1) 0px,
+    rgba(59, 130, 246, 0.05) 40px,
+    rgba(59, 130, 246, 0.1) 80px
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+.bg-gray-800.shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(55, 65, 81, 0.1) 0px,
+    rgba(55, 65, 81, 0.05) 40px,
+    rgba(55, 65, 81, 0.1) 80px
+  );
+}
+
+/* Backdrop blur for header */
+.backdrop-blur {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Custom hover effects */
+.nav-item {
+  transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* Mobile safe area */
+.safe-area-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}

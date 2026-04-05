@@ -61,3 +61,36 @@
   6. Updated `vitest.config.ts` with `pool: 'forks'` for complete process isolation and `setupFiles` for environment setup
 - Result: Each test file runs in its own process with separate in-memory SQLite database, eliminating shared state issues
 - Architecture insight: Routes import `db` from `models/index.js` - with fork isolation, each test gets its own sequelize/db instances
+## Budgets API (Task 11)
+- Budget model has unique composite index on (user_id, category_id, month) — enables `bulkCreate` with `updateOnDuplicate`
+- `bulkCreate` with `updateOnDuplicate: ['amount', 'updated_at']` gives clean upsert behavior
+- Sequelize include uses the association `as` alias (e.g., `as: 'category'` → result has `.category` not `.Category`)
+- Zod regex for YYYY-MM: `/^\d{4}-(0[1-9]|1[0-2])$/` — validates month format properly
+- PUT route uses `validate(budgetUpsertSchema)` — validation middleware applies to body
+- Budget association: Budget belongsTo Category with `as: 'category'` (lowercase)
+- admin.test.ts has 18 pre-existing failures (admin routes not yet implemented)
+
+## Admin API (Task 13)
+- Admin routes use BOTH `authMiddleware` AND `adminMiddleware` in chain
+- `db.User.findAll({ attributes: { exclude: ['password_hash'] } })` strips sensitive fields from user list
+- In-memory settings store (module-level object) works fine for small app — no DB table needed
+- Admin category CRUD has no ownership checks — admin can modify/delete global AND personal categories
+- Settings validation with Zod: `budget_alert_threshold: z.number().int().min(1).max(100)` ensures valid range
+- Test suite: 18 admin tests, total suite now 90 tests across 9 files
+- When updating user role/status, return sanitized user object (exclude password_hash) in response
+
+## React Client Scaffold (Task 14)
+- react-router-dom v7 still supports v6-style API: BrowserRouter, Routes, Route, Navigate all still available
+- v7 exports everything from 'react-router' re-exported through 'react-router-dom'
+- tsconfig has `verbatimModuleSyntax: true` → MUST use `import type { ... }` for type-only imports
+- tsconfig has `erasableSyntaxOnly: true` → no `enum` declarations allowed (use string literal unions instead)
+- tsconfig has `noUncheckedIndexedAccess: true` → optional chaining needed for array/object index access
+- tsconfig has `noUnusedLocals`/`noUnusedParameters` → no unused variables allowed
+- Path alias `@/*` → `src/*` available but not required (relative imports work fine)
+- Axios interceptor pattern: request interceptor adds Bearer token, response interceptor handles 401 with refresh queue to prevent concurrent refresh calls
+- AuthContext restores session on mount: tries /auth/me first, falls back to /auth/refresh, then /auth/me again
+- ThemeContext persists to localStorage under 'theme' key, applies 'dark' class to document.documentElement
+- All API modules follow same pattern: import api from axios.ts, export object with typed async functions
+- `.js` extensions required in imports for ESM compatibility (tsx/ts resolve them correctly)
+- Placeholder components used in App.tsx routes (PlaceholderPage div with Korean page name)
+- ProtectedRoute redirects to /login when not authenticated, AdminRoute checks user.role === 'admin'

@@ -44,6 +44,12 @@ async function setupApp() {
   const { recurringExpensesRouter } = await import('./routes/recurring-expenses.js');
   app.use('/api/recurring-expenses', recurringExpensesRouter);
   
+  const { budgetsRouter } = await import('./routes/budgets.js');
+  app.use('/api/budgets', budgetsRouter);
+  
+  const { adminRouter } = await import('./routes/admin.js');
+  app.use('/api/admin', adminRouter);
+  
   app.use(errorHandler);
   
   return app;

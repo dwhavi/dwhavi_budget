@@ -6,9 +6,66 @@
     "ses_2a660e185ffeZWVF6i7U62FQRC",
     "ses_2a66004b5ffe2y39FjTHK2ojbX",
     "ses_2a65a39bdffeWskaujEPozb3Gs",
-    "ses_2a65631beffeqaTLn9bNL4cmkv"
+    "ses_2a65631beffeqaTLn9bNL4cmkv",
+    "ses_2a62a4b8dffeOZUDNVsYYVTSKY",
+    "ses_2a60a7358ffeyorK1f9dsp8PDd",
+    "ses_2a5644f08ffenEUZnMl90gh1FR",
+    "ses_2a523b60affex4ZF7DK0pRSG0A",
+    "ses_2a5242e27ffeea0zN5Jr6trEVt",
+    "ses_2a522bea6ffejeDR4bi4dXXFJi",
+    "ses_2a51a14efffeb76Lv7hQqZ2mQi",
+    "ses_2a51a1451ffeEyooah9ia96AMz",
+    "ses_2a51857e3ffeBmvIpMiCNDWJH2",
+    "ses_2a5185769ffeP9ArShF4ceyeiu",
+    "ses_2a50ab693ffeh3ME5kNTi1MdnQ",
+    "ses_2a50ab5c5ffeQ7tCES7TGyxMBb",
+    "ses_2a5004e85ffetp2kQ6wqOigXYV",
+    "ses_2a4c4d68bffeeaZcLiEwNzfMz2",
+    "ses_2a4ac0afeffeuHX7owd5CtHfu7",
+    "ses_2a4ac0c68ffewPaVWW9ti5LXRO",
+    "ses_2a4ac0a1dffeSOx0pP4k7lmfam",
+    "ses_2a495ecdbffey2HNPdqTCqYbug",
+    "ses_2a4968324ffeTfff1r8Q67quTn",
+    "ses_2a4968476ffezPZzNiOdGKLzs9",
+    "ses_2a495ece2ffePY4xEfgSUOTJy8",
+    "ses_2a495ecebffeAy2B00tx0PtCK8",
+    "ses_2a47cb597ffeZrF6HenUYtBMOX",
+    "ses_2a4785dfdffe1tEzuLBrePvBSi",
+    "ses_2a3da656bffen8aF04PDQItz3r",
+    "ses_2a3b53082ffeNZTizAo0IUqEss",
+    "ses_2a3ad0320ffe0C9VT0kbOh49GG",
+    "ses_2a3ad028dffekQAxpPPUkoewkB",
+    "ses_2a3ad0200ffegAgGp9eV2qmr50"
   ],
   "plan_name": "budget-app",
   "agent": "atlas",
-  "task_sessions": {}
+  "task_sessions": {
+    "todo:2": {
+      "task_key": "todo:2",
+      "task_label": "2",
+      "task_title": "Vitest Setup + Test Helpers",
+      "session_id": "ses_2a50ab693ffeh3ME5kNTi1MdnQ",
+      "agent": "Sisyphus-Junior",
+      "category": "quick",
+      "updated_at": "2026-04-05T00:06:52.801Z"
+    },
+    "todo:4": {
+      "task_key": "todo:4",
+      "task_label": "4",
+      "task_title": "Auth API (Register, Login, Logout, Refresh, Me, Password Change) — TDD",
+      "session_id": "ses_2a5004e85ffetp2kQ6wqOigXYV",
+      "agent": "Sisyphus-Junior",
+      "category": "deep",
+      "updated_at": "2026-04-05T00:46:16.380Z"
+    },
+    "final-wave:f1": {
+      "task_key": "final-wave:f1",
+      "task_label": "F1",
+      "task_title": "**Plan Compliance Audit** — `oracle`",
+      "session_id": "ses_2a3ad0320ffe0C9VT0kbOh49GG",
+      "agent": "Sisyphus-Junior",
+      "category": "unspecified-high",
+      "updated_at": "2026-04-05T06:32:50.152Z"
+    }
+  }
 }

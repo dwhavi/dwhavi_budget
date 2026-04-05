@@ -4,6 +4,8 @@ import { ThemeProvider } from './contexts/ThemeContext.tsx';
 import { ToastProvider } from './contexts/ToastContext.tsx';
 import { Layout } from './components/Layout.tsx';
 import { SkeletonCard } from './components/Skeleton.tsx';
+import { LoginPage } from './pages/LoginPage/index.tsx';
+import { RegisterPage } from './pages/RegisterPage/index.tsx';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { isAuthenticated, isLoading } = useAuth();
@@ -45,75 +47,7 @@ function AdminRoute({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }
 
-function LoginPage() {
-  return (
-    <div className="min-h-screen bg-gray-950 flex items-center justify-center">
-      <div className="bg-gray-900 border border-gray-800 rounded-xl p-8 w-full max-w-md">
-        <h2 className="text-2xl font-bold text-gray-100 mb-6">로그인</h2>
-        <div className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">이메일</label>
-            <input
-              type="email"
-              className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="이메일을 입력하세요"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">비밀번호</label>
-            <input
-              type="password"
-              className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="비밀번호를 입력하세요"
-            />
-          </div>
-          <button className="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition">
-            로그인
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function RegisterPage() {
-  return (
-    <div className="min-h-screen bg-gray-950 flex items-center justify-center">
-      <div className="bg-gray-900 border border-gray-800 rounded-xl p-8 w-full max-w-md">
-        <h2 className="text-2xl font-bold text-gray-100 mb-6">회원가입</h2>
-        <div className="space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">이메일</label>
-            <input
-              type="email"
-              className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="이메일을 입력하세요"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">비밀번호</label>
-            <input
-              type="password"
-              className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="비밀번호를 입력하세요"
-            />
-          </div>
-          <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">닉네임</label>
-            <input
-              type="text"
-              className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              placeholder="닉네임을 입력하세요"
-            />
-          </div>
-          <button className="w-full py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition">
-            회원가입
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
+// LoginPage and RegisterPage are imported from their respective files
 
 function DashboardPage() {
   return (

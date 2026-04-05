@@ -3,6 +3,8 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import path from 'path';
+import { loadModels, sequelize, db } from './models/index.js';
+import { errorHandler } from './middleware/errorHandler.js';
 
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
@@ -20,12 +22,41 @@ app.get('/api/health', (_req, res) => {
   res.json({ success: true, data: { status: 'ok' } });
 });
 
-app.get('/api/auth/me', (_req, res) => {
-  res.status(401).json({ success: false, message: '인증이 필요합니다' });
-});
+async function setupApp() {
+  await loadModels();
+  
+  const { authRouter } = await import('./routes/auth.js');
+  app.use('/api/auth', authRouter);
+  
+  const { paymentMethodsRouter } = await import('./routes/payment-methods.js');
+  app.use('/api/payment-methods', paymentMethodsRouter);
+  
+  const { subcategoriesRouter } = await import('./routes/subcategories.js');
+  app.use('/api/subcategories', subcategoriesRouter);
+  
+  const { categoriesRouter } = await import('./routes/categories.js');
+  app.use('/api/categories', categoriesRouter);
+  
+  const { transactionsRouter } = await import('./routes/transactions.js');
+  app.use('/api/transactions', transactionsRouter);
+  
+  const { recurringExpensesRouter } = await import('./routes/recurring-expenses.js');
+  app.use('/api/recurring-expenses', recurringExpensesRouter);
+  
+  app.use(errorHandler);
+  
+  return app;
+}
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+async function startServer(): Promise<void> {
+  await setupApp();
+  await sequelize.sync();
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}
 
+startServer();
+
+export { setupApp, db };
 export default app;

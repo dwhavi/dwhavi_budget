@@ -50,6 +50,9 @@ async function setupApp() {
   const { adminRouter } = await import('./routes/admin.js');
   app.use('/api/admin', adminRouter);
   
+  const { statsRouter } = await import('./routes/stats.js');
+  app.use('/api/stats', statsRouter);
+  
   app.use(errorHandler);
   
   return app;

@@ -24,6 +24,7 @@ app.get('/api/health', (_req, res) => {
 
 async function setupApp() {
   await loadModels();
+  await sequelize.sync();
   
   const { authRouter } = await import('./routes/auth.js');
   app.use('/api/auth', authRouter);
@@ -50,13 +51,14 @@ async function setupApp() {
 
 async function startServer(): Promise<void> {
   await setupApp();
-  await sequelize.sync();
   app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
   });
 }
 
-startServer();
+if (!process.env.VITEST) {
+  startServer();
+}
 
 export { setupApp, db };
 export default app;

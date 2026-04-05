@@ -967,7 +967,7 @@ Max Concurrent: 5 (Wave 3)
   **Commit**: YES
   - Message: `feat(recurring-expenses): CRUD API with period-based tracking and toggle`
 
-- [ ] 10.5. Fix Test Isolation — In-Memory SQLite Per Test File
+- [x] 10.5. Fix Test Isolation — In-Memory SQLite Per Test File
 
   **What to do**:
   - **CRITICAL BLOCKER**: All 63 tests pass individually but 27 fail when running `npx vitest run` (all files together).

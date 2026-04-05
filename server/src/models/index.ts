@@ -3,7 +3,7 @@ import path from 'path';
 
 export const sequelize = new Sequelize({
   dialect: 'sqlite',
-  storage: path.resolve(process.env.DB_PATH || './data/budget.db'),
+  storage: process.env.DB_PATH === ':memory:' ? ':memory:' : path.resolve(process.env.DB_PATH || './data/budget.db'),
   logging: process.env.NODE_ENV === 'development' ? console.log : false,
   define: {
     underscored: true,

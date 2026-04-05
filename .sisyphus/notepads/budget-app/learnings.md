@@ -48,3 +48,16 @@
 - Seeder is idempotent: checks existing count before seeding
 - Imports use `.js` extensions (tsx resolves them for CommonJS)
 - Pre-existing smoke.test.ts TS error: vitest globals not recognized by tsc (vitest config has globals:true but tsconfig doesn't reference vitest types)
+
+## Test Isolation Solution
+- Problem: 63 tests passed individually but failed when run together due to shared SQLite database state
+- Solution: Vitest pool isolation with in-memory SQLite databases
+- Key changes:
+  1. Modified `models/index.ts` to handle `:memory:` storage path properly (bypass path.resolve for in-memory DB)
+  2. Added `sequelize.sync()` to `setupApp()` to ensure tables are created for tests
+  3. Removed duplicate `sequelize.sync()` from `startServer()` since it's now in setupApp
+  4. Guarded `startServer()` call with `!process.env.VITEST` to prevent server startup in test environment
+  5. Created `__tests__/setup.ts` to set `DB_PATH=:memory:` and test JWT secrets
+  6. Updated `vitest.config.ts` with `pool: 'forks'` for complete process isolation and `setupFiles` for environment setup
+- Result: Each test file runs in its own process with separate in-memory SQLite database, eliminating shared state issues
+- Architecture insight: Routes import `db` from `models/index.js` - with fork isolation, each test gets its own sequelize/db instances

@@ -69,8 +69,7 @@ React + Express + SQLite 기반 가계부 풀스택 웹 앱을 TDD로 구축하�
 
 ### Definition of Done
 - [ ] `npm install && npm run dev` 실행 시 클라이언트(5173) + 서버(3000) 정상 구동
-- [ ] 모든 API 엔드포인트 정상 응답 (curl로 검증)
-- [ ] 회원가입 → 로그인 → 대시보드 → 기록등록 → 통계 확인 플로우 동작
+- [x] 모든 API 엔드포인트 정상 응답 (curl로 검증)- [ ] 회원가입 → 로그인 → 대시보드 → 기록등록 → 통계 확인 플로우 동작
 - [ ] Vitest 모든 테스트 통과
 - [ ] Docker Compose로 앱 구동 가능
 
@@ -149,7 +148,10 @@ Wave 3 (Core CRUD APIs — After Wave 2, MAX PARALLEL):
 ├── Task 9:  SubCategories autocomplete API — TDD [quick]
 └── Task 10: RecurringExpenses API (CRUD, toggle, period) — TDD [unspecified-high]
 
-Wave 4 (Feature APIs — After Wave 3):
+Wave 3.5 (Test Isolation Fix — Before Wave 4):
+└── Task 10.5: Fix test isolation — in-memory SQLite per test file [quick]
+
+Wave 4 (Feature APIs — After Wave 3.5):
 ├── Task 11: Budgets API (upsert, monthly query) — TDD [unspecified-high]
 ├── Task 12: Stats API (dashboard summary, trends, category, payment-methods) — TDD [deep]
 └── Task 13: Admin API (users, categories, settings, system summary) — TDD [unspecified-high]
@@ -229,7 +231,7 @@ Max Concurrent: 5 (Wave 3)
 
 ## TODOs
 
-- [ ] 1. Project Scaffolding + TypeScript Configs
+- [x] 1. Project Scaffolding + TypeScript Configs
 
   **What to do**:
   - **파일 이동** (작업 파일만, 설정 파일 절대 건드리지 않음):
@@ -301,7 +303,7 @@ Max Concurrent: 5 (Wave 3)
   - Message: `chore: initial project scaffolding with client/server monorepo`
   - Files: root package.json, client/*, server/*, .env.example, .gitignore, tsconfig files
 
-- [ ] 2. Vitest Setup + Test Helpers
+- [x] 2. Vitest Setup + Test Helpers
 
   **What to do**:
   - Install `vitest` in both client/ and server/
@@ -367,7 +369,7 @@ Max Concurrent: 5 (Wave 3)
   - Message: `chore: add Vitest test infrastructure for server and client`
   - Files: server/vitest.config.ts, client/vitest.config.ts, test helpers, smoke tests
 
-- [ ] 3. DB Models + Associations + Seed Data
+- [x] 3. DB Models + Associations + Seed Data
 
   **What to do**:
   - Create Sequelize connection setup in `server/src/models/index.ts` (SQLite path from env)
@@ -444,7 +446,7 @@ Max Concurrent: 5 (Wave 3)
   - Files: server/src/models/*, server/src/seeders/*, server/src/__tests__/models/*
   - Pre-commit: `npx vitest run src/__tests__/models/`
 
-- [ ] 4. Auth API (Register, Login, Logout, Refresh, Me, Password Change) — TDD
+- [x] 4. Auth API (Register, Login, Logout, Refresh, Me, Password Change) — TDD
 
   **What to do**:
   **TDD Cycle — Write tests FIRST, then implement:**
@@ -564,7 +566,7 @@ Max Concurrent: 5 (Wave 3)
   - Message: `feat(auth): implement JWT authentication with register, login, logout, refresh, me, password change`
   - Files: server/src/routes/auth.ts, server/src/validations/auth.ts, server/src/__tests__/routes/auth.test.ts
 
-- [ ] 5. Auth Middleware + Admin Middleware + Error Handler
+- [x] 5. Auth Middleware + Admin Middleware + Error Handler
 
   **What to do**:
   **TDD Cycle:**
@@ -636,7 +638,7 @@ Max Concurrent: 5 (Wave 3)
   - Message: `feat(middleware): add auth, admin, validation, and error handler middleware`
   - Files: server/src/middleware/*.ts, server/src/__tests__/middleware/*.test.ts
 
-- [ ] 6. PaymentMethods API — TDD
+- [x] 6. PaymentMethods API — TDD
 
   **What to do**:
   **TDD Cycle:**
@@ -702,7 +704,7 @@ Max Concurrent: 5 (Wave 3)
   - Message: `feat(payment-methods): CRUD API with soft delete and cash protection`
   - Files: server/src/routes/payment-methods.ts, server/src/validations/payment-method.ts, tests
 
-- [ ] 7. Categories API (Global + Personal) — TDD
+- [x] 7. Categories API (Global + Personal) — TDD
 
   **What to do**:
   **TDD Cycle:**
@@ -763,7 +765,7 @@ Max Concurrent: 5 (Wave 3)
   **Commit**: YES
   - Message: `feat(categories): CRUD API with global/personal scope and soft delete`
 
-- [ ] 8. Transactions API (CRUD, Filters, Pagination, Sort, Soft Delete) — TDD
+- [x] 8. Transactions API (CRUD, Filters, Pagination, Sort, Soft Delete) — TDD
 
   **What to do**:
   **TDD Cycle:**
@@ -852,7 +854,7 @@ Max Concurrent: 5 (Wave 3)
   **Commit**: YES
   - Message: `feat(transactions): CRUD API with filters, pagination, sorting, and soft delete`
 
-- [ ] 9. SubCategories Autocomplete API — TDD
+- [x] 9. SubCategories Autocomplete API — TDD
 
   **What to do**:
   **TDD Cycle:**
@@ -902,7 +904,7 @@ Max Concurrent: 5 (Wave 3)
   **Commit**: YES
   - Message: `feat(subcategories): autocomplete API with frequency-based ranking`
 
-- [ ] 10. RecurringExpenses API (CRUD, Toggle, Period) — TDD
+- [x] 10. RecurringExpenses API (CRUD, Toggle, Period) — TDD
 
   **What to do**:
   **TDD Cycle:**
@@ -965,7 +967,94 @@ Max Concurrent: 5 (Wave 3)
   **Commit**: YES
   - Message: `feat(recurring-expenses): CRUD API with period-based tracking and toggle`
 
+- [ ] 10.5. Fix Test Isolation — In-Memory SQLite Per Test File
+
+  **What to do**:
+  - **CRITICAL BLOCKER**: All 63 tests pass individually but 27 fail when running `npx vitest run` (all files together).
+    The root cause is all test files share the same `./data/budget.db` SQLite file, causing concurrent access
+    conflicts and overlapping test data (e.g., same `test@example.com` email).
+  - Refactor `server/src/__tests__/helpers/testApp.ts` (or create a new helper) to use `:memory:` SQLite
+    instead of file-based `./data/budget.db` for tests.
+  - Ensure each test file gets its own isolated in-memory database instance.
+  - Strategy options (pick the best fit):
+    - **Option A**: Each test file's `beforeAll`/`beforeEach` creates a fresh Sequelize instance with `sqlite::memory:`,
+      runs `sync()` + `loadModels()`, and `afterAll` closes the connection.
+    - **Option B**: Use Vitest's `pool: 'forks'` isolation (each test file runs in its own process with its own DB).
+    - **Option C**: Create a `createTestApp()` factory that returns a fresh app+db combo per call.
+  - Update ALL existing test files (auth, payment-methods, categories, transactions, subcategories, recurring-expenses)
+    to use the new isolated test setup.
+  - Verify: `cd server && npx vitest run` passes ALL 63 tests with 0 failures.
+
+  **Must NOT do**:
+  - Do NOT modify production database code (only test helpers and test files)
+  - Do NOT change any API behavior or business logic
+  - Do NOT skip or remove any existing test cases
+
+  **Recommended Agent Profile**:
+  - **Category**: `quick`
+    - Reason: Refactoring test infrastructure only, no business logic changes
+  - **Skills**: []
+
+  **Parallelization**:
+  - **Can Run In Parallel**: NO (test infrastructure change, must be consistent)
+  - **Parallel Group**: Wave 3.5 (standalone)
+  - **Blocks**: Tasks 11-13, Wave 7 smoke test (Task 25)
+  - **Blocked By**: Tasks 1-10 (all completed)
+
+  **References**:
+  **Pattern References**:
+  - `server/src/__tests__/helpers/testApp.ts` — Current test app factory (needs modification)
+  - `server/src/models/index.ts` — `loadModels()` and `setupAssociations()` functions
+  - `server/src/__tests__/auth.test.ts` — Example test file to understand current pattern
+  - `server/src/__tests__/payment-methods.test.ts` — Another test file for pattern reference
+  - `server/vitest.config.ts` — Current Vitest configuration
+
+  **External References**:
+  - Sequelize SQLite `:memory:` connection: `new Sequelize('sqlite::memory:', { dialect: 'sqlite', ... })`
+
+  **Acceptance Criteria**:
+  - [ ] `cd server && npx vitest run` passes ALL tests (63 pass, 0 fail)
+  - [ ] Each test file uses its own isolated database
+  - [ ] No test file touches `./data/budget.db`
+  - [ ] Individual test files still pass (`npx vitest run src/__tests__/auth.test.ts`)
+
+  **QA Scenarios (MANDATORY)**:
+
+  ```
+  Scenario: Full test suite passes together
+    Tool: Bash
+    Preconditions: All test files updated with isolated DB
+    Steps:
+      1. cd /home/dwhavi/projects/budget-app/server
+      2. npx vitest run 2>&1
+    Expected Result: All tests pass (63+ tests, 0 failures). No "SQLITE_BUSY" or "SQLITE_LOCKED" errors.
+    Failure Indicators: Any test failure, database lock errors, timeout errors
+    Evidence: .sisyphus/evidence/task-10.5-test-isolation.txt
+
+  Scenario: Individual test files still pass
+    Tool: Bash
+    Preconditions: Test isolation fix applied
+    Steps:
+      1. cd /home/dwhavi/projects/budget-app/server
+      2. npx vitest run src/__tests__/auth.test.ts
+      3. npx vitest run src/__tests__/transactions.test.ts
+      4. npx vitest run src/__tests__/payment-methods.test.ts
+    Expected Result: Each file passes independently
+    Failure Indicators: Import errors, missing helpers, setup failures
+    Evidence: .sisyphus/evidence/task-10.5-individual-tests.txt
+  ```
+
+  **Commit**: YES
+  - Message: `fix(test): isolate test databases with in-memory SQLite per test file`
+  - Files: server/src/__tests__/helpers/*, server/src/__tests__/*.test.ts (updated imports), server/vitest.config.ts (if changed)
+  - Pre-commit: `cd server && npx vitest run`
+
+## Final Verification Wave (MANDATORY — after ALL implementation tasks)
+
 > 4 review agents run in PARALLEL. ALL must APPROVE. Present consolidated results to user and get explicit "okay" before completing.
+>
+> **Do NOT auto-proceed after verification. Wait for user's explicit approval before marking work complete.**
+> **Never mark F1-F4 as checked before getting user's okay.** Rejection or user feedback -> fix -> re-run -> present again -> wait for okay.
 
 - [ ] F1. **Plan Compliance Audit** — `oracle`
   Read the plan end-to-end. For each "Must Have": verify implementation exists (read file, curl endpoint, run command). For each "Must NOT Have": search codebase for forbidden patterns — reject with file:line if found. Check evidence files exist in .sisyphus/evidence/. Compare deliverables against plan.

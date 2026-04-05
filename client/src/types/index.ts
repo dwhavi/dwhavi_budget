@@ -59,6 +59,10 @@ export interface Transaction {
   updated_at: string;
   deleted_at?: string;
   category?: Category;
+  category_name?: string;
+  category_color?: string;
+  payment_method_name?: string;
+  payment_method_color?: string;
 }
 
 export interface TransactionListResponse {

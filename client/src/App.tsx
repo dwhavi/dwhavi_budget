@@ -6,6 +6,7 @@ import { Layout } from './components/Layout.tsx';
 import { SkeletonCard } from './components/Skeleton.tsx';
 import { LoginPage } from './pages/LoginPage/index.tsx';
 import { RegisterPage } from './pages/RegisterPage/index.tsx';
+import { DashboardPage } from './pages/Dashboard/index.tsx';
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { isAuthenticated, isLoading } = useAuth();
@@ -49,49 +50,7 @@ function AdminRoute({ children }: { children: React.ReactNode }) {
 
 // LoginPage and RegisterPage are imported from their respective files
 
-function DashboardPage() {
-  return (
-    <div className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-gray-900 border border-gray-800 rounded-xl p-5">
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-sm text-gray-400">총수입</span>
-            <span className="w-8 h-8 rounded-lg bg-blue-500/10 flex items-center justify-center text-blue-400 text-sm">↑</span>
-          </div>
-          <div className="text-2xl font-bold text-blue-400">+5,000,000원</div>
-          <div className="text-xs text-gray-500 mt-1">급여, 부수입</div>
-        </div>
-        <div className="bg-gray-900 border border-gray-800 rounded-xl p-5">
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-sm text-gray-400">총지출</span>
-            <span className="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center text-red-400 text-sm">↓</span>
-          </div>
-          <div className="text-2xl font-bold text-red-400">-2,340,500원</div>
-          <div className="text-xs text-gray-500 mt-1">46.8% 사용</div>
-        </div>
-        <div className="bg-gray-900 border border-gray-800 rounded-xl p-5">
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-sm text-gray-400">잔액</span>
-            <span className="w-8 h-8 rounded-lg bg-green-500/10 flex items-center justify-center text-green-400 text-sm">💰</span>
-          </div>
-          <div className="text-2xl font-bold text-green-400">2,659,500원</div>
-          <div className="text-xs text-gray-500 mt-1">이번 달 남은 금액</div>
-        </div>
-        <div className="bg-gray-900 border border-gray-800 rounded-xl p-5">
-          <div className="flex items-center justify-between mb-3">
-            <span className="text-sm text-gray-400">예산 달성률</span>
-            <span className="w-8 h-8 rounded-lg bg-yellow-500/10 flex items-center justify-center text-yellow-400 text-sm">⚡</span>
-          </div>
-          <div className="text-2xl font-bold text-yellow-400">78%</div>
-          <div className="w-full bg-gray-800 rounded-full h-2 mt-2">
-            <div className="bg-gradient-to-r from-yellow-500 to-orange-500 h-2 rounded-full" style={{width: '78%'}}></div>
-          </div>
-          <div className="text-xs text-gray-500 mt-1">식비 예산 초과 주의!</div>
-        </div>
-      </div>
-    </div>
-  );
-}
+// DashboardPage is imported from ./pages/Dashboard/index.tsx
 
 function TransactionsPage() {
   return (

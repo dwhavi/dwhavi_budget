@@ -2,9 +2,11 @@ import { describe, it, expect, beforeEach, afterEach, beforeAll } from 'vitest';
 import request from 'supertest';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
+import type { Application } from 'express';
+import type { ModelRegistry } from '../models/index.js';
 
-let app: any;
-let db: any;
+let app: Application;
+let db: ModelRegistry;
 
 beforeAll(async () => {
   const { setupApp } = await import('../index.js');
@@ -160,13 +162,13 @@ describe('PaymentMethods API', () => {
       expect(response.body.success).toBe(true);
 
       const found = await db.PaymentMethod.findByPk(card.id, { paranoid: false });
-      expect(found.deleted_at).not.toBeNull();
+      expect(found!.deleted_at).not.toBeNull();
     });
 
     it('6. should reject deleting "현금" payment method with 400', async () => {
-      const cashMethod = await db.PaymentMethod.findOne({
+      const cashMethod = (await db.PaymentMethod.findOne({
         where: { user_id: userId, name: '현금' },
-      });
+      }))!;
 
       const response = await request(app)
         .delete(`/api/payment-methods/${cashMethod.id}`)

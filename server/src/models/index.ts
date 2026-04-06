@@ -4,7 +4,7 @@ import path from 'path';
 export const sequelize = new Sequelize({
   dialect: 'sqlite',
   storage: process.env.DB_PATH === ':memory:' ? ':memory:' : path.resolve(process.env.DB_PATH || './data/budget.db'),
-  logging: process.env.NODE_ENV === 'development' ? console.log : false,
+  logging: false,
   define: {
     underscored: true,
     timestamps: true,

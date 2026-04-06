@@ -12,7 +12,6 @@ interface LayoutProps {
 
 export function Layout({ children }: LayoutProps) {
   const [isLoading, setIsLoading] = useState(true);
-  // const { user } = useAuth(); // user not used in this component
   const { addToast } = useToast();
   const { pathname } = useLocation();
 

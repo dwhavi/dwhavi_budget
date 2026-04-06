@@ -2,6 +2,51 @@ import { Router, Response } from 'express';
 import { sequelize } from '../models/index.js';
 import { AuthRequest, authMiddleware } from '../middleware/auth.js';
 
+
+
+interface TotalResult {
+  total: string;
+}
+
+interface CategoryRankingItem {
+  category_id: number;
+  category_name: string;
+  total: string;
+  color: string;
+}
+
+interface TransactionItem {
+  id: number;
+  type: string;
+  amount: string;
+  date: string;
+  sub_category: string | null;
+  memo: string | null;
+  category_name: string;
+  category_color: string;
+  payment_method_name: string | null;
+  payment_method_color: string | null;
+}
+
+interface MonthlyTrendItem {
+  month: string;
+  income: number;
+  expense: number;
+}
+
+interface CategoryStatItem {
+  category_id: number;
+  category_name: string;
+  total: string;
+  color: string;
+}
+
+interface PaymentMethodStatItem {
+  payment_method_id: number;
+  payment_method_name: string;
+  total: string;
+}
+
 const router = Router();
 
 function calculateRemainingDaysInMonth(): number {
@@ -29,7 +74,7 @@ router.get('/dashboard', authMiddleware, async (req: AuthRequest, res: Response)
     }
 
     const monthPattern = /^\d{4}-(0[1-9]|1[0-2])$/;
-    if (!monthPattern.test(month)) {
+    if (!monthPattern.test(month as string)) {
       return res.status(400).json({ success: false, message: '월(month) 형식이 올바르지 않습니다 (YYYY-MM)' });
     }
 
@@ -81,25 +126,27 @@ router.get('/dashboard', authMiddleware, async (req: AuthRequest, res: Response)
       LIMIT 5
     `;
 
-    const [totalIncomeResult] = await sequelize.query(totalIncomeQuery, {
+    const totalIncomeResults = await sequelize.query(totalIncomeQuery, {
       replacements: [userId, monthPrefix],
       type: 'SELECT'
-    }) as any[];
+    }) as TotalResult[];
+    const totalIncomeResult = totalIncomeResults[0];
 
-    const [totalExpenseResult] = await sequelize.query(totalExpenseQuery, {
+    const totalExpenseResults = await sequelize.query(totalExpenseQuery, {
       replacements: [userId, monthPrefix],
       type: 'SELECT'
-    }) as any[];
+    }) as TotalResult[];
+    const totalExpenseResult = totalExpenseResults[0];
 
     const categoryRanking = await sequelize.query(categoryRankingQuery, {
       replacements: [userId, monthPrefix],
       type: 'SELECT'
-    }) as any[];
+    }) as CategoryRankingItem[];
 
     const recentTransactions = await sequelize.query(recentTransactionsQuery, {
       replacements: [userId],
       type: 'SELECT'
-    }) as any[];
+    }) as TransactionItem[];
 
     const totalIncome = Number(totalIncomeResult.total) || 0;
     const totalExpense = Number(totalExpenseResult.total) || 0;
@@ -142,19 +189,19 @@ router.get('/monthly-trend', authMiddleware, async (req: AuthRequest, res: Respo
     const monthlyTrend = await sequelize.query(monthlyTrendQuery, {
       replacements: [userId],
       type: 'SELECT'
-    }) as any[];
+    }) as MonthlyTrendItem[];
 
     const sixMonthsAgo = new Date();
     sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 5);
     
-    const result: any[] = [];
+    const result: MonthlyTrendItem[] = [];
     
     for (let i = 0; i < 6; i++) {
       const monthDate = new Date(sixMonthsAgo);
       monthDate.setMonth(monthDate.getMonth() + i);
       const monthStr = monthDate.toISOString().slice(0, 7);
       
-      const existingData = monthlyTrend.find((item: any) => item.month === monthStr);
+      const existingData = monthlyTrend.find((item: MonthlyTrendItem) => item.month === monthStr);
       
       if (existingData) {
         result.push({
@@ -191,7 +238,7 @@ router.get('/category', authMiddleware, async (req: AuthRequest, res: Response) 
     }
 
     const monthPattern = /^\d{4}-(0[1-9]|1[0-2])$/;
-    if (!monthPattern.test(month)) {
+    if (!monthPattern.test(month as string)) {
       return res.status(400).json({ success: false, message: '월(month) 형식이 올바르지 않습니다 (YYYY-MM)' });
     }
 
@@ -211,11 +258,11 @@ router.get('/category', authMiddleware, async (req: AuthRequest, res: Response) 
     const categoryStats = await sequelize.query(categoryStatsQuery, {
       replacements: [userId, `${month}%`],
       type: 'SELECT'
-    }) as any[];
+    }) as CategoryStatItem[];
 
-    const totalExpense = categoryStats.reduce((sum: number, item: any) => sum + Number(item.total), 0);
+    const totalExpense = categoryStats.reduce((sum: number, item: CategoryStatItem) => sum + Number(item.total), 0);
     
-    const result = categoryStats.map((item: any) => ({
+    const result = categoryStats.map((item: CategoryStatItem) => ({
       category_id: item.category_id,
       category_name: item.category_name,
       total: Number(item.total),
@@ -243,7 +290,7 @@ router.get('/payment-methods', authMiddleware, async (req: AuthRequest, res: Res
     }
 
     const monthPattern = /^\d{4}-(0[1-9]|1[0-2])$/;
-    if (!monthPattern.test(month)) {
+    if (!monthPattern.test(month as string)) {
       return res.status(400).json({ success: false, message: '월(month) 형식이 올바르지 않습니다 (YYYY-MM)' });
     }
 
@@ -263,11 +310,11 @@ router.get('/payment-methods', authMiddleware, async (req: AuthRequest, res: Res
     const paymentMethodStats = await sequelize.query(paymentMethodStatsQuery, {
       replacements: [userId, `${month}%`],
       type: 'SELECT'
-    }) as any[];
+    }) as PaymentMethodStatItem[];
 
-    const totalExpense = paymentMethodStats.reduce((sum: number, item: any) => sum + Number(item.total), 0);
+    const totalExpense = paymentMethodStats.reduce((sum: number, item: PaymentMethodStatItem) => sum + Number(item.total), 0);
     
-    const result = paymentMethodStats.map((item: any) => ({
+    const result = paymentMethodStats.map((item: PaymentMethodStatItem) => ({
       payment_method_id: item.payment_method_id,
       payment_method_name: item.payment_method_name,
       total: Number(item.total),

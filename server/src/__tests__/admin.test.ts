@@ -2,9 +2,18 @@ import { describe, it, expect, beforeEach, afterEach, beforeAll } from 'vitest';
 import request from 'supertest';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
+import type { Application } from 'express';
+import type { ModelRegistry } from '../models/index.js';
 
-let app: any;
-let db: any;
+interface TestUser {
+  id: number;
+  email: string;
+  role: string;
+  [key: string]: unknown;
+}
+
+let app: Application;
+let db: ModelRegistry;
 
 const adminUser = {
   email: 'admin@example.com',
@@ -44,16 +53,16 @@ function generateToken(user: { id: number; email: string; role: string }) {
 describe('Admin API', () => {
   let adminToken: string;
   let userToken: string;
-  let admin: any;
-  let normal: any;
+  let admin: TestUser;
+  let normal: TestUser;
 
   beforeEach(async () => {
     await db.Transaction.destroy({ where: {} });
     await db.Category.destroy({ where: {} });
     await db.User.destroy({ where: {} });
 
-    admin = await createUser(adminUser, 'admin');
-    normal = await createUser(normalUser, 'user');
+    admin = (await createUser(adminUser, 'admin')) as unknown as TestUser;
+    normal = (await createUser(normalUser, 'user')) as unknown as TestUser;
     adminToken = generateToken(admin);
     userToken = generateToken(normal);
   });
@@ -107,7 +116,7 @@ describe('Admin API', () => {
       expect(response.body.data.user.role).toBe('admin');
 
       const updated = await db.User.findByPk(normal.id);
-      expect(updated.role).toBe('admin');
+      expect(updated!.role).toBe('admin');
     });
 
     it('returns 400 with invalid role', async () => {
@@ -143,7 +152,7 @@ describe('Admin API', () => {
       expect(response.body.data.user.is_active).toBe(false);
 
       const updated = await db.User.findByPk(normal.id);
-      expect(updated.is_active).toBe(false);
+      expect(updated!.is_active).toBe(false);
     });
 
     it('returns 404 for non-existent user', async () => {
@@ -229,7 +238,7 @@ describe('Admin API', () => {
       expect(response.body.success).toBe(true);
 
       const deleted = await db.Category.findByPk(category.id);
-      expect(deleted.deleted_at).not.toBeNull();
+      expect(deleted!.deleted_at).not.toBeNull();
     });
   });
 

@@ -2,12 +2,20 @@ import { describe, it, expect, beforeEach, afterEach, beforeAll } from 'vitest';
 import request from 'supertest';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
+import type { Application } from 'express';
+import type { ModelRegistry } from '../models/index.js';
 
-let app: any;
-let db: any;
+let app: Application;
+let db: ModelRegistry;
 let accessToken: string;
 let userId: number;
 let categoryId: number;
+
+interface TestUserData {
+  email: string;
+  password: string;
+  display_name: string;
+}
 
 beforeAll(async () => {
   const { setupApp } = await import('../index.js');
@@ -17,7 +25,7 @@ beforeAll(async () => {
   await sequelize.sync({ force: true });
 });
 
-async function createTestUser(userData: any = testUser) {
+async function createTestUser(userData: TestUserData = testUser) {
   return await db.User.create({
     ...userData,
     password_hash: await bcrypt.hash(userData.password, 10),

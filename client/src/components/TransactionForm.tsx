@@ -87,7 +87,7 @@ const [formData, setFormData] = useState<TransactionCreateRequest>({
     };
   }, []);
 
-  const handleInputChange = (field: keyof TransactionCreateRequest, value: any) => {
+  const handleInputChange = (field: keyof TransactionCreateRequest, value: string | number | undefined) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
 

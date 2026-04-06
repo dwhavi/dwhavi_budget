@@ -54,7 +54,7 @@ router.get('/', authMiddleware, async (req: AuthRequest, res: Response) => {
     });
 
     const result = subCategories
-      .map((item: any) => item.sub_category)
+      .map((item: { sub_category: string | null }) => item.sub_category)
       .filter((sub_category: string | null) => sub_category !== null && sub_category !== '');
 
     res.json({

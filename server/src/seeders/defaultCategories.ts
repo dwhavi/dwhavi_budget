@@ -5,7 +5,15 @@ dotenv.config({ path: path.resolve(__dirname, '../../.env') });
 
 import { sequelize, loadModels, db } from '../models/index.js';
 
-const defaultCategories = [
+interface DefaultCategory {
+  name: string;
+  type: 'income' | 'expense';
+  icon: string;
+  color: string;
+  sort_order: number;
+}
+
+const defaultCategories: DefaultCategory[] = [
   { name: '급여', type: 'income' as const, icon: '💰', color: '#22c55e', sort_order: 1 },
   { name: '부수입', type: 'income' as const, icon: '💼', color: '#3b82f6', sort_order: 2 },
   { name: '용돈', type: 'income' as const, icon: '🎁', color: '#a855f7', sort_order: 3 },
@@ -27,7 +35,6 @@ async function seed(): Promise<void> {
 
     const existingCount = await db.Category.count({ where: { user_id: null } });
     if (existingCount > 0) {
-      console.log(`이미 ${existingCount}개의 글로벌 카테고리가 존재합니다. 시드를 건너뜁니다.`);
       await sequelize.close();
       return;
     }
@@ -36,7 +43,6 @@ async function seed(): Promise<void> {
       defaultCategories.map((cat) => ({ ...cat, user_id: null })),
     );
 
-    console.log(`${defaultCategories.length}개의 기본 카테고리가 생성되었습니다.`);
     await sequelize.close();
   } catch (error) {
     console.error('시드 실행 중 오류 발생:', error);

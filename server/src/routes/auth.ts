@@ -6,6 +6,10 @@ import { registerSchema, loginSchema, passwordChangeSchema } from '../validation
 import { AuthRequest, authMiddleware } from '../middleware/auth.js';
 import { validate } from '../middleware/validate.js';
 
+interface RefreshTokenPayload {
+  userId: number;
+}
+
 const router = Router();
 
 function generateAccessToken(userId: number, email: string, role: string): string {
@@ -13,7 +17,7 @@ function generateAccessToken(userId: number, email: string, role: string): strin
   const expiresIn = process.env.JWT_EXPIRES_IN || '15m';
   
   const options: SignOptions = {
-    expiresIn: expiresIn as any
+    expiresIn: expiresIn as jwt.SignOptions['expiresIn']
   };
   
   return jwt.sign(
@@ -28,7 +32,7 @@ function generateRefreshToken(userId: number): string {
   const expiresIn = process.env.JWT_REFRESH_EXPIRES_IN || '7d';
   
   const options: SignOptions = {
-    expiresIn: expiresIn as any
+    expiresIn: expiresIn as jwt.SignOptions['expiresIn']
   };
   
   return jwt.sign(
@@ -188,7 +192,7 @@ router.post('/refresh', async (req: Request, res: Response) => {
     const decoded = jwt.verify(
       refreshToken, 
       process.env.JWT_REFRESH_SECRET || 'dev-refresh-secret-change-in-production'
-    ) as any;
+    ) as RefreshTokenPayload;
 
     const user = await db.User.findByPk(decoded.userId);
     if (!user || !user.is_active) {

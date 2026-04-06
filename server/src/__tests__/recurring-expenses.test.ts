@@ -2,10 +2,13 @@ import { describe, it, expect, beforeEach, beforeAll } from 'vitest';
 import request from 'supertest';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
+import type { Application } from 'express';
+import type { ModelRegistry } from '../models/index.js';
+import type { Sequelize } from 'sequelize';
 
-let app: any;
-let db: any;
-let sequelize: any;
+let app: Application;
+let db: ModelRegistry;
+let sequelize: Sequelize;
 
 beforeAll(async () => {
   const { setupApp } = await import('../index.js');
@@ -37,9 +40,10 @@ async function seedCategoryAndPaymentMethod(userId: number) {
   const category = await db.Category.create({
     user_id: userId,
     name: '식비',
-    type: 'expense',
+    type: 'expense' as const,
     icon: '🍔',
     color: '#FF0000',
+    sort_order: 1,
   });
   const paymentMethod = await db.PaymentMethod.create({
     user_id: userId,
@@ -151,7 +155,7 @@ describe('RecurringExpenses API', () => {
       expect(response.body.success).toBe(true);
 
       const found = await db.RecurringExpense.findByPk(expense.id);
-      expect(found.deleted_at).not.toBeNull();
+      expect(found!.deleted_at).not.toBeNull();
 
       const listRes = await request(app)
         .get('/api/recurring-expenses')

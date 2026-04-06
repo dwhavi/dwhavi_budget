@@ -7,7 +7,6 @@ interface HeaderProps {
 
 export function Header({ onAddTransaction, pageTitle }: HeaderProps) {
   const { toggleTheme } = useTheme();
-  // const { user } = useAuth(); // user not used in this component
 
 const showAddButton = pageTitle === '대시보드' || pageTitle === '거래 내역';
 

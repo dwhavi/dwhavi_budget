@@ -60,9 +60,7 @@ async function setupApp() {
 
 async function startServer(): Promise<void> {
   await setupApp();
-  app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-  });
+  app.listen(PORT);
 }
 
 if (!process.env.VITEST) {

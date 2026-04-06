@@ -2,10 +2,50 @@ import { describe, it, expect, beforeEach, afterEach, beforeAll } from 'vitest';
 import request from 'supertest';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
+import type { Application } from 'express';
+import type { ModelRegistry } from '../models/index.js';
+import type { Sequelize } from 'sequelize';
+import type { Category } from '../models/Category.js';
+import type { PaymentMethod } from '../models/PaymentMethod.js';
+import type { Transaction } from '../models/Transaction.js';
 
-let app: any;
-let db: any;
-let sequelize: any;
+let app: Application;
+let db: ModelRegistry;
+let sequelize: Sequelize;
+
+interface TestUserData {
+  email: string;
+  password: string;
+  display_name: string;
+}
+
+interface TestCategoryData {
+  name: string;
+  type: 'income' | 'expense';
+  icon: string;
+  color: string;
+  user_id: number | null;
+  sort_order: number;
+}
+
+interface TestPaymentMethodData {
+  user_id: number;
+  name: string;
+  type: 'credit' | 'debit' | 'cash' | 'transfer';
+  is_default?: boolean;
+}
+
+interface TestTransactionData {
+  user_id: number;
+  type: 'income' | 'expense';
+  amount: number;
+  category_id: number;
+  payment_method_id?: number | null;
+  date: string;
+  sub_category?: string | null;
+  memo?: string | null;
+  deleted_at?: Date | null;
+}
 
 beforeAll(async () => {
   const { setupApp } = await import('../index.js');
@@ -15,22 +55,22 @@ beforeAll(async () => {
   sequelize = sequelizeInstance;
 });
 
-async function createTestUser(userData: any = testUser) {
+async function createTestUser(userData: TestUserData = testUser) {
   return await db.User.create({
     ...userData,
     password_hash: await bcrypt.hash(userData.password, 10),
   });
 }
 
-async function createTestCategory(categoryData: any) {
+async function createTestCategory(categoryData: TestCategoryData): Promise<Category> {
   return await db.Category.create(categoryData);
 }
 
-async function createTestPaymentMethod(paymentMethodData: any) {
+async function createTestPaymentMethod(paymentMethodData: TestPaymentMethodData): Promise<PaymentMethod> {
   return await db.PaymentMethod.create(paymentMethodData);
 }
 
-async function createTestTransaction(transactionData: any) {
+async function createTestTransaction(transactionData: TestTransactionData): Promise<Transaction> {
   return await db.Transaction.create(transactionData);
 }
 
@@ -43,9 +83,9 @@ const testUser = {
 describe('Transactions API', () => {
   let accessToken: string;
   let userId: number;
-  let incomeCategory: any;
-  let expenseCategory: any;
-  let paymentMethod: any;
+  let incomeCategory: Category;
+  let expenseCategory: Category;
+  let paymentMethod: PaymentMethod;
 
   beforeAll(async () => {
     await loadModels();
@@ -67,7 +107,7 @@ describe('Transactions API', () => {
     );
 
     incomeCategory = await createTestCategory({
-      user_id: null,
+      user_id: userId,
       name: '월급',
       type: 'income',
       icon: '💰',
@@ -76,7 +116,7 @@ describe('Transactions API', () => {
     });
 
     expenseCategory = await createTestCategory({
-      user_id: null,
+      user_id: userId,
       name: '식비',
       type: 'expense',
       icon: '🍔',
@@ -87,7 +127,7 @@ describe('Transactions API', () => {
     paymentMethod = await createTestPaymentMethod({
       user_id: userId,
       name: '체크카드',
-      type: 'card',
+      type: 'debit',
       is_default: false,
     });
   });
@@ -258,7 +298,7 @@ describe('Transactions API', () => {
 
       expect(response.body.success).toBe(true);
       expect(response.body.data.transactions).toHaveLength(2);
-      expect(response.body.data.transactions.every((t: any) => t.date === '2024-01-15')).toBe(true);
+      expect(response.body.data.transactions.every((t: { date: string }) => t.date === '2024-01-15')).toBe(true);
     });
 
     it('8. should return filtered and sorted results', async () => {

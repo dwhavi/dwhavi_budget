@@ -1,54 +1,75 @@
 import { Router, Response } from 'express';
-import { Op } from 'sequelize';
+import { Op, type WhereOptions, type Order } from 'sequelize';
 import { db } from '../models/index.js';
 import { createTransactionSchema, updateTransactionSchema } from '../validations/transaction.js';
 import { AuthRequest, authMiddleware } from '../middleware/auth.js';
 import { validate } from '../middleware/validate.js';
 
+
+
 const router = Router();
 
-function buildWhereClause(userId: number, queryParams: any) {
-  const whereClause: any = {
+interface TransactionQueryParams {
+  month?: string;
+  date?: string;
+  category_id?: string;
+  payment_method_id?: string;
+  min_amount?: string;
+  max_amount?: string;
+  keyword?: string;
+}
+interface WhereClause {
+  user_id: number;
+  deleted_at: null;
+  date?: { [Op.between]: [string, string] } | string;
+  category_id?: number;
+  payment_method_id?: number;
+  amount?: { [Op.gte]?: number; [Op.lte]?: number };
+  memo?: { [Op.like]: string };
+}
+
+function buildWhereClause(userId: number, queryParams: TransactionQueryParams): WhereClause {
+  const whereClause: WhereClause = {
     user_id: userId,
     deleted_at: null,
   };
 
-  if (queryParams.month) {
+  if (queryParams.month && typeof queryParams.month === 'string') {
     const [year, month] = queryParams.month.split('-');
     const startDate = `${year}-${month}-01`;
-    const endDate = new Date(parseInt(year), parseInt(month), 0).toISOString().split('T')[0];
+    const endDate = new Date(parseInt(year, 10), parseInt(month, 10), 0).toISOString().split('T')[0];
     whereClause.date = {
       [Op.between]: [startDate, endDate],
     };
   }
 
-  if (queryParams.date) {
+  if (queryParams.date && typeof queryParams.date === 'string') {
     whereClause.date = queryParams.date;
   }
 
-  if (queryParams.category_id) {
-    whereClause.category_id = parseInt(queryParams.category_id);
+  if (queryParams.category_id && typeof queryParams.category_id === 'string') {
+    whereClause.category_id = parseInt(queryParams.category_id, 10);
   }
 
-  if (queryParams.payment_method_id) {
-    whereClause.payment_method_id = parseInt(queryParams.payment_method_id);
+  if (queryParams.payment_method_id && typeof queryParams.payment_method_id === 'string') {
+    whereClause.payment_method_id = parseInt(queryParams.payment_method_id, 10);
   }
 
-  if (queryParams.min_amount) {
+  if (queryParams.min_amount && typeof queryParams.min_amount === 'string') {
     whereClause.amount = {
       ...(whereClause.amount || {}),
-      [Op.gte]: parseInt(queryParams.min_amount),
+      [Op.gte]: parseInt(queryParams.min_amount, 10),
     };
   }
 
-  if (queryParams.max_amount) {
+  if (queryParams.max_amount && typeof queryParams.max_amount === 'string') {
     whereClause.amount = {
       ...(whereClause.amount || {}),
-      [Op.lte]: parseInt(queryParams.max_amount),
+      [Op.lte]: parseInt(queryParams.max_amount, 10),
     };
   }
 
-  if (queryParams.keyword) {
+  if (queryParams.keyword && typeof queryParams.keyword === 'string') {
     whereClause.memo = {
       [Op.like]: `%${queryParams.keyword}%`,
     };
@@ -57,17 +78,14 @@ function buildWhereClause(userId: number, queryParams: any) {
   return whereClause;
 }
 
-function buildOrderClause(sortParam: string, orderParam: string): any[] {
-  const validSortFields = ['date', 'amount', 'category'];
-  const validOrderDirections = ['asc', 'desc'];
-  
-  const sortField = validSortFields.includes(sortParam) ? sortParam : 'date';
-  const orderDirection = validOrderDirections.includes(orderParam) ? orderParam : 'desc';
+function buildOrderClause(sortParam: string, orderParam: string): Order {
+  const sortField = sortParam === 'date' || sortParam === 'amount' || sortParam === 'category' ? sortParam : 'date';
+  const orderDirection = orderParam === 'asc' || orderParam === 'desc' ? orderParam : 'desc';
   
   if (sortField === 'category') {
     return [
-      [{ model: db.Category }, 'name', orderDirection] as any,
-      ['date', 'desc'] as any,
+      [db.Category, 'name', orderDirection],
+      ['date', 'desc'],
     ];
   }
   
@@ -84,22 +102,22 @@ router.get('/', authMiddleware, async (req: AuthRequest, res: Response) => {
     const {
       sort = 'date',
       order = 'desc',
-      page = 1,
-      limit = 20,
+      page = '1',
+      limit = '20',
     } = req.query;
 
     const pageNum = parseInt(page as string);
     const limitNum = Math.min(parseInt(limit as string), 100);
     const offset = (pageNum - 1) * limitNum;
 
-    const whereClause = buildWhereClause(userId, req.query);
-    const orderClause = buildOrderClause(sort as string, order as string);
+    const whereClause = buildWhereClause(userId, req.query as TransactionQueryParams);
+    const orderClause = buildOrderClause(String(sort), String(order));
 
-    const total = await db.Transaction.count({ where: whereClause });
+    const total = await db.Transaction.count({ where: whereClause as unknown as WhereOptions });
     const totalPages = Math.ceil(total / limitNum);
 
     const transactions = await db.Transaction.findAll({
-      where: whereClause,
+      where: whereClause as unknown as WhereOptions,
       include: [
         {
           model: db.Category,
@@ -147,7 +165,7 @@ router.post('/', authMiddleware, validate(createTransactionSchema), async (req: 
 
     const category = await db.Category.findOne({
       where: {
-        id: category_id as any,
+        id: category_id as number,
         user_id: { [Op.or]: [userId, null] },
         deleted_at: null,
       },
@@ -241,7 +259,7 @@ router.put('/:id', authMiddleware, validate(updateTransactionSchema), async (req
     if (updateData.category_id) {
       const category = await db.Category.findOne({
         where: {
-          id: updateData.category_id as any,
+          id: updateData.category_id as number,
           user_id: { [Op.or]: [userId, null] },
           deleted_at: null,
         },
@@ -263,7 +281,7 @@ router.put('/:id', authMiddleware, validate(updateTransactionSchema), async (req
     if (updateData.payment_method_id) {
       const paymentMethod = await db.PaymentMethod.findOne({
         where: {
-          id: updateData.payment_method_id as any,
+          id: updateData.payment_method_id as number,
           user_id: userId,
         },
       });

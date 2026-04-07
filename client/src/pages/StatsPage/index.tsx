@@ -212,12 +212,12 @@ export function StatsPage({ month = new Date().toISOString().slice(0, 7) }: Stat
                 cx="50%"
                 cy="50%"
                 labelLine={false}
-                label={({ percentage }) => `${percentage.toFixed(1)}%`}
+                label={(props: any) => `${props.percentage?.toFixed(1) ?? ''}%`}
                 outerRadius={80}
                 fill="#8884d8"
                 dataKey="total"
               >
-                {categoryStats.map((entry, index) => (
+                {categoryStats.map((_entry, index) => (
                   <Cell key={`cell-${index}`} fill={pieColors[index % pieColors.length]} />
                 ))}
               </Pie>

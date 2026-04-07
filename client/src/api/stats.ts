@@ -14,9 +14,9 @@ export const statsApi = {
   monthlyTrend: (months?: number) =>
     api.get<ApiResponse<MonthlyTrend[]>>('/stats/monthly-trend', { params: { months } }),
 
-  categoryStats: (params?: { type?: 'income' | 'expense'; start_date?: string; end_date?: string }) =>
-    api.get<ApiResponse<CategoryStat[]>>('/stats/categories', { params }),
+  categoryStats: (params?: { type?: 'income' | 'expense'; month?: string }) =>
+    api.get<ApiResponse<CategoryStat[]>>('/stats/category', { params }),
 
-  paymentMethodStats: (params?: { start_date?: string; end_date?: string }) =>
+  paymentMethodStats: (params?: { month?: string }) =>
     api.get<ApiResponse<PaymentMethodStat[]>>('/stats/payment-methods', { params }),
 };

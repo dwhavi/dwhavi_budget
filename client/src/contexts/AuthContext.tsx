@@ -9,6 +9,8 @@ import {
 import type { User, LoginRequest, RegisterRequest } from '../types/index.js';
 import { authApi } from '../api/auth.js';
 
+const PUBLIC_PATHS = ['/login', '/register'];
+
 interface AuthContextValue {
   user: User | null;
   isLoading: boolean;
@@ -27,35 +29,42 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const isAuthenticated = user !== null;
 
   useEffect(() => {
+    const isPublic = PUBLIC_PATHS.some((p) => window.location.pathname.startsWith(p));
+    if (isPublic) {
+      setIsLoading(false);
+      return;
+    }
+
     let cancelled = false;
 
     async function restoreSession() {
       try {
-        const res = await authApi.me();
-        if (!cancelled && res.data?.data?.user) {
-          setUser(res.data.data.user);
-          return;
-        }
-      } catch {
-        // me() failed, try refresh
-      }
-
-      try {
-        const refreshRes = await authApi.refresh();
-        if (!cancelled && refreshRes.data?.data?.accessToken) {
-          localStorage.setItem('accessToken', refreshRes.data.data.accessToken);
-          if (refreshRes.data.data.user) {
-            setUser(refreshRes.data.data.user);
+        try {
+          const res = await authApi.me();
+          if (!cancelled && res.data?.data?.user) {
+            setUser(res.data.data.user);
             return;
           }
-          // If refresh gave token but no user, fetch me again
-          const meRes = await authApi.me();
-          if (!cancelled && meRes.data?.data?.user) {
-            setUser(meRes.data.data.user);
-          }
+        } catch {
+          // ignore
         }
-      } catch {
-        // refresh also failed, stay logged out
+
+        try {
+          const refreshRes = await authApi.refresh();
+          if (!cancelled && refreshRes.data?.data?.accessToken) {
+            localStorage.setItem('accessToken', refreshRes.data.data.accessToken);
+            if (refreshRes.data.data.user) {
+              setUser(refreshRes.data.data.user);
+              return;
+            }
+            const meRes = await authApi.me();
+            if (!cancelled && meRes.data?.data?.user) {
+              setUser(meRes.data.data.user);
+            }
+          }
+        } catch {
+          // ignore
+        }
       } finally {
         if (!cancelled) setIsLoading(false);
       }

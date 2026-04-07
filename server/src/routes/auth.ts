@@ -92,7 +92,7 @@ router.post('/register', validate(registerSchema), async (req: AuthRequest, res:
 
     res.cookie('refreshToken', refreshToken, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
+      secure: false,
       sameSite: 'lax',
       path: '/api/auth/refresh',
       maxAge: 7 * 24 * 60 * 60 * 1000
@@ -148,7 +148,7 @@ router.post('/login', validate(loginSchema), async (req: AuthRequest, res: Respo
 
     res.cookie('refreshToken', refreshToken, {
       httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
+      secure: false,
       sameSite: 'lax',
       path: '/api/auth/refresh',
       maxAge: 7 * 24 * 60 * 60 * 1000

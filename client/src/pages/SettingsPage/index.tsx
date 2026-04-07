@@ -19,9 +19,9 @@ import type {
   Category,
 } from '@/types/index.js';
 
-interface SettingsPageProps {}
+interface SettingsPageProps { }
 
-export function SettingsPage({}: SettingsPageProps) {
+export function SettingsPage({ }: SettingsPageProps) {
   const [activeTab, setActiveTab] = useState<'payment-methods' | 'budgets' | 'recurring-expenses'>('payment-methods');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -63,10 +63,10 @@ export function SettingsPage({}: SettingsPageProps) {
       setError(null);
 
       const [paymentMethodsData, budgetsData, recurringExpensesData, categoriesData] = await Promise.all([
-        paymentMethodApi.list().then(res => res.data.data || []),
-        budgetApi.list(currentMonth).then(res => res.data.data || []),
-        recurringExpenseApi.list().then(res => res.data.data || []),
-        categoryApi.list().then(res => res.data.data || []),
+        paymentMethodApi.list().then(res => (res.data.data as any).paymentMethods || []),
+        budgetApi.list(currentMonth).then(res => (res.data.data as any).budgets || []),
+        recurringExpenseApi.list().then(res => (res.data.data as any).expenses || []),
+        categoryApi.list().then(res => (res.data.data as any).categories || []),
       ]);
 
       setPaymentMethods(paymentMethodsData);
@@ -91,11 +91,11 @@ export function SettingsPage({}: SettingsPageProps) {
     try {
       if (id) {
         const updated = await paymentMethodApi.update(id, data as PaymentMethodUpdateRequest);
-        setPaymentMethods(prev => prev.map(pm => pm.id === id ? updated.data.data : pm));
+        setPaymentMethods(prev => prev.map(pm => pm.id === id ? (updated.data.data as any).paymentMethod : pm));
         addToast('결제 수단이 업데이트되었습니다.', 'success');
       } else {
         const created = await paymentMethodApi.create(data as PaymentMethodCreateRequest);
-        setPaymentMethods(prev => [...prev, created.data.data]);
+        setPaymentMethods(prev => [...prev, (created.data.data as any).paymentMethod]);
         addToast('새로운 결제 수단이 추가되었습니다.', 'success');
       }
       setShowPaymentMethodModal(false);
@@ -117,18 +117,21 @@ export function SettingsPage({}: SettingsPageProps) {
   };
 
   // Budgets functions
-  const handleSaveBudget = async (data: BudgetUpsertRequest) => {
+  const handleSaveBudget = async (data: BudgetUpsertRequest, customCategoryName?: string) => {
     try {
+      let categoryId = data.category_id;
+      if (categoryId === -1 && customCategoryName) {
+        const catRes = await categoryApi.create({ name: customCategoryName, type: 'expense' });
+        const newCategory = (catRes.data.data as any).category;
+        setCategories(prev => [...prev, newCategory]);
+        categoryId = newCategory.id;
+        data.category_id = categoryId;
+      }
+
       const created = await budgetApi.upsert(data);
-      setBudgets(prev => {
-        const existingIndex = prev.findIndex(b => b.category_id === data.category_id && b.month === data.month);
-        if (existingIndex >= 0) {
-          const updated = [...prev];
-          updated[existingIndex] = created.data.data;
-          return updated;
-        }
-        return [...prev, created.data.data];
-      });
+      const allBudgets = (created.data.data as any).budgets || [];
+      // 현재 선택된 월(currentMonth)의 데이터만 필터링하여 상태에 반영
+      setBudgets(allBudgets.filter((b: Budget) => b.month === data.month));
       setShowBudgetModal(false);
       setEditingBudget(null);
       addToast('예산이 저장되었습니다.', 'success');
@@ -149,15 +152,24 @@ export function SettingsPage({}: SettingsPageProps) {
   };
 
   // Recurring Expenses functions
-  const handleSaveRecurringExpense = async (data: RecurringExpenseCreateRequest | RecurringExpenseUpdateRequest, id?: number) => {
+  const handleSaveRecurringExpense = async (data: RecurringExpenseCreateRequest | RecurringExpenseUpdateRequest, id?: number, customCategoryName?: string) => {
     try {
+      let categoryId = data.category_id;
+      if (categoryId === -1 && customCategoryName) {
+        const catRes = await categoryApi.create({ name: customCategoryName, type: 'expense' });
+        const newCategory = (catRes.data.data as any).category;
+        setCategories(prev => [...prev, newCategory]);
+        categoryId = newCategory.id;
+        data.category_id = categoryId;
+      }
+
       if (id) {
         const updated = await recurringExpenseApi.update(id, data as RecurringExpenseUpdateRequest);
-        setRecurringExpenses(prev => prev.map(re => re.id === id ? updated.data.data : re));
+        setRecurringExpenses(prev => prev.map(re => re.id === id ? (updated.data.data as any).expense : re));
         addToast('고정비가 업데이트되었습니다.', 'success');
       } else {
         const created = await recurringExpenseApi.create(data as RecurringExpenseCreateRequest);
-        setRecurringExpenses(prev => [...prev, created.data.data]);
+        setRecurringExpenses(prev => [...prev, (created.data.data as any).expense]);
         addToast('새로운 고정비가 추가되었습니다.', 'success');
       }
       setShowRecurringExpenseModal(false);
@@ -427,11 +439,10 @@ export function SettingsPage({}: SettingsPageProps) {
                 <div className="flex items-center gap-2">
                   <button
                     onClick={() => handleToggleRecurringExpense(re.id, !re.is_active)}
-                    className={`px-3 py-1 rounded-lg text-sm font-medium transition ${
-                      re.is_active
-                        ? 'bg-gray-700 hover:bg-gray-600 text-gray-200'
-                        : 'bg-green-600 hover:bg-green-700 text-white'
-                    }`}
+                    className={`px-3 py-1 rounded-lg text-sm font-medium transition ${re.is_active
+                      ? 'bg-gray-700 hover:bg-gray-600 text-gray-200'
+                      : 'bg-green-600 hover:bg-green-700 text-white'
+                      }`}
                   >
                     {re.is_active ? '비활성화' : '활성화'}
                   </button>
@@ -453,7 +464,7 @@ export function SettingsPage({}: SettingsPageProps) {
                 </div>
               </div>
               <div className="text-sm text-gray-400 ml-16">
-                {re.amount.toLocaleString()}원 · {re.category_id} · {re.payment_method_id} · 
+                {re.amount.toLocaleString()}원 · {re.category_id} · {re.payment_method_id} ·
                 {re.start_date} ~ {re.end_date || '무기한'}
               </div>
             </div>
@@ -481,9 +492,9 @@ export function SettingsPage({}: SettingsPageProps) {
           setShowPaymentMethodModal(false);
           setEditingPaymentMethod(null);
         }}
-        initialData={editingPaymentMethod}
+        initialData={editingPaymentMethod ?? undefined}
         colorOptions={colorOptions}
-        paymentMethods={paymentMethods}
+
       />
     </Modal>
   );
@@ -514,7 +525,7 @@ export function SettingsPage({}: SettingsPageProps) {
           setShowBudgetModal(false);
           setEditingBudget(null);
         }}
-        initialData={editingBudget}
+        initialData={editingBudget ?? undefined}
         categories={categories}
         currentMonth={currentMonth}
       />
@@ -547,7 +558,7 @@ export function SettingsPage({}: SettingsPageProps) {
           setShowRecurringExpenseModal(false);
           setEditingRecurringExpense(null);
         }}
-        initialData={editingRecurringExpense}
+        initialData={editingRecurringExpense ?? undefined}
         categories={categories}
         paymentMethods={paymentMethodsList}
       />
@@ -569,35 +580,32 @@ export function SettingsPage({}: SettingsPageProps) {
     <div className="space-y-6">
       <div className="bg-gray-900 border border-gray-800 rounded-xl p-5">
         <h3 className="text-lg font-semibold text-gray-100 mb-4">설정</h3>
-        
+
         <div className="flex gap-1 bg-gray-800 rounded-lg p-1 mb-6">
           <button
             onClick={() => setActiveTab('payment-methods')}
-            className={`flex-1 px-4 py-2 rounded-lg font-medium transition ${
-              activeTab === 'payment-methods'
-                ? 'bg-blue-600 text-white'
-                : 'text-gray-400 hover:text-gray-200'
-            }`}
+            className={`flex-1 px-4 py-2 rounded-lg font-medium transition ${activeTab === 'payment-methods'
+              ? 'bg-blue-600 text-white'
+              : 'text-gray-400 hover:text-gray-200'
+              }`}
           >
             카드 관리
           </button>
           <button
             onClick={() => setActiveTab('budgets')}
-            className={`flex-1 px-4 py-2 rounded-lg font-medium transition ${
-              activeTab === 'budgets'
-                ? 'bg-blue-600 text-white'
-                : 'text-gray-400 hover:text-gray-200'
-            }`}
+            className={`flex-1 px-4 py-2 rounded-lg font-medium transition ${activeTab === 'budgets'
+              ? 'bg-blue-600 text-white'
+              : 'text-gray-400 hover:text-gray-200'
+              }`}
           >
             예산 설정
           </button>
           <button
             onClick={() => setActiveTab('recurring-expenses')}
-            className={`flex-1 px-4 py-2 rounded-lg font-medium transition ${
-              activeTab === 'recurring-expenses'
-                ? 'bg-blue-600 text-white'
-                : 'text-gray-400 hover:text-gray-200'
-            }`}
+            className={`flex-1 px-4 py-2 rounded-lg font-medium transition ${activeTab === 'recurring-expenses'
+              ? 'bg-blue-600 text-white'
+              : 'text-gray-400 hover:text-gray-200'
+              }`}
           >
             고정비 관리
           </button>
@@ -615,13 +623,11 @@ function PaymentMethodForm({
   onCancel,
   initialData,
   colorOptions,
-  paymentMethods,
 }: {
   onSave: (data: PaymentMethodCreateRequest | PaymentMethodUpdateRequest, id?: number) => void;
   onCancel: () => void;
   initialData?: PaymentMethod;
   colorOptions: string[];
-  paymentMethods: PaymentMethod[];
 }) {
   const [formData, setFormData] = useState<PaymentMethodCreateRequest>({
     name: '',
@@ -671,7 +677,7 @@ function PaymentMethodForm({
           required
         />
       </div>
-      
+
       <div>
         <label className="block text-sm font-medium text-gray-300 mb-2">발급사</label>
         <input
@@ -681,7 +687,7 @@ function PaymentMethodForm({
           className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 focus:outline-none focus:border-blue-500"
         />
       </div>
-      
+
       <div>
         <label className="block text-sm font-medium text-gray-300 mb-2">유형</label>
         <select
@@ -695,7 +701,7 @@ function PaymentMethodForm({
           <option value="transfer">이체</option>
         </select>
       </div>
-      
+
       <div>
         <label className="block text-sm font-medium text-gray-300 mb-2">색상</label>
         <div className="flex gap-2 flex-wrap">
@@ -704,15 +710,14 @@ function PaymentMethodForm({
               key={color}
               type="button"
               onClick={() => setFormData({ ...formData, color })}
-              className={`w-8 h-8 rounded-full border-2 transition ${
-                formData.color === color ? 'border-white' : 'border-gray-600'
-              }`}
+              className={`w-8 h-8 rounded-full border-2 transition ${formData.color === color ? 'border-white' : 'border-gray-600'
+                }`}
               style={{ backgroundColor: color }}
             />
           ))}
         </div>
       </div>
-      
+
       <div className="flex items-center">
         <input
           type="checkbox"
@@ -723,7 +728,7 @@ function PaymentMethodForm({
         />
         <label htmlFor="is_default" className="text-sm text-gray-300">기본 결제 수단으로 설정</label>
       </div>
-      
+
       <div>
         <label className="block text-sm font-medium text-gray-300 mb-2">메모</label>
         <textarea
@@ -733,7 +738,7 @@ function PaymentMethodForm({
           rows={3}
         />
       </div>
-      
+
       <div className="flex gap-3 pt-4">
         <button
           type="button"
@@ -760,13 +765,14 @@ function BudgetForm({
   categories,
   currentMonth,
 }: {
-  onSave: (data: BudgetUpsertRequest) => void;
+  onSave: (data: BudgetUpsertRequest, customCategoryName?: string) => void;
   onCancel: () => void;
   initialData?: Budget;
   categories: Category[];
   currentMonth: string;
 }) {
   const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
+  const [customCategoryName, setCustomCategoryName] = useState('');
   const [amount, setAmount] = useState<string>('');
 
   useEffect(() => {
@@ -779,14 +785,19 @@ function BudgetForm({
     }
   }, [initialData]);
 
+  const isDuplicate = selectedCategory === -1 && categories.some(
+    cat => cat.type === 'expense' && cat.name.trim() === customCategoryName.trim()
+  );
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (isDuplicate) return;
     if (selectedCategory && amount) {
       onSave({
         category_id: selectedCategory,
         month: currentMonth,
         amount: parseFloat(amount),
-      });
+      }, selectedCategory === -1 ? customCategoryName : undefined);
     }
   };
 
@@ -796,19 +807,39 @@ function BudgetForm({
         <label className="block text-sm font-medium text-gray-300 mb-2">지출 카테고리</label>
         <select
           value={selectedCategory || ''}
-          onChange={(e) => setSelectedCategory(parseInt(e.target.value))}
+          onChange={(e) => {
+             const val = parseInt(e.target.value);
+             setSelectedCategory(val);
+             if (val !== -1) setCustomCategoryName('');
+          }}
           className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 focus:outline-none focus:border-blue-500"
           required
         >
-          <option value="">카테고리 선택</option>
+          <option value="" disabled>카테고리 선택</option>
+          <option value={-1}>직접 입력</option>
           {categories.filter(cat => cat.type === 'expense').map(cat => (
             <option key={cat.id} value={cat.id}>
               {cat.name}
             </option>
           ))}
         </select>
+        {selectedCategory === -1 && (
+          <div className="mt-2 text-sm">
+            <input
+               type="text"
+               value={customCategoryName}
+               onChange={(e) => setCustomCategoryName(e.target.value)}
+               className={`w-full px-3 py-2 bg-gray-700 border ${isDuplicate ? 'border-red-500 focus:border-red-500' : 'border-gray-600 focus:border-blue-500'} rounded-lg text-gray-100 focus:outline-none`}
+               placeholder="새 카테고리 이름"
+               required
+            />
+            {isDuplicate && (
+              <p className="mt-1 text-red-400 text-xs text-left">동일한 카테고리는 추가 할 수 없습니다.</p>
+            )}
+          </div>
+        )}
       </div>
-      
+
       <div>
         <label className="block text-sm font-medium text-gray-300 mb-2">예산 금액</label>
         <input
@@ -820,7 +851,7 @@ function BudgetForm({
           required
         />
       </div>
-      
+
       <div className="flex gap-3 pt-4">
         <button
           type="button"
@@ -847,7 +878,7 @@ function RecurringExpenseForm({
   categories,
   paymentMethods,
 }: {
-  onSave: (data: RecurringExpenseCreateRequest | RecurringExpenseUpdateRequest, id?: number) => void;
+  onSave: (data: RecurringExpenseCreateRequest | RecurringExpenseUpdateRequest, id?: number, customCategoryName?: string) => void;
   onCancel: () => void;
   initialData?: RecurringExpense;
   categories: Category[];
@@ -862,6 +893,7 @@ function RecurringExpenseForm({
     end_date: undefined,
     memo: '',
   });
+  const [customCategoryName, setCustomCategoryName] = useState('');
 
   useEffect(() => {
     if (initialData) {
@@ -887,9 +919,14 @@ function RecurringExpenseForm({
     }
   }, [initialData]);
 
+  const isDuplicate = formData.category_id === -1 && categories.some(
+    cat => cat.type === 'expense' && cat.name.trim() === customCategoryName.trim()
+  );
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSave(formData, initialData?.id);
+    if (isDuplicate) return;
+    onSave(formData, initialData?.id, formData.category_id === -1 ? customCategoryName : undefined);
   };
 
   return (
@@ -904,7 +941,7 @@ function RecurringExpenseForm({
           required
         />
       </div>
-      
+
       <div>
         <label className="block text-sm font-medium text-gray-300 mb-2">금액</label>
         <input
@@ -915,33 +952,53 @@ function RecurringExpenseForm({
           required
         />
       </div>
-      
+
       <div>
         <label className="block text-sm font-medium text-gray-300 mb-2">카테고리</label>
         <select
-          value={formData.category_id}
-          onChange={(e) => setFormData({ ...formData, category_id: parseInt(e.target.value) })}
+          value={formData.category_id === 0 ? '' : formData.category_id}
+          onChange={(e) => {
+             const val = parseInt(e.target.value) || 0;
+             setFormData({ ...formData, category_id: val });
+             if (val !== -1) setCustomCategoryName('');
+          }}
           className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 focus:outline-none focus:border-blue-500"
           required
         >
-          <option value={0}>카테고리 선택</option>
+          <option value="" disabled>카테고리 선택</option>
+          <option value={-1}>직접 입력</option>
           {categories.filter(cat => cat.type === 'expense').map(cat => (
             <option key={cat.id} value={cat.id}>
               {cat.name}
             </option>
           ))}
         </select>
+        {formData.category_id === -1 && (
+          <div className="mt-2 text-sm">
+            <input
+               type="text"
+               value={customCategoryName}
+               onChange={(e) => setCustomCategoryName(e.target.value)}
+               className={`w-full px-3 py-2 bg-gray-700 border ${isDuplicate ? 'border-red-500 focus:border-red-500' : 'border-gray-600 focus:border-blue-500'} rounded-lg text-gray-100 focus:outline-none`}
+               placeholder="새 카테고리 이름"
+               required
+            />
+            {isDuplicate && (
+               <p className="mt-1 text-red-400 text-xs text-left">동일한 카테고리는 추가 할 수 없습니다.</p>
+            )}
+          </div>
+        )}
       </div>
-      
+
       <div>
         <label className="block text-sm font-medium text-gray-300 mb-2">결제 수단</label>
         <select
-          value={formData.payment_method_id}
-          onChange={(e) => setFormData({ ...formData, payment_method_id: parseInt(e.target.value) })}
+          value={formData.payment_method_id || ''}
+          onChange={(e) => setFormData({ ...formData, payment_method_id: parseInt(e.target.value) || 0 })}
           className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 focus:outline-none focus:border-blue-500"
           required
         >
-          <option value={0}>결제 수단 선택</option>
+          <option value="" disabled>결제 수단 선택</option>
           {paymentMethods.map(pm => (
             <option key={pm.id} value={pm.id}>
               {pm.name}
@@ -949,7 +1006,7 @@ function RecurringExpenseForm({
           ))}
         </select>
       </div>
-      
+
       <div>
         <label className="block text-sm font-medium text-gray-300 mb-2">시작일</label>
         <input
@@ -960,7 +1017,7 @@ function RecurringExpenseForm({
           required
         />
       </div>
-      
+
       <div>
         <label className="block text-sm font-medium text-gray-300 mb-2">종료일 (선택 사항)</label>
         <input
@@ -970,7 +1027,7 @@ function RecurringExpenseForm({
           className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 focus:outline-none focus:border-blue-500"
         />
       </div>
-      
+
       <div>
         <label className="block text-sm font-medium text-gray-300 mb-2">메모</label>
         <textarea
@@ -980,7 +1037,7 @@ function RecurringExpenseForm({
           rows={3}
         />
       </div>
-      
+
       <div className="flex gap-3 pt-4">
         <button
           type="button"

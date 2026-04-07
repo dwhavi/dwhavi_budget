@@ -35,7 +35,11 @@
     "ses_2a3b53082ffeNZTizAo0IUqEss",
     "ses_2a3ad0320ffe0C9VT0kbOh49GG",
     "ses_2a3ad028dffekQAxpPPUkoewkB",
-    "ses_2a3ad0200ffegAgGp9eV2qmr50"
+    "ses_2a3ad0200ffegAgGp9eV2qmr50",
+    "ses_29e579050ffeqTXcd97VbQR4Dk",
+    "ses_29e40eb8affe9bJh6cGlmp4P99",
+    "ses_29e3e7442ffe4J0KOjy9qUnZkf",
+    "ses_29e332f33ffeYyWRUbRmX43Bs7"
   ],
   "plan_name": "budget-app",
   "agent": "atlas",
@@ -62,10 +66,10 @@
       "task_key": "final-wave:f1",
       "task_label": "F1",
       "task_title": "**Plan Compliance Audit** — `oracle`",
-      "session_id": "ses_2a3ad0320ffe0C9VT0kbOh49GG",
+      "session_id": "ses_29e3e7442ffe4J0KOjy9qUnZkf",
       "agent": "Sisyphus-Junior",
-      "category": "unspecified-high",
-      "updated_at": "2026-04-05T06:32:50.152Z"
+      "category": "quick",
+      "updated_at": "2026-04-06T07:48:29.812Z"
     }
   }
 }

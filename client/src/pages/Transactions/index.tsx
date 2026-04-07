@@ -94,7 +94,7 @@ const [filters, setFilters] = useState<TransactionQueryParams>({
       const response = await categoryApi.list();
       const data = response.data?.data;
       if (data) {
-        setCategories(data);
+        setCategories((data as any).categories || []);
       }
     } catch (err) {
       console.error('카테고리를 불러오는 중 오류가 발생했습니다:', err);
@@ -106,7 +106,7 @@ const [filters, setFilters] = useState<TransactionQueryParams>({
       const response = await paymentMethodApi.list();
       const data = response.data?.data;
       if (data) {
-        setPaymentMethods(data);
+        setPaymentMethods((data as any).paymentMethods || []);
       }
     } catch (err) {
       console.error('결제수단을 불러오는 중 오류가 발생했습니다:', err);
@@ -140,15 +140,84 @@ const [filters, setFilters] = useState<TransactionQueryParams>({
     setFilters({ ...filters, page });
   };
 
-  const handleCreateSubmit = async () => {
-    setIsCreateModalOpen(false);
-    fetchTransactions();
+  const handleCreateSubmit = async (data: TransactionCreateRequest, customCategoryName?: string, customPaymentMethodName?: string) => {
+    try {
+      let finalCategoryId = data.category_id;
+      let finalPaymentMethodId = data.payment_method_id;
+
+      if (finalCategoryId === -1 && customCategoryName) {
+        const catRes = await categoryApi.create({
+          name: customCategoryName,
+          type: data.type as 'income' | 'expense',
+          icon: '💵',
+          color: '#6B7280'
+        });
+        if (catRes.data?.success && catRes.data.data?.category) {
+          finalCategoryId = catRes.data.data.category.id;
+        } else return;
+      }
+
+      if (finalPaymentMethodId === -1 && customPaymentMethodName) {
+        const pmType = customPaymentMethodName.includes('카드') ? 'credit' : 'cash';
+        const pmRes = await paymentMethodApi.create({
+          name: customPaymentMethodName,
+          type: pmType,
+          color: '#3B82F6',
+          issuer: '',
+          is_default: false,
+          memo: ''
+        });
+        if (pmRes.data?.success && pmRes.data.data?.paymentMethod) {
+          finalPaymentMethodId = pmRes.data.data.paymentMethod.id;
+        } else return;
+      }
+
+      await transactionApi.create({
+        ...data,
+        category_id: finalCategoryId,
+        payment_method_id: finalPaymentMethodId === -1 ? undefined : finalPaymentMethodId
+      });
+      setIsCreateModalOpen(false);
+      fetchTransactions();
+      fetchCategories();
+      fetchPaymentMethods();
+    } catch (error) {
+      console.error('Failed to create transaction:', error);
+    }
   };
 
-  const handleEditSubmit = async () => {
-    setIsEditModalOpen(false);
-    setEditingTransaction(null);
-    fetchTransactions();
+  const handleEditSubmit = async (data: TransactionCreateRequest, customCategoryName?: string, customPaymentMethodName?: string) => {
+    if (!editingTransaction) return;
+    try {
+      let finalCategoryId = data.category_id;
+      let finalPaymentMethodId = data.payment_method_id;
+
+      if (finalCategoryId === -1 && customCategoryName) {
+        const catRes = await categoryApi.create({ name: customCategoryName, type: data.type as 'income' | 'expense', icon: '💵', color: '#6B7280' });
+        if (catRes.data?.success && catRes.data.data?.category) finalCategoryId = catRes.data.data.category.id;
+        else return;
+      }
+
+      if (finalPaymentMethodId === -1 && customPaymentMethodName) {
+        const pmType = customPaymentMethodName.includes('카드') ? 'credit' : 'cash';
+        const pmRes = await paymentMethodApi.create({ name: customPaymentMethodName, type: pmType, color: '#3B82F6', issuer: '', is_default: false, memo: '' });
+        if (pmRes.data?.success && pmRes.data.data?.paymentMethod) finalPaymentMethodId = pmRes.data.data.paymentMethod.id;
+        else return;
+      }
+
+      await transactionApi.update(editingTransaction.id, {
+        ...data,
+        category_id: finalCategoryId,
+        payment_method_id: finalPaymentMethodId === -1 ? undefined : finalPaymentMethodId
+      });
+      setIsEditModalOpen(false);
+      setEditingTransaction(null);
+      fetchTransactions();
+      fetchCategories();
+      fetchPaymentMethods();
+    } catch (error) {
+      console.error('Failed to update transaction:', error);
+    }
   };
 
   const handleEdit = (transaction: Transaction) => {

@@ -3,6 +3,7 @@ import { useToast } from '@/contexts/ToastContext.tsx';
 import { Modal } from '@/components/Modal.tsx';
 import { ConfirmDialog } from '@/components/ConfirmDialog.tsx';
 import { SkeletonCard } from '@/components/Skeleton.tsx';
+import { CurrencyInput } from '@/components/CurrencyInput.tsx';
 import { paymentMethodApi } from '@/api/payment-methods.ts';
 import { budgetApi } from '@/api/budgets.ts';
 import { recurringExpenseApi } from '@/api/recurring-expenses.ts';
@@ -842,10 +843,9 @@ function BudgetForm({
 
       <div>
         <label className="block text-sm font-medium text-gray-300 mb-2">예산 금액</label>
-        <input
-          type="number"
+        <CurrencyInput
           value={amount}
-          onChange={(e) => setAmount(e.target.value)}
+          onChange={(val) => setAmount(val)}
           className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 focus:outline-none focus:border-blue-500"
           placeholder="0"
           required
@@ -944,10 +944,9 @@ function RecurringExpenseForm({
 
       <div>
         <label className="block text-sm font-medium text-gray-300 mb-2">금액</label>
-        <input
-          type="number"
+        <CurrencyInput
           value={formData.amount}
-          onChange={(e) => setFormData({ ...formData, amount: parseFloat(e.target.value) || 0 })}
+          onChange={(val) => setFormData({ ...formData, amount: val })}
           className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 focus:outline-none focus:border-blue-500"
           required
         />

@@ -34,9 +34,9 @@ export function StatsPage({ month = new Date().toISOString().slice(0, 7) }: Stat
       
       const [trendResponse, categoryResponse, budgetsResponse, categoriesResponse] = await Promise.all([
         statsApi.monthlyTrend(6).then((r) => r.data?.data),
-        statsApi.categoryStats({ type: statsType }).then((r) => r.data?.data),
-        budgetApi.list(monthToFetch).then((r) => r.data?.data),
-        categoryApi.list().then((r) => r.data?.data)
+        statsApi.categoryStats({ type: statsType, month: monthToFetch }).then((r) => r.data?.data),
+        budgetApi.list(monthToFetch).then((r) => (r.data?.data as any)?.budgets || []),
+        categoryApi.list().then((r) => (r.data?.data as any)?.categories || [])
       ]);
 
       setMonthlyTrend(trendResponse ?? []);

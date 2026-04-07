@@ -12,9 +12,9 @@ import type {
   Category,
 } from '@/types/index.js';
 
-interface AdminPageProps {}
+interface AdminPageProps { }
 
-export function AdminPage({}: AdminPageProps) {
+export function AdminPage({ }: AdminPageProps) {
   const [activeTab, setActiveTab] = useState<'users' | 'categories' | 'settings'>('users');
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -52,10 +52,10 @@ export function AdminPage({}: AdminPageProps) {
       setError(null);
 
       const [summaryData, usersData, categoriesData, settingsData] = await Promise.all([
-        adminApi.getSummary().then(res => res.data.data || null),
-        adminApi.listUsers().then(res => res.data.data || []),
-        categoryApi.list().then(res => res.data.data || []),
-        adminApi.getSettings().then(res => res.data.data || null),
+        adminApi.getSummary().then(res => res.data.data?.summary || null),
+        adminApi.listUsers().then(res => res.data.data?.users || []),
+        categoryApi.list().then(res => res.data.data?.categories || []),
+        adminApi.getSettings().then(res => res.data.data?.settings || null),
       ]);
 
       setSummary(summaryData);
@@ -74,7 +74,7 @@ export function AdminPage({}: AdminPageProps) {
     loadData();
   }, [loadData]);
 
-// Users functions
+  // Users functions
   const handleSaveUser = async (data: Partial<Pick<AdminUser, 'display_name' | 'role' | 'is_active'>>, id?: number) => {
     try {
       if (id) {
@@ -87,7 +87,7 @@ export function AdminPage({}: AdminPageProps) {
     } catch (err) {
       addToast('저장 중 오류가 발생했습니다.', 'error');
     }
-};
+  };
 
   const handleDeleteUser = async (id: number) => {
     try {
@@ -199,18 +199,16 @@ export function AdminPage({}: AdminPageProps) {
                     <span className="text-sm text-gray-400">{user.display_name}</span>
                   </div>
                   <div className="flex items-center gap-2 mt-1">
-                    <span className={`px-2 py-1 text-xs rounded-full ${
-                      user.role === 'admin' 
-                        ? 'bg-blue-600 text-white' 
+                    <span className={`px-2 py-1 text-xs rounded-full ${user.role === 'admin'
+                        ? 'bg-blue-600 text-white'
                         : 'bg-gray-700 text-gray-300'
-                    }`}>
+                      }`}>
                       {user.role === 'admin' ? '관리자' : '사용자'}
                     </span>
-                    <span className={`px-2 py-1 text-xs rounded-full ${
-                      user.is_active 
-                        ? 'bg-green-600 text-white' 
+                    <span className={`px-2 py-1 text-xs rounded-full ${user.is_active
+                        ? 'bg-green-600 text-white'
                         : 'bg-red-600 text-white'
-                    }`}>
+                      }`}>
                       {user.is_active ? '활성' : '비활성'}
                     </span>
                   </div>
@@ -285,11 +283,10 @@ export function AdminPage({}: AdminPageProps) {
                 <div>
                   <div className="text-gray-100 font-medium">{cat.name}</div>
                   <div className="flex items-center gap-2 mt-1">
-                    <span className={`px-2 py-1 text-xs rounded-full ${
-                      cat.type === 'income' 
-                        ? 'bg-blue-600 text-white' 
+                    <span className={`px-2 py-1 text-xs rounded-full ${cat.type === 'income'
+                        ? 'bg-blue-600 text-white'
                         : 'bg-red-600 text-white'
-                    }`}>
+                      }`}>
                       {cat.type === 'income' ? '수입' : '지출'}
                     </span>
                   </div>
@@ -339,7 +336,7 @@ export function AdminPage({}: AdminPageProps) {
               className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 focus:outline-none focus:border-blue-500"
             />
           </div>
-          
+
           <div>
             <label className="block text-sm font-medium text-gray-300 mb-2">예산 경고 임계값 (%)</label>
             <input
@@ -351,7 +348,7 @@ export function AdminPage({}: AdminPageProps) {
               className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 focus:outline-none focus:border-blue-500"
             />
           </div>
-          
+
           <div>
             <label className="block text-sm font-medium text-gray-300 mb-2">기본 통화</label>
             <input
@@ -361,7 +358,7 @@ export function AdminPage({}: AdminPageProps) {
               className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 focus:outline-none focus:border-blue-500"
             />
           </div>
-          
+
           <button
             onClick={() => setShowSettingsModal(true)}
             className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition"
@@ -400,7 +397,7 @@ export function AdminPage({}: AdminPageProps) {
                 className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 focus:outline-none focus:border-blue-500"
               />
             </div>
-            
+
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">이름</label>
               <input
@@ -410,7 +407,7 @@ export function AdminPage({}: AdminPageProps) {
                 className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 focus:outline-none focus:border-blue-500"
               />
             </div>
-            
+
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">역할</label>
               <select
@@ -422,7 +419,7 @@ export function AdminPage({}: AdminPageProps) {
                 <option value="user">사용자</option>
               </select>
             </div>
-            
+
             <div>
               <label className="block text-sm font-medium text-gray-300 mb-2">상태</label>
               <select
@@ -436,7 +433,7 @@ export function AdminPage({}: AdminPageProps) {
             </div>
           </>
         )}
-        
+
         <div className="flex gap-3 pt-4">
           <button
             type="button"
@@ -495,7 +492,7 @@ export function AdminPage({}: AdminPageProps) {
             placeholder="카테고리 이름"
           />
         </div>
-        
+
         <div>
           <label className="block text-sm font-medium text-gray-300 mb-2">유형</label>
           <select
@@ -507,7 +504,7 @@ export function AdminPage({}: AdminPageProps) {
             <option value="expense">지출</option>
           </select>
         </div>
-        
+
         <div>
           <label className="block text-sm font-medium text-gray-300 mb-2">아이콘</label>
           <input
@@ -518,7 +515,7 @@ export function AdminPage({}: AdminPageProps) {
             placeholder="아이콘 (예: 🍔, 💼)"
           />
         </div>
-        
+
         <div>
           <label className="block text-sm font-medium text-gray-300 mb-2">색상</label>
           <div className="flex gap-2 flex-wrap">
@@ -527,15 +524,14 @@ export function AdminPage({}: AdminPageProps) {
                 key={color}
                 type="button"
                 onClick={() => setEditingCategory(prev => prev ? { ...prev, color } : null)}
-                className={`w-8 h-8 rounded-full border-2 transition ${
-                  editingCategory?.color === color ? 'border-white' : 'border-gray-600'
-                }`}
+                className={`w-8 h-8 rounded-full border-2 transition ${editingCategory?.color === color ? 'border-white' : 'border-gray-600'
+                  }`}
                 style={{ backgroundColor: color }}
               />
             ))}
           </div>
         </div>
-        
+
         <div>
           <label className="block text-sm font-medium text-gray-300 mb-2">정렬 순서</label>
           <input
@@ -546,7 +542,7 @@ export function AdminPage({}: AdminPageProps) {
             min="0"
           />
         </div>
-        
+
         <div className="flex gap-3 pt-4">
           <button
             type="button"
@@ -589,7 +585,7 @@ export function AdminPage({}: AdminPageProps) {
     >
       <div className="space-y-4">
         <p className="text-gray-300">아래 설정을 저장하시겠습니까?</p>
-        
+
         {settings && (
           <div className="bg-gray-800/50 rounded-lg p-4 space-y-2">
             <div className="flex justify-between">
@@ -606,7 +602,7 @@ export function AdminPage({}: AdminPageProps) {
             </div>
           </div>
         )}
-        
+
         <div className="flex gap-3 pt-4">
           <button
             type="button"
@@ -678,35 +674,32 @@ export function AdminPage({}: AdminPageProps) {
       {/* Admin Content */}
       <div className="bg-gray-900 border border-gray-800 rounded-xl p-5">
         <h3 className="text-lg font-semibold text-gray-100 mb-4">관리자</h3>
-        
+
         <div className="flex gap-1 bg-gray-800 rounded-lg p-1 mb-6">
           <button
             onClick={() => setActiveTab('users')}
-            className={`flex-1 px-4 py-2 rounded-lg font-medium transition ${
-              activeTab === 'users'
+            className={`flex-1 px-4 py-2 rounded-lg font-medium transition ${activeTab === 'users'
                 ? 'bg-blue-600 text-white'
                 : 'text-gray-400 hover:text-gray-200'
-            }`}
+              }`}
           >
             사용자 관리
           </button>
           <button
             onClick={() => setActiveTab('categories')}
-            className={`flex-1 px-4 py-2 rounded-lg font-medium transition ${
-              activeTab === 'categories'
+            className={`flex-1 px-4 py-2 rounded-lg font-medium transition ${activeTab === 'categories'
                 ? 'bg-blue-600 text-white'
                 : 'text-gray-400 hover:text-gray-200'
-            }`}
+              }`}
           >
             카테고리 관리
           </button>
           <button
             onClick={() => setActiveTab('settings')}
-            className={`flex-1 px-4 py-2 rounded-lg font-medium transition ${
-              activeTab === 'settings'
+            className={`flex-1 px-4 py-2 rounded-lg font-medium transition ${activeTab === 'settings'
                 ? 'bg-blue-600 text-white'
                 : 'text-gray-400 hover:text-gray-200'
-            }`}
+              }`}
           >
             시스템 설정
           </button>

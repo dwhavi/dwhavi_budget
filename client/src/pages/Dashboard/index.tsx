@@ -4,6 +4,7 @@ import { TransactionForm } from '@/components/TransactionForm.tsx';
 import { Calendar } from '@/components/Calendar.tsx';
 import { SkeletonCard } from '@/components/Skeleton.tsx';
 import { statsApi } from '@/api/stats.ts';
+import { transactionApi } from '@/api/transactions.ts';
 import { categoryApi } from '@/api/categories.ts';
 import { paymentMethodApi } from '@/api/payment-methods.ts';
 import type { 
@@ -60,8 +61,8 @@ export function DashboardPage({ month = new Date().toISOString().slice(0, 7) }: 
 const [dashboardResponse, trendResponse, categoriesResponse, paymentMethodsResponse] = await Promise.all([
   statsApi.dashboard(monthToFetch).then((r) => r.data?.data),
   statsApi.monthlyTrend(6).then((r) => r.data?.data),
-  categoryApi.list().then((r) => r.data?.data),
-  paymentMethodApi.list().then((r) => r.data?.data)
+  categoryApi.list().then((r) => (r.data?.data as any)?.categories || []),
+  paymentMethodApi.list().then((r) => (r.data?.data as any)?.paymentMethods || [])
 ]);
 
       setDashboardData(dashboardResponse ?? null);
@@ -88,9 +89,52 @@ const [dashboardResponse, trendResponse, categoriesResponse, paymentMethodsRespo
     setCurrentMonth(newMonth);
   };
 
-  const handleTransactionSubmit = async () => {
-    setIsTransactionModalOpen(false);
-    fetchDashboardData(currentMonth);
+  const handleTransactionSubmit = async (data: TransactionCreateRequest, customCategoryName?: string, customPaymentMethodName?: string) => {
+    try {
+      let finalCategoryId = data.category_id;
+      let finalPaymentMethodId = data.payment_method_id;
+
+      if (finalCategoryId === -1 && customCategoryName) {
+        const catRes = await categoryApi.create({
+          name: customCategoryName,
+          type: data.type as 'income' | 'expense',
+          icon: '💵',
+          color: '#6B7280'
+        });
+        if (catRes.data?.success && catRes.data.data?.category) {
+          finalCategoryId = catRes.data.data.category.id;
+        } else {
+          return;
+        }
+      }
+
+      if (finalPaymentMethodId === -1 && customPaymentMethodName) {
+        const pmType = customPaymentMethodName.includes('카드') ? 'credit' : 'cash';
+        const pmRes = await paymentMethodApi.create({
+          name: customPaymentMethodName,
+          type: pmType,
+          color: '#3B82F6',
+          issuer: '',
+          is_default: false,
+          memo: ''
+        });
+        if (pmRes.data?.success && pmRes.data.data?.paymentMethod) {
+          finalPaymentMethodId = pmRes.data.data.paymentMethod.id;
+        } else {
+          return;
+        }
+      }
+
+      await transactionApi.create({
+        ...data,
+        category_id: finalCategoryId,
+        payment_method_id: finalPaymentMethodId === -1 ? undefined : finalPaymentMethodId
+      });
+      setIsTransactionModalOpen(false);
+      fetchDashboardData(currentMonth);
+    } catch (error) {
+      console.error('Failed to create transaction:', error);
+    }
   };
 
   const SummaryCard = ({ title, value, icon, color, subtext }: SummaryCardProps) => (

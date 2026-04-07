@@ -1,0 +1,26 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Frontend: Chrome 브라우저 열기",
+      "url": "http://localhost:5173",
+      "webRoot": "${workspaceFolder}/client/src"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Backend: Node 서버 디버깅",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": [
+        "tsx",
+        "watch",
+        "src/index.ts"
+      ],
+      "cwd": "${workspaceFolder}/server",
+      "restart": true,
+      "console": "integratedTerminal"
+    }
+  ]
+}

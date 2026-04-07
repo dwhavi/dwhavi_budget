@@ -1,9 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import type { Category, PaymentMethod, SubCategorySuggestion, TransactionCreateRequest } from '../types/index.js';
 import { subCategoryApi } from '../api/subcategories.js';
+import { CurrencyInput } from './CurrencyInput.tsx';
 
 interface TransactionFormProps {
-  onSubmit: (data: TransactionCreateRequest) => Promise<void>;
+  onSubmit: (data: TransactionCreateRequest, customCategoryName?: string, customPaymentMethodName?: string) => Promise<void>;
   onCancel: () => void;
   initialData?: Partial<TransactionCreateRequest>;
   categories: Category[];
@@ -39,6 +40,11 @@ const [formData, setFormData] = useState<TransactionCreateRequest>({
   const [showSubCategoryDropdown, setShowSubCategoryDropdown] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  const [customCategoryName, setCustomCategoryName] = useState('');
+  const [customPaymentMethodName, setCustomPaymentMethodName] = useState('');
+  const [categoryError, setCategoryError] = useState('');
+  const [paymentMethodError, setPaymentMethodError] = useState('');
 
   const filteredCategories = categories.filter(c => c.type === formData.type);
 
@@ -93,9 +99,21 @@ const [formData, setFormData] = useState<TransactionCreateRequest>({
 
   const handleCategoryChange = (categoryId: number) => {
     setFormData(prev => ({ ...prev, category_id: categoryId, sub_category: '' }));
+    if (categoryId !== -1) {
+      setCustomCategoryName('');
+      setCategoryError('');
+    }
     setSearchTerm('');
     setSubCategorySuggestions([]);
     setShowSubCategoryDropdown(false);
+  };
+
+  const handlePaymentMethodChange = (pmId: number | undefined) => {
+    setFormData(prev => ({ ...prev, payment_method_id: pmId }));
+    if (pmId !== -1) {
+      setCustomPaymentMethodName('');
+      setPaymentMethodError('');
+    }
   };
 
   const handleSubCategorySelect = (option: SubCategoryOption) => {
@@ -106,13 +124,46 @@ const [formData, setFormData] = useState<TransactionCreateRequest>({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.category_id || formData.amount <= 0) {
+
+    let hasError = false;
+    const isCustomCatDuplicate = formData.category_id === -1 && categories.some(c => c.type === formData.type && c.name.trim() === customCategoryName.trim());
+    const isCustomPmDuplicate = formData.payment_method_id === -1 && paymentMethods.some(pm => pm.name.trim() === customPaymentMethodName.trim());
+
+    if (formData.category_id === -1) {
+      if (!customCategoryName.trim()) {
+        setCategoryError('입력해주세요');
+        hasError = true;
+      } else if (isCustomCatDuplicate) {
+        setCategoryError('이미 존재하는 카테고리입니다');
+        hasError = true;
+      } else {
+        setCategoryError('');
+      }
+    }
+
+    if (formData.payment_method_id === -1) {
+      if (!customPaymentMethodName.trim()) {
+        setPaymentMethodError('입력해주세요');
+        hasError = true;
+      } else if (isCustomPmDuplicate) {
+        setPaymentMethodError('이미 존재하는 결제수단입니다');
+        hasError = true;
+      } else {
+        setPaymentMethodError('');
+      }
+    }
+
+    if (hasError || formData.amount <= 0 || (!formData.category_id && formData.category_id !== -1)) {
       return;
     }
 
     setIsSubmitting(true);
     try {
-      await onSubmit(formData);
+      await onSubmit(
+        formData, 
+        formData.category_id === -1 ? customCategoryName : undefined, 
+        formData.payment_method_id === -1 ? customPaymentMethodName : undefined
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -155,10 +206,9 @@ const [formData, setFormData] = useState<TransactionCreateRequest>({
       <div>
         <label className="block text-sm font-medium text-gray-300 mb-2">금액</label>
         <div className="relative">
-          <input
-            type="number"
+          <CurrencyInput
             value={formData.amount}
-            onChange={(e) => handleInputChange('amount', Number(e.target.value))}
+            onChange={(val) => handleInputChange('amount', val)}
             min="1"
             max="99999999"
             className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
@@ -176,7 +226,7 @@ const [formData, setFormData] = useState<TransactionCreateRequest>({
         <select
           value={formData.category_id || ''}
           onChange={(e) => handleCategoryChange(Number(e.target.value))}
-          className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          className={`w-full bg-gray-800 border ${categoryError ? 'border-red-500' : 'border-gray-700'} rounded-lg px-4 py-2 text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
         >
           <option value="">선택하세요</option>
           {filteredCategories.map(category => (
@@ -184,7 +234,23 @@ const [formData, setFormData] = useState<TransactionCreateRequest>({
               {category.icon} {category.name}
             </option>
           ))}
+          <option value="-1">직접입력</option>
         </select>
+        {formData.category_id === -1 && (
+          <div className="mt-2">
+            <input
+              type="text"
+              value={customCategoryName}
+              onChange={(e) => {
+                setCustomCategoryName(e.target.value);
+                if (e.target.value.trim()) setCategoryError('');
+              }}
+              className={`w-full bg-gray-800 border ${categoryError ? 'border-red-500' : 'border-gray-700'} rounded-lg px-4 py-2 text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
+              placeholder="카테고리 이름을 입력하세요"
+            />
+          </div>
+        )}
+        {categoryError && <p className="text-red-500 text-xs mt-1">{categoryError}</p>}
       </div>
 
       {/* Payment Method */}
@@ -192,8 +258,8 @@ const [formData, setFormData] = useState<TransactionCreateRequest>({
         <label className="block text-sm font-medium text-gray-300 mb-2">결제수단</label>
         <select
           value={formData.payment_method_id || ''}
-          onChange={(e) => handleInputChange('payment_method_id', e.target.value ? Number(e.target.value) : undefined)}
-          className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          onChange={(e) => handlePaymentMethodChange(e.target.value ? Number(e.target.value) : undefined)}
+          className={`w-full bg-gray-800 border ${paymentMethodError ? 'border-red-500' : 'border-gray-700'} rounded-lg px-4 py-2 text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
         >
           <option value="">선택하세요</option>
           {paymentMethods.map(method => (
@@ -201,7 +267,23 @@ const [formData, setFormData] = useState<TransactionCreateRequest>({
               {method.name}
             </option>
           ))}
+          <option value="-1">직접입력</option>
         </select>
+        {formData.payment_method_id === -1 && (
+          <div className="mt-2">
+            <input
+              type="text"
+              value={customPaymentMethodName}
+              onChange={(e) => {
+                setCustomPaymentMethodName(e.target.value);
+                if (e.target.value.trim()) setPaymentMethodError('');
+              }}
+              className={`w-full bg-gray-800 border ${paymentMethodError ? 'border-red-500' : 'border-gray-700'} rounded-lg px-4 py-2 text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent`}
+              placeholder="결제수단 이름을 입력하세요"
+            />
+          </div>
+        )}
+        {paymentMethodError && <p className="text-red-500 text-xs mt-1">{paymentMethodError}</p>}
       </div>
 
       {/* Sub-category with Autocomplete */}
@@ -271,7 +353,7 @@ const [formData, setFormData] = useState<TransactionCreateRequest>({
         </button>
         <button
           type="submit"
-          disabled={isSubmitting || formData.amount <= 0 || !formData.category_id}
+          disabled={isSubmitting || formData.amount <= 0 || (!formData.category_id && formData.category_id !== -1)}
           className="flex-1 px-4 py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-600 disabled:cursor-not-allowed text-white rounded-lg font-medium transition"
         >
           {isSubmitting ? '저장 중...' : '저장'}

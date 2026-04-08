@@ -52,10 +52,10 @@ export function AdminPage({ }: AdminPageProps) {
       setError(null);
 
       const [summaryData, usersData, categoriesData, settingsData] = await Promise.all([
-        adminApi.getSummary().then(res => res.data.data?.summary || null),
-        adminApi.listUsers().then(res => res.data.data?.users || []),
-        categoryApi.list().then(res => res.data.data?.categories || []),
-        adminApi.getSettings().then(res => res.data.data?.settings || null),
+        adminApi.getSummary().then(res => res.data.data || null),
+        adminApi.listUsers().then(res => res.data.data || []),
+        categoryApi.list().then(res => res.data.data || []),
+        adminApi.getSettings().then(res => res.data.data || null),
       ]);
 
       setSummary(summaryData);

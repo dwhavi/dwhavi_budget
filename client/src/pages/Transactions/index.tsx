@@ -12,6 +12,7 @@ import type {
   TransactionQueryParams,
   Category,
   PaymentMethod,
+  TransactionCreateRequest
 } from '@/types/index.js';
 import { useToast } from '@/contexts/ToastContext.tsx';
 
@@ -152,8 +153,8 @@ const [filters, setFilters] = useState<TransactionQueryParams>({
           icon: '💵',
           color: '#6B7280'
         });
-        if (catRes.data?.success && catRes.data.data?.category) {
-          finalCategoryId = catRes.data.data.category.id;
+        if (catRes.data?.success && catRes.data.data) {
+          finalCategoryId = catRes.data.data.id;
         } else return;
       }
 
@@ -167,8 +168,8 @@ const [filters, setFilters] = useState<TransactionQueryParams>({
           is_default: false,
           memo: ''
         });
-        if (pmRes.data?.success && pmRes.data.data?.paymentMethod) {
-          finalPaymentMethodId = pmRes.data.data.paymentMethod.id;
+        if (pmRes.data?.success && pmRes.data.data) {
+          finalPaymentMethodId = pmRes.data.data.id;
         } else return;
       }
 
@@ -194,14 +195,14 @@ const [filters, setFilters] = useState<TransactionQueryParams>({
 
       if (finalCategoryId === -1 && customCategoryName) {
         const catRes = await categoryApi.create({ name: customCategoryName, type: data.type as 'income' | 'expense', icon: '💵', color: '#6B7280' });
-        if (catRes.data?.success && catRes.data.data?.category) finalCategoryId = catRes.data.data.category.id;
+        if (catRes.data?.success && catRes.data.data) finalCategoryId = catRes.data.data.id;
         else return;
       }
 
       if (finalPaymentMethodId === -1 && customPaymentMethodName) {
         const pmType = customPaymentMethodName.includes('카드') ? 'credit' : 'cash';
         const pmRes = await paymentMethodApi.create({ name: customPaymentMethodName, type: pmType, color: '#3B82F6', issuer: '', is_default: false, memo: '' });
-        if (pmRes.data?.success && pmRes.data.data?.paymentMethod) finalPaymentMethodId = pmRes.data.data.paymentMethod.id;
+        if (pmRes.data?.success && pmRes.data.data) finalPaymentMethodId = pmRes.data.data.id;
         else return;
       }
 

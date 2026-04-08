@@ -12,7 +12,8 @@ import type {
   MonthlyTrend, 
   Category, 
   Transaction, 
-  PaymentMethod 
+  PaymentMethod,
+  TransactionCreateRequest
 } from '@/types/index.js';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
@@ -101,8 +102,8 @@ const [dashboardResponse, trendResponse, categoriesResponse, paymentMethodsRespo
           icon: '💵',
           color: '#6B7280'
         });
-        if (catRes.data?.success && catRes.data.data?.category) {
-          finalCategoryId = catRes.data.data.category.id;
+        if (catRes.data?.success && catRes.data.data) {
+          finalCategoryId = catRes.data.data.id;
         } else {
           return;
         }
@@ -118,8 +119,8 @@ const [dashboardResponse, trendResponse, categoriesResponse, paymentMethodsRespo
           is_default: false,
           memo: ''
         });
-        if (pmRes.data?.success && pmRes.data.data?.paymentMethod) {
-          finalPaymentMethodId = pmRes.data.data.paymentMethod.id;
+        if (pmRes.data?.success && pmRes.data.data) {
+          finalPaymentMethodId = pmRes.data.data.id;
         } else {
           return;
         }

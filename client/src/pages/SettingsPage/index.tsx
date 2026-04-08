@@ -774,15 +774,15 @@ function BudgetForm({
 }) {
   const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
   const [customCategoryName, setCustomCategoryName] = useState('');
-  const [amount, setAmount] = useState<string>('');
+  const [amount, setAmount] = useState<number>(0);
 
   useEffect(() => {
     if (initialData) {
       setSelectedCategory(initialData.category_id);
-      setAmount(initialData.amount.toString());
+      setAmount(initialData.amount);
     } else {
       setSelectedCategory(null);
-      setAmount('');
+      setAmount(0);
     }
   }, [initialData]);
 
@@ -797,7 +797,7 @@ function BudgetForm({
       onSave({
         category_id: selectedCategory,
         month: currentMonth,
-        amount: parseFloat(amount),
+        amount: amount,
       }, selectedCategory === -1 ? customCategoryName : undefined);
     }
   };

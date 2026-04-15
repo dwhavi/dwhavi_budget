@@ -4,4 +4,4 @@ dist/
 .env
 *.log
 .DS_Store
-.sisyphus/boulder.json
+.sisyphus/boulder.json.opencode/

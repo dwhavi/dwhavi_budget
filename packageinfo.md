@@ -2,7 +2,7 @@
 summary: "개인 가계부 웹 애플리케이션 - 수입/지출 관리, 통계, 예산 관리"
 icon: "💰"
 tags: ["finance", "budget", "tracker", "dashboard"]
-serviceUrl: "https://vmi3199497.contaboserver.net/budget/login"
+serviceUrl: "vmi3199497.contaboserver.net/budget/login"
 deployType: "both"
 serviceStatus: "active"
 ---

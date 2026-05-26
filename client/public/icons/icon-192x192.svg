@@ -1,0 +1,5 @@
+<!-- PWA 아이콘 192x192 - 다크 배경에 💸 스타일 -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192" width="192" height="192">
+  <rect width="192" height="192" rx="32" fill="#1F2937"/>
+  <text x="96" y="118" font-size="100" text-anchor="middle" fill="white">💸</text>
+</svg>

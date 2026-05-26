@@ -3,45 +3,9 @@ summary: "개인 가계부 웹 애플리케이션 - 수입/지출 관리, 통계
 icon: "💰"
 tags: ["finance", "budget", "tracker", "dashboard"]
 serviceUrl: "vmi3199497.contaboserver.net/budget/login"
-deployType: "both"
+deployType: "vercel"
 serviceStatus: "active"
 ---
-
-# 사용 기술
-
-## 프론트엔드
-- React 19
-- Vite 8
-- TypeScript
-- Tailwind CSS 4
-
-## 백엔드
-- Express 5
-- TypeScript
-- Sequelize 6
-- SQLite
-
-## 인증
-- JWT (액세스 토큰 15분 + 리프레시 토큰 7일)
-
-## 테스트
-- Vitest
-- supertest
-- React Testing Library
-
-# 프로젝트 구조
-
-```
-client/              # 프론트엔드 (React + Vite)
-server/              # 백엔드 (Express + TypeScript)
-docs/                # 문서
-  getting-started.md
-  architecture.md
-  deployment.md
-  testing.md
-  knowledge-base.md
-data/                # 데이터베이스 파일
-```
 
 # 기능
 
@@ -74,17 +38,3 @@ data/                # 데이터베이스 파일
 - 사용자 관리
 - 전역 카테고리 관리
 - 시스템 설정
-
-# API
-
-| 기능 | 경로 |
-|------|------|
-| 인증 | `/api/auth` |
-| 거래내역 | `/api/transactions` |
-| 카테고리 | `/api/categories` |
-| 결제수단 | `/api/payment-methods` |
-| 서브카테고리 | `/api/subcategories` |
-| 고정 지출 | `/api/recurring-expenses` |
-| 예산 | `/api/budgets` |
-| 통계 | `/api/stats` |
-| 관리자 | `/api/admin` |

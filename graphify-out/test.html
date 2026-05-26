@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8">
+<script src="vis-network.min.js"></script>
+</head><body>
+<div id="g" style="width:100vw;height:100vh;background:#111"></div>
+<script>
+var nodes = new vis.DataSet([
+  {id:1, label:"test1"},
+  {id:2, label:"test2"},
+  {id:3, label:"test3"}
+]);
+var edges = new vis.DataSet([
+  {from:1,to:2},{from:2,to:3}
+]);
+var net = new vis.Network(document.getElementById("g"), {nodes:nodes,edges:edges}, {
+  physics: { enabled: false }
+});
+document.title = "vis-network OK";
+</script>
+</body></html>

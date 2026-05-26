@@ -1,13 +1,9 @@
-import { useTheme } from '../contexts/ThemeContext';
-
 interface HeaderProps {
   onAddTransaction?: () => void;
   pageTitle: string;
 }
 
 export function Header({ onAddTransaction, pageTitle }: HeaderProps) {
-  const { toggleTheme } = useTheme();
-
 const showAddButton = pageTitle === '대시보드' || pageTitle === '거래 내역';
 
   return (
@@ -25,20 +21,6 @@ const showAddButton = pageTitle === '대시보드' || pageTitle === '거래 내�
             + 수입/지출 등록
           </button>
         )}
-        <button
-          onClick={toggleTheme}
-          className="p-2 text-gray-400 hover:text-gray-200 transition"
-          aria-label="테마 전환"
-        >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-            />
-          </svg>
-        </button>
       </div>
     </header>
   );

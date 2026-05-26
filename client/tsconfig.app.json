@@ -31,5 +31,14 @@
       "@/*": ["src/*"]
     }
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": [
+    "src/pages",
+    "src/api",
+    "src/components/TransactionForm.tsx",
+    "src/components/Layout.tsx",
+    "src/components/Header.tsx",
+    "src/components/Sidebar.tsx",
+    "src/components/MobileNav.tsx"
+  ]
 }

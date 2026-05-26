@@ -1,0 +1,5758 @@
+{
+  "nodes": [
+    {
+      "id": "server_vitest_config_ts",
+      "label": "vitest.config.ts",
+      "file_type": "code",
+      "source_file": "server/vitest.config.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "server_src_index_ts",
+      "label": "index.ts",
+      "file_type": "code",
+      "source_file": "server/src/index.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "index_setupapp",
+      "label": "setupApp()",
+      "file_type": "code",
+      "source_file": "server/src/index.ts",
+      "source_location": "L36"
+    },
+    {
+      "id": "index_startserver",
+      "label": "startServer()",
+      "file_type": "code",
+      "source_file": "server/src/index.ts",
+      "source_location": "L72"
+    },
+    {
+      "id": "server_src_models_recurringexpense_ts",
+      "label": "RecurringExpense.ts",
+      "file_type": "code",
+      "source_file": "server/src/models/RecurringExpense.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "recurringexpense_recurringexpense",
+      "label": "RecurringExpense",
+      "file_type": "code",
+      "source_file": "server/src/models/RecurringExpense.ts",
+      "source_location": "L22"
+    },
+    {
+      "id": "server_src_models_index_ts",
+      "label": "index.ts",
+      "file_type": "code",
+      "source_file": "server/src/models/index.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "index_loadmodels",
+      "label": "loadModels()",
+      "file_type": "code",
+      "source_file": "server/src/models/index.ts",
+      "source_location": "L27"
+    },
+    {
+      "id": "index_setupassociations",
+      "label": "setupAssociations()",
+      "file_type": "code",
+      "source_file": "server/src/models/index.ts",
+      "source_location": "L49"
+    },
+    {
+      "id": "server_src_models_budget_ts",
+      "label": "Budget.ts",
+      "file_type": "code",
+      "source_file": "server/src/models/Budget.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "budget_budget",
+      "label": "Budget",
+      "file_type": "code",
+      "source_file": "server/src/models/Budget.ts",
+      "source_location": "L16"
+    },
+    {
+      "id": "server_src_models_user_ts",
+      "label": "User.ts",
+      "file_type": "code",
+      "source_file": "server/src/models/User.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "user_user",
+      "label": "User",
+      "file_type": "code",
+      "source_file": "server/src/models/User.ts",
+      "source_location": "L17"
+    },
+    {
+      "id": "server_src_models_category_ts",
+      "label": "Category.ts",
+      "file_type": "code",
+      "source_file": "server/src/models/Category.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "category_category",
+      "label": "Category",
+      "file_type": "code",
+      "source_file": "server/src/models/Category.ts",
+      "source_location": "L19"
+    },
+    {
+      "id": "server_src_models_paymentmethod_ts",
+      "label": "PaymentMethod.ts",
+      "file_type": "code",
+      "source_file": "server/src/models/PaymentMethod.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "paymentmethod_paymentmethod",
+      "label": "PaymentMethod",
+      "file_type": "code",
+      "source_file": "server/src/models/PaymentMethod.ts",
+      "source_location": "L20"
+    },
+    {
+      "id": "server_src_models_transaction_ts",
+      "label": "Transaction.ts",
+      "file_type": "code",
+      "source_file": "server/src/models/Transaction.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "transaction_transaction",
+      "label": "Transaction",
+      "file_type": "code",
+      "source_file": "server/src/models/Transaction.ts",
+      "source_location": "L21"
+    },
+    {
+      "id": "server_src_seeders_defaultcategories_ts",
+      "label": "defaultCategories.ts",
+      "file_type": "code",
+      "source_file": "server/src/seeders/defaultCategories.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "defaultcategories_seed",
+      "label": "seed()",
+      "file_type": "code",
+      "source_file": "server/src/seeders/defaultCategories.ts",
+      "source_location": "L31"
+    },
+    {
+      "id": "server_src_middleware_validate_ts",
+      "label": "validate.ts",
+      "file_type": "code",
+      "source_file": "server/src/middleware/validate.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "validate_validate",
+      "label": "validate()",
+      "file_type": "code",
+      "source_file": "server/src/middleware/validate.ts",
+      "source_location": "L4"
+    },
+    {
+      "id": "server_src_middleware_errorhandler_ts",
+      "label": "errorHandler.ts",
+      "file_type": "code",
+      "source_file": "server/src/middleware/errorHandler.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "errorhandler_errorhandler",
+      "label": "errorHandler()",
+      "file_type": "code",
+      "source_file": "server/src/middleware/errorHandler.ts",
+      "source_location": "L3"
+    },
+    {
+      "id": "server_src_middleware_admin_ts",
+      "label": "admin.ts",
+      "file_type": "code",
+      "source_file": "server/src/middleware/admin.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "admin_adminmiddleware",
+      "label": "adminMiddleware()",
+      "file_type": "code",
+      "source_file": "server/src/middleware/admin.ts",
+      "source_location": "L4"
+    },
+    {
+      "id": "server_src_middleware_auth_ts",
+      "label": "auth.ts",
+      "file_type": "code",
+      "source_file": "server/src/middleware/auth.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "auth_authmiddleware",
+      "label": "authMiddleware()",
+      "file_type": "code",
+      "source_file": "server/src/middleware/auth.ts",
+      "source_location": "L12"
+    },
+    {
+      "id": "server_src_tests_smoke_test_ts",
+      "label": "smoke.test.ts",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/smoke.test.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "server_src_tests_admin_test_ts",
+      "label": "admin.test.ts",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/admin.test.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "admin_test_createuser",
+      "label": "createUser()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/admin.test.ts",
+      "source_location": "L37"
+    },
+    {
+      "id": "admin_test_generatetoken",
+      "label": "generateToken()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/admin.test.ts",
+      "source_location": "L45"
+    },
+    {
+      "id": "server_src_tests_payment_methods_test_ts",
+      "label": "payment-methods.test.ts",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/payment-methods.test.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "payment_methods_test_createtestuser",
+      "label": "createTestUser()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/payment-methods.test.ts",
+      "source_location": "L30"
+    },
+    {
+      "id": "payment_methods_test_generatetoken",
+      "label": "generateToken()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/payment-methods.test.ts",
+      "source_location": "L37"
+    },
+    {
+      "id": "server_src_tests_recurring_expenses_test_ts",
+      "label": "recurring-expenses.test.ts",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/recurring-expenses.test.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "recurring_expenses_test_createtestuser",
+      "label": "createTestUser()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/recurring-expenses.test.ts",
+      "source_location": "L22"
+    },
+    {
+      "id": "recurring_expenses_test_generatetoken",
+      "label": "generateToken()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/recurring-expenses.test.ts",
+      "source_location": "L31"
+    },
+    {
+      "id": "recurring_expenses_test_seedcategoryandpaymentmethod",
+      "label": "seedCategoryAndPaymentMethod()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/recurring-expenses.test.ts",
+      "source_location": "L39"
+    },
+    {
+      "id": "server_src_tests_categories_test_ts",
+      "label": "categories.test.ts",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/categories.test.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "categories_test_createtestuser",
+      "label": "createTestUser()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/categories.test.ts",
+      "source_location": "L39"
+    },
+    {
+      "id": "categories_test_generateaccesstoken",
+      "label": "generateAccessToken()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/categories.test.ts",
+      "source_location": "L46"
+    },
+    {
+      "id": "categories_test_seedglobalcategories",
+      "label": "seedGlobalCategories()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/categories.test.ts",
+      "source_location": "L54"
+    },
+    {
+      "id": "server_src_tests_subcategories_test_ts",
+      "label": "subcategories.test.ts",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/subcategories.test.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "subcategories_test_createtestuser",
+      "label": "createTestUser()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/subcategories.test.ts",
+      "source_location": "L28"
+    },
+    {
+      "id": "subcategories_test_createtestcategory",
+      "label": "createTestCategory()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/subcategories.test.ts",
+      "source_location": "L41"
+    },
+    {
+      "id": "subcategories_test_createtestpaymentmethod",
+      "label": "createTestPaymentMethod()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/subcategories.test.ts",
+      "source_location": "L52"
+    },
+    {
+      "id": "subcategories_test_createtesttransaction",
+      "label": "createTestTransaction()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/subcategories.test.ts",
+      "source_location": "L61"
+    },
+    {
+      "id": "server_src_tests_stats_test_ts",
+      "label": "stats.test.ts",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/stats.test.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "stats_test_createtestuser",
+      "label": "createTestUser()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/stats.test.ts",
+      "source_location": "L39"
+    },
+    {
+      "id": "stats_test_generateaccesstoken",
+      "label": "generateAccessToken()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/stats.test.ts",
+      "source_location": "L46"
+    },
+    {
+      "id": "stats_test_seedglobalcategories",
+      "label": "seedGlobalCategories()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/stats.test.ts",
+      "source_location": "L54"
+    },
+    {
+      "id": "stats_test_createtestpaymentmethods",
+      "label": "createTestPaymentMethods()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/stats.test.ts",
+      "source_location": "L60"
+    },
+    {
+      "id": "server_src_tests_budgets_test_ts",
+      "label": "budgets.test.ts",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/budgets.test.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "budgets_test_createtestuser",
+      "label": "createTestUser()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/budgets.test.ts",
+      "source_location": "L39"
+    },
+    {
+      "id": "budgets_test_generateaccesstoken",
+      "label": "generateAccessToken()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/budgets.test.ts",
+      "source_location": "L46"
+    },
+    {
+      "id": "budgets_test_seedglobalcategories",
+      "label": "seedGlobalCategories()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/budgets.test.ts",
+      "source_location": "L54"
+    },
+    {
+      "id": "server_src_tests_setup_ts",
+      "label": "setup.ts",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/setup.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "server_src_tests_transactions_test_ts",
+      "label": "transactions.test.ts",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/transactions.test.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "transactions_test_createtestuser",
+      "label": "createTestUser()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/transactions.test.ts",
+      "source_location": "L58"
+    },
+    {
+      "id": "transactions_test_createtestcategory",
+      "label": "createTestCategory()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/transactions.test.ts",
+      "source_location": "L65"
+    },
+    {
+      "id": "transactions_test_createtestpaymentmethod",
+      "label": "createTestPaymentMethod()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/transactions.test.ts",
+      "source_location": "L69"
+    },
+    {
+      "id": "transactions_test_createtesttransaction",
+      "label": "createTestTransaction()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/transactions.test.ts",
+      "source_location": "L73"
+    },
+    {
+      "id": "transactions_test_loadmodels",
+      "label": "loadModels()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/transactions.test.ts",
+      "source_location": "L476"
+    },
+    {
+      "id": "server_src_tests_auth_test_ts",
+      "label": "auth.test.ts",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/auth.test.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "auth_test_createtestuser",
+      "label": "createTestUser()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/auth.test.ts",
+      "source_location": "L24"
+    },
+    {
+      "id": "server_src_routes_subcategories_ts",
+      "label": "subcategories.ts",
+      "file_type": "code",
+      "source_file": "server/src/routes/subcategories.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "server_src_routes_recurring_expenses_ts",
+      "label": "recurring-expenses.ts",
+      "file_type": "code",
+      "source_file": "server/src/routes/recurring-expenses.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "server_src_routes_stats_ts",
+      "label": "stats.ts",
+      "file_type": "code",
+      "source_file": "server/src/routes/stats.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "stats_calculateremainingdaysinmonth",
+      "label": "calculateRemainingDaysInMonth()",
+      "file_type": "code",
+      "source_file": "server/src/routes/stats.ts",
+      "source_location": "L52"
+    },
+    {
+      "id": "server_src_routes_payment_methods_ts",
+      "label": "payment-methods.ts",
+      "file_type": "code",
+      "source_file": "server/src/routes/payment-methods.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "server_src_routes_transactions_ts",
+      "label": "transactions.ts",
+      "file_type": "code",
+      "source_file": "server/src/routes/transactions.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "transactions_buildwhereclause",
+      "label": "buildWhereClause()",
+      "file_type": "code",
+      "source_file": "server/src/routes/transactions.ts",
+      "source_location": "L31"
+    },
+    {
+      "id": "transactions_buildorderclause",
+      "label": "buildOrderClause()",
+      "file_type": "code",
+      "source_file": "server/src/routes/transactions.ts",
+      "source_location": "L81"
+    },
+    {
+      "id": "server_src_routes_admin_ts",
+      "label": "admin.ts",
+      "file_type": "code",
+      "source_file": "server/src/routes/admin.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "server_src_routes_auth_ts",
+      "label": "auth.ts",
+      "file_type": "code",
+      "source_file": "server/src/routes/auth.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "auth_generateaccesstoken",
+      "label": "generateAccessToken()",
+      "file_type": "code",
+      "source_file": "server/src/routes/auth.ts",
+      "source_location": "L15"
+    },
+    {
+      "id": "auth_generaterefreshtoken",
+      "label": "generateRefreshToken()",
+      "file_type": "code",
+      "source_file": "server/src/routes/auth.ts",
+      "source_location": "L30"
+    },
+    {
+      "id": "auth_hashpassword",
+      "label": "hashPassword()",
+      "file_type": "code",
+      "source_file": "server/src/routes/auth.ts",
+      "source_location": "L45"
+    },
+    {
+      "id": "auth_comparepassword",
+      "label": "comparePassword()",
+      "file_type": "code",
+      "source_file": "server/src/routes/auth.ts",
+      "source_location": "L49"
+    },
+    {
+      "id": "server_src_routes_budgets_ts",
+      "label": "budgets.ts",
+      "file_type": "code",
+      "source_file": "server/src/routes/budgets.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "server_src_routes_categories_ts",
+      "label": "categories.ts",
+      "file_type": "code",
+      "source_file": "server/src/routes/categories.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "server_src_validations_category_ts",
+      "label": "category.ts",
+      "file_type": "code",
+      "source_file": "server/src/validations/category.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "server_src_validations_transaction_ts",
+      "label": "transaction.ts",
+      "file_type": "code",
+      "source_file": "server/src/validations/transaction.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "server_src_validations_recurring_expense_ts",
+      "label": "recurring-expense.ts",
+      "file_type": "code",
+      "source_file": "server/src/validations/recurring-expense.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "server_src_validations_admin_ts",
+      "label": "admin.ts",
+      "file_type": "code",
+      "source_file": "server/src/validations/admin.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "server_src_validations_auth_ts",
+      "label": "auth.ts",
+      "file_type": "code",
+      "source_file": "server/src/validations/auth.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "server_src_validations_budget_ts",
+      "label": "budget.ts",
+      "file_type": "code",
+      "source_file": "server/src/validations/budget.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "server_src_validations_payment_method_ts",
+      "label": "payment-method.ts",
+      "file_type": "code",
+      "source_file": "server/src/validations/payment-method.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "client_eslint_config_js",
+      "label": "eslint.config.js",
+      "file_type": "code",
+      "source_file": "client/eslint.config.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "client_vite_config_ts",
+      "label": "vite.config.ts",
+      "file_type": "code",
+      "source_file": "client/vite.config.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "client_vitest_config_ts",
+      "label": "vitest.config.ts",
+      "file_type": "code",
+      "source_file": "client/vitest.config.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "client_src_main_tsx",
+      "label": "main.tsx",
+      "file_type": "code",
+      "source_file": "client/src/main.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "client_src_app_tsx",
+      "label": "App.tsx",
+      "file_type": "code",
+      "source_file": "client/src/App.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "app_protectedroute",
+      "label": "ProtectedRoute()",
+      "file_type": "code",
+      "source_file": "client/src/App.tsx",
+      "source_location": "L15"
+    },
+    {
+      "id": "app_adminroute",
+      "label": "AdminRoute()",
+      "file_type": "code",
+      "source_file": "client/src/App.tsx",
+      "source_location": "L23"
+    },
+    {
+      "id": "app_publicroute",
+      "label": "PublicRoute()",
+      "file_type": "code",
+      "source_file": "client/src/App.tsx",
+      "source_location": "L31"
+    },
+    {
+      "id": "app_approutes",
+      "label": "AppRoutes()",
+      "file_type": "code",
+      "source_file": "client/src/App.tsx",
+      "source_location": "L38"
+    },
+    {
+      "id": "app_app",
+      "label": "App()",
+      "file_type": "code",
+      "source_file": "client/src/App.tsx",
+      "source_location": "L98"
+    },
+    {
+      "id": "client_src_components_transactionform_tsx",
+      "label": "TransactionForm.tsx",
+      "file_type": "code",
+      "source_file": "client/src/components/TransactionForm.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "transactionform_handleclickoutside",
+      "label": "handleClickOutside()",
+      "file_type": "code",
+      "source_file": "client/src/components/TransactionForm.tsx",
+      "source_location": "L84"
+    },
+    {
+      "id": "transactionform_handleinputchange",
+      "label": "handleInputChange()",
+      "file_type": "code",
+      "source_file": "client/src/components/TransactionForm.tsx",
+      "source_location": "L96"
+    },
+    {
+      "id": "transactionform_handlecategorychange",
+      "label": "handleCategoryChange()",
+      "file_type": "code",
+      "source_file": "client/src/components/TransactionForm.tsx",
+      "source_location": "L100"
+    },
+    {
+      "id": "transactionform_handlepaymentmethodchange",
+      "label": "handlePaymentMethodChange()",
+      "file_type": "code",
+      "source_file": "client/src/components/TransactionForm.tsx",
+      "source_location": "L111"
+    },
+    {
+      "id": "transactionform_handlesubcategoryselect",
+      "label": "handleSubCategorySelect()",
+      "file_type": "code",
+      "source_file": "client/src/components/TransactionForm.tsx",
+      "source_location": "L119"
+    },
+    {
+      "id": "transactionform_handlesubmit",
+      "label": "handleSubmit()",
+      "file_type": "code",
+      "source_file": "client/src/components/TransactionForm.tsx",
+      "source_location": "L125"
+    },
+    {
+      "id": "client_src_components_mobilenav_tsx",
+      "label": "MobileNav.tsx",
+      "file_type": "code",
+      "source_file": "client/src/components/MobileNav.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "mobilenav_mobilenav",
+      "label": "MobileNav()",
+      "file_type": "code",
+      "source_file": "client/src/components/MobileNav.tsx",
+      "source_location": "L7"
+    },
+    {
+      "id": "client_src_components_sidebar_tsx",
+      "label": "Sidebar.tsx",
+      "file_type": "code",
+      "source_file": "client/src/components/Sidebar.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "sidebar_isactive",
+      "label": "isActive()",
+      "file_type": "code",
+      "source_file": "client/src/components/Sidebar.tsx",
+      "source_location": "L25"
+    },
+    {
+      "id": "client_src_components_confirmdialog_tsx",
+      "label": "ConfirmDialog.tsx",
+      "file_type": "code",
+      "source_file": "client/src/components/ConfirmDialog.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "confirmdialog_confirmdialog",
+      "label": "ConfirmDialog()",
+      "file_type": "code",
+      "source_file": "client/src/components/ConfirmDialog.tsx",
+      "source_location": "L14"
+    },
+    {
+      "id": "client_src_components_header_tsx",
+      "label": "Header.tsx",
+      "file_type": "code",
+      "source_file": "client/src/components/Header.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "client_src_components_skeleton_tsx",
+      "label": "Skeleton.tsx",
+      "file_type": "code",
+      "source_file": "client/src/components/Skeleton.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "skeleton_skeletoncard",
+      "label": "SkeletonCard()",
+      "file_type": "code",
+      "source_file": "client/src/components/Skeleton.tsx",
+      "source_location": "L5"
+    },
+    {
+      "id": "skeleton_skeletontext",
+      "label": "SkeletonText()",
+      "file_type": "code",
+      "source_file": "client/src/components/Skeleton.tsx",
+      "source_location": "L24"
+    },
+    {
+      "id": "client_src_components_currencyinput_tsx",
+      "label": "CurrencyInput.tsx",
+      "file_type": "code",
+      "source_file": "client/src/components/CurrencyInput.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "currencyinput_currencyinput",
+      "label": "CurrencyInput()",
+      "file_type": "code",
+      "source_file": "client/src/components/CurrencyInput.tsx",
+      "source_location": "L8"
+    },
+    {
+      "id": "client_src_components_layout_tsx",
+      "label": "Layout.tsx",
+      "file_type": "code",
+      "source_file": "client/src/components/Layout.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "layout_layout",
+      "label": "Layout()",
+      "file_type": "code",
+      "source_file": "client/src/components/Layout.tsx",
+      "source_location": "L13"
+    },
+    {
+      "id": "client_src_components_calendar_tsx",
+      "label": "Calendar.tsx",
+      "file_type": "code",
+      "source_file": "client/src/components/Calendar.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "calendar_getdaysinmonth",
+      "label": "getDaysInMonth()",
+      "file_type": "code",
+      "source_file": "client/src/components/Calendar.tsx",
+      "source_location": "L26"
+    },
+    {
+      "id": "calendar_navigatemonth",
+      "label": "navigateMonth()",
+      "file_type": "code",
+      "source_file": "client/src/components/Calendar.tsx",
+      "source_location": "L73"
+    },
+    {
+      "id": "calendar_formatdate",
+      "label": "formatDate()",
+      "file_type": "code",
+      "source_file": "client/src/components/Calendar.tsx",
+      "source_location": "L83"
+    },
+    {
+      "id": "calendar_handledateclick",
+      "label": "handleDateClick()",
+      "file_type": "code",
+      "source_file": "client/src/components/Calendar.tsx",
+      "source_location": "L88"
+    },
+    {
+      "id": "client_src_components_modal_tsx",
+      "label": "Modal.tsx",
+      "file_type": "code",
+      "source_file": "client/src/components/Modal.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "modal_modal",
+      "label": "Modal()",
+      "file_type": "code",
+      "source_file": "client/src/components/Modal.tsx",
+      "source_location": "L11"
+    },
+    {
+      "id": "client_src_test_smoke_test_ts",
+      "label": "smoke.test.ts",
+      "file_type": "code",
+      "source_file": "client/src/test/smoke.test.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "client_src_test_setup_ts",
+      "label": "setup.ts",
+      "file_type": "code",
+      "source_file": "client/src/test/setup.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "client_src_api_subcategories_ts",
+      "label": "subcategories.ts",
+      "file_type": "code",
+      "source_file": "client/src/api/subcategories.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "client_src_api_recurring_expenses_ts",
+      "label": "recurring-expenses.ts",
+      "file_type": "code",
+      "source_file": "client/src/api/recurring-expenses.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "client_src_api_stats_ts",
+      "label": "stats.ts",
+      "file_type": "code",
+      "source_file": "client/src/api/stats.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "client_src_api_payment_methods_ts",
+      "label": "payment-methods.ts",
+      "file_type": "code",
+      "source_file": "client/src/api/payment-methods.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "client_src_api_transactions_ts",
+      "label": "transactions.ts",
+      "file_type": "code",
+      "source_file": "client/src/api/transactions.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "client_src_api_admin_ts",
+      "label": "admin.ts",
+      "file_type": "code",
+      "source_file": "client/src/api/admin.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "client_src_api_auth_ts",
+      "label": "auth.ts",
+      "file_type": "code",
+      "source_file": "client/src/api/auth.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "client_src_api_axios_ts",
+      "label": "axios.ts",
+      "file_type": "code",
+      "source_file": "client/src/api/axios.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "axios_processqueue",
+      "label": "processQueue()",
+      "file_type": "code",
+      "source_file": "client/src/api/axios.ts",
+      "source_location": "L23"
+    },
+    {
+      "id": "client_src_api_budgets_ts",
+      "label": "budgets.ts",
+      "file_type": "code",
+      "source_file": "client/src/api/budgets.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "client_src_api_categories_ts",
+      "label": "categories.ts",
+      "file_type": "code",
+      "source_file": "client/src/api/categories.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "client_src_pages_registerpage_index_tsx",
+      "label": "index.tsx",
+      "file_type": "code",
+      "source_file": "client/src/pages/RegisterPage/index.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "index_validateform",
+      "label": "validateForm()",
+      "file_type": "code",
+      "source_file": "client/src/pages/RegisterPage/index.tsx",
+      "source_location": "L27"
+    },
+    {
+      "id": "index_validateemail",
+      "label": "validateEmail()",
+      "file_type": "code",
+      "source_file": "client/src/pages/RegisterPage/index.tsx",
+      "source_location": "L69"
+    },
+    {
+      "id": "index_validatepassword",
+      "label": "validatePassword()",
+      "file_type": "code",
+      "source_file": "client/src/pages/RegisterPage/index.tsx",
+      "source_location": "L79"
+    },
+    {
+      "id": "index_validatepasswordconfirm",
+      "label": "validatePasswordConfirm()",
+      "file_type": "code",
+      "source_file": "client/src/pages/RegisterPage/index.tsx",
+      "source_location": "L91"
+    },
+    {
+      "id": "index_validatedisplayname",
+      "label": "validateDisplayName()",
+      "file_type": "code",
+      "source_file": "client/src/pages/RegisterPage/index.tsx",
+      "source_location": "L101"
+    },
+    {
+      "id": "index_handlesubmit",
+      "label": "handleSubmit()",
+      "file_type": "code",
+      "source_file": "client/src/pages/RegisterPage/index.tsx",
+      "source_location": "L111"
+    },
+    {
+      "id": "client_src_pages_admin_index_tsx",
+      "label": "index.tsx",
+      "file_type": "code",
+      "source_file": "client/src/pages/Admin/index.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "index_handlesaveuser",
+      "label": "handleSaveUser()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Admin/index.tsx",
+      "source_location": "L78"
+    },
+    {
+      "id": "index_handledeleteuser",
+      "label": "handleDeleteUser()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Admin/index.tsx",
+      "source_location": "L92"
+    },
+    {
+      "id": "index_handlesavecategory",
+      "label": "handleSaveCategory()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Admin/index.tsx",
+      "source_location": "L104"
+    },
+    {
+      "id": "index_handledeletecategory",
+      "label": "handleDeleteCategory()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Admin/index.tsx",
+      "source_location": "L122"
+    },
+    {
+      "id": "index_handlesavesettings",
+      "label": "handleSaveSettings()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Admin/index.tsx",
+      "source_location": "L134"
+    },
+    {
+      "id": "index_gettabcontent",
+      "label": "getTabContent()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Admin/index.tsx",
+      "source_location": "L145"
+    },
+    {
+      "id": "client_src_pages_loginpage_index_tsx",
+      "label": "index.tsx",
+      "file_type": "code",
+      "source_file": "client/src/pages/LoginPage/index.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "index_handlesubmit",
+      "label": "handleSubmit()",
+      "file_type": "code",
+      "source_file": "client/src/pages/LoginPage/index.tsx",
+      "source_location": "L13"
+    },
+    {
+      "id": "client_src_pages_settingspage_index_tsx",
+      "label": "index.tsx",
+      "file_type": "code",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "index_handlesavepaymentmethod",
+      "label": "handleSavePaymentMethod()",
+      "file_type": "code",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L91"
+    },
+    {
+      "id": "index_handledeletepaymentmethod",
+      "label": "handleDeletePaymentMethod()",
+      "file_type": "code",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L109"
+    },
+    {
+      "id": "index_handlesavebudget",
+      "label": "handleSaveBudget()",
+      "file_type": "code",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L121"
+    },
+    {
+      "id": "index_handledeletebudget",
+      "label": "handleDeleteBudget()",
+      "file_type": "code",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L144"
+    },
+    {
+      "id": "index_handlesaverecurringexpense",
+      "label": "handleSaveRecurringExpense()",
+      "file_type": "code",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L156"
+    },
+    {
+      "id": "index_handledeleterecurringexpense",
+      "label": "handleDeleteRecurringExpense()",
+      "file_type": "code",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L183"
+    },
+    {
+      "id": "index_handletogglerecurringexpense",
+      "label": "handleToggleRecurringExpense()",
+      "file_type": "code",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L194"
+    },
+    {
+      "id": "index_gettabcontent",
+      "label": "getTabContent()",
+      "file_type": "code",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L204"
+    },
+    {
+      "id": "index_handlesubmit",
+      "label": "handleSubmit()",
+      "file_type": "code",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L664"
+    },
+    {
+      "id": "client_src_pages_statspage_index_tsx",
+      "label": "index.tsx",
+      "file_type": "code",
+      "source_file": "client/src/pages/StatsPage/index.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "index_handlemonthchange",
+      "label": "handleMonthChange()",
+      "file_type": "code",
+      "source_file": "client/src/pages/StatsPage/index.tsx",
+      "source_location": "L57"
+    },
+    {
+      "id": "index_handleretry",
+      "label": "handleRetry()",
+      "file_type": "code",
+      "source_file": "client/src/pages/StatsPage/index.tsx",
+      "source_location": "L66"
+    },
+    {
+      "id": "client_src_pages_transactions_index_tsx",
+      "label": "index.tsx",
+      "file_type": "code",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "index_handlefilterchange",
+      "label": "handleFilterChange()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L126"
+    },
+    {
+      "id": "index_handlemonthchange",
+      "label": "handleMonthChange()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L130"
+    },
+    {
+      "id": "index_handlepagechange",
+      "label": "handlePageChange()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L140"
+    },
+    {
+      "id": "index_handlecreatesubmit",
+      "label": "handleCreateSubmit()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L144"
+    },
+    {
+      "id": "index_handleeditsubmit",
+      "label": "handleEditSubmit()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L190"
+    },
+    {
+      "id": "index_handleedit",
+      "label": "handleEdit()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L224"
+    },
+    {
+      "id": "index_handledelete",
+      "label": "handleDelete()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L229"
+    },
+    {
+      "id": "index_handleconfirmdelete",
+      "label": "handleConfirmDelete()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L234"
+    },
+    {
+      "id": "index_filterbar",
+      "label": "FilterBar()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L251"
+    },
+    {
+      "id": "index_transactionrow",
+      "label": "TransactionRow()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L332"
+    },
+    {
+      "id": "index_pagination",
+      "label": "Pagination()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L377"
+    },
+    {
+      "id": "client_src_pages_dashboard_index_tsx",
+      "label": "index.tsx",
+      "file_type": "code",
+      "source_file": "client/src/pages/Dashboard/index.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "index_handlemonthchange",
+      "label": "handleMonthChange()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Dashboard/index.tsx",
+      "source_location": "L84"
+    },
+    {
+      "id": "index_handletransactionsubmit",
+      "label": "handleTransactionSubmit()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Dashboard/index.tsx",
+      "source_location": "L93"
+    },
+    {
+      "id": "index_summarycard",
+      "label": "SummaryCard()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Dashboard/index.tsx",
+      "source_location": "L141"
+    },
+    {
+      "id": "index_transactionrow",
+      "label": "TransactionRow()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Dashboard/index.tsx",
+      "source_location": "L154"
+    },
+    {
+      "id": "index_categoryranking",
+      "label": "CategoryRanking()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Dashboard/index.tsx",
+      "source_location": "L182"
+    },
+    {
+      "id": "client_src_types_index_ts",
+      "label": "index.ts",
+      "file_type": "code",
+      "source_file": "client/src/types/index.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "client_src_contexts_toastcontext_tsx",
+      "label": "ToastContext.tsx",
+      "file_type": "code",
+      "source_file": "client/src/contexts/ToastContext.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "toastcontext_toastprovider",
+      "label": "ToastProvider()",
+      "file_type": "code",
+      "source_file": "client/src/contexts/ToastContext.tsx",
+      "source_location": "L25"
+    },
+    {
+      "id": "toastcontext_gettoaststyles",
+      "label": "getToastStyles()",
+      "file_type": "code",
+      "source_file": "client/src/contexts/ToastContext.tsx",
+      "source_location": "L81"
+    },
+    {
+      "id": "client_src_contexts_themecontext_tsx",
+      "label": "ThemeContext.tsx",
+      "file_type": "code",
+      "source_file": "client/src/contexts/ThemeContext.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "themecontext_getinitialtheme",
+      "label": "getInitialTheme()",
+      "file_type": "code",
+      "source_file": "client/src/contexts/ThemeContext.tsx",
+      "source_location": "L17"
+    },
+    {
+      "id": "themecontext_themeprovider",
+      "label": "ThemeProvider()",
+      "file_type": "code",
+      "source_file": "client/src/contexts/ThemeContext.tsx",
+      "source_location": "L24"
+    },
+    {
+      "id": "themecontext_usetheme",
+      "label": "useTheme()",
+      "file_type": "code",
+      "source_file": "client/src/contexts/ThemeContext.tsx",
+      "source_location": "L48"
+    },
+    {
+      "id": "client_src_contexts_authcontext_tsx",
+      "label": "AuthContext.tsx",
+      "file_type": "code",
+      "source_file": "client/src/contexts/AuthContext.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "authcontext_authprovider",
+      "label": "AuthProvider()",
+      "file_type": "code",
+      "source_file": "client/src/contexts/AuthContext.tsx",
+      "source_location": "L25"
+    },
+    {
+      "id": "authcontext_useauth",
+      "label": "useAuth()",
+      "file_type": "code",
+      "source_file": "client/src/contexts/AuthContext.tsx",
+      "source_location": "L109"
+    },
+    {
+      "id": "s_budget_app",
+      "label": "\uac00\uacc4\ubd80 \uc6f9 \uc571",
+      "type": "project",
+      "file_type": "document",
+      "properties": {
+        "lang": "\ud55c\uad6d\uc5b4",
+        "description": "\uc218\uc785/\uc9c0\ucd9c \uae30\ub85d, \ub2ec\ub825/\ucc28\ud2b8 \uc2dc\uac01\ud654, \uc18c\ube44 \ud328\ud134 \ubd84\uc11d \ud480\uc2a4\ud0dd \uc571"
+      }
+    },
+    {
+      "id": "s_frontend",
+      "label": "Frontend",
+      "type": "module",
+      "file_type": "document",
+      "properties": {
+        "tech": "React 19, Vite 8, TypeScript, Tailwind CSS 4, Recharts"
+      }
+    },
+    {
+      "id": "s_backend",
+      "label": "Backend",
+      "type": "module",
+      "file_type": "document",
+      "properties": {
+        "tech": "Express 5, TypeScript, Sequelize 6, SQLite"
+      }
+    },
+    {
+      "id": "s_auth_system",
+      "label": "\uc778\uc99d \uc2dc\uc2a4\ud15c",
+      "type": "feature",
+      "file_type": "document",
+      "properties": {
+        "description": "\uc774\uba54\uc77c+\ube44\ubc00\ubc88\ud638 \uc778\uc99d, JWT access+refresh token"
+      }
+    },
+    {
+      "id": "s_jwt_access",
+      "label": "JWT Access Token",
+      "type": "concept",
+      "file_type": "document",
+      "properties": {
+        "expiry": "15\ubd84",
+        "storage": "\uba54\ubaa8\ub9ac"
+      }
+    },
+    {
+      "id": "s_jwt_refresh",
+      "label": "JWT Refresh Token",
+      "type": "concept",
+      "file_type": "document",
+      "properties": {
+        "expiry": "7\uc77c",
+        "storage": "httpOnly \ucfe0\ud0a4"
+      }
+    },
+    {
+      "id": "s_transaction_crud",
+      "label": "\uac70\ub798 CRUD",
+      "type": "feature",
+      "file_type": "document",
+      "properties": {
+        "description": "\uc218\uc785/\uc9c0\ucd9c \ub4f1\ub85d, \uc870\ud68c, \uc218\uc815, \uc18c\ud504\ud2b8 \uc0ad\uc81c"
+      }
+    },
+    {
+      "id": "s_sub_category",
+      "label": "\ud558\uc704 \uce74\ud14c\uace0\ub9ac",
+      "type": "feature",
+      "file_type": "document",
+      "properties": {
+        "description": "\uce74\ud14c\uace0\ub9ac \ub0b4 \uc790\uc720 \uc785\ub825, \uc790\ub3d9\uc644\uc131 \uc9c0\uc6d0"
+      }
+    },
+    {
+      "id": "s_payment_method",
+      "label": "\uacb0\uc81c\uc218\ub2e8 \uad00\ub9ac",
+      "type": "feature",
+      "file_type": "document",
+      "properties": {
+        "description": "\uce74\ub4dc \ub4f1\ub85d/\uc218\uc815/\uc0ad\uc81c, \ud604\uae08 \uae30\ubcf8 \uc81c\uacf5"
+      }
+    },
+    {
+      "id": "s_dashboard",
+      "label": "\ub300\uc2dc\ubcf4\ub4dc",
+      "type": "feature",
+      "file_type": "document",
+      "properties": {
+        "description": "\uc694\uc57d \uce74\ub4dc, \ub2ec\ub825, \ucd5c\uadfc \uac70\ub798, \uce74\ud14c\uace0\ub9ac \uc18c\ube44 \uc21c\uc704, \uc77c\uc77c \uc608\uc0c1 \uc18c\ube44\uc561"
+      }
+    },
+    {
+      "id": "s_stats_page",
+      "label": "\ud1b5\uacc4 \ud398\uc774\uc9c0",
+      "type": "feature",
+      "file_type": "document",
+      "properties": {
+        "description": "\uc6d4\ubcc4 \ucd94\uc774 \ucc28\ud2b8, \uce74\ud14c\uace0\ub9ac\ubcc4 \ucc28\ud2b8, \uc608\uc0b0 \uad00\ub9ac"
+      }
+    },
+    {
+      "id": "s_budget_mgmt",
+      "label": "\uc608\uc0b0 \uad00\ub9ac",
+      "type": "feature",
+      "file_type": "document",
+      "properties": {
+        "description": "\uc6d4\ubcc4 \uce74\ud14c\uace0\ub9ac\ubcc4 \uc608\uc0b0 \uc124\uc815, \ub2ec\uc131\ub960, \ucd08\uacfc \uacbd\uace0"
+      }
+    },
+    {
+      "id": "s_recurring_expense",
+      "label": "\uace0\uc815\ube44 \uad00\ub9ac",
+      "type": "feature",
+      "file_type": "document",
+      "properties": {
+        "description": "\uace0\uc815\ube44 \ub4f1\ub85d, \ub9e4\uc6d4 \uc790\ub3d9 \ub4f1\ub85d, \ud65c\uc131/\ube44\ud65c\uc131 \ud1a0\uae00"
+      }
+    },
+    {
+      "id": "s_admin_page",
+      "label": "\uad00\ub9ac\uc790 \ud398\uc774\uc9c0",
+      "type": "feature",
+      "file_type": "document",
+      "properties": {
+        "description": "\uc0ac\uc6a9\uc790 \uad00\ub9ac, \uce74\ud14c\uace0\ub9ac \uad00\ub9ac, \uc2dc\uc2a4\ud15c \uc124\uc815"
+      }
+    },
+    {
+      "id": "s_settings_page",
+      "label": "\uc124\uc815 \ud398\uc774\uc9c0",
+      "type": "feature",
+      "file_type": "document",
+      "properties": {
+        "description": "\uce74\ub4dc \uad00\ub9ac, \uc608\uc0b0 \uc124\uc815, \uace0\uc815\ube44 \uad00\ub9ac \ud0ed"
+      }
+    },
+    {
+      "id": "s_ui_dark_mode",
+      "label": "\ub2e4\ud06c \ubaa8\ub4dc",
+      "type": "feature",
+      "file_type": "document",
+      "properties": {
+        "description": "\ud1a0\uae00 \uc804\ud658, \uc0ac\uc6a9\uc790 \uc124\uc815 \uc800\uc7a5"
+      }
+    },
+    {
+      "id": "s_ui_responsive",
+      "label": "\ubc18\uc751\ud615 \ub514\uc790\uc778",
+      "type": "feature",
+      "file_type": "document",
+      "properties": {
+        "description": "\ubaa8\ubc14\uc77c/\ud0dc\ube14\ub9bf/\ub370\uc2a4\ud06c\ud1b1 \uc9c0\uc6d0"
+      }
+    },
+    {
+      "id": "s_soft_delete",
+      "label": "\uc18c\ud504\ud2b8 \uc0ad\uc81c",
+      "type": "concept",
+      "file_type": "document",
+      "properties": {
+        "description": "deleted_at \ud0c0\uc784\uc2a4\ud0ec\ud504, \uc870\ud68c\uc5d0\uc11c \uc81c\uc678, \ubcf5\uad6c \uac00\ub2a5"
+      }
+    },
+    {
+      "id": "s_model_user",
+      "label": "User \ubaa8\ub378",
+      "type": "model",
+      "file_type": "document",
+      "properties": {
+        "fields": "id, email, password_hash, display_name, role, is_active"
+      }
+    },
+    {
+      "id": "s_model_category",
+      "label": "Category \ubaa8\ub378",
+      "type": "model",
+      "file_type": "document",
+      "properties": {
+        "fields": "id, user_id(nullable), name, type(income/expense), icon, color, sort_order"
+      }
+    },
+    {
+      "id": "s_model_transaction",
+      "label": "Transaction \ubaa8\ub378",
+      "type": "model",
+      "file_type": "document",
+      "properties": {
+        "fields": "id, user_id, type, amount, category_id, payment_method_id, date, sub_category, memo"
+      }
+    },
+    {
+      "id": "s_model_payment",
+      "label": "PaymentMethod \ubaa8\ub378",
+      "type": "model",
+      "file_type": "document",
+      "properties": {
+        "fields": "id, user_id, name, issuer, type(credit/debit/cash), color, is_default"
+      }
+    },
+    {
+      "id": "s_model_budget",
+      "label": "Budget \ubaa8\ub378",
+      "type": "model",
+      "file_type": "document",
+      "properties": {
+        "fields": "id, user_id, category_id, month, amount"
+      }
+    },
+    {
+      "id": "s_model_recurring",
+      "label": "RecurringExpense \ubaa8\ub378",
+      "type": "model",
+      "file_type": "document",
+      "properties": {
+        "fields": "id, user_id, name, amount, category_id, payment_method_id, payment_day, is_active"
+      }
+    },
+    {
+      "id": "s_api_auth",
+      "label": "Auth API",
+      "type": "api",
+      "file_type": "document",
+      "properties": {
+        "endpoints": "register, login, logout, refresh, me, password"
+      }
+    },
+    {
+      "id": "s_api_transactions",
+      "label": "Transactions API",
+      "type": "api",
+      "file_type": "document",
+      "properties": {
+        "endpoints": "CRUD, restore, \ud544\ud130/\ud398\uc774\uc9d5/\uc815\ub82c"
+      }
+    },
+    {
+      "id": "s_api_stats",
+      "label": "Stats API",
+      "type": "api",
+      "file_type": "document",
+      "properties": {
+        "endpoints": "dashboard, payment-methods, monthly-trend, category"
+      }
+    },
+    {
+      "id": "s_api_budgets",
+      "label": "Budgets API",
+      "type": "api",
+      "file_type": "document",
+      "properties": {
+        "endpoints": "\uc870\ud68c, bulk upsert"
+      }
+    },
+    {
+      "id": "s_api_payment_methods",
+      "label": "PaymentMethods API",
+      "type": "api",
+      "file_type": "document",
+      "properties": {
+        "endpoints": "CRUD"
+      }
+    },
+    {
+      "id": "s_api_recurring",
+      "label": "RecurringExpenses API",
+      "type": "api",
+      "file_type": "document",
+      "properties": {
+        "endpoints": "CRUD, toggle, month-summary"
+      }
+    },
+    {
+      "id": "s_api_subcategories",
+      "label": "SubCategories API",
+      "type": "api",
+      "file_type": "document",
+      "properties": {
+        "endpoints": "\uc790\ub3d9\uc644\uc131 \uac80\uc0c9"
+      }
+    },
+    {
+      "id": "s_api_admin",
+      "label": "Admin API",
+      "type": "api",
+      "file_type": "document",
+      "properties": {
+        "endpoints": "\uc0ac\uc6a9\uc790 \uad00\ub9ac, \uce74\ud14c\uace0\ub9ac CRUD, \uc2dc\uc2a4\ud15c \uc124\uc815"
+      }
+    },
+    {
+      "id": "s_zod_validation",
+      "label": "Zod \uc785\ub825 \uac80\uc99d",
+      "type": "concept",
+      "file_type": "document",
+      "properties": {
+        "description": "\uc774\uba54\uc77c \ud615\uc2dd, \ube44\ubc00\ubc88\ud638 8\uc790+\uc601\uc22b\uc790, \uae08\uc561 \ubc94\uc704 \ub4f1"
+      }
+    },
+    {
+      "id": "s_role_admin",
+      "label": "Admin \uc5ed\ud560",
+      "type": "concept",
+      "file_type": "document",
+      "properties": {
+        "description": "role=admin, \uad00\ub9ac\uc790 \ud398\uc774\uc9c0 \uc811\uadfc, \uce74\ud14c\uace0\ub9ac/\uc0ac\uc6a9\uc790 \uad00\ub9ac"
+      }
+    },
+    {
+      "id": "s_role_user",
+      "label": "User \uc5ed\ud560",
+      "type": "concept",
+      "file_type": "document",
+      "properties": {
+        "description": "role=user (\uae30\ubcf8), \uac1c\uc778 \uce74\ud14c\uace0\ub9ac, \uac70\ub798 \uae30\ub85d"
+      }
+    },
+    {
+      "id": "s_calendar_view",
+      "label": "\ub2ec\ub825 \ubdf0",
+      "type": "feature",
+      "file_type": "document",
+      "properties": {
+        "description": "\uc6d4\ubcc4 \uce98\ub9b0\ub354, \uc77c\uc790\ubcc4 \uc218\uc785/\uc9c0\ucd9c \ud45c\uc2dc, \ub0a0\uc9dc \ud074\ub9ad \uc0c1\uc138"
+      }
+    },
+    {
+      "id": "s_daily_budget",
+      "label": "\uc77c\uc77c \uc608\uc0c1 \uc18c\ube44\uc561",
+      "type": "concept",
+      "file_type": "document",
+      "properties": {
+        "formula": "\uc794\uc5ec \uae08\uc561 / \uc794\uc5ec\uc77c \uc218"
+      }
+    },
+    {
+      "id": "s_auto_login",
+      "label": "\uc790\ub3d9 \ub85c\uadf8\uc778",
+      "type": "feature",
+      "file_type": "document",
+      "properties": {
+        "description": "\ube0c\ub77c\uc6b0\uc800 \uc7ac\ubc29\ubb38 \uc2dc refresh token \ucfe0\ud0a4\ub85c \uc778\uc99d \ubcf5\uad6c"
+      }
+    },
+    {
+      "id": "s_pagination",
+      "label": "\ud398\uc774\uc9c0\ub124\uc774\uc158",
+      "type": "concept",
+      "file_type": "document",
+      "properties": {
+        "params": "page(\uae30\ubcf81), limit(\uae30\ubcf820, \ucd5c\ub300100)"
+      }
+    },
+    {
+      "id": "s_search_filter",
+      "label": "\uac80\uc0c9/\ud544\ud130",
+      "type": "concept",
+      "file_type": "document",
+      "properties": {
+        "description": "\uce74\ud14c\uace0\ub9ac, \uacb0\uc81c\uc218\ub2e8, \uae08\uc561 \ubc94\uc704, \ud0a4\uc6cc\ub4dc \ud544\ud130\ub9c1"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "server_vitest_config_ts",
+      "target": "config",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/vitest.config.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_index_ts",
+      "target": "express",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/index.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_index_ts",
+      "target": "cors",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/index.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_index_ts",
+      "target": "cookie_parser",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/index.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_index_ts",
+      "target": "dotenv",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/index.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_index_ts",
+      "target": "path",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/index.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_index_ts",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/index.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_index_ts",
+      "target": "errorhandler_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/index.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_index_ts",
+      "target": "index_setupapp",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/index.ts",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_index_ts",
+      "target": "index_startserver",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/index.ts",
+      "source_location": "L72",
+      "weight": 1.0
+    },
+    {
+      "source": "index_startserver",
+      "target": "index_setupapp",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/index.ts",
+      "source_location": "L73",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_models_recurringexpense_ts",
+      "target": "sequelize",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/models/RecurringExpense.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_models_recurringexpense_ts",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/models/RecurringExpense.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_models_recurringexpense_ts",
+      "target": "recurringexpense_recurringexpense",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/models/RecurringExpense.ts",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_models_index_ts",
+      "target": "sequelize",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/models/index.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_models_index_ts",
+      "target": "path",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/models/index.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_models_index_ts",
+      "target": "index_loadmodels",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/models/index.ts",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_models_index_ts",
+      "target": "index_setupassociations",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/models/index.ts",
+      "source_location": "L49",
+      "weight": 1.0
+    },
+    {
+      "source": "index_loadmodels",
+      "target": "index_setupassociations",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/models/index.ts",
+      "source_location": "L46",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_models_budget_ts",
+      "target": "sequelize",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/models/Budget.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_models_budget_ts",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/models/Budget.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_models_budget_ts",
+      "target": "budget_budget",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/models/Budget.ts",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_models_user_ts",
+      "target": "sequelize",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/models/User.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_models_user_ts",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/models/User.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_models_user_ts",
+      "target": "user_user",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/models/User.ts",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_models_category_ts",
+      "target": "sequelize",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/models/Category.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_models_category_ts",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/models/Category.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_models_category_ts",
+      "target": "category_category",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/models/Category.ts",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_models_paymentmethod_ts",
+      "target": "sequelize",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/models/PaymentMethod.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_models_paymentmethod_ts",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/models/PaymentMethod.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_models_paymentmethod_ts",
+      "target": "paymentmethod_paymentmethod",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/models/PaymentMethod.ts",
+      "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_models_transaction_ts",
+      "target": "sequelize",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/models/Transaction.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_models_transaction_ts",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/models/Transaction.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_models_transaction_ts",
+      "target": "transaction_transaction",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/models/Transaction.ts",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_seeders_defaultcategories_ts",
+      "target": "dotenv",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/seeders/defaultCategories.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_seeders_defaultcategories_ts",
+      "target": "path",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/seeders/defaultCategories.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_seeders_defaultcategories_ts",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/seeders/defaultCategories.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_seeders_defaultcategories_ts",
+      "target": "defaultcategories_seed",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/seeders/defaultCategories.ts",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_middleware_validate_ts",
+      "target": "express",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/middleware/validate.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_middleware_validate_ts",
+      "target": "zod",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/middleware/validate.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_middleware_validate_ts",
+      "target": "validate_validate",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/middleware/validate.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_middleware_errorhandler_ts",
+      "target": "express",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/middleware/errorHandler.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_middleware_errorhandler_ts",
+      "target": "errorhandler_errorhandler",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/middleware/errorHandler.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_middleware_admin_ts",
+      "target": "express",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/middleware/admin.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_middleware_admin_ts",
+      "target": "auth_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/middleware/admin.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_middleware_admin_ts",
+      "target": "admin_adminmiddleware",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/middleware/admin.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_middleware_auth_ts",
+      "target": "express",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/middleware/auth.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_middleware_auth_ts",
+      "target": "jsonwebtoken",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/middleware/auth.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_middleware_auth_ts",
+      "target": "auth_authmiddleware",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/middleware/auth.ts",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_smoke_test_ts",
+      "target": "vitest",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/smoke.test.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_admin_test_ts",
+      "target": "vitest",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/admin.test.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_admin_test_ts",
+      "target": "supertest",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/admin.test.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_admin_test_ts",
+      "target": "jsonwebtoken",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/admin.test.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_admin_test_ts",
+      "target": "bcryptjs",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/admin.test.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_admin_test_ts",
+      "target": "express",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/admin.test.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_admin_test_ts",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/admin.test.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_admin_test_ts",
+      "target": "admin_test_createuser",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/admin.test.ts",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_admin_test_ts",
+      "target": "admin_test_generatetoken",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/admin.test.ts",
+      "source_location": "L45",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_payment_methods_test_ts",
+      "target": "vitest",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/payment-methods.test.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_payment_methods_test_ts",
+      "target": "supertest",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/payment-methods.test.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_payment_methods_test_ts",
+      "target": "jsonwebtoken",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/payment-methods.test.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_payment_methods_test_ts",
+      "target": "bcryptjs",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/payment-methods.test.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_payment_methods_test_ts",
+      "target": "express",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/payment-methods.test.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_payment_methods_test_ts",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/payment-methods.test.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_payment_methods_test_ts",
+      "target": "payment_methods_test_createtestuser",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/payment-methods.test.ts",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_payment_methods_test_ts",
+      "target": "payment_methods_test_generatetoken",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/payment-methods.test.ts",
+      "source_location": "L37",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_recurring_expenses_test_ts",
+      "target": "vitest",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/recurring-expenses.test.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_recurring_expenses_test_ts",
+      "target": "supertest",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/recurring-expenses.test.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_recurring_expenses_test_ts",
+      "target": "jsonwebtoken",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/recurring-expenses.test.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_recurring_expenses_test_ts",
+      "target": "bcryptjs",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/recurring-expenses.test.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_recurring_expenses_test_ts",
+      "target": "express",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/recurring-expenses.test.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_recurring_expenses_test_ts",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/recurring-expenses.test.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_recurring_expenses_test_ts",
+      "target": "sequelize",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/recurring-expenses.test.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_recurring_expenses_test_ts",
+      "target": "recurring_expenses_test_createtestuser",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/recurring-expenses.test.ts",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_recurring_expenses_test_ts",
+      "target": "recurring_expenses_test_generatetoken",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/recurring-expenses.test.ts",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_recurring_expenses_test_ts",
+      "target": "recurring_expenses_test_seedcategoryandpaymentmethod",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/recurring-expenses.test.ts",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_categories_test_ts",
+      "target": "vitest",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/categories.test.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_categories_test_ts",
+      "target": "supertest",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/categories.test.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_categories_test_ts",
+      "target": "jsonwebtoken",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/categories.test.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_categories_test_ts",
+      "target": "bcryptjs",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/categories.test.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_categories_test_ts",
+      "target": "express",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/categories.test.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_categories_test_ts",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/categories.test.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_categories_test_ts",
+      "target": "categories_test_createtestuser",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/categories.test.ts",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_categories_test_ts",
+      "target": "categories_test_generateaccesstoken",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/categories.test.ts",
+      "source_location": "L46",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_categories_test_ts",
+      "target": "categories_test_seedglobalcategories",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/categories.test.ts",
+      "source_location": "L54",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_subcategories_test_ts",
+      "target": "vitest",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/subcategories.test.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_subcategories_test_ts",
+      "target": "supertest",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/subcategories.test.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_subcategories_test_ts",
+      "target": "jsonwebtoken",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/subcategories.test.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_subcategories_test_ts",
+      "target": "bcryptjs",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/subcategories.test.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_subcategories_test_ts",
+      "target": "express",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/subcategories.test.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_subcategories_test_ts",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/subcategories.test.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_subcategories_test_ts",
+      "target": "subcategories_test_createtestuser",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/subcategories.test.ts",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_subcategories_test_ts",
+      "target": "subcategories_test_createtestcategory",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/subcategories.test.ts",
+      "source_location": "L41",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_subcategories_test_ts",
+      "target": "subcategories_test_createtestpaymentmethod",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/subcategories.test.ts",
+      "source_location": "L52",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_subcategories_test_ts",
+      "target": "subcategories_test_createtesttransaction",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/subcategories.test.ts",
+      "source_location": "L61",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_stats_test_ts",
+      "target": "vitest",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/stats.test.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_stats_test_ts",
+      "target": "supertest",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/stats.test.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_stats_test_ts",
+      "target": "jsonwebtoken",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/stats.test.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_stats_test_ts",
+      "target": "bcryptjs",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/stats.test.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_stats_test_ts",
+      "target": "express",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/stats.test.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_stats_test_ts",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/stats.test.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_stats_test_ts",
+      "target": "stats_test_createtestuser",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/stats.test.ts",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_stats_test_ts",
+      "target": "stats_test_generateaccesstoken",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/stats.test.ts",
+      "source_location": "L46",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_stats_test_ts",
+      "target": "stats_test_seedglobalcategories",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/stats.test.ts",
+      "source_location": "L54",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_stats_test_ts",
+      "target": "stats_test_createtestpaymentmethods",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/stats.test.ts",
+      "source_location": "L60",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_budgets_test_ts",
+      "target": "vitest",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/budgets.test.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_budgets_test_ts",
+      "target": "supertest",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/budgets.test.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_budgets_test_ts",
+      "target": "jsonwebtoken",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/budgets.test.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_budgets_test_ts",
+      "target": "bcryptjs",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/budgets.test.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_budgets_test_ts",
+      "target": "express",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/budgets.test.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_budgets_test_ts",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/budgets.test.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_budgets_test_ts",
+      "target": "budgets_test_createtestuser",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/budgets.test.ts",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_budgets_test_ts",
+      "target": "budgets_test_generateaccesstoken",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/budgets.test.ts",
+      "source_location": "L46",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_budgets_test_ts",
+      "target": "budgets_test_seedglobalcategories",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/budgets.test.ts",
+      "source_location": "L54",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_transactions_test_ts",
+      "target": "vitest",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/transactions.test.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_transactions_test_ts",
+      "target": "supertest",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/transactions.test.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_transactions_test_ts",
+      "target": "jsonwebtoken",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/transactions.test.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_transactions_test_ts",
+      "target": "bcryptjs",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/transactions.test.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_transactions_test_ts",
+      "target": "express",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/transactions.test.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_transactions_test_ts",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/transactions.test.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_transactions_test_ts",
+      "target": "sequelize",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/transactions.test.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_transactions_test_ts",
+      "target": "category_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/transactions.test.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_transactions_test_ts",
+      "target": "paymentmethod_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/transactions.test.ts",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_transactions_test_ts",
+      "target": "transaction_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/transactions.test.ts",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_transactions_test_ts",
+      "target": "transactions_test_createtestuser",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/transactions.test.ts",
+      "source_location": "L58",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_transactions_test_ts",
+      "target": "transactions_test_createtestcategory",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/transactions.test.ts",
+      "source_location": "L65",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_transactions_test_ts",
+      "target": "transactions_test_createtestpaymentmethod",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/transactions.test.ts",
+      "source_location": "L69",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_transactions_test_ts",
+      "target": "transactions_test_createtesttransaction",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/transactions.test.ts",
+      "source_location": "L73",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_transactions_test_ts",
+      "target": "transactions_test_loadmodels",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/transactions.test.ts",
+      "source_location": "L476",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_auth_test_ts",
+      "target": "vitest",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/auth.test.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_auth_test_ts",
+      "target": "supertest",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/auth.test.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_auth_test_ts",
+      "target": "jsonwebtoken",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/auth.test.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_auth_test_ts",
+      "target": "bcryptjs",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/auth.test.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_auth_test_ts",
+      "target": "express",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/auth.test.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_auth_test_ts",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/auth.test.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_tests_auth_test_ts",
+      "target": "auth_test_createtestuser",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/auth.test.ts",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_subcategories_ts",
+      "target": "express",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/subcategories.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_subcategories_ts",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/subcategories.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_subcategories_ts",
+      "target": "auth_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/subcategories.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_subcategories_ts",
+      "target": "sequelize",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/subcategories.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_recurring_expenses_ts",
+      "target": "express",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/recurring-expenses.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_recurring_expenses_ts",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/recurring-expenses.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_recurring_expenses_ts",
+      "target": "auth_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/recurring-expenses.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_recurring_expenses_ts",
+      "target": "validate_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/recurring-expenses.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_recurring_expenses_ts",
+      "target": "recurring_expense_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/recurring-expenses.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_recurring_expenses_ts",
+      "target": "sequelize",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/recurring-expenses.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_stats_ts",
+      "target": "express",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/stats.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_stats_ts",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/stats.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_stats_ts",
+      "target": "auth_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/stats.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_stats_ts",
+      "target": "stats_calculateremainingdaysinmonth",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/stats.ts",
+      "source_location": "L52",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_payment_methods_ts",
+      "target": "express",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/payment-methods.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_payment_methods_ts",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/payment-methods.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_payment_methods_ts",
+      "target": "auth_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/payment-methods.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_payment_methods_ts",
+      "target": "validate_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/payment-methods.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_payment_methods_ts",
+      "target": "payment_method_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/payment-methods.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_transactions_ts",
+      "target": "express",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/transactions.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_transactions_ts",
+      "target": "sequelize",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/transactions.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_transactions_ts",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/transactions.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_transactions_ts",
+      "target": "transaction_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/transactions.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_transactions_ts",
+      "target": "auth_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/transactions.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_transactions_ts",
+      "target": "validate_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/transactions.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_transactions_ts",
+      "target": "transactions_buildwhereclause",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/transactions.ts",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_transactions_ts",
+      "target": "transactions_buildorderclause",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/transactions.ts",
+      "source_location": "L81",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_admin_ts",
+      "target": "express",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/admin.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_admin_ts",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/admin.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_admin_ts",
+      "target": "auth_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/admin.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_admin_ts",
+      "target": "admin_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/admin.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_admin_ts",
+      "target": "validate_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/admin.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_admin_ts",
+      "target": "admin_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/admin.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_auth_ts",
+      "target": "express",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/auth.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_auth_ts",
+      "target": "jsonwebtoken",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/auth.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_auth_ts",
+      "target": "bcryptjs",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/auth.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_auth_ts",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/auth.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_auth_ts",
+      "target": "auth_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/auth.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_auth_ts",
+      "target": "auth_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/auth.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_auth_ts",
+      "target": "validate_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/auth.ts",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_auth_ts",
+      "target": "auth_generateaccesstoken",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/auth.ts",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_auth_ts",
+      "target": "auth_generaterefreshtoken",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/auth.ts",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_auth_ts",
+      "target": "auth_hashpassword",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/auth.ts",
+      "source_location": "L45",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_auth_ts",
+      "target": "auth_comparepassword",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/auth.ts",
+      "source_location": "L49",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_budgets_ts",
+      "target": "express",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/budgets.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_budgets_ts",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/budgets.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_budgets_ts",
+      "target": "auth_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/budgets.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_budgets_ts",
+      "target": "validate_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/budgets.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_budgets_ts",
+      "target": "budget_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/budgets.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_categories_ts",
+      "target": "express",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/categories.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_categories_ts",
+      "target": "sequelize",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/categories.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_categories_ts",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/categories.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_categories_ts",
+      "target": "auth_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/categories.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_categories_ts",
+      "target": "validate_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/categories.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_routes_categories_ts",
+      "target": "category_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/categories.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_validations_category_ts",
+      "target": "zod",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/validations/category.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_validations_transaction_ts",
+      "target": "zod",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/validations/transaction.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_validations_recurring_expense_ts",
+      "target": "zod",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/validations/recurring-expense.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_validations_admin_ts",
+      "target": "zod",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/validations/admin.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_validations_auth_ts",
+      "target": "zod",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/validations/auth.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_validations_budget_ts",
+      "target": "zod",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/validations/budget.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "server_src_validations_payment_method_ts",
+      "target": "zod",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/validations/payment-method.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "client_eslint_config_js",
+      "target": "js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/eslint.config.js",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "client_eslint_config_js",
+      "target": "globals",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/eslint.config.js",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "client_eslint_config_js",
+      "target": "eslint_plugin_react_hooks",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/eslint.config.js",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "client_eslint_config_js",
+      "target": "eslint_plugin_react_refresh",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/eslint.config.js",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "client_eslint_config_js",
+      "target": "typescript_eslint",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/eslint.config.js",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "client_eslint_config_js",
+      "target": "config",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/eslint.config.js",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "client_vite_config_ts",
+      "target": "vite",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/vite.config.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "client_vite_config_ts",
+      "target": "plugin_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/vite.config.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "client_vite_config_ts",
+      "target": "vite",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/vite.config.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "client_vite_config_ts",
+      "target": "path",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/vite.config.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "client_vitest_config_ts",
+      "target": "config",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/vitest.config.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "client_vitest_config_ts",
+      "target": "plugin_react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/vitest.config.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "client_vitest_config_ts",
+      "target": "path",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/vitest.config.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_main_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/main.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_main_tsx",
+      "target": "client",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/main.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_main_tsx",
+      "target": "index_css",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/main.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_main_tsx",
+      "target": "app_tsx",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/main.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_app_tsx",
+      "target": "react_router_dom",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/App.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_app_tsx",
+      "target": "authcontext_tsx",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/App.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_app_tsx",
+      "target": "themecontext_tsx",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/App.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_app_tsx",
+      "target": "toastcontext_tsx",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/App.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_app_tsx",
+      "target": "layout_tsx",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/App.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_app_tsx",
+      "target": "index_tsx",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/App.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_app_tsx",
+      "target": "index_tsx",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/App.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_app_tsx",
+      "target": "index_tsx",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/App.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_app_tsx",
+      "target": "index_tsx",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/App.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_app_tsx",
+      "target": "index_tsx",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/App.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_app_tsx",
+      "target": "index_tsx",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/App.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_app_tsx",
+      "target": "index_tsx",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/App.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_app_tsx",
+      "target": "app_protectedroute",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/App.tsx",
+      "source_location": "L15",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_app_tsx",
+      "target": "app_adminroute",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/App.tsx",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_app_tsx",
+      "target": "app_publicroute",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/App.tsx",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_app_tsx",
+      "target": "app_approutes",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/App.tsx",
+      "source_location": "L38",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_app_tsx",
+      "target": "app_app",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/App.tsx",
+      "source_location": "L98",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_transactionform_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/TransactionForm.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_transactionform_tsx",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/TransactionForm.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_transactionform_tsx",
+      "target": "subcategories_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/TransactionForm.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_transactionform_tsx",
+      "target": "currencyinput_tsx",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/TransactionForm.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_transactionform_tsx",
+      "target": "transactionform_handleclickoutside",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/TransactionForm.tsx",
+      "source_location": "L84",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_transactionform_tsx",
+      "target": "transactionform_handleinputchange",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/TransactionForm.tsx",
+      "source_location": "L96",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_transactionform_tsx",
+      "target": "transactionform_handlecategorychange",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/TransactionForm.tsx",
+      "source_location": "L100",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_transactionform_tsx",
+      "target": "transactionform_handlepaymentmethodchange",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/TransactionForm.tsx",
+      "source_location": "L111",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_transactionform_tsx",
+      "target": "transactionform_handlesubcategoryselect",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/TransactionForm.tsx",
+      "source_location": "L119",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_transactionform_tsx",
+      "target": "transactionform_handlesubmit",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/TransactionForm.tsx",
+      "source_location": "L125",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_mobilenav_tsx",
+      "target": "react_router_dom",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/MobileNav.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_mobilenav_tsx",
+      "target": "authcontext",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/MobileNav.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_mobilenav_tsx",
+      "target": "mobilenav_mobilenav",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/MobileNav.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_sidebar_tsx",
+      "target": "react_router_dom",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/Sidebar.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_sidebar_tsx",
+      "target": "themecontext",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/Sidebar.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_sidebar_tsx",
+      "target": "authcontext",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/Sidebar.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_sidebar_tsx",
+      "target": "sidebar_isactive",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/Sidebar.tsx",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_confirmdialog_tsx",
+      "target": "modal_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/ConfirmDialog.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_confirmdialog_tsx",
+      "target": "confirmdialog_confirmdialog",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/ConfirmDialog.tsx",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_header_tsx",
+      "target": "themecontext",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/Header.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_skeleton_tsx",
+      "target": "skeleton_skeletoncard",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/Skeleton.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_skeleton_tsx",
+      "target": "skeleton_skeletontext",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/Skeleton.tsx",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_currencyinput_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/CurrencyInput.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_currencyinput_tsx",
+      "target": "currencyinput_currencyinput",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/CurrencyInput.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_layout_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/Layout.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_layout_tsx",
+      "target": "react_router_dom",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/Layout.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_layout_tsx",
+      "target": "toastcontext",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/Layout.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_layout_tsx",
+      "target": "skeleton",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/Layout.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_layout_tsx",
+      "target": "header",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/Layout.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_layout_tsx",
+      "target": "sidebar",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/Layout.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_layout_tsx",
+      "target": "mobilenav",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/Layout.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_layout_tsx",
+      "target": "layout_layout",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/Layout.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_calendar_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/Calendar.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_calendar_tsx",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/Calendar.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_calendar_tsx",
+      "target": "calendar_getdaysinmonth",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/Calendar.tsx",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_calendar_tsx",
+      "target": "calendar_navigatemonth",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/Calendar.tsx",
+      "source_location": "L73",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_calendar_tsx",
+      "target": "calendar_formatdate",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/Calendar.tsx",
+      "source_location": "L83",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_calendar_tsx",
+      "target": "calendar_handledateclick",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/Calendar.tsx",
+      "source_location": "L88",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_modal_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/Modal.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_components_modal_tsx",
+      "target": "modal_modal",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/Modal.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_test_smoke_test_ts",
+      "target": "vitest",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/test/smoke.test.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_test_setup_ts",
+      "target": "jest_dom",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/test/setup.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_api_subcategories_ts",
+      "target": "axios_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/api/subcategories.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_api_subcategories_ts",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/api/subcategories.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_api_recurring_expenses_ts",
+      "target": "axios_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/api/recurring-expenses.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_api_recurring_expenses_ts",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/api/recurring-expenses.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_api_stats_ts",
+      "target": "axios_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/api/stats.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_api_stats_ts",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/api/stats.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_api_payment_methods_ts",
+      "target": "axios_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/api/payment-methods.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_api_payment_methods_ts",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/api/payment-methods.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_api_transactions_ts",
+      "target": "axios_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/api/transactions.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_api_transactions_ts",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/api/transactions.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_api_admin_ts",
+      "target": "axios_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/api/admin.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_api_admin_ts",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/api/admin.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_api_auth_ts",
+      "target": "axios_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/api/auth.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_api_auth_ts",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/api/auth.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_api_axios_ts",
+      "target": "axios",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/api/axios.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_api_axios_ts",
+      "target": "axios_processqueue",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/api/axios.ts",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_api_budgets_ts",
+      "target": "axios_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/api/budgets.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_api_budgets_ts",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/api/budgets.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_api_categories_ts",
+      "target": "axios_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/api/categories.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_api_categories_ts",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/api/categories.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_registerpage_index_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/RegisterPage/index.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_registerpage_index_tsx",
+      "target": "react_router_dom",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/RegisterPage/index.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_registerpage_index_tsx",
+      "target": "authcontext_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/RegisterPage/index.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_registerpage_index_tsx",
+      "target": "index_validateform",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/RegisterPage/index.tsx",
+      "source_location": "L27",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_registerpage_index_tsx",
+      "target": "index_validateemail",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/RegisterPage/index.tsx",
+      "source_location": "L69",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_registerpage_index_tsx",
+      "target": "index_validatepassword",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/RegisterPage/index.tsx",
+      "source_location": "L79",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_registerpage_index_tsx",
+      "target": "index_validatepasswordconfirm",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/RegisterPage/index.tsx",
+      "source_location": "L91",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_registerpage_index_tsx",
+      "target": "index_validatedisplayname",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/RegisterPage/index.tsx",
+      "source_location": "L101",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_registerpage_index_tsx",
+      "target": "index_handlesubmit",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/RegisterPage/index.tsx",
+      "source_location": "L111",
+      "weight": 1.0
+    },
+    {
+      "source": "index_handlesubmit",
+      "target": "index_validateform",
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/RegisterPage/index.tsx",
+      "source_location": "L125",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_admin_index_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Admin/index.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_admin_index_tsx",
+      "target": "toastcontext_tsx",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Admin/index.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_admin_index_tsx",
+      "target": "modal_tsx",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Admin/index.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_admin_index_tsx",
+      "target": "confirmdialog_tsx",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Admin/index.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_admin_index_tsx",
+      "target": "skeleton_tsx",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Admin/index.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_admin_index_tsx",
+      "target": "admin_ts",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Admin/index.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_admin_index_tsx",
+      "target": "categories_ts",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Admin/index.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_admin_index_tsx",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Admin/index.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_admin_index_tsx",
+      "target": "index_handlesaveuser",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Admin/index.tsx",
+      "source_location": "L78",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_admin_index_tsx",
+      "target": "index_handledeleteuser",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Admin/index.tsx",
+      "source_location": "L92",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_admin_index_tsx",
+      "target": "index_handlesavecategory",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Admin/index.tsx",
+      "source_location": "L104",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_admin_index_tsx",
+      "target": "index_handledeletecategory",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Admin/index.tsx",
+      "source_location": "L122",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_admin_index_tsx",
+      "target": "index_handlesavesettings",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Admin/index.tsx",
+      "source_location": "L134",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_admin_index_tsx",
+      "target": "index_gettabcontent",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Admin/index.tsx",
+      "source_location": "L145",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_loginpage_index_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/LoginPage/index.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_loginpage_index_tsx",
+      "target": "react_router_dom",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/LoginPage/index.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_loginpage_index_tsx",
+      "target": "authcontext_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/LoginPage/index.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_loginpage_index_tsx",
+      "target": "index_handlesubmit",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/LoginPage/index.tsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_settingspage_index_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_settingspage_index_tsx",
+      "target": "toastcontext_tsx",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_settingspage_index_tsx",
+      "target": "modal_tsx",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_settingspage_index_tsx",
+      "target": "confirmdialog_tsx",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_settingspage_index_tsx",
+      "target": "skeleton_tsx",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_settingspage_index_tsx",
+      "target": "currencyinput_tsx",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_settingspage_index_tsx",
+      "target": "payment_methods_ts",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_settingspage_index_tsx",
+      "target": "budgets_ts",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_settingspage_index_tsx",
+      "target": "recurring_expenses_ts",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_settingspage_index_tsx",
+      "target": "categories_ts",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_settingspage_index_tsx",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_settingspage_index_tsx",
+      "target": "index_handlesavepaymentmethod",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L91",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_settingspage_index_tsx",
+      "target": "index_handledeletepaymentmethod",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L109",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_settingspage_index_tsx",
+      "target": "index_handlesavebudget",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L121",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_settingspage_index_tsx",
+      "target": "index_handledeletebudget",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L144",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_settingspage_index_tsx",
+      "target": "index_handlesaverecurringexpense",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L156",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_settingspage_index_tsx",
+      "target": "index_handledeleterecurringexpense",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L183",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_settingspage_index_tsx",
+      "target": "index_handletogglerecurringexpense",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L194",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_settingspage_index_tsx",
+      "target": "index_gettabcontent",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L204",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_settingspage_index_tsx",
+      "target": "index_handlesubmit",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L664",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_settingspage_index_tsx",
+      "target": "index_handlesubmit",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L926",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_statspage_index_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/StatsPage/index.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_statspage_index_tsx",
+      "target": "skeleton_tsx",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/StatsPage/index.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_statspage_index_tsx",
+      "target": "stats_ts",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/StatsPage/index.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_statspage_index_tsx",
+      "target": "budgets_ts",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/StatsPage/index.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_statspage_index_tsx",
+      "target": "categories_ts",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/StatsPage/index.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_statspage_index_tsx",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/StatsPage/index.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_statspage_index_tsx",
+      "target": "recharts",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/StatsPage/index.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_statspage_index_tsx",
+      "target": "index_handlemonthchange",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/StatsPage/index.tsx",
+      "source_location": "L57",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_statspage_index_tsx",
+      "target": "index_handleretry",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/StatsPage/index.tsx",
+      "source_location": "L66",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_transactions_index_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_transactions_index_tsx",
+      "target": "modal_tsx",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_transactions_index_tsx",
+      "target": "transactionform_tsx",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_transactions_index_tsx",
+      "target": "confirmdialog_tsx",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_transactions_index_tsx",
+      "target": "skeleton_tsx",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_transactions_index_tsx",
+      "target": "transactions_ts",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_transactions_index_tsx",
+      "target": "categories_ts",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_transactions_index_tsx",
+      "target": "payment_methods_ts",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_transactions_index_tsx",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_transactions_index_tsx",
+      "target": "toastcontext_tsx",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_transactions_index_tsx",
+      "target": "index_handlefilterchange",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L126",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_transactions_index_tsx",
+      "target": "index_handlemonthchange",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L130",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_transactions_index_tsx",
+      "target": "index_handlepagechange",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L140",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_transactions_index_tsx",
+      "target": "index_handlecreatesubmit",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L144",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_transactions_index_tsx",
+      "target": "index_handleeditsubmit",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L190",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_transactions_index_tsx",
+      "target": "index_handleedit",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L224",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_transactions_index_tsx",
+      "target": "index_handledelete",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L229",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_transactions_index_tsx",
+      "target": "index_handleconfirmdelete",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L234",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_transactions_index_tsx",
+      "target": "index_filterbar",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L251",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_transactions_index_tsx",
+      "target": "index_transactionrow",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L332",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_transactions_index_tsx",
+      "target": "index_pagination",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L377",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_dashboard_index_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Dashboard/index.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_dashboard_index_tsx",
+      "target": "modal_tsx",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Dashboard/index.tsx",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_dashboard_index_tsx",
+      "target": "transactionform_tsx",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Dashboard/index.tsx",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_dashboard_index_tsx",
+      "target": "calendar_tsx",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Dashboard/index.tsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_dashboard_index_tsx",
+      "target": "skeleton_tsx",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Dashboard/index.tsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_dashboard_index_tsx",
+      "target": "stats_ts",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Dashboard/index.tsx",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_dashboard_index_tsx",
+      "target": "transactions_ts",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Dashboard/index.tsx",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_dashboard_index_tsx",
+      "target": "categories_ts",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Dashboard/index.tsx",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_dashboard_index_tsx",
+      "target": "payment_methods_ts",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Dashboard/index.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_dashboard_index_tsx",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Dashboard/index.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_dashboard_index_tsx",
+      "target": "recharts",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Dashboard/index.tsx",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_dashboard_index_tsx",
+      "target": "index_handlemonthchange",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Dashboard/index.tsx",
+      "source_location": "L84",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_dashboard_index_tsx",
+      "target": "index_handletransactionsubmit",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Dashboard/index.tsx",
+      "source_location": "L93",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_dashboard_index_tsx",
+      "target": "index_summarycard",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Dashboard/index.tsx",
+      "source_location": "L141",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_dashboard_index_tsx",
+      "target": "index_transactionrow",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Dashboard/index.tsx",
+      "source_location": "L154",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_pages_dashboard_index_tsx",
+      "target": "index_categoryranking",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Dashboard/index.tsx",
+      "source_location": "L182",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_contexts_toastcontext_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/contexts/ToastContext.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_contexts_toastcontext_tsx",
+      "target": "toastcontext_toastprovider",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/contexts/ToastContext.tsx",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_contexts_toastcontext_tsx",
+      "target": "toastcontext_gettoaststyles",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/contexts/ToastContext.tsx",
+      "source_location": "L81",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_contexts_themecontext_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/contexts/ThemeContext.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_contexts_themecontext_tsx",
+      "target": "themecontext_getinitialtheme",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/contexts/ThemeContext.tsx",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_contexts_themecontext_tsx",
+      "target": "themecontext_themeprovider",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/contexts/ThemeContext.tsx",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_contexts_themecontext_tsx",
+      "target": "themecontext_usetheme",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/contexts/ThemeContext.tsx",
+      "source_location": "L48",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_contexts_authcontext_tsx",
+      "target": "react",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/contexts/AuthContext.tsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_contexts_authcontext_tsx",
+      "target": "index_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/contexts/AuthContext.tsx",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_contexts_authcontext_tsx",
+      "target": "auth_js",
+      "relation": "imports_from",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/contexts/AuthContext.tsx",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_contexts_authcontext_tsx",
+      "target": "authcontext_authprovider",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/contexts/AuthContext.tsx",
+      "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "client_src_contexts_authcontext_tsx",
+      "target": "authcontext_useauth",
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/contexts/AuthContext.tsx",
+      "source_location": "L109",
+      "weight": 1.0
+    },
+    {
+      "source": "s_budget_app",
+      "target": "s_frontend",
+      "label": "has_layer",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_budget_app",
+      "target": "s_backend",
+      "label": "has_layer",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_frontend",
+      "target": "s_backend",
+      "label": "calls_api",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_auth_system",
+      "target": "s_jwt_access",
+      "label": "uses",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_auth_system",
+      "target": "s_jwt_refresh",
+      "label": "uses",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_auth_system",
+      "target": "s_api_auth",
+      "label": "exposed_via",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_auth_system",
+      "target": "s_auto_login",
+      "label": "includes",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_transaction_crud",
+      "target": "s_api_transactions",
+      "label": "exposed_via",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_transaction_crud",
+      "target": "s_model_transaction",
+      "label": "uses_model",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_transaction_crud",
+      "target": "s_sub_category",
+      "label": "includes",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_transaction_crud",
+      "target": "s_soft_delete",
+      "label": "uses",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_transaction_crud",
+      "target": "s_search_filter",
+      "label": "includes",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_transaction_crud",
+      "target": "s_pagination",
+      "label": "includes",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_payment_method",
+      "target": "s_api_payment_methods",
+      "label": "exposed_via",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_payment_method",
+      "target": "s_model_payment",
+      "label": "uses_model",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_payment_method",
+      "target": "s_settings_page",
+      "label": "rendered_in",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_dashboard",
+      "target": "s_calendar_view",
+      "label": "includes",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_dashboard",
+      "target": "s_daily_budget",
+      "label": "includes",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_dashboard",
+      "target": "s_api_stats",
+      "label": "calls",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_stats_page",
+      "target": "s_api_stats",
+      "label": "calls",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_stats_page",
+      "target": "s_budget_mgmt",
+      "label": "includes",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_budget_mgmt",
+      "target": "s_api_budgets",
+      "label": "exposed_via",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_budget_mgmt",
+      "target": "s_model_budget",
+      "label": "uses_model",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_recurring_expense",
+      "target": "s_api_recurring",
+      "label": "exposed_via",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_recurring_expense",
+      "target": "s_model_recurring",
+      "label": "uses_model",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_recurring_expense",
+      "target": "s_settings_page",
+      "label": "rendered_in",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_admin_page",
+      "target": "s_api_admin",
+      "label": "calls",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_admin_page",
+      "target": "s_role_admin",
+      "label": "requires_role",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_model_user",
+      "target": "s_model_category",
+      "label": "has_many",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_model_user",
+      "target": "s_model_transaction",
+      "label": "has_many",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_model_user",
+      "target": "s_model_payment",
+      "label": "has_many",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_model_user",
+      "target": "s_model_budget",
+      "label": "has_many",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_model_user",
+      "target": "s_model_recurring",
+      "label": "has_many",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_model_transaction",
+      "target": "s_model_category",
+      "label": "belongs_to",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_model_transaction",
+      "target": "s_model_payment",
+      "label": "belongs_to",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_model_budget",
+      "target": "s_model_category",
+      "label": "belongs_to",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_model_recurring",
+      "target": "s_model_category",
+      "label": "belongs_to",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_model_recurring",
+      "target": "s_model_payment",
+      "label": "belongs_to",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_soft_delete",
+      "target": "s_model_transaction",
+      "label": "applies_to",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_soft_delete",
+      "target": "s_model_category",
+      "label": "applies_to",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_soft_delete",
+      "target": "s_model_payment",
+      "label": "applies_to",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_soft_delete",
+      "target": "s_model_recurring",
+      "label": "applies_to",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_sub_category",
+      "target": "s_api_subcategories",
+      "label": "exposed_via",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_ui_dark_mode",
+      "target": "s_frontend",
+      "label": "part_of",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_ui_responsive",
+      "target": "s_frontend",
+      "label": "part_of",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_transaction_crud",
+      "target": "s_model_category",
+      "label": "validates_type",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_model_category",
+      "target": "s_role_admin",
+      "label": "global_managed_by",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    },
+    {
+      "source": "s_model_category",
+      "target": "s_role_user",
+      "label": "personal_owned_by",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "he_auth_flow",
+      "type": "process",
+      "nodes": [
+        "s_auth_system",
+        "s_jwt_access",
+        "s_jwt_refresh",
+        "s_api_auth",
+        "s_auto_login"
+      ],
+      "label": "\uc778\uc99d \ud750\ub984"
+    },
+    {
+      "id": "he_data_models",
+      "type": "entity_group",
+      "nodes": [
+        "s_model_user",
+        "s_model_category",
+        "s_model_transaction",
+        "s_model_payment",
+        "s_model_budget",
+        "s_model_recurring"
+      ],
+      "label": "\ub370\uc774\ud130 \ubaa8\ub378"
+    },
+    {
+      "id": "he_crud_features",
+      "type": "feature_group",
+      "nodes": [
+        "s_transaction_crud",
+        "s_payment_method",
+        "s_budget_mgmt",
+        "s_recurring_expense"
+      ],
+      "label": "CRUD \uae30\ub2a5"
+    },
+    {
+      "id": "he_pages",
+      "type": "ui_group",
+      "nodes": [
+        "s_dashboard",
+        "s_stats_page",
+        "s_settings_page",
+        "s_admin_page"
+      ],
+      "label": "\ud398\uc774\uc9c0 \uad6c\uc131"
+    }
+  ],
+  "input_tokens": 0,
+  "output_tokens": 0
+}

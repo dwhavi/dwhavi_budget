@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { GoogleLogin } from '@react-oauth/google';
 import { useAuth } from '../../contexts/AuthContext.js';
 
 export function LoginPage() {
@@ -8,7 +9,7 @@ export function LoginPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { login, googleLogin } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -26,10 +27,44 @@ export function LoginPage() {
     }
   };
 
+  const handleGoogleSuccess = async (credentialResponse: { credential?: string }) => {
+    if (!credentialResponse.credential) {
+      setError('Google 인증 토큰을 가져올 수 없습니다');
+      return;
+    }
+    setError('');
+    setIsLoading(true);
+    try {
+      await googleLogin(credentialResponse.credential);
+      navigate('/dashboard');
+    } catch (err: unknown) {
+      const axiosErr = err as { response?: { data?: { message?: string } } };
+      setError(axiosErr.response?.data?.message ?? 'Google 로그인에 실패했습니다');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-950 flex items-center justify-center">
       <div className="bg-gray-900 border border-gray-800 rounded-xl p-8 w-full max-w-md">
         <h2 className="text-2xl font-bold text-gray-100 mb-6">로그인</h2>
+
+        <GoogleLogin
+          onSuccess={handleGoogleSuccess}
+          onError={() => setError('Google 로그인에 실패했습니다')}
+          text="signin_with"
+          shape="rectangular"
+          size="large"
+          width="100%"
+        />
+
+        <div className="flex items-center my-6">
+          <div className="flex-1 border-t border-gray-700" />
+          <span className="px-4 text-sm text-gray-500">또는</span>
+          <div className="flex-1 border-t border-gray-700" />
+        </div>
+
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-gray-300 mb-2">이메일</label>

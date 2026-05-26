@@ -1,0 +1,544 @@
+{
+  "communities": {
+    "0": [
+      "s_admin_page",
+      "s_api_admin",
+      "s_api_payment_methods",
+      "s_api_recurring",
+      "s_api_subcategories",
+      "s_api_transactions",
+      "s_model_budget",
+      "s_model_category",
+      "s_model_payment",
+      "s_model_recurring",
+      "s_model_transaction",
+      "s_model_user",
+      "s_pagination",
+      "s_payment_method",
+      "s_recurring_expense",
+      "s_role_admin",
+      "s_role_user",
+      "s_search_filter",
+      "s_settings_page",
+      "s_soft_delete",
+      "s_sub_category",
+      "s_transaction_crud"
+    ],
+    "1": [
+      "client_src_pages_dashboard_index_tsx",
+      "client_src_pages_statspage_index_tsx",
+      "client_src_pages_transactions_index_tsx",
+      "index_categoryranking",
+      "index_filterbar",
+      "index_handleconfirmdelete",
+      "index_handlecreatesubmit",
+      "index_handledelete",
+      "index_handleedit",
+      "index_handleeditsubmit",
+      "index_handlefilterchange",
+      "index_handlemonthchange",
+      "index_handlepagechange",
+      "index_handleretry",
+      "index_handletransactionsubmit",
+      "index_pagination",
+      "index_summarycard",
+      "index_transactionrow"
+    ],
+    "2": [
+      "client_src_pages_admin_index_tsx",
+      "client_src_pages_settingspage_index_tsx",
+      "index_gettabcontent",
+      "index_handledeletebudget",
+      "index_handledeletecategory",
+      "index_handledeletepaymentmethod",
+      "index_handledeleterecurringexpense",
+      "index_handledeleteuser",
+      "index_handlesavebudget",
+      "index_handlesavecategory",
+      "index_handlesavepaymentmethod",
+      "index_handlesaverecurringexpense",
+      "index_handlesavesettings",
+      "index_handlesaveuser",
+      "index_handletogglerecurringexpense"
+    ],
+    "3": [
+      "client_src_pages_loginpage_index_tsx",
+      "client_src_pages_registerpage_index_tsx",
+      "index_handlesubmit",
+      "index_validatedisplayname",
+      "index_validateemail",
+      "index_validateform",
+      "index_validatepassword",
+      "index_validatepasswordconfirm"
+    ],
+    "4": [
+      "client_src_components_transactionform_tsx",
+      "transactionform_handlecategorychange",
+      "transactionform_handleclickoutside",
+      "transactionform_handleinputchange",
+      "transactionform_handlepaymentmethodchange",
+      "transactionform_handlesubcategoryselect",
+      "transactionform_handlesubmit"
+    ],
+    "5": [
+      "s_api_budgets",
+      "s_api_stats",
+      "s_budget_mgmt",
+      "s_calendar_view",
+      "s_daily_budget",
+      "s_dashboard",
+      "s_stats_page"
+    ],
+    "6": [
+      "server_src_tests_transactions_test_ts",
+      "transactions_test_createtestcategory",
+      "transactions_test_createtestpaymentmethod",
+      "transactions_test_createtesttransaction",
+      "transactions_test_createtestuser",
+      "transactions_test_loadmodels"
+    ],
+    "7": [
+      "app_adminroute",
+      "app_app",
+      "app_approutes",
+      "app_protectedroute",
+      "app_publicroute",
+      "client_src_app_tsx"
+    ],
+    "8": [
+      "server_src_tests_subcategories_test_ts",
+      "subcategories_test_createtestcategory",
+      "subcategories_test_createtestpaymentmethod",
+      "subcategories_test_createtesttransaction",
+      "subcategories_test_createtestuser"
+    ],
+    "9": [
+      "server_src_tests_stats_test_ts",
+      "stats_test_createtestpaymentmethods",
+      "stats_test_createtestuser",
+      "stats_test_generateaccesstoken",
+      "stats_test_seedglobalcategories"
+    ],
+    "10": [
+      "auth_comparepassword",
+      "auth_generateaccesstoken",
+      "auth_generaterefreshtoken",
+      "auth_hashpassword",
+      "server_src_routes_auth_ts"
+    ],
+    "11": [
+      "calendar_formatdate",
+      "calendar_getdaysinmonth",
+      "calendar_handledateclick",
+      "calendar_navigatemonth",
+      "client_src_components_calendar_tsx"
+    ],
+    "12": [
+      "s_backend",
+      "s_budget_app",
+      "s_frontend",
+      "s_ui_dark_mode",
+      "s_ui_responsive"
+    ],
+    "13": [
+      "s_api_auth",
+      "s_auth_system",
+      "s_auto_login",
+      "s_jwt_access",
+      "s_jwt_refresh"
+    ],
+    "14": [
+      "recurring_expenses_test_createtestuser",
+      "recurring_expenses_test_generatetoken",
+      "recurring_expenses_test_seedcategoryandpaymentmethod",
+      "server_src_tests_recurring_expenses_test_ts"
+    ],
+    "15": [
+      "categories_test_createtestuser",
+      "categories_test_generateaccesstoken",
+      "categories_test_seedglobalcategories",
+      "server_src_tests_categories_test_ts"
+    ],
+    "16": [
+      "budgets_test_createtestuser",
+      "budgets_test_generateaccesstoken",
+      "budgets_test_seedglobalcategories",
+      "server_src_tests_budgets_test_ts"
+    ],
+    "17": [
+      "client_src_contexts_themecontext_tsx",
+      "themecontext_getinitialtheme",
+      "themecontext_themeprovider",
+      "themecontext_usetheme"
+    ],
+    "18": [
+      "index_setupapp",
+      "index_startserver",
+      "server_src_index_ts"
+    ],
+    "19": [
+      "index_loadmodels",
+      "index_setupassociations",
+      "server_src_models_index_ts"
+    ],
+    "20": [
+      "admin_test_createuser",
+      "admin_test_generatetoken",
+      "server_src_tests_admin_test_ts"
+    ],
+    "21": [
+      "payment_methods_test_createtestuser",
+      "payment_methods_test_generatetoken",
+      "server_src_tests_payment_methods_test_ts"
+    ],
+    "22": [
+      "server_src_routes_transactions_ts",
+      "transactions_buildorderclause",
+      "transactions_buildwhereclause"
+    ],
+    "23": [
+      "client_src_components_skeleton_tsx",
+      "skeleton_skeletoncard",
+      "skeleton_skeletontext"
+    ],
+    "24": [
+      "client_src_contexts_toastcontext_tsx",
+      "toastcontext_gettoaststyles",
+      "toastcontext_toastprovider"
+    ],
+    "25": [
+      "authcontext_authprovider",
+      "authcontext_useauth",
+      "client_src_contexts_authcontext_tsx"
+    ],
+    "26": [
+      "recurringexpense_recurringexpense",
+      "server_src_models_recurringexpense_ts"
+    ],
+    "27": [
+      "budget_budget",
+      "server_src_models_budget_ts"
+    ],
+    "28": [
+      "server_src_models_user_ts",
+      "user_user"
+    ],
+    "29": [
+      "category_category",
+      "server_src_models_category_ts"
+    ],
+    "30": [
+      "paymentmethod_paymentmethod",
+      "server_src_models_paymentmethod_ts"
+    ],
+    "31": [
+      "server_src_models_transaction_ts",
+      "transaction_transaction"
+    ],
+    "32": [
+      "defaultcategories_seed",
+      "server_src_seeders_defaultcategories_ts"
+    ],
+    "33": [
+      "server_src_middleware_validate_ts",
+      "validate_validate"
+    ],
+    "34": [
+      "errorhandler_errorhandler",
+      "server_src_middleware_errorhandler_ts"
+    ],
+    "35": [
+      "admin_adminmiddleware",
+      "server_src_middleware_admin_ts"
+    ],
+    "36": [
+      "auth_authmiddleware",
+      "server_src_middleware_auth_ts"
+    ],
+    "37": [
+      "auth_test_createtestuser",
+      "server_src_tests_auth_test_ts"
+    ],
+    "38": [
+      "server_src_routes_stats_ts",
+      "stats_calculateremainingdaysinmonth"
+    ],
+    "39": [
+      "client_src_components_mobilenav_tsx",
+      "mobilenav_mobilenav"
+    ],
+    "40": [
+      "client_src_components_sidebar_tsx",
+      "sidebar_isactive"
+    ],
+    "41": [
+      "client_src_components_confirmdialog_tsx",
+      "confirmdialog_confirmdialog"
+    ],
+    "42": [
+      "client_src_components_currencyinput_tsx",
+      "currencyinput_currencyinput"
+    ],
+    "43": [
+      "client_src_components_layout_tsx",
+      "layout_layout"
+    ],
+    "44": [
+      "client_src_components_modal_tsx",
+      "modal_modal"
+    ],
+    "45": [
+      "axios_processqueue",
+      "client_src_api_axios_ts"
+    ],
+    "46": [
+      "server_vitest_config_ts"
+    ],
+    "47": [
+      "server_src_tests_smoke_test_ts"
+    ],
+    "48": [
+      "server_src_tests_setup_ts"
+    ],
+    "49": [
+      "server_src_routes_subcategories_ts"
+    ],
+    "50": [
+      "server_src_routes_recurring_expenses_ts"
+    ],
+    "51": [
+      "server_src_routes_payment_methods_ts"
+    ],
+    "52": [
+      "server_src_routes_admin_ts"
+    ],
+    "53": [
+      "server_src_routes_budgets_ts"
+    ],
+    "54": [
+      "server_src_routes_categories_ts"
+    ],
+    "55": [
+      "server_src_validations_category_ts"
+    ],
+    "56": [
+      "server_src_validations_transaction_ts"
+    ],
+    "57": [
+      "server_src_validations_recurring_expense_ts"
+    ],
+    "58": [
+      "server_src_validations_admin_ts"
+    ],
+    "59": [
+      "server_src_validations_auth_ts"
+    ],
+    "60": [
+      "server_src_validations_budget_ts"
+    ],
+    "61": [
+      "server_src_validations_payment_method_ts"
+    ],
+    "62": [
+      "client_eslint_config_js"
+    ],
+    "63": [
+      "client_vite_config_ts"
+    ],
+    "64": [
+      "client_vitest_config_ts"
+    ],
+    "65": [
+      "client_src_main_tsx"
+    ],
+    "66": [
+      "client_src_components_header_tsx"
+    ],
+    "67": [
+      "client_src_test_smoke_test_ts"
+    ],
+    "68": [
+      "client_src_test_setup_ts"
+    ],
+    "69": [
+      "client_src_api_subcategories_ts"
+    ],
+    "70": [
+      "client_src_api_recurring_expenses_ts"
+    ],
+    "71": [
+      "client_src_api_stats_ts"
+    ],
+    "72": [
+      "client_src_api_payment_methods_ts"
+    ],
+    "73": [
+      "client_src_api_transactions_ts"
+    ],
+    "74": [
+      "client_src_api_admin_ts"
+    ],
+    "75": [
+      "client_src_api_auth_ts"
+    ],
+    "76": [
+      "client_src_api_budgets_ts"
+    ],
+    "77": [
+      "client_src_api_categories_ts"
+    ],
+    "78": [
+      "client_src_types_index_ts"
+    ],
+    "79": [
+      "s_zod_validation"
+    ]
+  },
+  "cohesion": {
+    "0": 0.14,
+    "1": 0.12,
+    "2": 0.13,
+    "3": 0.29,
+    "4": 0.29,
+    "5": 0.29,
+    "6": 0.33,
+    "7": 0.33,
+    "8": 0.4,
+    "9": 0.4,
+    "10": 0.4,
+    "11": 0.4,
+    "12": 0.5,
+    "13": 0.4,
+    "14": 0.5,
+    "15": 0.5,
+    "16": 0.5,
+    "17": 0.5,
+    "18": 1.0,
+    "19": 1.0,
+    "20": 0.67,
+    "21": 0.67,
+    "22": 0.67,
+    "23": 0.67,
+    "24": 0.67,
+    "25": 0.67,
+    "26": 1.0,
+    "27": 1.0,
+    "28": 1.0,
+    "29": 1.0,
+    "30": 1.0,
+    "31": 1.0,
+    "32": 1.0,
+    "33": 1.0,
+    "34": 1.0,
+    "35": 1.0,
+    "36": 1.0,
+    "37": 1.0,
+    "38": 1.0,
+    "39": 1.0,
+    "40": 1.0,
+    "41": 1.0,
+    "42": 1.0,
+    "43": 1.0,
+    "44": 1.0,
+    "45": 1.0,
+    "46": 1.0,
+    "47": 1.0,
+    "48": 1.0,
+    "49": 1.0,
+    "50": 1.0,
+    "51": 1.0,
+    "52": 1.0,
+    "53": 1.0,
+    "54": 1.0,
+    "55": 1.0,
+    "56": 1.0,
+    "57": 1.0,
+    "58": 1.0,
+    "59": 1.0,
+    "60": 1.0,
+    "61": 1.0,
+    "62": 1.0,
+    "63": 1.0,
+    "64": 1.0,
+    "65": 1.0,
+    "66": 1.0,
+    "67": 1.0,
+    "68": 1.0,
+    "69": 1.0,
+    "70": 1.0,
+    "71": 1.0,
+    "72": 1.0,
+    "73": 1.0,
+    "74": 1.0,
+    "75": 1.0,
+    "76": 1.0,
+    "77": 1.0,
+    "78": 1.0,
+    "79": 1.0
+  },
+  "gods": [
+    {
+      "id": "index_handlesubmit",
+      "label": "handleSubmit()",
+      "edges": 4
+    },
+    {
+      "id": "index_handlemonthchange",
+      "label": "handleMonthChange()",
+      "edges": 3
+    },
+    {
+      "id": "index_setupapp",
+      "label": "setupApp()",
+      "edges": 2
+    },
+    {
+      "id": "index_startserver",
+      "label": "startServer()",
+      "edges": 2
+    },
+    {
+      "id": "index_loadmodels",
+      "label": "loadModels()",
+      "edges": 2
+    },
+    {
+      "id": "index_setupassociations",
+      "label": "setupAssociations()",
+      "edges": 2
+    },
+    {
+      "id": "index_validateform",
+      "label": "validateForm()",
+      "edges": 2
+    },
+    {
+      "id": "index_gettabcontent",
+      "label": "getTabContent()",
+      "edges": 2
+    },
+    {
+      "id": "index_transactionrow",
+      "label": "TransactionRow()",
+      "edges": 2
+    },
+    {
+      "id": "recurringexpense_recurringexpense",
+      "label": "RecurringExpense",
+      "edges": 1
+    }
+  ],
+  "surprises": [
+    {
+      "source": "handleSubmit()",
+      "target": "validateForm()",
+      "source_files": [
+        "client/src/pages/SettingsPage/index.tsx",
+        "client/src/pages/RegisterPage/index.tsx"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "cross-file semantic connection"
+    }
+  ]
+}

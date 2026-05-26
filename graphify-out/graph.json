@@ -1,0 +1,3963 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {
+    "hyperedges": [
+      {
+        "id": "he_auth_flow",
+        "type": "process",
+        "nodes": [
+          "s_auth_system",
+          "s_jwt_access",
+          "s_jwt_refresh",
+          "s_api_auth",
+          "s_auto_login"
+        ],
+        "label": "\uc778\uc99d \ud750\ub984"
+      },
+      {
+        "id": "he_data_models",
+        "type": "entity_group",
+        "nodes": [
+          "s_model_user",
+          "s_model_category",
+          "s_model_transaction",
+          "s_model_payment",
+          "s_model_budget",
+          "s_model_recurring"
+        ],
+        "label": "\ub370\uc774\ud130 \ubaa8\ub378"
+      },
+      {
+        "id": "he_crud_features",
+        "type": "feature_group",
+        "nodes": [
+          "s_transaction_crud",
+          "s_payment_method",
+          "s_budget_mgmt",
+          "s_recurring_expense"
+        ],
+        "label": "CRUD \uae30\ub2a5"
+      },
+      {
+        "id": "he_pages",
+        "type": "ui_group",
+        "nodes": [
+          "s_dashboard",
+          "s_stats_page",
+          "s_settings_page",
+          "s_admin_page"
+        ],
+        "label": "\ud398\uc774\uc9c0 \uad6c\uc131"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "label": "vitest.config.ts",
+      "file_type": "code",
+      "source_file": "server/vitest.config.ts",
+      "source_location": "L1",
+      "id": "server_vitest_config_ts",
+      "community": 46
+    },
+    {
+      "label": "index.ts",
+      "file_type": "code",
+      "source_file": "server/src/index.ts",
+      "source_location": "L1",
+      "id": "server_src_index_ts",
+      "community": 18
+    },
+    {
+      "label": "setupApp()",
+      "file_type": "code",
+      "source_file": "server/src/index.ts",
+      "source_location": "L36",
+      "id": "index_setupapp",
+      "community": 18
+    },
+    {
+      "label": "startServer()",
+      "file_type": "code",
+      "source_file": "server/src/index.ts",
+      "source_location": "L72",
+      "id": "index_startserver",
+      "community": 18
+    },
+    {
+      "label": "RecurringExpense.ts",
+      "file_type": "code",
+      "source_file": "server/src/models/RecurringExpense.ts",
+      "source_location": "L1",
+      "id": "server_src_models_recurringexpense_ts",
+      "community": 26
+    },
+    {
+      "label": "RecurringExpense",
+      "file_type": "code",
+      "source_file": "server/src/models/RecurringExpense.ts",
+      "source_location": "L22",
+      "id": "recurringexpense_recurringexpense",
+      "community": 26
+    },
+    {
+      "label": "index.ts",
+      "file_type": "code",
+      "source_file": "server/src/models/index.ts",
+      "source_location": "L1",
+      "id": "server_src_models_index_ts",
+      "community": 19
+    },
+    {
+      "label": "loadModels()",
+      "file_type": "code",
+      "source_file": "server/src/models/index.ts",
+      "source_location": "L27",
+      "id": "index_loadmodels",
+      "community": 19
+    },
+    {
+      "label": "setupAssociations()",
+      "file_type": "code",
+      "source_file": "server/src/models/index.ts",
+      "source_location": "L49",
+      "id": "index_setupassociations",
+      "community": 19
+    },
+    {
+      "label": "Budget.ts",
+      "file_type": "code",
+      "source_file": "server/src/models/Budget.ts",
+      "source_location": "L1",
+      "id": "server_src_models_budget_ts",
+      "community": 27
+    },
+    {
+      "label": "Budget",
+      "file_type": "code",
+      "source_file": "server/src/models/Budget.ts",
+      "source_location": "L16",
+      "id": "budget_budget",
+      "community": 27
+    },
+    {
+      "label": "User.ts",
+      "file_type": "code",
+      "source_file": "server/src/models/User.ts",
+      "source_location": "L1",
+      "id": "server_src_models_user_ts",
+      "community": 28
+    },
+    {
+      "label": "User",
+      "file_type": "code",
+      "source_file": "server/src/models/User.ts",
+      "source_location": "L17",
+      "id": "user_user",
+      "community": 28
+    },
+    {
+      "label": "Category.ts",
+      "file_type": "code",
+      "source_file": "server/src/models/Category.ts",
+      "source_location": "L1",
+      "id": "server_src_models_category_ts",
+      "community": 29
+    },
+    {
+      "label": "Category",
+      "file_type": "code",
+      "source_file": "server/src/models/Category.ts",
+      "source_location": "L19",
+      "id": "category_category",
+      "community": 29
+    },
+    {
+      "label": "PaymentMethod.ts",
+      "file_type": "code",
+      "source_file": "server/src/models/PaymentMethod.ts",
+      "source_location": "L1",
+      "id": "server_src_models_paymentmethod_ts",
+      "community": 30
+    },
+    {
+      "label": "PaymentMethod",
+      "file_type": "code",
+      "source_file": "server/src/models/PaymentMethod.ts",
+      "source_location": "L20",
+      "id": "paymentmethod_paymentmethod",
+      "community": 30
+    },
+    {
+      "label": "Transaction.ts",
+      "file_type": "code",
+      "source_file": "server/src/models/Transaction.ts",
+      "source_location": "L1",
+      "id": "server_src_models_transaction_ts",
+      "community": 31
+    },
+    {
+      "label": "Transaction",
+      "file_type": "code",
+      "source_file": "server/src/models/Transaction.ts",
+      "source_location": "L21",
+      "id": "transaction_transaction",
+      "community": 31
+    },
+    {
+      "label": "defaultCategories.ts",
+      "file_type": "code",
+      "source_file": "server/src/seeders/defaultCategories.ts",
+      "source_location": "L1",
+      "id": "server_src_seeders_defaultcategories_ts",
+      "community": 32
+    },
+    {
+      "label": "seed()",
+      "file_type": "code",
+      "source_file": "server/src/seeders/defaultCategories.ts",
+      "source_location": "L31",
+      "id": "defaultcategories_seed",
+      "community": 32
+    },
+    {
+      "label": "validate.ts",
+      "file_type": "code",
+      "source_file": "server/src/middleware/validate.ts",
+      "source_location": "L1",
+      "id": "server_src_middleware_validate_ts",
+      "community": 33
+    },
+    {
+      "label": "validate()",
+      "file_type": "code",
+      "source_file": "server/src/middleware/validate.ts",
+      "source_location": "L4",
+      "id": "validate_validate",
+      "community": 33
+    },
+    {
+      "label": "errorHandler.ts",
+      "file_type": "code",
+      "source_file": "server/src/middleware/errorHandler.ts",
+      "source_location": "L1",
+      "id": "server_src_middleware_errorhandler_ts",
+      "community": 34
+    },
+    {
+      "label": "errorHandler()",
+      "file_type": "code",
+      "source_file": "server/src/middleware/errorHandler.ts",
+      "source_location": "L3",
+      "id": "errorhandler_errorhandler",
+      "community": 34
+    },
+    {
+      "label": "admin.ts",
+      "file_type": "code",
+      "source_file": "server/src/middleware/admin.ts",
+      "source_location": "L1",
+      "id": "server_src_middleware_admin_ts",
+      "community": 35
+    },
+    {
+      "label": "adminMiddleware()",
+      "file_type": "code",
+      "source_file": "server/src/middleware/admin.ts",
+      "source_location": "L4",
+      "id": "admin_adminmiddleware",
+      "community": 35
+    },
+    {
+      "label": "auth.ts",
+      "file_type": "code",
+      "source_file": "server/src/middleware/auth.ts",
+      "source_location": "L1",
+      "id": "server_src_middleware_auth_ts",
+      "community": 36
+    },
+    {
+      "label": "authMiddleware()",
+      "file_type": "code",
+      "source_file": "server/src/middleware/auth.ts",
+      "source_location": "L12",
+      "id": "auth_authmiddleware",
+      "community": 36
+    },
+    {
+      "label": "smoke.test.ts",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/smoke.test.ts",
+      "source_location": "L1",
+      "id": "server_src_tests_smoke_test_ts",
+      "community": 47
+    },
+    {
+      "label": "admin.test.ts",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/admin.test.ts",
+      "source_location": "L1",
+      "id": "server_src_tests_admin_test_ts",
+      "community": 20
+    },
+    {
+      "label": "createUser()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/admin.test.ts",
+      "source_location": "L37",
+      "id": "admin_test_createuser",
+      "community": 20
+    },
+    {
+      "label": "generateToken()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/admin.test.ts",
+      "source_location": "L45",
+      "id": "admin_test_generatetoken",
+      "community": 20
+    },
+    {
+      "label": "payment-methods.test.ts",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/payment-methods.test.ts",
+      "source_location": "L1",
+      "id": "server_src_tests_payment_methods_test_ts",
+      "community": 21
+    },
+    {
+      "label": "createTestUser()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/payment-methods.test.ts",
+      "source_location": "L30",
+      "id": "payment_methods_test_createtestuser",
+      "community": 21
+    },
+    {
+      "label": "generateToken()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/payment-methods.test.ts",
+      "source_location": "L37",
+      "id": "payment_methods_test_generatetoken",
+      "community": 21
+    },
+    {
+      "label": "recurring-expenses.test.ts",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/recurring-expenses.test.ts",
+      "source_location": "L1",
+      "id": "server_src_tests_recurring_expenses_test_ts",
+      "community": 14
+    },
+    {
+      "label": "createTestUser()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/recurring-expenses.test.ts",
+      "source_location": "L22",
+      "id": "recurring_expenses_test_createtestuser",
+      "community": 14
+    },
+    {
+      "label": "generateToken()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/recurring-expenses.test.ts",
+      "source_location": "L31",
+      "id": "recurring_expenses_test_generatetoken",
+      "community": 14
+    },
+    {
+      "label": "seedCategoryAndPaymentMethod()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/recurring-expenses.test.ts",
+      "source_location": "L39",
+      "id": "recurring_expenses_test_seedcategoryandpaymentmethod",
+      "community": 14
+    },
+    {
+      "label": "categories.test.ts",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/categories.test.ts",
+      "source_location": "L1",
+      "id": "server_src_tests_categories_test_ts",
+      "community": 15
+    },
+    {
+      "label": "createTestUser()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/categories.test.ts",
+      "source_location": "L39",
+      "id": "categories_test_createtestuser",
+      "community": 15
+    },
+    {
+      "label": "generateAccessToken()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/categories.test.ts",
+      "source_location": "L46",
+      "id": "categories_test_generateaccesstoken",
+      "community": 15
+    },
+    {
+      "label": "seedGlobalCategories()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/categories.test.ts",
+      "source_location": "L54",
+      "id": "categories_test_seedglobalcategories",
+      "community": 15
+    },
+    {
+      "label": "subcategories.test.ts",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/subcategories.test.ts",
+      "source_location": "L1",
+      "id": "server_src_tests_subcategories_test_ts",
+      "community": 8
+    },
+    {
+      "label": "createTestUser()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/subcategories.test.ts",
+      "source_location": "L28",
+      "id": "subcategories_test_createtestuser",
+      "community": 8
+    },
+    {
+      "label": "createTestCategory()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/subcategories.test.ts",
+      "source_location": "L41",
+      "id": "subcategories_test_createtestcategory",
+      "community": 8
+    },
+    {
+      "label": "createTestPaymentMethod()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/subcategories.test.ts",
+      "source_location": "L52",
+      "id": "subcategories_test_createtestpaymentmethod",
+      "community": 8
+    },
+    {
+      "label": "createTestTransaction()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/subcategories.test.ts",
+      "source_location": "L61",
+      "id": "subcategories_test_createtesttransaction",
+      "community": 8
+    },
+    {
+      "label": "stats.test.ts",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/stats.test.ts",
+      "source_location": "L1",
+      "id": "server_src_tests_stats_test_ts",
+      "community": 9
+    },
+    {
+      "label": "createTestUser()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/stats.test.ts",
+      "source_location": "L39",
+      "id": "stats_test_createtestuser",
+      "community": 9
+    },
+    {
+      "label": "generateAccessToken()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/stats.test.ts",
+      "source_location": "L46",
+      "id": "stats_test_generateaccesstoken",
+      "community": 9
+    },
+    {
+      "label": "seedGlobalCategories()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/stats.test.ts",
+      "source_location": "L54",
+      "id": "stats_test_seedglobalcategories",
+      "community": 9
+    },
+    {
+      "label": "createTestPaymentMethods()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/stats.test.ts",
+      "source_location": "L60",
+      "id": "stats_test_createtestpaymentmethods",
+      "community": 9
+    },
+    {
+      "label": "budgets.test.ts",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/budgets.test.ts",
+      "source_location": "L1",
+      "id": "server_src_tests_budgets_test_ts",
+      "community": 16
+    },
+    {
+      "label": "createTestUser()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/budgets.test.ts",
+      "source_location": "L39",
+      "id": "budgets_test_createtestuser",
+      "community": 16
+    },
+    {
+      "label": "generateAccessToken()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/budgets.test.ts",
+      "source_location": "L46",
+      "id": "budgets_test_generateaccesstoken",
+      "community": 16
+    },
+    {
+      "label": "seedGlobalCategories()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/budgets.test.ts",
+      "source_location": "L54",
+      "id": "budgets_test_seedglobalcategories",
+      "community": 16
+    },
+    {
+      "label": "setup.ts",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/setup.ts",
+      "source_location": "L1",
+      "id": "server_src_tests_setup_ts",
+      "community": 48
+    },
+    {
+      "label": "transactions.test.ts",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/transactions.test.ts",
+      "source_location": "L1",
+      "id": "server_src_tests_transactions_test_ts",
+      "community": 6
+    },
+    {
+      "label": "createTestUser()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/transactions.test.ts",
+      "source_location": "L58",
+      "id": "transactions_test_createtestuser",
+      "community": 6
+    },
+    {
+      "label": "createTestCategory()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/transactions.test.ts",
+      "source_location": "L65",
+      "id": "transactions_test_createtestcategory",
+      "community": 6
+    },
+    {
+      "label": "createTestPaymentMethod()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/transactions.test.ts",
+      "source_location": "L69",
+      "id": "transactions_test_createtestpaymentmethod",
+      "community": 6
+    },
+    {
+      "label": "createTestTransaction()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/transactions.test.ts",
+      "source_location": "L73",
+      "id": "transactions_test_createtesttransaction",
+      "community": 6
+    },
+    {
+      "label": "loadModels()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/transactions.test.ts",
+      "source_location": "L476",
+      "id": "transactions_test_loadmodels",
+      "community": 6
+    },
+    {
+      "label": "auth.test.ts",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/auth.test.ts",
+      "source_location": "L1",
+      "id": "server_src_tests_auth_test_ts",
+      "community": 37
+    },
+    {
+      "label": "createTestUser()",
+      "file_type": "code",
+      "source_file": "server/src/__tests__/auth.test.ts",
+      "source_location": "L24",
+      "id": "auth_test_createtestuser",
+      "community": 37
+    },
+    {
+      "label": "subcategories.ts",
+      "file_type": "code",
+      "source_file": "server/src/routes/subcategories.ts",
+      "source_location": "L1",
+      "id": "server_src_routes_subcategories_ts",
+      "community": 49
+    },
+    {
+      "label": "recurring-expenses.ts",
+      "file_type": "code",
+      "source_file": "server/src/routes/recurring-expenses.ts",
+      "source_location": "L1",
+      "id": "server_src_routes_recurring_expenses_ts",
+      "community": 50
+    },
+    {
+      "label": "stats.ts",
+      "file_type": "code",
+      "source_file": "server/src/routes/stats.ts",
+      "source_location": "L1",
+      "id": "server_src_routes_stats_ts",
+      "community": 38
+    },
+    {
+      "label": "calculateRemainingDaysInMonth()",
+      "file_type": "code",
+      "source_file": "server/src/routes/stats.ts",
+      "source_location": "L52",
+      "id": "stats_calculateremainingdaysinmonth",
+      "community": 38
+    },
+    {
+      "label": "payment-methods.ts",
+      "file_type": "code",
+      "source_file": "server/src/routes/payment-methods.ts",
+      "source_location": "L1",
+      "id": "server_src_routes_payment_methods_ts",
+      "community": 51
+    },
+    {
+      "label": "transactions.ts",
+      "file_type": "code",
+      "source_file": "server/src/routes/transactions.ts",
+      "source_location": "L1",
+      "id": "server_src_routes_transactions_ts",
+      "community": 22
+    },
+    {
+      "label": "buildWhereClause()",
+      "file_type": "code",
+      "source_file": "server/src/routes/transactions.ts",
+      "source_location": "L31",
+      "id": "transactions_buildwhereclause",
+      "community": 22
+    },
+    {
+      "label": "buildOrderClause()",
+      "file_type": "code",
+      "source_file": "server/src/routes/transactions.ts",
+      "source_location": "L81",
+      "id": "transactions_buildorderclause",
+      "community": 22
+    },
+    {
+      "label": "admin.ts",
+      "file_type": "code",
+      "source_file": "server/src/routes/admin.ts",
+      "source_location": "L1",
+      "id": "server_src_routes_admin_ts",
+      "community": 52
+    },
+    {
+      "label": "auth.ts",
+      "file_type": "code",
+      "source_file": "server/src/routes/auth.ts",
+      "source_location": "L1",
+      "id": "server_src_routes_auth_ts",
+      "community": 10
+    },
+    {
+      "label": "generateAccessToken()",
+      "file_type": "code",
+      "source_file": "server/src/routes/auth.ts",
+      "source_location": "L15",
+      "id": "auth_generateaccesstoken",
+      "community": 10
+    },
+    {
+      "label": "generateRefreshToken()",
+      "file_type": "code",
+      "source_file": "server/src/routes/auth.ts",
+      "source_location": "L30",
+      "id": "auth_generaterefreshtoken",
+      "community": 10
+    },
+    {
+      "label": "hashPassword()",
+      "file_type": "code",
+      "source_file": "server/src/routes/auth.ts",
+      "source_location": "L45",
+      "id": "auth_hashpassword",
+      "community": 10
+    },
+    {
+      "label": "comparePassword()",
+      "file_type": "code",
+      "source_file": "server/src/routes/auth.ts",
+      "source_location": "L49",
+      "id": "auth_comparepassword",
+      "community": 10
+    },
+    {
+      "label": "budgets.ts",
+      "file_type": "code",
+      "source_file": "server/src/routes/budgets.ts",
+      "source_location": "L1",
+      "id": "server_src_routes_budgets_ts",
+      "community": 53
+    },
+    {
+      "label": "categories.ts",
+      "file_type": "code",
+      "source_file": "server/src/routes/categories.ts",
+      "source_location": "L1",
+      "id": "server_src_routes_categories_ts",
+      "community": 54
+    },
+    {
+      "label": "category.ts",
+      "file_type": "code",
+      "source_file": "server/src/validations/category.ts",
+      "source_location": "L1",
+      "id": "server_src_validations_category_ts",
+      "community": 55
+    },
+    {
+      "label": "transaction.ts",
+      "file_type": "code",
+      "source_file": "server/src/validations/transaction.ts",
+      "source_location": "L1",
+      "id": "server_src_validations_transaction_ts",
+      "community": 56
+    },
+    {
+      "label": "recurring-expense.ts",
+      "file_type": "code",
+      "source_file": "server/src/validations/recurring-expense.ts",
+      "source_location": "L1",
+      "id": "server_src_validations_recurring_expense_ts",
+      "community": 57
+    },
+    {
+      "label": "admin.ts",
+      "file_type": "code",
+      "source_file": "server/src/validations/admin.ts",
+      "source_location": "L1",
+      "id": "server_src_validations_admin_ts",
+      "community": 58
+    },
+    {
+      "label": "auth.ts",
+      "file_type": "code",
+      "source_file": "server/src/validations/auth.ts",
+      "source_location": "L1",
+      "id": "server_src_validations_auth_ts",
+      "community": 59
+    },
+    {
+      "label": "budget.ts",
+      "file_type": "code",
+      "source_file": "server/src/validations/budget.ts",
+      "source_location": "L1",
+      "id": "server_src_validations_budget_ts",
+      "community": 60
+    },
+    {
+      "label": "payment-method.ts",
+      "file_type": "code",
+      "source_file": "server/src/validations/payment-method.ts",
+      "source_location": "L1",
+      "id": "server_src_validations_payment_method_ts",
+      "community": 61
+    },
+    {
+      "label": "eslint.config.js",
+      "file_type": "code",
+      "source_file": "client/eslint.config.js",
+      "source_location": "L1",
+      "id": "client_eslint_config_js",
+      "community": 62
+    },
+    {
+      "label": "vite.config.ts",
+      "file_type": "code",
+      "source_file": "client/vite.config.ts",
+      "source_location": "L1",
+      "id": "client_vite_config_ts",
+      "community": 63
+    },
+    {
+      "label": "vitest.config.ts",
+      "file_type": "code",
+      "source_file": "client/vitest.config.ts",
+      "source_location": "L1",
+      "id": "client_vitest_config_ts",
+      "community": 64
+    },
+    {
+      "label": "main.tsx",
+      "file_type": "code",
+      "source_file": "client/src/main.tsx",
+      "source_location": "L1",
+      "id": "client_src_main_tsx",
+      "community": 65
+    },
+    {
+      "label": "App.tsx",
+      "file_type": "code",
+      "source_file": "client/src/App.tsx",
+      "source_location": "L1",
+      "id": "client_src_app_tsx",
+      "community": 7
+    },
+    {
+      "label": "ProtectedRoute()",
+      "file_type": "code",
+      "source_file": "client/src/App.tsx",
+      "source_location": "L15",
+      "id": "app_protectedroute",
+      "community": 7
+    },
+    {
+      "label": "AdminRoute()",
+      "file_type": "code",
+      "source_file": "client/src/App.tsx",
+      "source_location": "L23",
+      "id": "app_adminroute",
+      "community": 7
+    },
+    {
+      "label": "PublicRoute()",
+      "file_type": "code",
+      "source_file": "client/src/App.tsx",
+      "source_location": "L31",
+      "id": "app_publicroute",
+      "community": 7
+    },
+    {
+      "label": "AppRoutes()",
+      "file_type": "code",
+      "source_file": "client/src/App.tsx",
+      "source_location": "L38",
+      "id": "app_approutes",
+      "community": 7
+    },
+    {
+      "label": "App()",
+      "file_type": "code",
+      "source_file": "client/src/App.tsx",
+      "source_location": "L98",
+      "id": "app_app",
+      "community": 7
+    },
+    {
+      "label": "TransactionForm.tsx",
+      "file_type": "code",
+      "source_file": "client/src/components/TransactionForm.tsx",
+      "source_location": "L1",
+      "id": "client_src_components_transactionform_tsx",
+      "community": 4
+    },
+    {
+      "label": "handleClickOutside()",
+      "file_type": "code",
+      "source_file": "client/src/components/TransactionForm.tsx",
+      "source_location": "L84",
+      "id": "transactionform_handleclickoutside",
+      "community": 4
+    },
+    {
+      "label": "handleInputChange()",
+      "file_type": "code",
+      "source_file": "client/src/components/TransactionForm.tsx",
+      "source_location": "L96",
+      "id": "transactionform_handleinputchange",
+      "community": 4
+    },
+    {
+      "label": "handleCategoryChange()",
+      "file_type": "code",
+      "source_file": "client/src/components/TransactionForm.tsx",
+      "source_location": "L100",
+      "id": "transactionform_handlecategorychange",
+      "community": 4
+    },
+    {
+      "label": "handlePaymentMethodChange()",
+      "file_type": "code",
+      "source_file": "client/src/components/TransactionForm.tsx",
+      "source_location": "L111",
+      "id": "transactionform_handlepaymentmethodchange",
+      "community": 4
+    },
+    {
+      "label": "handleSubCategorySelect()",
+      "file_type": "code",
+      "source_file": "client/src/components/TransactionForm.tsx",
+      "source_location": "L119",
+      "id": "transactionform_handlesubcategoryselect",
+      "community": 4
+    },
+    {
+      "label": "handleSubmit()",
+      "file_type": "code",
+      "source_file": "client/src/components/TransactionForm.tsx",
+      "source_location": "L125",
+      "id": "transactionform_handlesubmit",
+      "community": 4
+    },
+    {
+      "label": "MobileNav.tsx",
+      "file_type": "code",
+      "source_file": "client/src/components/MobileNav.tsx",
+      "source_location": "L1",
+      "id": "client_src_components_mobilenav_tsx",
+      "community": 39
+    },
+    {
+      "label": "MobileNav()",
+      "file_type": "code",
+      "source_file": "client/src/components/MobileNav.tsx",
+      "source_location": "L7",
+      "id": "mobilenav_mobilenav",
+      "community": 39
+    },
+    {
+      "label": "Sidebar.tsx",
+      "file_type": "code",
+      "source_file": "client/src/components/Sidebar.tsx",
+      "source_location": "L1",
+      "id": "client_src_components_sidebar_tsx",
+      "community": 40
+    },
+    {
+      "label": "isActive()",
+      "file_type": "code",
+      "source_file": "client/src/components/Sidebar.tsx",
+      "source_location": "L25",
+      "id": "sidebar_isactive",
+      "community": 40
+    },
+    {
+      "label": "ConfirmDialog.tsx",
+      "file_type": "code",
+      "source_file": "client/src/components/ConfirmDialog.tsx",
+      "source_location": "L1",
+      "id": "client_src_components_confirmdialog_tsx",
+      "community": 41
+    },
+    {
+      "label": "ConfirmDialog()",
+      "file_type": "code",
+      "source_file": "client/src/components/ConfirmDialog.tsx",
+      "source_location": "L14",
+      "id": "confirmdialog_confirmdialog",
+      "community": 41
+    },
+    {
+      "label": "Header.tsx",
+      "file_type": "code",
+      "source_file": "client/src/components/Header.tsx",
+      "source_location": "L1",
+      "id": "client_src_components_header_tsx",
+      "community": 66
+    },
+    {
+      "label": "Skeleton.tsx",
+      "file_type": "code",
+      "source_file": "client/src/components/Skeleton.tsx",
+      "source_location": "L1",
+      "id": "client_src_components_skeleton_tsx",
+      "community": 23
+    },
+    {
+      "label": "SkeletonCard()",
+      "file_type": "code",
+      "source_file": "client/src/components/Skeleton.tsx",
+      "source_location": "L5",
+      "id": "skeleton_skeletoncard",
+      "community": 23
+    },
+    {
+      "label": "SkeletonText()",
+      "file_type": "code",
+      "source_file": "client/src/components/Skeleton.tsx",
+      "source_location": "L24",
+      "id": "skeleton_skeletontext",
+      "community": 23
+    },
+    {
+      "label": "CurrencyInput.tsx",
+      "file_type": "code",
+      "source_file": "client/src/components/CurrencyInput.tsx",
+      "source_location": "L1",
+      "id": "client_src_components_currencyinput_tsx",
+      "community": 42
+    },
+    {
+      "label": "CurrencyInput()",
+      "file_type": "code",
+      "source_file": "client/src/components/CurrencyInput.tsx",
+      "source_location": "L8",
+      "id": "currencyinput_currencyinput",
+      "community": 42
+    },
+    {
+      "label": "Layout.tsx",
+      "file_type": "code",
+      "source_file": "client/src/components/Layout.tsx",
+      "source_location": "L1",
+      "id": "client_src_components_layout_tsx",
+      "community": 43
+    },
+    {
+      "label": "Layout()",
+      "file_type": "code",
+      "source_file": "client/src/components/Layout.tsx",
+      "source_location": "L13",
+      "id": "layout_layout",
+      "community": 43
+    },
+    {
+      "label": "Calendar.tsx",
+      "file_type": "code",
+      "source_file": "client/src/components/Calendar.tsx",
+      "source_location": "L1",
+      "id": "client_src_components_calendar_tsx",
+      "community": 11
+    },
+    {
+      "label": "getDaysInMonth()",
+      "file_type": "code",
+      "source_file": "client/src/components/Calendar.tsx",
+      "source_location": "L26",
+      "id": "calendar_getdaysinmonth",
+      "community": 11
+    },
+    {
+      "label": "navigateMonth()",
+      "file_type": "code",
+      "source_file": "client/src/components/Calendar.tsx",
+      "source_location": "L73",
+      "id": "calendar_navigatemonth",
+      "community": 11
+    },
+    {
+      "label": "formatDate()",
+      "file_type": "code",
+      "source_file": "client/src/components/Calendar.tsx",
+      "source_location": "L83",
+      "id": "calendar_formatdate",
+      "community": 11
+    },
+    {
+      "label": "handleDateClick()",
+      "file_type": "code",
+      "source_file": "client/src/components/Calendar.tsx",
+      "source_location": "L88",
+      "id": "calendar_handledateclick",
+      "community": 11
+    },
+    {
+      "label": "Modal.tsx",
+      "file_type": "code",
+      "source_file": "client/src/components/Modal.tsx",
+      "source_location": "L1",
+      "id": "client_src_components_modal_tsx",
+      "community": 44
+    },
+    {
+      "label": "Modal()",
+      "file_type": "code",
+      "source_file": "client/src/components/Modal.tsx",
+      "source_location": "L11",
+      "id": "modal_modal",
+      "community": 44
+    },
+    {
+      "label": "smoke.test.ts",
+      "file_type": "code",
+      "source_file": "client/src/test/smoke.test.ts",
+      "source_location": "L1",
+      "id": "client_src_test_smoke_test_ts",
+      "community": 67
+    },
+    {
+      "label": "setup.ts",
+      "file_type": "code",
+      "source_file": "client/src/test/setup.ts",
+      "source_location": "L1",
+      "id": "client_src_test_setup_ts",
+      "community": 68
+    },
+    {
+      "label": "subcategories.ts",
+      "file_type": "code",
+      "source_file": "client/src/api/subcategories.ts",
+      "source_location": "L1",
+      "id": "client_src_api_subcategories_ts",
+      "community": 69
+    },
+    {
+      "label": "recurring-expenses.ts",
+      "file_type": "code",
+      "source_file": "client/src/api/recurring-expenses.ts",
+      "source_location": "L1",
+      "id": "client_src_api_recurring_expenses_ts",
+      "community": 70
+    },
+    {
+      "label": "stats.ts",
+      "file_type": "code",
+      "source_file": "client/src/api/stats.ts",
+      "source_location": "L1",
+      "id": "client_src_api_stats_ts",
+      "community": 71
+    },
+    {
+      "label": "payment-methods.ts",
+      "file_type": "code",
+      "source_file": "client/src/api/payment-methods.ts",
+      "source_location": "L1",
+      "id": "client_src_api_payment_methods_ts",
+      "community": 72
+    },
+    {
+      "label": "transactions.ts",
+      "file_type": "code",
+      "source_file": "client/src/api/transactions.ts",
+      "source_location": "L1",
+      "id": "client_src_api_transactions_ts",
+      "community": 73
+    },
+    {
+      "label": "admin.ts",
+      "file_type": "code",
+      "source_file": "client/src/api/admin.ts",
+      "source_location": "L1",
+      "id": "client_src_api_admin_ts",
+      "community": 74
+    },
+    {
+      "label": "auth.ts",
+      "file_type": "code",
+      "source_file": "client/src/api/auth.ts",
+      "source_location": "L1",
+      "id": "client_src_api_auth_ts",
+      "community": 75
+    },
+    {
+      "label": "axios.ts",
+      "file_type": "code",
+      "source_file": "client/src/api/axios.ts",
+      "source_location": "L1",
+      "id": "client_src_api_axios_ts",
+      "community": 45
+    },
+    {
+      "label": "processQueue()",
+      "file_type": "code",
+      "source_file": "client/src/api/axios.ts",
+      "source_location": "L23",
+      "id": "axios_processqueue",
+      "community": 45
+    },
+    {
+      "label": "budgets.ts",
+      "file_type": "code",
+      "source_file": "client/src/api/budgets.ts",
+      "source_location": "L1",
+      "id": "client_src_api_budgets_ts",
+      "community": 76
+    },
+    {
+      "label": "categories.ts",
+      "file_type": "code",
+      "source_file": "client/src/api/categories.ts",
+      "source_location": "L1",
+      "id": "client_src_api_categories_ts",
+      "community": 77
+    },
+    {
+      "label": "index.tsx",
+      "file_type": "code",
+      "source_file": "client/src/pages/RegisterPage/index.tsx",
+      "source_location": "L1",
+      "id": "client_src_pages_registerpage_index_tsx",
+      "community": 3
+    },
+    {
+      "label": "validateForm()",
+      "file_type": "code",
+      "source_file": "client/src/pages/RegisterPage/index.tsx",
+      "source_location": "L27",
+      "id": "index_validateform",
+      "community": 3
+    },
+    {
+      "label": "validateEmail()",
+      "file_type": "code",
+      "source_file": "client/src/pages/RegisterPage/index.tsx",
+      "source_location": "L69",
+      "id": "index_validateemail",
+      "community": 3
+    },
+    {
+      "label": "validatePassword()",
+      "file_type": "code",
+      "source_file": "client/src/pages/RegisterPage/index.tsx",
+      "source_location": "L79",
+      "id": "index_validatepassword",
+      "community": 3
+    },
+    {
+      "label": "validatePasswordConfirm()",
+      "file_type": "code",
+      "source_file": "client/src/pages/RegisterPage/index.tsx",
+      "source_location": "L91",
+      "id": "index_validatepasswordconfirm",
+      "community": 3
+    },
+    {
+      "label": "validateDisplayName()",
+      "file_type": "code",
+      "source_file": "client/src/pages/RegisterPage/index.tsx",
+      "source_location": "L101",
+      "id": "index_validatedisplayname",
+      "community": 3
+    },
+    {
+      "label": "handleSubmit()",
+      "file_type": "code",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L664",
+      "id": "index_handlesubmit",
+      "community": 3
+    },
+    {
+      "label": "index.tsx",
+      "file_type": "code",
+      "source_file": "client/src/pages/Admin/index.tsx",
+      "source_location": "L1",
+      "id": "client_src_pages_admin_index_tsx",
+      "community": 2
+    },
+    {
+      "label": "handleSaveUser()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Admin/index.tsx",
+      "source_location": "L78",
+      "id": "index_handlesaveuser",
+      "community": 2
+    },
+    {
+      "label": "handleDeleteUser()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Admin/index.tsx",
+      "source_location": "L92",
+      "id": "index_handledeleteuser",
+      "community": 2
+    },
+    {
+      "label": "handleSaveCategory()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Admin/index.tsx",
+      "source_location": "L104",
+      "id": "index_handlesavecategory",
+      "community": 2
+    },
+    {
+      "label": "handleDeleteCategory()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Admin/index.tsx",
+      "source_location": "L122",
+      "id": "index_handledeletecategory",
+      "community": 2
+    },
+    {
+      "label": "handleSaveSettings()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Admin/index.tsx",
+      "source_location": "L134",
+      "id": "index_handlesavesettings",
+      "community": 2
+    },
+    {
+      "label": "getTabContent()",
+      "file_type": "code",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L204",
+      "id": "index_gettabcontent",
+      "community": 2
+    },
+    {
+      "label": "index.tsx",
+      "file_type": "code",
+      "source_file": "client/src/pages/LoginPage/index.tsx",
+      "source_location": "L1",
+      "id": "client_src_pages_loginpage_index_tsx",
+      "community": 3
+    },
+    {
+      "label": "index.tsx",
+      "file_type": "code",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L1",
+      "id": "client_src_pages_settingspage_index_tsx",
+      "community": 2
+    },
+    {
+      "label": "handleSavePaymentMethod()",
+      "file_type": "code",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L91",
+      "id": "index_handlesavepaymentmethod",
+      "community": 2
+    },
+    {
+      "label": "handleDeletePaymentMethod()",
+      "file_type": "code",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L109",
+      "id": "index_handledeletepaymentmethod",
+      "community": 2
+    },
+    {
+      "label": "handleSaveBudget()",
+      "file_type": "code",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L121",
+      "id": "index_handlesavebudget",
+      "community": 2
+    },
+    {
+      "label": "handleDeleteBudget()",
+      "file_type": "code",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L144",
+      "id": "index_handledeletebudget",
+      "community": 2
+    },
+    {
+      "label": "handleSaveRecurringExpense()",
+      "file_type": "code",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L156",
+      "id": "index_handlesaverecurringexpense",
+      "community": 2
+    },
+    {
+      "label": "handleDeleteRecurringExpense()",
+      "file_type": "code",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L183",
+      "id": "index_handledeleterecurringexpense",
+      "community": 2
+    },
+    {
+      "label": "handleToggleRecurringExpense()",
+      "file_type": "code",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L194",
+      "id": "index_handletogglerecurringexpense",
+      "community": 2
+    },
+    {
+      "label": "index.tsx",
+      "file_type": "code",
+      "source_file": "client/src/pages/StatsPage/index.tsx",
+      "source_location": "L1",
+      "id": "client_src_pages_statspage_index_tsx",
+      "community": 1
+    },
+    {
+      "label": "handleMonthChange()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Dashboard/index.tsx",
+      "source_location": "L84",
+      "id": "index_handlemonthchange",
+      "community": 1
+    },
+    {
+      "label": "handleRetry()",
+      "file_type": "code",
+      "source_file": "client/src/pages/StatsPage/index.tsx",
+      "source_location": "L66",
+      "id": "index_handleretry",
+      "community": 1
+    },
+    {
+      "label": "index.tsx",
+      "file_type": "code",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L1",
+      "id": "client_src_pages_transactions_index_tsx",
+      "community": 1
+    },
+    {
+      "label": "handleFilterChange()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L126",
+      "id": "index_handlefilterchange",
+      "community": 1
+    },
+    {
+      "label": "handlePageChange()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L140",
+      "id": "index_handlepagechange",
+      "community": 1
+    },
+    {
+      "label": "handleCreateSubmit()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L144",
+      "id": "index_handlecreatesubmit",
+      "community": 1
+    },
+    {
+      "label": "handleEditSubmit()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L190",
+      "id": "index_handleeditsubmit",
+      "community": 1
+    },
+    {
+      "label": "handleEdit()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L224",
+      "id": "index_handleedit",
+      "community": 1
+    },
+    {
+      "label": "handleDelete()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L229",
+      "id": "index_handledelete",
+      "community": 1
+    },
+    {
+      "label": "handleConfirmDelete()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L234",
+      "id": "index_handleconfirmdelete",
+      "community": 1
+    },
+    {
+      "label": "FilterBar()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L251",
+      "id": "index_filterbar",
+      "community": 1
+    },
+    {
+      "label": "TransactionRow()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Dashboard/index.tsx",
+      "source_location": "L154",
+      "id": "index_transactionrow",
+      "community": 1
+    },
+    {
+      "label": "Pagination()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L377",
+      "id": "index_pagination",
+      "community": 1
+    },
+    {
+      "label": "index.tsx",
+      "file_type": "code",
+      "source_file": "client/src/pages/Dashboard/index.tsx",
+      "source_location": "L1",
+      "id": "client_src_pages_dashboard_index_tsx",
+      "community": 1
+    },
+    {
+      "label": "handleTransactionSubmit()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Dashboard/index.tsx",
+      "source_location": "L93",
+      "id": "index_handletransactionsubmit",
+      "community": 1
+    },
+    {
+      "label": "SummaryCard()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Dashboard/index.tsx",
+      "source_location": "L141",
+      "id": "index_summarycard",
+      "community": 1
+    },
+    {
+      "label": "CategoryRanking()",
+      "file_type": "code",
+      "source_file": "client/src/pages/Dashboard/index.tsx",
+      "source_location": "L182",
+      "id": "index_categoryranking",
+      "community": 1
+    },
+    {
+      "label": "index.ts",
+      "file_type": "code",
+      "source_file": "client/src/types/index.ts",
+      "source_location": "L1",
+      "id": "client_src_types_index_ts",
+      "community": 78
+    },
+    {
+      "label": "ToastContext.tsx",
+      "file_type": "code",
+      "source_file": "client/src/contexts/ToastContext.tsx",
+      "source_location": "L1",
+      "id": "client_src_contexts_toastcontext_tsx",
+      "community": 24
+    },
+    {
+      "label": "ToastProvider()",
+      "file_type": "code",
+      "source_file": "client/src/contexts/ToastContext.tsx",
+      "source_location": "L25",
+      "id": "toastcontext_toastprovider",
+      "community": 24
+    },
+    {
+      "label": "getToastStyles()",
+      "file_type": "code",
+      "source_file": "client/src/contexts/ToastContext.tsx",
+      "source_location": "L81",
+      "id": "toastcontext_gettoaststyles",
+      "community": 24
+    },
+    {
+      "label": "ThemeContext.tsx",
+      "file_type": "code",
+      "source_file": "client/src/contexts/ThemeContext.tsx",
+      "source_location": "L1",
+      "id": "client_src_contexts_themecontext_tsx",
+      "community": 17
+    },
+    {
+      "label": "getInitialTheme()",
+      "file_type": "code",
+      "source_file": "client/src/contexts/ThemeContext.tsx",
+      "source_location": "L17",
+      "id": "themecontext_getinitialtheme",
+      "community": 17
+    },
+    {
+      "label": "ThemeProvider()",
+      "file_type": "code",
+      "source_file": "client/src/contexts/ThemeContext.tsx",
+      "source_location": "L24",
+      "id": "themecontext_themeprovider",
+      "community": 17
+    },
+    {
+      "label": "useTheme()",
+      "file_type": "code",
+      "source_file": "client/src/contexts/ThemeContext.tsx",
+      "source_location": "L48",
+      "id": "themecontext_usetheme",
+      "community": 17
+    },
+    {
+      "label": "AuthContext.tsx",
+      "file_type": "code",
+      "source_file": "client/src/contexts/AuthContext.tsx",
+      "source_location": "L1",
+      "id": "client_src_contexts_authcontext_tsx",
+      "community": 25
+    },
+    {
+      "label": "AuthProvider()",
+      "file_type": "code",
+      "source_file": "client/src/contexts/AuthContext.tsx",
+      "source_location": "L25",
+      "id": "authcontext_authprovider",
+      "community": 25
+    },
+    {
+      "label": "useAuth()",
+      "file_type": "code",
+      "source_file": "client/src/contexts/AuthContext.tsx",
+      "source_location": "L109",
+      "id": "authcontext_useauth",
+      "community": 25
+    },
+    {
+      "label": "\uac00\uacc4\ubd80 \uc6f9 \uc571",
+      "type": "project",
+      "file_type": "document",
+      "properties": {
+        "lang": "\ud55c\uad6d\uc5b4",
+        "description": "\uc218\uc785/\uc9c0\ucd9c \uae30\ub85d, \ub2ec\ub825/\ucc28\ud2b8 \uc2dc\uac01\ud654, \uc18c\ube44 \ud328\ud134 \ubd84\uc11d \ud480\uc2a4\ud0dd \uc571"
+      },
+      "id": "s_budget_app",
+      "community": 12
+    },
+    {
+      "label": "Frontend",
+      "type": "module",
+      "file_type": "document",
+      "properties": {
+        "tech": "React 19, Vite 8, TypeScript, Tailwind CSS 4, Recharts"
+      },
+      "id": "s_frontend",
+      "community": 12
+    },
+    {
+      "label": "Backend",
+      "type": "module",
+      "file_type": "document",
+      "properties": {
+        "tech": "Express 5, TypeScript, Sequelize 6, SQLite"
+      },
+      "id": "s_backend",
+      "community": 12
+    },
+    {
+      "label": "\uc778\uc99d \uc2dc\uc2a4\ud15c",
+      "type": "feature",
+      "file_type": "document",
+      "properties": {
+        "description": "\uc774\uba54\uc77c+\ube44\ubc00\ubc88\ud638 \uc778\uc99d, JWT access+refresh token"
+      },
+      "id": "s_auth_system",
+      "community": 13
+    },
+    {
+      "label": "JWT Access Token",
+      "type": "concept",
+      "file_type": "document",
+      "properties": {
+        "expiry": "15\ubd84",
+        "storage": "\uba54\ubaa8\ub9ac"
+      },
+      "id": "s_jwt_access",
+      "community": 13
+    },
+    {
+      "label": "JWT Refresh Token",
+      "type": "concept",
+      "file_type": "document",
+      "properties": {
+        "expiry": "7\uc77c",
+        "storage": "httpOnly \ucfe0\ud0a4"
+      },
+      "id": "s_jwt_refresh",
+      "community": 13
+    },
+    {
+      "label": "\uac70\ub798 CRUD",
+      "type": "feature",
+      "file_type": "document",
+      "properties": {
+        "description": "\uc218\uc785/\uc9c0\ucd9c \ub4f1\ub85d, \uc870\ud68c, \uc218\uc815, \uc18c\ud504\ud2b8 \uc0ad\uc81c"
+      },
+      "id": "s_transaction_crud",
+      "community": 0
+    },
+    {
+      "label": "\ud558\uc704 \uce74\ud14c\uace0\ub9ac",
+      "type": "feature",
+      "file_type": "document",
+      "properties": {
+        "description": "\uce74\ud14c\uace0\ub9ac \ub0b4 \uc790\uc720 \uc785\ub825, \uc790\ub3d9\uc644\uc131 \uc9c0\uc6d0"
+      },
+      "id": "s_sub_category",
+      "community": 0
+    },
+    {
+      "label": "\uacb0\uc81c\uc218\ub2e8 \uad00\ub9ac",
+      "type": "feature",
+      "file_type": "document",
+      "properties": {
+        "description": "\uce74\ub4dc \ub4f1\ub85d/\uc218\uc815/\uc0ad\uc81c, \ud604\uae08 \uae30\ubcf8 \uc81c\uacf5"
+      },
+      "id": "s_payment_method",
+      "community": 0
+    },
+    {
+      "label": "\ub300\uc2dc\ubcf4\ub4dc",
+      "type": "feature",
+      "file_type": "document",
+      "properties": {
+        "description": "\uc694\uc57d \uce74\ub4dc, \ub2ec\ub825, \ucd5c\uadfc \uac70\ub798, \uce74\ud14c\uace0\ub9ac \uc18c\ube44 \uc21c\uc704, \uc77c\uc77c \uc608\uc0c1 \uc18c\ube44\uc561"
+      },
+      "id": "s_dashboard",
+      "community": 5
+    },
+    {
+      "label": "\ud1b5\uacc4 \ud398\uc774\uc9c0",
+      "type": "feature",
+      "file_type": "document",
+      "properties": {
+        "description": "\uc6d4\ubcc4 \ucd94\uc774 \ucc28\ud2b8, \uce74\ud14c\uace0\ub9ac\ubcc4 \ucc28\ud2b8, \uc608\uc0b0 \uad00\ub9ac"
+      },
+      "id": "s_stats_page",
+      "community": 5
+    },
+    {
+      "label": "\uc608\uc0b0 \uad00\ub9ac",
+      "type": "feature",
+      "file_type": "document",
+      "properties": {
+        "description": "\uc6d4\ubcc4 \uce74\ud14c\uace0\ub9ac\ubcc4 \uc608\uc0b0 \uc124\uc815, \ub2ec\uc131\ub960, \ucd08\uacfc \uacbd\uace0"
+      },
+      "id": "s_budget_mgmt",
+      "community": 5
+    },
+    {
+      "label": "\uace0\uc815\ube44 \uad00\ub9ac",
+      "type": "feature",
+      "file_type": "document",
+      "properties": {
+        "description": "\uace0\uc815\ube44 \ub4f1\ub85d, \ub9e4\uc6d4 \uc790\ub3d9 \ub4f1\ub85d, \ud65c\uc131/\ube44\ud65c\uc131 \ud1a0\uae00"
+      },
+      "id": "s_recurring_expense",
+      "community": 0
+    },
+    {
+      "label": "\uad00\ub9ac\uc790 \ud398\uc774\uc9c0",
+      "type": "feature",
+      "file_type": "document",
+      "properties": {
+        "description": "\uc0ac\uc6a9\uc790 \uad00\ub9ac, \uce74\ud14c\uace0\ub9ac \uad00\ub9ac, \uc2dc\uc2a4\ud15c \uc124\uc815"
+      },
+      "id": "s_admin_page",
+      "community": 0
+    },
+    {
+      "label": "\uc124\uc815 \ud398\uc774\uc9c0",
+      "type": "feature",
+      "file_type": "document",
+      "properties": {
+        "description": "\uce74\ub4dc \uad00\ub9ac, \uc608\uc0b0 \uc124\uc815, \uace0\uc815\ube44 \uad00\ub9ac \ud0ed"
+      },
+      "id": "s_settings_page",
+      "community": 0
+    },
+    {
+      "label": "\ub2e4\ud06c \ubaa8\ub4dc",
+      "type": "feature",
+      "file_type": "document",
+      "properties": {
+        "description": "\ud1a0\uae00 \uc804\ud658, \uc0ac\uc6a9\uc790 \uc124\uc815 \uc800\uc7a5"
+      },
+      "id": "s_ui_dark_mode",
+      "community": 12
+    },
+    {
+      "label": "\ubc18\uc751\ud615 \ub514\uc790\uc778",
+      "type": "feature",
+      "file_type": "document",
+      "properties": {
+        "description": "\ubaa8\ubc14\uc77c/\ud0dc\ube14\ub9bf/\ub370\uc2a4\ud06c\ud1b1 \uc9c0\uc6d0"
+      },
+      "id": "s_ui_responsive",
+      "community": 12
+    },
+    {
+      "label": "\uc18c\ud504\ud2b8 \uc0ad\uc81c",
+      "type": "concept",
+      "file_type": "document",
+      "properties": {
+        "description": "deleted_at \ud0c0\uc784\uc2a4\ud0ec\ud504, \uc870\ud68c\uc5d0\uc11c \uc81c\uc678, \ubcf5\uad6c \uac00\ub2a5"
+      },
+      "id": "s_soft_delete",
+      "community": 0
+    },
+    {
+      "label": "User \ubaa8\ub378",
+      "type": "model",
+      "file_type": "document",
+      "properties": {
+        "fields": "id, email, password_hash, display_name, role, is_active"
+      },
+      "id": "s_model_user",
+      "community": 0
+    },
+    {
+      "label": "Category \ubaa8\ub378",
+      "type": "model",
+      "file_type": "document",
+      "properties": {
+        "fields": "id, user_id(nullable), name, type(income/expense), icon, color, sort_order"
+      },
+      "id": "s_model_category",
+      "community": 0
+    },
+    {
+      "label": "Transaction \ubaa8\ub378",
+      "type": "model",
+      "file_type": "document",
+      "properties": {
+        "fields": "id, user_id, type, amount, category_id, payment_method_id, date, sub_category, memo"
+      },
+      "id": "s_model_transaction",
+      "community": 0
+    },
+    {
+      "label": "PaymentMethod \ubaa8\ub378",
+      "type": "model",
+      "file_type": "document",
+      "properties": {
+        "fields": "id, user_id, name, issuer, type(credit/debit/cash), color, is_default"
+      },
+      "id": "s_model_payment",
+      "community": 0
+    },
+    {
+      "label": "Budget \ubaa8\ub378",
+      "type": "model",
+      "file_type": "document",
+      "properties": {
+        "fields": "id, user_id, category_id, month, amount"
+      },
+      "id": "s_model_budget",
+      "community": 0
+    },
+    {
+      "label": "RecurringExpense \ubaa8\ub378",
+      "type": "model",
+      "file_type": "document",
+      "properties": {
+        "fields": "id, user_id, name, amount, category_id, payment_method_id, payment_day, is_active"
+      },
+      "id": "s_model_recurring",
+      "community": 0
+    },
+    {
+      "label": "Auth API",
+      "type": "api",
+      "file_type": "document",
+      "properties": {
+        "endpoints": "register, login, logout, refresh, me, password"
+      },
+      "id": "s_api_auth",
+      "community": 13
+    },
+    {
+      "label": "Transactions API",
+      "type": "api",
+      "file_type": "document",
+      "properties": {
+        "endpoints": "CRUD, restore, \ud544\ud130/\ud398\uc774\uc9d5/\uc815\ub82c"
+      },
+      "id": "s_api_transactions",
+      "community": 0
+    },
+    {
+      "label": "Stats API",
+      "type": "api",
+      "file_type": "document",
+      "properties": {
+        "endpoints": "dashboard, payment-methods, monthly-trend, category"
+      },
+      "id": "s_api_stats",
+      "community": 5
+    },
+    {
+      "label": "Budgets API",
+      "type": "api",
+      "file_type": "document",
+      "properties": {
+        "endpoints": "\uc870\ud68c, bulk upsert"
+      },
+      "id": "s_api_budgets",
+      "community": 5
+    },
+    {
+      "label": "PaymentMethods API",
+      "type": "api",
+      "file_type": "document",
+      "properties": {
+        "endpoints": "CRUD"
+      },
+      "id": "s_api_payment_methods",
+      "community": 0
+    },
+    {
+      "label": "RecurringExpenses API",
+      "type": "api",
+      "file_type": "document",
+      "properties": {
+        "endpoints": "CRUD, toggle, month-summary"
+      },
+      "id": "s_api_recurring",
+      "community": 0
+    },
+    {
+      "label": "SubCategories API",
+      "type": "api",
+      "file_type": "document",
+      "properties": {
+        "endpoints": "\uc790\ub3d9\uc644\uc131 \uac80\uc0c9"
+      },
+      "id": "s_api_subcategories",
+      "community": 0
+    },
+    {
+      "label": "Admin API",
+      "type": "api",
+      "file_type": "document",
+      "properties": {
+        "endpoints": "\uc0ac\uc6a9\uc790 \uad00\ub9ac, \uce74\ud14c\uace0\ub9ac CRUD, \uc2dc\uc2a4\ud15c \uc124\uc815"
+      },
+      "id": "s_api_admin",
+      "community": 0
+    },
+    {
+      "label": "Zod \uc785\ub825 \uac80\uc99d",
+      "type": "concept",
+      "file_type": "document",
+      "properties": {
+        "description": "\uc774\uba54\uc77c \ud615\uc2dd, \ube44\ubc00\ubc88\ud638 8\uc790+\uc601\uc22b\uc790, \uae08\uc561 \ubc94\uc704 \ub4f1"
+      },
+      "id": "s_zod_validation",
+      "community": 79
+    },
+    {
+      "label": "Admin \uc5ed\ud560",
+      "type": "concept",
+      "file_type": "document",
+      "properties": {
+        "description": "role=admin, \uad00\ub9ac\uc790 \ud398\uc774\uc9c0 \uc811\uadfc, \uce74\ud14c\uace0\ub9ac/\uc0ac\uc6a9\uc790 \uad00\ub9ac"
+      },
+      "id": "s_role_admin",
+      "community": 0
+    },
+    {
+      "label": "User \uc5ed\ud560",
+      "type": "concept",
+      "file_type": "document",
+      "properties": {
+        "description": "role=user (\uae30\ubcf8), \uac1c\uc778 \uce74\ud14c\uace0\ub9ac, \uac70\ub798 \uae30\ub85d"
+      },
+      "id": "s_role_user",
+      "community": 0
+    },
+    {
+      "label": "\ub2ec\ub825 \ubdf0",
+      "type": "feature",
+      "file_type": "document",
+      "properties": {
+        "description": "\uc6d4\ubcc4 \uce98\ub9b0\ub354, \uc77c\uc790\ubcc4 \uc218\uc785/\uc9c0\ucd9c \ud45c\uc2dc, \ub0a0\uc9dc \ud074\ub9ad \uc0c1\uc138"
+      },
+      "id": "s_calendar_view",
+      "community": 5
+    },
+    {
+      "label": "\uc77c\uc77c \uc608\uc0c1 \uc18c\ube44\uc561",
+      "type": "concept",
+      "file_type": "document",
+      "properties": {
+        "formula": "\uc794\uc5ec \uae08\uc561 / \uc794\uc5ec\uc77c \uc218"
+      },
+      "id": "s_daily_budget",
+      "community": 5
+    },
+    {
+      "label": "\uc790\ub3d9 \ub85c\uadf8\uc778",
+      "type": "feature",
+      "file_type": "document",
+      "properties": {
+        "description": "\ube0c\ub77c\uc6b0\uc800 \uc7ac\ubc29\ubb38 \uc2dc refresh token \ucfe0\ud0a4\ub85c \uc778\uc99d \ubcf5\uad6c"
+      },
+      "id": "s_auto_login",
+      "community": 13
+    },
+    {
+      "label": "\ud398\uc774\uc9c0\ub124\uc774\uc158",
+      "type": "concept",
+      "file_type": "document",
+      "properties": {
+        "params": "page(\uae30\ubcf81), limit(\uae30\ubcf820, \ucd5c\ub300100)"
+      },
+      "id": "s_pagination",
+      "community": 0
+    },
+    {
+      "label": "\uac80\uc0c9/\ud544\ud130",
+      "type": "concept",
+      "file_type": "document",
+      "properties": {
+        "description": "\uce74\ud14c\uace0\ub9ac, \uacb0\uc81c\uc218\ub2e8, \uae08\uc561 \ubc94\uc704, \ud0a4\uc6cc\ub4dc \ud544\ud130\ub9c1"
+      },
+      "id": "s_search_filter",
+      "community": 0
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/index.ts",
+      "source_location": "L36",
+      "weight": 1.0,
+      "_src": "server_src_index_ts",
+      "_tgt": "index_setupapp",
+      "source": "server_src_index_ts",
+      "target": "index_setupapp",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/index.ts",
+      "source_location": "L72",
+      "weight": 1.0,
+      "_src": "server_src_index_ts",
+      "_tgt": "index_startserver",
+      "source": "server_src_index_ts",
+      "target": "index_startserver",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/index.ts",
+      "source_location": "L73",
+      "weight": 1.0,
+      "_src": "index_startserver",
+      "_tgt": "index_setupapp",
+      "source": "index_setupapp",
+      "target": "index_startserver",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/models/RecurringExpense.ts",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_src": "server_src_models_recurringexpense_ts",
+      "_tgt": "recurringexpense_recurringexpense",
+      "source": "server_src_models_recurringexpense_ts",
+      "target": "recurringexpense_recurringexpense",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/models/index.ts",
+      "source_location": "L27",
+      "weight": 1.0,
+      "_src": "server_src_models_index_ts",
+      "_tgt": "index_loadmodels",
+      "source": "server_src_models_index_ts",
+      "target": "index_loadmodels",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/models/index.ts",
+      "source_location": "L49",
+      "weight": 1.0,
+      "_src": "server_src_models_index_ts",
+      "_tgt": "index_setupassociations",
+      "source": "server_src_models_index_ts",
+      "target": "index_setupassociations",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/models/index.ts",
+      "source_location": "L46",
+      "weight": 1.0,
+      "_src": "index_loadmodels",
+      "_tgt": "index_setupassociations",
+      "source": "index_loadmodels",
+      "target": "index_setupassociations",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/models/Budget.ts",
+      "source_location": "L16",
+      "weight": 1.0,
+      "_src": "server_src_models_budget_ts",
+      "_tgt": "budget_budget",
+      "source": "server_src_models_budget_ts",
+      "target": "budget_budget",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/models/User.ts",
+      "source_location": "L17",
+      "weight": 1.0,
+      "_src": "server_src_models_user_ts",
+      "_tgt": "user_user",
+      "source": "server_src_models_user_ts",
+      "target": "user_user",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/models/Category.ts",
+      "source_location": "L19",
+      "weight": 1.0,
+      "_src": "server_src_models_category_ts",
+      "_tgt": "category_category",
+      "source": "server_src_models_category_ts",
+      "target": "category_category",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/models/PaymentMethod.ts",
+      "source_location": "L20",
+      "weight": 1.0,
+      "_src": "server_src_models_paymentmethod_ts",
+      "_tgt": "paymentmethod_paymentmethod",
+      "source": "server_src_models_paymentmethod_ts",
+      "target": "paymentmethod_paymentmethod",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/models/Transaction.ts",
+      "source_location": "L21",
+      "weight": 1.0,
+      "_src": "server_src_models_transaction_ts",
+      "_tgt": "transaction_transaction",
+      "source": "server_src_models_transaction_ts",
+      "target": "transaction_transaction",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/seeders/defaultCategories.ts",
+      "source_location": "L31",
+      "weight": 1.0,
+      "_src": "server_src_seeders_defaultcategories_ts",
+      "_tgt": "defaultcategories_seed",
+      "source": "server_src_seeders_defaultcategories_ts",
+      "target": "defaultcategories_seed",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/middleware/validate.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_src": "server_src_middleware_validate_ts",
+      "_tgt": "validate_validate",
+      "source": "server_src_middleware_validate_ts",
+      "target": "validate_validate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/middleware/errorHandler.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "_src": "server_src_middleware_errorhandler_ts",
+      "_tgt": "errorhandler_errorhandler",
+      "source": "server_src_middleware_errorhandler_ts",
+      "target": "errorhandler_errorhandler",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/middleware/admin.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "_src": "server_src_middleware_admin_ts",
+      "_tgt": "admin_adminmiddleware",
+      "source": "server_src_middleware_admin_ts",
+      "target": "admin_adminmiddleware",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/middleware/auth.ts",
+      "source_location": "L12",
+      "weight": 1.0,
+      "_src": "server_src_middleware_auth_ts",
+      "_tgt": "auth_authmiddleware",
+      "source": "server_src_middleware_auth_ts",
+      "target": "auth_authmiddleware",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/admin.test.ts",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_src": "server_src_tests_admin_test_ts",
+      "_tgt": "admin_test_createuser",
+      "source": "server_src_tests_admin_test_ts",
+      "target": "admin_test_createuser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/admin.test.ts",
+      "source_location": "L45",
+      "weight": 1.0,
+      "_src": "server_src_tests_admin_test_ts",
+      "_tgt": "admin_test_generatetoken",
+      "source": "server_src_tests_admin_test_ts",
+      "target": "admin_test_generatetoken",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/payment-methods.test.ts",
+      "source_location": "L30",
+      "weight": 1.0,
+      "_src": "server_src_tests_payment_methods_test_ts",
+      "_tgt": "payment_methods_test_createtestuser",
+      "source": "server_src_tests_payment_methods_test_ts",
+      "target": "payment_methods_test_createtestuser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/payment-methods.test.ts",
+      "source_location": "L37",
+      "weight": 1.0,
+      "_src": "server_src_tests_payment_methods_test_ts",
+      "_tgt": "payment_methods_test_generatetoken",
+      "source": "server_src_tests_payment_methods_test_ts",
+      "target": "payment_methods_test_generatetoken",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/recurring-expenses.test.ts",
+      "source_location": "L22",
+      "weight": 1.0,
+      "_src": "server_src_tests_recurring_expenses_test_ts",
+      "_tgt": "recurring_expenses_test_createtestuser",
+      "source": "server_src_tests_recurring_expenses_test_ts",
+      "target": "recurring_expenses_test_createtestuser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/recurring-expenses.test.ts",
+      "source_location": "L31",
+      "weight": 1.0,
+      "_src": "server_src_tests_recurring_expenses_test_ts",
+      "_tgt": "recurring_expenses_test_generatetoken",
+      "source": "server_src_tests_recurring_expenses_test_ts",
+      "target": "recurring_expenses_test_generatetoken",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/recurring-expenses.test.ts",
+      "source_location": "L39",
+      "weight": 1.0,
+      "_src": "server_src_tests_recurring_expenses_test_ts",
+      "_tgt": "recurring_expenses_test_seedcategoryandpaymentmethod",
+      "source": "server_src_tests_recurring_expenses_test_ts",
+      "target": "recurring_expenses_test_seedcategoryandpaymentmethod",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/categories.test.ts",
+      "source_location": "L39",
+      "weight": 1.0,
+      "_src": "server_src_tests_categories_test_ts",
+      "_tgt": "categories_test_createtestuser",
+      "source": "server_src_tests_categories_test_ts",
+      "target": "categories_test_createtestuser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/categories.test.ts",
+      "source_location": "L46",
+      "weight": 1.0,
+      "_src": "server_src_tests_categories_test_ts",
+      "_tgt": "categories_test_generateaccesstoken",
+      "source": "server_src_tests_categories_test_ts",
+      "target": "categories_test_generateaccesstoken",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/categories.test.ts",
+      "source_location": "L54",
+      "weight": 1.0,
+      "_src": "server_src_tests_categories_test_ts",
+      "_tgt": "categories_test_seedglobalcategories",
+      "source": "server_src_tests_categories_test_ts",
+      "target": "categories_test_seedglobalcategories",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/subcategories.test.ts",
+      "source_location": "L28",
+      "weight": 1.0,
+      "_src": "server_src_tests_subcategories_test_ts",
+      "_tgt": "subcategories_test_createtestuser",
+      "source": "server_src_tests_subcategories_test_ts",
+      "target": "subcategories_test_createtestuser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/subcategories.test.ts",
+      "source_location": "L41",
+      "weight": 1.0,
+      "_src": "server_src_tests_subcategories_test_ts",
+      "_tgt": "subcategories_test_createtestcategory",
+      "source": "server_src_tests_subcategories_test_ts",
+      "target": "subcategories_test_createtestcategory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/subcategories.test.ts",
+      "source_location": "L52",
+      "weight": 1.0,
+      "_src": "server_src_tests_subcategories_test_ts",
+      "_tgt": "subcategories_test_createtestpaymentmethod",
+      "source": "server_src_tests_subcategories_test_ts",
+      "target": "subcategories_test_createtestpaymentmethod",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/subcategories.test.ts",
+      "source_location": "L61",
+      "weight": 1.0,
+      "_src": "server_src_tests_subcategories_test_ts",
+      "_tgt": "subcategories_test_createtesttransaction",
+      "source": "server_src_tests_subcategories_test_ts",
+      "target": "subcategories_test_createtesttransaction",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/stats.test.ts",
+      "source_location": "L39",
+      "weight": 1.0,
+      "_src": "server_src_tests_stats_test_ts",
+      "_tgt": "stats_test_createtestuser",
+      "source": "server_src_tests_stats_test_ts",
+      "target": "stats_test_createtestuser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/stats.test.ts",
+      "source_location": "L46",
+      "weight": 1.0,
+      "_src": "server_src_tests_stats_test_ts",
+      "_tgt": "stats_test_generateaccesstoken",
+      "source": "server_src_tests_stats_test_ts",
+      "target": "stats_test_generateaccesstoken",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/stats.test.ts",
+      "source_location": "L54",
+      "weight": 1.0,
+      "_src": "server_src_tests_stats_test_ts",
+      "_tgt": "stats_test_seedglobalcategories",
+      "source": "server_src_tests_stats_test_ts",
+      "target": "stats_test_seedglobalcategories",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/stats.test.ts",
+      "source_location": "L60",
+      "weight": 1.0,
+      "_src": "server_src_tests_stats_test_ts",
+      "_tgt": "stats_test_createtestpaymentmethods",
+      "source": "server_src_tests_stats_test_ts",
+      "target": "stats_test_createtestpaymentmethods",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/budgets.test.ts",
+      "source_location": "L39",
+      "weight": 1.0,
+      "_src": "server_src_tests_budgets_test_ts",
+      "_tgt": "budgets_test_createtestuser",
+      "source": "server_src_tests_budgets_test_ts",
+      "target": "budgets_test_createtestuser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/budgets.test.ts",
+      "source_location": "L46",
+      "weight": 1.0,
+      "_src": "server_src_tests_budgets_test_ts",
+      "_tgt": "budgets_test_generateaccesstoken",
+      "source": "server_src_tests_budgets_test_ts",
+      "target": "budgets_test_generateaccesstoken",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/budgets.test.ts",
+      "source_location": "L54",
+      "weight": 1.0,
+      "_src": "server_src_tests_budgets_test_ts",
+      "_tgt": "budgets_test_seedglobalcategories",
+      "source": "server_src_tests_budgets_test_ts",
+      "target": "budgets_test_seedglobalcategories",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/transactions.test.ts",
+      "source_location": "L58",
+      "weight": 1.0,
+      "_src": "server_src_tests_transactions_test_ts",
+      "_tgt": "transactions_test_createtestuser",
+      "source": "server_src_tests_transactions_test_ts",
+      "target": "transactions_test_createtestuser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/transactions.test.ts",
+      "source_location": "L65",
+      "weight": 1.0,
+      "_src": "server_src_tests_transactions_test_ts",
+      "_tgt": "transactions_test_createtestcategory",
+      "source": "server_src_tests_transactions_test_ts",
+      "target": "transactions_test_createtestcategory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/transactions.test.ts",
+      "source_location": "L69",
+      "weight": 1.0,
+      "_src": "server_src_tests_transactions_test_ts",
+      "_tgt": "transactions_test_createtestpaymentmethod",
+      "source": "server_src_tests_transactions_test_ts",
+      "target": "transactions_test_createtestpaymentmethod",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/transactions.test.ts",
+      "source_location": "L73",
+      "weight": 1.0,
+      "_src": "server_src_tests_transactions_test_ts",
+      "_tgt": "transactions_test_createtesttransaction",
+      "source": "server_src_tests_transactions_test_ts",
+      "target": "transactions_test_createtesttransaction",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/transactions.test.ts",
+      "source_location": "L476",
+      "weight": 1.0,
+      "_src": "server_src_tests_transactions_test_ts",
+      "_tgt": "transactions_test_loadmodels",
+      "source": "server_src_tests_transactions_test_ts",
+      "target": "transactions_test_loadmodels",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/__tests__/auth.test.ts",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_src": "server_src_tests_auth_test_ts",
+      "_tgt": "auth_test_createtestuser",
+      "source": "server_src_tests_auth_test_ts",
+      "target": "auth_test_createtestuser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/stats.ts",
+      "source_location": "L52",
+      "weight": 1.0,
+      "_src": "server_src_routes_stats_ts",
+      "_tgt": "stats_calculateremainingdaysinmonth",
+      "source": "server_src_routes_stats_ts",
+      "target": "stats_calculateremainingdaysinmonth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/transactions.ts",
+      "source_location": "L31",
+      "weight": 1.0,
+      "_src": "server_src_routes_transactions_ts",
+      "_tgt": "transactions_buildwhereclause",
+      "source": "server_src_routes_transactions_ts",
+      "target": "transactions_buildwhereclause",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/transactions.ts",
+      "source_location": "L81",
+      "weight": 1.0,
+      "_src": "server_src_routes_transactions_ts",
+      "_tgt": "transactions_buildorderclause",
+      "source": "server_src_routes_transactions_ts",
+      "target": "transactions_buildorderclause",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/auth.ts",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_src": "server_src_routes_auth_ts",
+      "_tgt": "auth_generateaccesstoken",
+      "source": "server_src_routes_auth_ts",
+      "target": "auth_generateaccesstoken",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/auth.ts",
+      "source_location": "L30",
+      "weight": 1.0,
+      "_src": "server_src_routes_auth_ts",
+      "_tgt": "auth_generaterefreshtoken",
+      "source": "server_src_routes_auth_ts",
+      "target": "auth_generaterefreshtoken",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/auth.ts",
+      "source_location": "L45",
+      "weight": 1.0,
+      "_src": "server_src_routes_auth_ts",
+      "_tgt": "auth_hashpassword",
+      "source": "server_src_routes_auth_ts",
+      "target": "auth_hashpassword",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "server/src/routes/auth.ts",
+      "source_location": "L49",
+      "weight": 1.0,
+      "_src": "server_src_routes_auth_ts",
+      "_tgt": "auth_comparepassword",
+      "source": "server_src_routes_auth_ts",
+      "target": "auth_comparepassword",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/App.tsx",
+      "source_location": "L15",
+      "weight": 1.0,
+      "_src": "client_src_app_tsx",
+      "_tgt": "app_protectedroute",
+      "source": "client_src_app_tsx",
+      "target": "app_protectedroute",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/App.tsx",
+      "source_location": "L23",
+      "weight": 1.0,
+      "_src": "client_src_app_tsx",
+      "_tgt": "app_adminroute",
+      "source": "client_src_app_tsx",
+      "target": "app_adminroute",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/App.tsx",
+      "source_location": "L31",
+      "weight": 1.0,
+      "_src": "client_src_app_tsx",
+      "_tgt": "app_publicroute",
+      "source": "client_src_app_tsx",
+      "target": "app_publicroute",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/App.tsx",
+      "source_location": "L38",
+      "weight": 1.0,
+      "_src": "client_src_app_tsx",
+      "_tgt": "app_approutes",
+      "source": "client_src_app_tsx",
+      "target": "app_approutes",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/App.tsx",
+      "source_location": "L98",
+      "weight": 1.0,
+      "_src": "client_src_app_tsx",
+      "_tgt": "app_app",
+      "source": "client_src_app_tsx",
+      "target": "app_app",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/TransactionForm.tsx",
+      "source_location": "L84",
+      "weight": 1.0,
+      "_src": "client_src_components_transactionform_tsx",
+      "_tgt": "transactionform_handleclickoutside",
+      "source": "client_src_components_transactionform_tsx",
+      "target": "transactionform_handleclickoutside",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/TransactionForm.tsx",
+      "source_location": "L96",
+      "weight": 1.0,
+      "_src": "client_src_components_transactionform_tsx",
+      "_tgt": "transactionform_handleinputchange",
+      "source": "client_src_components_transactionform_tsx",
+      "target": "transactionform_handleinputchange",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/TransactionForm.tsx",
+      "source_location": "L100",
+      "weight": 1.0,
+      "_src": "client_src_components_transactionform_tsx",
+      "_tgt": "transactionform_handlecategorychange",
+      "source": "client_src_components_transactionform_tsx",
+      "target": "transactionform_handlecategorychange",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/TransactionForm.tsx",
+      "source_location": "L111",
+      "weight": 1.0,
+      "_src": "client_src_components_transactionform_tsx",
+      "_tgt": "transactionform_handlepaymentmethodchange",
+      "source": "client_src_components_transactionform_tsx",
+      "target": "transactionform_handlepaymentmethodchange",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/TransactionForm.tsx",
+      "source_location": "L119",
+      "weight": 1.0,
+      "_src": "client_src_components_transactionform_tsx",
+      "_tgt": "transactionform_handlesubcategoryselect",
+      "source": "client_src_components_transactionform_tsx",
+      "target": "transactionform_handlesubcategoryselect",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/TransactionForm.tsx",
+      "source_location": "L125",
+      "weight": 1.0,
+      "_src": "client_src_components_transactionform_tsx",
+      "_tgt": "transactionform_handlesubmit",
+      "source": "client_src_components_transactionform_tsx",
+      "target": "transactionform_handlesubmit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/MobileNav.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "_src": "client_src_components_mobilenav_tsx",
+      "_tgt": "mobilenav_mobilenav",
+      "source": "client_src_components_mobilenav_tsx",
+      "target": "mobilenav_mobilenav",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/Sidebar.tsx",
+      "source_location": "L25",
+      "weight": 1.0,
+      "_src": "client_src_components_sidebar_tsx",
+      "_tgt": "sidebar_isactive",
+      "source": "client_src_components_sidebar_tsx",
+      "target": "sidebar_isactive",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/ConfirmDialog.tsx",
+      "source_location": "L14",
+      "weight": 1.0,
+      "_src": "client_src_components_confirmdialog_tsx",
+      "_tgt": "confirmdialog_confirmdialog",
+      "source": "client_src_components_confirmdialog_tsx",
+      "target": "confirmdialog_confirmdialog",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/Skeleton.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "_src": "client_src_components_skeleton_tsx",
+      "_tgt": "skeleton_skeletoncard",
+      "source": "client_src_components_skeleton_tsx",
+      "target": "skeleton_skeletoncard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/Skeleton.tsx",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_src": "client_src_components_skeleton_tsx",
+      "_tgt": "skeleton_skeletontext",
+      "source": "client_src_components_skeleton_tsx",
+      "target": "skeleton_skeletontext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/CurrencyInput.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "_src": "client_src_components_currencyinput_tsx",
+      "_tgt": "currencyinput_currencyinput",
+      "source": "client_src_components_currencyinput_tsx",
+      "target": "currencyinput_currencyinput",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/Layout.tsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_src": "client_src_components_layout_tsx",
+      "_tgt": "layout_layout",
+      "source": "client_src_components_layout_tsx",
+      "target": "layout_layout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/Calendar.tsx",
+      "source_location": "L26",
+      "weight": 1.0,
+      "_src": "client_src_components_calendar_tsx",
+      "_tgt": "calendar_getdaysinmonth",
+      "source": "client_src_components_calendar_tsx",
+      "target": "calendar_getdaysinmonth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/Calendar.tsx",
+      "source_location": "L73",
+      "weight": 1.0,
+      "_src": "client_src_components_calendar_tsx",
+      "_tgt": "calendar_navigatemonth",
+      "source": "client_src_components_calendar_tsx",
+      "target": "calendar_navigatemonth",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/Calendar.tsx",
+      "source_location": "L83",
+      "weight": 1.0,
+      "_src": "client_src_components_calendar_tsx",
+      "_tgt": "calendar_formatdate",
+      "source": "client_src_components_calendar_tsx",
+      "target": "calendar_formatdate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/Calendar.tsx",
+      "source_location": "L88",
+      "weight": 1.0,
+      "_src": "client_src_components_calendar_tsx",
+      "_tgt": "calendar_handledateclick",
+      "source": "client_src_components_calendar_tsx",
+      "target": "calendar_handledateclick",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/components/Modal.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "_src": "client_src_components_modal_tsx",
+      "_tgt": "modal_modal",
+      "source": "client_src_components_modal_tsx",
+      "target": "modal_modal",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/api/axios.ts",
+      "source_location": "L23",
+      "weight": 1.0,
+      "_src": "client_src_api_axios_ts",
+      "_tgt": "axios_processqueue",
+      "source": "client_src_api_axios_ts",
+      "target": "axios_processqueue",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/RegisterPage/index.tsx",
+      "source_location": "L27",
+      "weight": 1.0,
+      "_src": "client_src_pages_registerpage_index_tsx",
+      "_tgt": "index_validateform",
+      "source": "client_src_pages_registerpage_index_tsx",
+      "target": "index_validateform",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/RegisterPage/index.tsx",
+      "source_location": "L69",
+      "weight": 1.0,
+      "_src": "client_src_pages_registerpage_index_tsx",
+      "_tgt": "index_validateemail",
+      "source": "client_src_pages_registerpage_index_tsx",
+      "target": "index_validateemail",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/RegisterPage/index.tsx",
+      "source_location": "L79",
+      "weight": 1.0,
+      "_src": "client_src_pages_registerpage_index_tsx",
+      "_tgt": "index_validatepassword",
+      "source": "client_src_pages_registerpage_index_tsx",
+      "target": "index_validatepassword",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/RegisterPage/index.tsx",
+      "source_location": "L91",
+      "weight": 1.0,
+      "_src": "client_src_pages_registerpage_index_tsx",
+      "_tgt": "index_validatepasswordconfirm",
+      "source": "client_src_pages_registerpage_index_tsx",
+      "target": "index_validatepasswordconfirm",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/RegisterPage/index.tsx",
+      "source_location": "L101",
+      "weight": 1.0,
+      "_src": "client_src_pages_registerpage_index_tsx",
+      "_tgt": "index_validatedisplayname",
+      "source": "client_src_pages_registerpage_index_tsx",
+      "target": "index_validatedisplayname",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/RegisterPage/index.tsx",
+      "source_location": "L111",
+      "weight": 1.0,
+      "_src": "client_src_pages_registerpage_index_tsx",
+      "_tgt": "index_handlesubmit",
+      "source": "client_src_pages_registerpage_index_tsx",
+      "target": "index_handlesubmit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/RegisterPage/index.tsx",
+      "source_location": "L125",
+      "weight": 1.0,
+      "_src": "index_handlesubmit",
+      "_tgt": "index_validateform",
+      "source": "index_validateform",
+      "target": "index_handlesubmit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/LoginPage/index.tsx",
+      "source_location": "L13",
+      "weight": 1.0,
+      "_src": "client_src_pages_loginpage_index_tsx",
+      "_tgt": "index_handlesubmit",
+      "source": "index_handlesubmit",
+      "target": "client_src_pages_loginpage_index_tsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L926",
+      "weight": 1.0,
+      "_src": "client_src_pages_settingspage_index_tsx",
+      "_tgt": "index_handlesubmit",
+      "source": "index_handlesubmit",
+      "target": "client_src_pages_settingspage_index_tsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Admin/index.tsx",
+      "source_location": "L78",
+      "weight": 1.0,
+      "_src": "client_src_pages_admin_index_tsx",
+      "_tgt": "index_handlesaveuser",
+      "source": "client_src_pages_admin_index_tsx",
+      "target": "index_handlesaveuser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Admin/index.tsx",
+      "source_location": "L92",
+      "weight": 1.0,
+      "_src": "client_src_pages_admin_index_tsx",
+      "_tgt": "index_handledeleteuser",
+      "source": "client_src_pages_admin_index_tsx",
+      "target": "index_handledeleteuser",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Admin/index.tsx",
+      "source_location": "L104",
+      "weight": 1.0,
+      "_src": "client_src_pages_admin_index_tsx",
+      "_tgt": "index_handlesavecategory",
+      "source": "client_src_pages_admin_index_tsx",
+      "target": "index_handlesavecategory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Admin/index.tsx",
+      "source_location": "L122",
+      "weight": 1.0,
+      "_src": "client_src_pages_admin_index_tsx",
+      "_tgt": "index_handledeletecategory",
+      "source": "client_src_pages_admin_index_tsx",
+      "target": "index_handledeletecategory",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Admin/index.tsx",
+      "source_location": "L134",
+      "weight": 1.0,
+      "_src": "client_src_pages_admin_index_tsx",
+      "_tgt": "index_handlesavesettings",
+      "source": "client_src_pages_admin_index_tsx",
+      "target": "index_handlesavesettings",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Admin/index.tsx",
+      "source_location": "L145",
+      "weight": 1.0,
+      "_src": "client_src_pages_admin_index_tsx",
+      "_tgt": "index_gettabcontent",
+      "source": "client_src_pages_admin_index_tsx",
+      "target": "index_gettabcontent",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L204",
+      "weight": 1.0,
+      "_src": "client_src_pages_settingspage_index_tsx",
+      "_tgt": "index_gettabcontent",
+      "source": "index_gettabcontent",
+      "target": "client_src_pages_settingspage_index_tsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L91",
+      "weight": 1.0,
+      "_src": "client_src_pages_settingspage_index_tsx",
+      "_tgt": "index_handlesavepaymentmethod",
+      "source": "client_src_pages_settingspage_index_tsx",
+      "target": "index_handlesavepaymentmethod",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L109",
+      "weight": 1.0,
+      "_src": "client_src_pages_settingspage_index_tsx",
+      "_tgt": "index_handledeletepaymentmethod",
+      "source": "client_src_pages_settingspage_index_tsx",
+      "target": "index_handledeletepaymentmethod",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L121",
+      "weight": 1.0,
+      "_src": "client_src_pages_settingspage_index_tsx",
+      "_tgt": "index_handlesavebudget",
+      "source": "client_src_pages_settingspage_index_tsx",
+      "target": "index_handlesavebudget",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L144",
+      "weight": 1.0,
+      "_src": "client_src_pages_settingspage_index_tsx",
+      "_tgt": "index_handledeletebudget",
+      "source": "client_src_pages_settingspage_index_tsx",
+      "target": "index_handledeletebudget",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L156",
+      "weight": 1.0,
+      "_src": "client_src_pages_settingspage_index_tsx",
+      "_tgt": "index_handlesaverecurringexpense",
+      "source": "client_src_pages_settingspage_index_tsx",
+      "target": "index_handlesaverecurringexpense",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L183",
+      "weight": 1.0,
+      "_src": "client_src_pages_settingspage_index_tsx",
+      "_tgt": "index_handledeleterecurringexpense",
+      "source": "client_src_pages_settingspage_index_tsx",
+      "target": "index_handledeleterecurringexpense",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/SettingsPage/index.tsx",
+      "source_location": "L194",
+      "weight": 1.0,
+      "_src": "client_src_pages_settingspage_index_tsx",
+      "_tgt": "index_handletogglerecurringexpense",
+      "source": "client_src_pages_settingspage_index_tsx",
+      "target": "index_handletogglerecurringexpense",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/StatsPage/index.tsx",
+      "source_location": "L57",
+      "weight": 1.0,
+      "_src": "client_src_pages_statspage_index_tsx",
+      "_tgt": "index_handlemonthchange",
+      "source": "client_src_pages_statspage_index_tsx",
+      "target": "index_handlemonthchange",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/StatsPage/index.tsx",
+      "source_location": "L66",
+      "weight": 1.0,
+      "_src": "client_src_pages_statspage_index_tsx",
+      "_tgt": "index_handleretry",
+      "source": "client_src_pages_statspage_index_tsx",
+      "target": "index_handleretry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L130",
+      "weight": 1.0,
+      "_src": "client_src_pages_transactions_index_tsx",
+      "_tgt": "index_handlemonthchange",
+      "source": "index_handlemonthchange",
+      "target": "client_src_pages_transactions_index_tsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Dashboard/index.tsx",
+      "source_location": "L84",
+      "weight": 1.0,
+      "_src": "client_src_pages_dashboard_index_tsx",
+      "_tgt": "index_handlemonthchange",
+      "source": "index_handlemonthchange",
+      "target": "client_src_pages_dashboard_index_tsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L126",
+      "weight": 1.0,
+      "_src": "client_src_pages_transactions_index_tsx",
+      "_tgt": "index_handlefilterchange",
+      "source": "client_src_pages_transactions_index_tsx",
+      "target": "index_handlefilterchange",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L140",
+      "weight": 1.0,
+      "_src": "client_src_pages_transactions_index_tsx",
+      "_tgt": "index_handlepagechange",
+      "source": "client_src_pages_transactions_index_tsx",
+      "target": "index_handlepagechange",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L144",
+      "weight": 1.0,
+      "_src": "client_src_pages_transactions_index_tsx",
+      "_tgt": "index_handlecreatesubmit",
+      "source": "client_src_pages_transactions_index_tsx",
+      "target": "index_handlecreatesubmit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L190",
+      "weight": 1.0,
+      "_src": "client_src_pages_transactions_index_tsx",
+      "_tgt": "index_handleeditsubmit",
+      "source": "client_src_pages_transactions_index_tsx",
+      "target": "index_handleeditsubmit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L224",
+      "weight": 1.0,
+      "_src": "client_src_pages_transactions_index_tsx",
+      "_tgt": "index_handleedit",
+      "source": "client_src_pages_transactions_index_tsx",
+      "target": "index_handleedit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L229",
+      "weight": 1.0,
+      "_src": "client_src_pages_transactions_index_tsx",
+      "_tgt": "index_handledelete",
+      "source": "client_src_pages_transactions_index_tsx",
+      "target": "index_handledelete",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L234",
+      "weight": 1.0,
+      "_src": "client_src_pages_transactions_index_tsx",
+      "_tgt": "index_handleconfirmdelete",
+      "source": "client_src_pages_transactions_index_tsx",
+      "target": "index_handleconfirmdelete",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L251",
+      "weight": 1.0,
+      "_src": "client_src_pages_transactions_index_tsx",
+      "_tgt": "index_filterbar",
+      "source": "client_src_pages_transactions_index_tsx",
+      "target": "index_filterbar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L332",
+      "weight": 1.0,
+      "_src": "client_src_pages_transactions_index_tsx",
+      "_tgt": "index_transactionrow",
+      "source": "client_src_pages_transactions_index_tsx",
+      "target": "index_transactionrow",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Transactions/index.tsx",
+      "source_location": "L377",
+      "weight": 1.0,
+      "_src": "client_src_pages_transactions_index_tsx",
+      "_tgt": "index_pagination",
+      "source": "client_src_pages_transactions_index_tsx",
+      "target": "index_pagination",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Dashboard/index.tsx",
+      "source_location": "L154",
+      "weight": 1.0,
+      "_src": "client_src_pages_dashboard_index_tsx",
+      "_tgt": "index_transactionrow",
+      "source": "index_transactionrow",
+      "target": "client_src_pages_dashboard_index_tsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Dashboard/index.tsx",
+      "source_location": "L93",
+      "weight": 1.0,
+      "_src": "client_src_pages_dashboard_index_tsx",
+      "_tgt": "index_handletransactionsubmit",
+      "source": "client_src_pages_dashboard_index_tsx",
+      "target": "index_handletransactionsubmit",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Dashboard/index.tsx",
+      "source_location": "L141",
+      "weight": 1.0,
+      "_src": "client_src_pages_dashboard_index_tsx",
+      "_tgt": "index_summarycard",
+      "source": "client_src_pages_dashboard_index_tsx",
+      "target": "index_summarycard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/pages/Dashboard/index.tsx",
+      "source_location": "L182",
+      "weight": 1.0,
+      "_src": "client_src_pages_dashboard_index_tsx",
+      "_tgt": "index_categoryranking",
+      "source": "client_src_pages_dashboard_index_tsx",
+      "target": "index_categoryranking",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/contexts/ToastContext.tsx",
+      "source_location": "L25",
+      "weight": 1.0,
+      "_src": "client_src_contexts_toastcontext_tsx",
+      "_tgt": "toastcontext_toastprovider",
+      "source": "client_src_contexts_toastcontext_tsx",
+      "target": "toastcontext_toastprovider",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/contexts/ToastContext.tsx",
+      "source_location": "L81",
+      "weight": 1.0,
+      "_src": "client_src_contexts_toastcontext_tsx",
+      "_tgt": "toastcontext_gettoaststyles",
+      "source": "client_src_contexts_toastcontext_tsx",
+      "target": "toastcontext_gettoaststyles",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/contexts/ThemeContext.tsx",
+      "source_location": "L17",
+      "weight": 1.0,
+      "_src": "client_src_contexts_themecontext_tsx",
+      "_tgt": "themecontext_getinitialtheme",
+      "source": "client_src_contexts_themecontext_tsx",
+      "target": "themecontext_getinitialtheme",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/contexts/ThemeContext.tsx",
+      "source_location": "L24",
+      "weight": 1.0,
+      "_src": "client_src_contexts_themecontext_tsx",
+      "_tgt": "themecontext_themeprovider",
+      "source": "client_src_contexts_themecontext_tsx",
+      "target": "themecontext_themeprovider",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/contexts/ThemeContext.tsx",
+      "source_location": "L48",
+      "weight": 1.0,
+      "_src": "client_src_contexts_themecontext_tsx",
+      "_tgt": "themecontext_usetheme",
+      "source": "client_src_contexts_themecontext_tsx",
+      "target": "themecontext_usetheme",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/contexts/AuthContext.tsx",
+      "source_location": "L25",
+      "weight": 1.0,
+      "_src": "client_src_contexts_authcontext_tsx",
+      "_tgt": "authcontext_authprovider",
+      "source": "client_src_contexts_authcontext_tsx",
+      "target": "authcontext_authprovider",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "client/src/contexts/AuthContext.tsx",
+      "source_location": "L109",
+      "weight": 1.0,
+      "_src": "client_src_contexts_authcontext_tsx",
+      "_tgt": "authcontext_useauth",
+      "source": "client_src_contexts_authcontext_tsx",
+      "target": "authcontext_useauth",
+      "confidence_score": 1.0
+    },
+    {
+      "label": "has_layer",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_budget_app",
+      "_tgt": "s_frontend",
+      "source": "s_budget_app",
+      "target": "s_frontend"
+    },
+    {
+      "label": "has_layer",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_budget_app",
+      "_tgt": "s_backend",
+      "source": "s_budget_app",
+      "target": "s_backend"
+    },
+    {
+      "label": "calls_api",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_frontend",
+      "_tgt": "s_backend",
+      "source": "s_frontend",
+      "target": "s_backend"
+    },
+    {
+      "label": "part_of",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_ui_dark_mode",
+      "_tgt": "s_frontend",
+      "source": "s_frontend",
+      "target": "s_ui_dark_mode"
+    },
+    {
+      "label": "part_of",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_ui_responsive",
+      "_tgt": "s_frontend",
+      "source": "s_frontend",
+      "target": "s_ui_responsive"
+    },
+    {
+      "label": "uses",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_auth_system",
+      "_tgt": "s_jwt_access",
+      "source": "s_auth_system",
+      "target": "s_jwt_access"
+    },
+    {
+      "label": "uses",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_auth_system",
+      "_tgt": "s_jwt_refresh",
+      "source": "s_auth_system",
+      "target": "s_jwt_refresh"
+    },
+    {
+      "label": "exposed_via",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_auth_system",
+      "_tgt": "s_api_auth",
+      "source": "s_auth_system",
+      "target": "s_api_auth"
+    },
+    {
+      "label": "includes",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_auth_system",
+      "_tgt": "s_auto_login",
+      "source": "s_auth_system",
+      "target": "s_auto_login"
+    },
+    {
+      "label": "exposed_via",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_transaction_crud",
+      "_tgt": "s_api_transactions",
+      "source": "s_transaction_crud",
+      "target": "s_api_transactions"
+    },
+    {
+      "label": "uses_model",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_transaction_crud",
+      "_tgt": "s_model_transaction",
+      "source": "s_transaction_crud",
+      "target": "s_model_transaction"
+    },
+    {
+      "label": "includes",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_transaction_crud",
+      "_tgt": "s_sub_category",
+      "source": "s_transaction_crud",
+      "target": "s_sub_category"
+    },
+    {
+      "label": "uses",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_transaction_crud",
+      "_tgt": "s_soft_delete",
+      "source": "s_transaction_crud",
+      "target": "s_soft_delete"
+    },
+    {
+      "label": "includes",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_transaction_crud",
+      "_tgt": "s_search_filter",
+      "source": "s_transaction_crud",
+      "target": "s_search_filter"
+    },
+    {
+      "label": "includes",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_transaction_crud",
+      "_tgt": "s_pagination",
+      "source": "s_transaction_crud",
+      "target": "s_pagination"
+    },
+    {
+      "label": "validates_type",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_transaction_crud",
+      "_tgt": "s_model_category",
+      "source": "s_transaction_crud",
+      "target": "s_model_category"
+    },
+    {
+      "label": "exposed_via",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_sub_category",
+      "_tgt": "s_api_subcategories",
+      "source": "s_sub_category",
+      "target": "s_api_subcategories"
+    },
+    {
+      "label": "exposed_via",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_payment_method",
+      "_tgt": "s_api_payment_methods",
+      "source": "s_payment_method",
+      "target": "s_api_payment_methods"
+    },
+    {
+      "label": "uses_model",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_payment_method",
+      "_tgt": "s_model_payment",
+      "source": "s_payment_method",
+      "target": "s_model_payment"
+    },
+    {
+      "label": "rendered_in",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_payment_method",
+      "_tgt": "s_settings_page",
+      "source": "s_payment_method",
+      "target": "s_settings_page"
+    },
+    {
+      "label": "includes",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_dashboard",
+      "_tgt": "s_calendar_view",
+      "source": "s_dashboard",
+      "target": "s_calendar_view"
+    },
+    {
+      "label": "includes",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_dashboard",
+      "_tgt": "s_daily_budget",
+      "source": "s_dashboard",
+      "target": "s_daily_budget"
+    },
+    {
+      "label": "calls",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_dashboard",
+      "_tgt": "s_api_stats",
+      "source": "s_dashboard",
+      "target": "s_api_stats"
+    },
+    {
+      "label": "calls",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_stats_page",
+      "_tgt": "s_api_stats",
+      "source": "s_stats_page",
+      "target": "s_api_stats"
+    },
+    {
+      "label": "includes",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_stats_page",
+      "_tgt": "s_budget_mgmt",
+      "source": "s_stats_page",
+      "target": "s_budget_mgmt"
+    },
+    {
+      "label": "exposed_via",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_budget_mgmt",
+      "_tgt": "s_api_budgets",
+      "source": "s_budget_mgmt",
+      "target": "s_api_budgets"
+    },
+    {
+      "label": "uses_model",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_budget_mgmt",
+      "_tgt": "s_model_budget",
+      "source": "s_budget_mgmt",
+      "target": "s_model_budget"
+    },
+    {
+      "label": "exposed_via",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_recurring_expense",
+      "_tgt": "s_api_recurring",
+      "source": "s_recurring_expense",
+      "target": "s_api_recurring"
+    },
+    {
+      "label": "uses_model",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_recurring_expense",
+      "_tgt": "s_model_recurring",
+      "source": "s_recurring_expense",
+      "target": "s_model_recurring"
+    },
+    {
+      "label": "rendered_in",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_recurring_expense",
+      "_tgt": "s_settings_page",
+      "source": "s_recurring_expense",
+      "target": "s_settings_page"
+    },
+    {
+      "label": "calls",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_admin_page",
+      "_tgt": "s_api_admin",
+      "source": "s_admin_page",
+      "target": "s_api_admin"
+    },
+    {
+      "label": "requires_role",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_admin_page",
+      "_tgt": "s_role_admin",
+      "source": "s_admin_page",
+      "target": "s_role_admin"
+    },
+    {
+      "label": "applies_to",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_soft_delete",
+      "_tgt": "s_model_transaction",
+      "source": "s_soft_delete",
+      "target": "s_model_transaction"
+    },
+    {
+      "label": "applies_to",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_soft_delete",
+      "_tgt": "s_model_category",
+      "source": "s_soft_delete",
+      "target": "s_model_category"
+    },
+    {
+      "label": "applies_to",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_soft_delete",
+      "_tgt": "s_model_payment",
+      "source": "s_soft_delete",
+      "target": "s_model_payment"
+    },
+    {
+      "label": "applies_to",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_soft_delete",
+      "_tgt": "s_model_recurring",
+      "source": "s_soft_delete",
+      "target": "s_model_recurring"
+    },
+    {
+      "label": "has_many",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_model_user",
+      "_tgt": "s_model_category",
+      "source": "s_model_user",
+      "target": "s_model_category"
+    },
+    {
+      "label": "has_many",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_model_user",
+      "_tgt": "s_model_transaction",
+      "source": "s_model_user",
+      "target": "s_model_transaction"
+    },
+    {
+      "label": "has_many",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_model_user",
+      "_tgt": "s_model_payment",
+      "source": "s_model_user",
+      "target": "s_model_payment"
+    },
+    {
+      "label": "has_many",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_model_user",
+      "_tgt": "s_model_budget",
+      "source": "s_model_user",
+      "target": "s_model_budget"
+    },
+    {
+      "label": "has_many",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_model_user",
+      "_tgt": "s_model_recurring",
+      "source": "s_model_user",
+      "target": "s_model_recurring"
+    },
+    {
+      "label": "belongs_to",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_model_transaction",
+      "_tgt": "s_model_category",
+      "source": "s_model_category",
+      "target": "s_model_transaction"
+    },
+    {
+      "label": "belongs_to",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_model_budget",
+      "_tgt": "s_model_category",
+      "source": "s_model_category",
+      "target": "s_model_budget"
+    },
+    {
+      "label": "belongs_to",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_model_recurring",
+      "_tgt": "s_model_category",
+      "source": "s_model_category",
+      "target": "s_model_recurring"
+    },
+    {
+      "label": "global_managed_by",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_model_category",
+      "_tgt": "s_role_admin",
+      "source": "s_model_category",
+      "target": "s_role_admin"
+    },
+    {
+      "label": "personal_owned_by",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_model_category",
+      "_tgt": "s_role_user",
+      "source": "s_model_category",
+      "target": "s_role_user"
+    },
+    {
+      "label": "belongs_to",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_model_transaction",
+      "_tgt": "s_model_payment",
+      "source": "s_model_transaction",
+      "target": "s_model_payment"
+    },
+    {
+      "label": "belongs_to",
+      "tag": "EXTRACTED",
+      "confidence_score": 1.0,
+      "_src": "s_model_recurring",
+      "_tgt": "s_model_payment",
+      "source": "s_model_payment",
+      "target": "s_model_recurring"
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "he_auth_flow",
+      "type": "process",
+      "nodes": [
+        "s_auth_system",
+        "s_jwt_access",
+        "s_jwt_refresh",
+        "s_api_auth",
+        "s_auto_login"
+      ],
+      "label": "\uc778\uc99d \ud750\ub984"
+    },
+    {
+      "id": "he_data_models",
+      "type": "entity_group",
+      "nodes": [
+        "s_model_user",
+        "s_model_category",
+        "s_model_transaction",
+        "s_model_payment",
+        "s_model_budget",
+        "s_model_recurring"
+      ],
+      "label": "\ub370\uc774\ud130 \ubaa8\ub378"
+    },
+    {
+      "id": "he_crud_features",
+      "type": "feature_group",
+      "nodes": [
+        "s_transaction_crud",
+        "s_payment_method",
+        "s_budget_mgmt",
+        "s_recurring_expense"
+      ],
+      "label": "CRUD \uae30\ub2a5"
+    },
+    {
+      "id": "he_pages",
+      "type": "ui_group",
+      "nodes": [
+        "s_dashboard",
+        "s_stats_page",
+        "s_settings_page",
+        "s_admin_page"
+      ],
+      "label": "\ud398\uc774\uc9c0 \uad6c\uc131"
+    }
+  ]
+}

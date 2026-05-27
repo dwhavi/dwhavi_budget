@@ -1,6 +1,7 @@
 // 전체 현황(프라이버시 구역) 페이지 오케스트레이터
 import { useMonthNavigation } from '@/shared/hooks/useMonthNavigation'
 import { useOverviewSummary, useMonthlyTrend } from '@/shared/hooks/useStats'
+import { useCreditCardBilling } from '@/shared/hooks/useCreditCardBilling'
 import { SkeletonCard } from '@/shared/components/Skeleton'
 import { IncomeExpenseSummary } from './IncomeExpenseSummary'
 import { SavingsRate } from './SavingsRate'
@@ -18,6 +19,7 @@ export function OverviewPage() {
   const { selectedMonth, goToPrevMonth, goToNextMonth } = useMonthNavigation()
   const { data: summary, isLoading } = useOverviewSummary(selectedMonth)
   const { data: trend } = useMonthlyTrend(6)
+  const { data: creditCardBillings = [] } = useCreditCardBilling(selectedMonth)
 
   return (
     <div className="min-h-screen bg-gray-950 pb-8">
@@ -71,6 +73,8 @@ export function OverviewPage() {
               prevMonthExpense={summary.prevMonthExpense}
               incomeChange={summary.incomeChange}
               expenseChange={summary.expenseChange}
+              paymentMethodBreakdown={summary.paymentMethodBreakdown}
+              creditCardBillings={creditCardBillings}
             />
             <SavingsRate savingsRate={summary.savingsRate} />
             <MonthlyTrendChart data={trend ?? []} />

@@ -40,6 +40,7 @@ interface OverviewSummary {
   balance: number
   savingsRate: number
   incomeBreakdown: CategoryStat[]
+  paymentMethodBreakdown: PaymentMethodStat[]
   prevMonthIncome: number
   prevMonthExpense: number
   incomeChange: number
@@ -215,6 +216,12 @@ export function useOverviewSummary(month: string) {
       totalIncome,
     )
 
+    const expenseTransactions = current.filter((t) => t.type === 'expense')
+    const paymentMethodBreakdown = buildPaymentMethodBreakdown(
+      expenseTransactions,
+      totalExpense,
+    )
+
     const prevIncome = (prev ?? [])
       .filter((t) => t.type === 'income')
       .reduce((s, t) => s + t.amount, 0)
@@ -228,6 +235,7 @@ export function useOverviewSummary(month: string) {
       balance,
       savingsRate,
       incomeBreakdown,
+      paymentMethodBreakdown,
       prevMonthIncome: prevIncome,
       prevMonthExpense: prevExpense,
       incomeChange: prevIncome > 0 ? totalIncome - prevIncome : 0,

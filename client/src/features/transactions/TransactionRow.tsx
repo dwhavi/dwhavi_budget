@@ -12,6 +12,14 @@ interface TransactionRowProps {
 /** 터치 스와이프 감지 임계값 (px) */
 const SWIPE_THRESHOLD = 80
 
+/** ISO 타임스탬프 → 'HH:mm' (24h) */
+function formatTime(iso: string): string {
+  const d = new Date(iso)
+  const hh = String(d.getHours()).padStart(2, '0')
+  const mm = String(d.getMinutes()).padStart(2, '0')
+  return `${hh}:${mm}`
+}
+
 export function TransactionRow({
   transaction,
   onClick,
@@ -112,14 +120,17 @@ export function TransactionRow({
             )}
           </div>
           <div className="flex items-center gap-2 mt-0.5">
+            <span className="text-xs text-gray-500 tabular-nums">
+              {formatTime(transaction.created_at)}
+            </span>
             {paymentMethodName && (
               <span className="text-xs text-gray-500 truncate">
-                {paymentMethodName}
+                · {paymentMethodName}
               </span>
             )}
             {memo && (
               <span className="text-xs text-gray-600 truncate">
-                {paymentMethodName && '· '}{memo}
+                · {memo}
               </span>
             )}
           </div>

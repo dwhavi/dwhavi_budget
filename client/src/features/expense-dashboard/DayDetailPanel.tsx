@@ -25,6 +25,35 @@ export function DayDetailPanel({
   const expenseList = transactions.filter((t) => t.type === 'expense')
   const totalExpense = expenseList.reduce((sum, t) => sum + t.amount, 0)
 
+  const grouped = Object.values(
+    expenseList.reduce<Record<number, {
+      categoryId: number
+      name: string
+      color: string
+      icon: string
+      total: number
+      count: number
+      memos: string[]
+    }>>((acc, t) => {
+      const key = t.category_id
+      if (!acc[key]) {
+        acc[key] = {
+          categoryId: key,
+          name: t.category?.name ?? t.category_name ?? '미분류',
+          color: t.category?.color ?? t.category_color ?? '#6B7280',
+          icon: (t.category?.icon ?? '') || (t.category?.name?.charAt(0) ?? '?'),
+          total: 0,
+          count: 0,
+          memos: [],
+        }
+      }
+      acc[key].total += t.amount
+      acc[key].count += 1
+      if (t.memo) acc[key].memos.push(t.memo)
+      return acc
+    }, {}),
+  ).sort((a, b) => b.total - a.total)
+
   return (
     <Modal isOpen={isOpen} onClose={onClose} title={formatDateLabel(date)}>
       {expenseList.length === 0 ? (
@@ -37,35 +66,37 @@ export function DayDetailPanel({
               -{formatWon(totalExpense)}
             </span>
           </div>
-          <ul className="space-y-3">
-          {expenseList.map((t) => (
+          <ul className="space-y-2">
+          {grouped.map((g) => (
             <li
-              key={t.id}
+              key={g.categoryId}
               className="flex items-center gap-3 p-3 rounded-lg bg-gray-800/50"
             >
-              {/* 카테고리 색상 표시 */}
               <span
                 className="w-8 h-8 rounded-lg flex items-center justify-center text-sm shrink-0"
                 style={{
-                  backgroundColor: (t.category_color ?? '#374151') + '33',
-                  color: t.category_color ?? '#9CA3AF',
+                  backgroundColor: g.color + '33',
+                  color: g.color,
                 }}
                 aria-hidden="true"
               >
-                {(t.category?.icon ?? '') || (t.category?.name?.charAt(0) ?? '?')}
+                {g.icon}
               </span>
 
               <div className="flex-1 min-w-0">
                 <p className="text-sm text-gray-100 truncate">
-                  {t.category?.name ?? t.category_name ?? '미분류'}
+                  {g.name}
+                  {g.count > 1 && (
+                    <span className="ml-1.5 text-xs text-gray-500">{g.count}건</span>
+                  )}
                 </p>
-                {t.memo && (
-                  <p className="text-xs text-gray-500 truncate">{t.memo}</p>
+                {g.memos.length > 0 && (
+                  <p className="text-xs text-gray-500 truncate">{g.memos.join(', ')}</p>
                 )}
               </div>
 
               <span className="text-sm font-medium text-red-400 tabular-nums shrink-0">
-                -{formatWon(t.amount)}
+                -{formatWon(g.total)}
               </span>
             </li>
           ))}

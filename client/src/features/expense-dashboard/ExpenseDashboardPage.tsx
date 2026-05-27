@@ -15,7 +15,6 @@ import { BudgetProgressList } from './BudgetProgressList'
 import { CalendarSection } from './CalendarSection'
 import { DayDetailPanel } from './DayDetailPanel'
 import { RecentExpenses } from './RecentExpenses'
-import { CreditCardBillingWidget } from './CreditCardBillingWidget'
 import { useCreditCardBilling } from '@/shared/hooks/useCreditCardBilling'
 import { TransactionForm } from '@/features/transactions/TransactionForm'
 import type { TransactionCreateRequest } from '@/shared/types'
@@ -111,15 +110,13 @@ export function ExpenseDashboardPage() {
       {summary ? (
         <>
           <ExpenseSummaryCards
-            totalExpense={summary.totalExpense}
-            dailyAllowance={summary.dailyAllowance}
-          />
+             totalExpense={summary.totalExpense}
+             dailyAllowance={summary.dailyAllowance}
+             paymentMethodBreakdown={summary.paymentMethodBreakdown}
+             creditCardBillings={creditCardBillings}
+           />
 
-          {creditCardBillings.length > 0 && (
-            <CreditCardBillingWidget billings={creditCardBillings} />
-          )}
-
-          <CategoryDonutChart
+           <CategoryDonutChart
             categoryBreakdown={summary.categoryBreakdown}
           />
 

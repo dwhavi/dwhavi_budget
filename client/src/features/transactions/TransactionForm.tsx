@@ -31,7 +31,7 @@ export function TransactionForm({
   const isEditing = !!initialData
 
   const [type, setType] = useState<'income' | 'expense'>(
-    initialData?.type ?? 'expense',
+    initialData?.type === 'income' ? 'income' : 'expense',
   )
   const [amount, setAmount] = useState(initialData?.amount ?? 0)
   const [categoryId, setCategoryId] = useState(initialData?.category_id ?? 0)
@@ -42,7 +42,7 @@ export function TransactionForm({
     initialData?.sub_category ?? '',
   )
   const [date, setDate] = useState(
-    initialData?.date ?? new Date().toISOString().split('T')[0] ?? '',
+    initialData?.date ?? new Date().toLocaleDateString('sv-SE') ?? '',
   )
   const [memo, setMemo] = useState(initialData?.memo ?? '')
 
@@ -57,12 +57,12 @@ export function TransactionForm({
 
   useEffect(() => {
     if (!isOpen) return
-    setType(initialData?.type ?? 'expense')
+    setType(initialData?.type === 'income' ? 'income' : 'expense')
     setAmount(initialData?.amount ?? 0)
     setCategoryId(initialData?.category_id ?? 0)
     setPaymentMethodId(initialData?.payment_method_id)
     setSubCategory(initialData?.sub_category ?? '')
-    setDate(initialData?.date ?? new Date().toISOString().split('T')[0] ?? '')
+    setDate(initialData?.date ?? new Date().toLocaleDateString('sv-SE') ?? '')
     setMemo(initialData?.memo ?? '')
     setCustomCategoryName('')
     setCustomPaymentMethodName('')

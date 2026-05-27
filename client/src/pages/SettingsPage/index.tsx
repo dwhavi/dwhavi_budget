@@ -36,7 +36,7 @@ export function SettingsPage({ }: SettingsPageProps) {
 
   // Budgets state
   const [budgets, setBudgets] = useState<Budget[]>([]);
-  const [currentMonth, setCurrentMonth] = useState(new Date().toISOString().slice(0, 7));
+  const [currentMonth, setCurrentMonth] = useState(new Date().toLocaleDateString('sv-SE').slice(0, 7));
   const [showBudgetModal, setShowBudgetModal] = useState(false);
   const [editingBudget, setEditingBudget] = useState<Budget | null>(null);
   const [showBudgetDeleteConfirm, setShowBudgetDeleteConfirm] = useState<number | null>(null);

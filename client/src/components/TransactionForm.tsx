@@ -29,7 +29,7 @@ const [formData, setFormData] = useState<TransactionCreateRequest>({
   amount: 0,
   category_id: 0,
   payment_method_id: undefined,
-  date: initialData.date ?? new Date().toISOString().split('T')[0] ?? '',
+  date: initialData.date ?? new Date().toLocaleDateString('sv-SE'),
   sub_category: '',
   memo: '',
   ...initialData

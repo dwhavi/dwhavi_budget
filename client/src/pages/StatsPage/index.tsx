@@ -15,7 +15,7 @@ interface StatsPageProps {
   month?: string;
 }
 
-export function StatsPage({ month = new Date().toISOString().slice(0, 7) }: StatsPageProps) {
+export function StatsPage({ month = new Date().toLocaleDateString('sv-SE').slice(0, 7) }: StatsPageProps) {
   const [currentMonth, setCurrentMonth] = useState(month);
   const [monthlyTrend, setMonthlyTrend] = useState<MonthlyTrend[]>([]);
   const [categoryStats, setCategoryStats] = useState<CategoryStat[]>([]);

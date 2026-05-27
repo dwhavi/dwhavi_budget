@@ -16,7 +16,7 @@ export interface SubCategorySuggestion {
 export interface Transaction {
   id: number;
   user_id: number;
-  type: 'income' | 'expense';
+  type: 'income' | 'expense' | 'transfer';
   amount: number;
   category_id: number;
   payment_method_id?: number;
@@ -44,7 +44,7 @@ export interface TransactionListResponse {
 }
 
 export interface TransactionCreateRequest {
-  type: 'income' | 'expense';
+  type: 'income' | 'expense' | 'transfer';
   amount: number;
   category_id: number;
   payment_method_id?: number;
@@ -54,7 +54,7 @@ export interface TransactionCreateRequest {
 }
 
 export interface TransactionUpdateRequest {
-  type?: 'income' | 'expense';
+  type?: 'income' | 'expense' | 'transfer';
   amount?: number;
   category_id?: number;
   payment_method_id?: number;
@@ -83,6 +83,8 @@ export interface PaymentMethod {
   color?: string;
   is_default: boolean;
   memo?: string;
+  billing_start_day?: number;
+  payment_day?: number;
 }
 
 export interface PaymentMethodCreateRequest {
@@ -92,6 +94,8 @@ export interface PaymentMethodCreateRequest {
   color?: string;
   is_default?: boolean;
   memo?: string;
+  billing_start_day?: number;
+  payment_day?: number;
 }
 
 export interface PaymentMethodUpdateRequest {
@@ -101,6 +105,8 @@ export interface PaymentMethodUpdateRequest {
   color?: string;
   is_default?: boolean;
   memo?: string;
+  billing_start_day?: number;
+  payment_day?: number;
 }
 
 export interface Budget {
@@ -187,4 +193,14 @@ export interface PaymentMethodStat {
   payment_method_name: string;
   total: number;
   percentage: number;
+}
+
+export interface CreditCardBilling {
+  paymentMethodId: number
+  paymentMethodName: string
+  paymentMethodColor: string
+  billingPeriodStart: string
+  billingPeriodEnd: string
+  totalSpent: number
+  nextPaymentDate: string
 }

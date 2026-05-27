@@ -17,7 +17,7 @@ interface DayData {
   expense: number;
 }
 
-export function Calendar({ month = new Date().toISOString().slice(0, 7), onMonthChange, onDateSelect, transactions = [] }: CalendarProps) {
+export function Calendar({ month = new Date().toLocaleDateString('sv-SE').slice(0, 7), onMonthChange, onDateSelect, transactions = [] }: CalendarProps) {
   const [currentMonth, setCurrentMonth] = useState(month);
   const [days, setDays] = useState<DayData[]>([]);
 
@@ -32,14 +32,14 @@ export function Calendar({ month = new Date().toISOString().slice(0, 7), onMonth
     startDate.setDate(startDate.getDate() - firstDay.getDay());
 
     const today = new Date();
-    const todayString = today.toISOString().split('T')[0] ?? '';
+    const todayString = today.toLocaleDateString('sv-SE');
 
     const result: DayData[] = [];
 
     for (let i = 0; i < 42; i++) {
       const d = new Date(startDate);
       d.setDate(startDate.getDate() + i);
-      const ds = d.toISOString().split('T')[0] ?? '';
+      const ds = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
       const day = d.getDate();
       const isCurrentMonth = d.getMonth() === (monthNum - 1);
       const isToday = ds === todayString;

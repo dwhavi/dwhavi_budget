@@ -28,7 +28,11 @@ export function PaymentMethodForm({ initialData, onSubmit, onCancel }: PaymentMe
     color: COLOR_OPTIONS[0],
     is_default: false,
     memo: '',
+    billing_start_day: undefined,
+    payment_day: undefined,
   })
+
+  const isCreditCard = formData.type === 'credit'
 
   useEffect(() => {
     if (initialData) {
@@ -39,6 +43,8 @@ export function PaymentMethodForm({ initialData, onSubmit, onCancel }: PaymentMe
         color: initialData.color || COLOR_OPTIONS[0],
         is_default: initialData.is_default,
         memo: initialData.memo || '',
+        billing_start_day: initialData.billing_start_day,
+        payment_day: initialData.payment_day,
       })
     }
   }, [initialData])
@@ -77,10 +83,15 @@ export function PaymentMethodForm({ initialData, onSubmit, onCancel }: PaymentMe
         <label className="block text-sm font-medium text-gray-300 mb-2">유형</label>
         <select
           value={formData.type}
-          onChange={(e) => setFormData({
-            ...formData,
-            type: e.target.value as PaymentMethodCreateRequest['type'],
-          })}
+          onChange={(e) => {
+            const newType = e.target.value as PaymentMethodCreateRequest['type']
+            setFormData({
+              ...formData,
+              type: newType,
+              billing_start_day: newType === 'credit' ? formData.billing_start_day : undefined,
+              payment_day: newType === 'credit' ? formData.payment_day : undefined,
+            })
+          }}
           className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-100
                      focus:outline-none focus:border-blue-500"
         >
@@ -106,6 +117,50 @@ export function PaymentMethodForm({ initialData, onSubmit, onCancel }: PaymentMe
           ))}
         </div>
       </div>
+
+      {isCreditCard && (
+        <>
+          <div>
+            <label className="block text-sm font-medium text-gray-300 mb-2">
+              결제기간 시작일 (매월 N일부터)
+            </label>
+            <select
+              value={formData.billing_start_day ?? ''}
+              onChange={(e) => setFormData({
+                ...formData,
+                billing_start_day: e.target.value ? parseInt(e.target.value) : undefined,
+              })}
+              className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-100
+                         focus:outline-none focus:border-blue-500"
+            >
+              <option value="">선택</option>
+              {Array.from({ length: 31 }, (_, i) => i + 1).map((d) => (
+                <option key={d} value={d}>{d}일</option>
+              ))}
+            </select>
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium text-gray-300 mb-2">
+              결제일 (다음달 N일)
+            </label>
+            <select
+              value={formData.payment_day ?? ''}
+              onChange={(e) => setFormData({
+                ...formData,
+                payment_day: e.target.value ? parseInt(e.target.value) : undefined,
+              })}
+              className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-100
+                         focus:outline-none focus:border-blue-500"
+            >
+              <option value="">선택</option>
+              {Array.from({ length: 31 }, (_, i) => i + 1).map((d) => (
+                <option key={d} value={d}>{d}일</option>
+              ))}
+            </select>
+          </div>
+        </>
+      )}
 
       <div className="flex items-center">
         <input

@@ -40,7 +40,7 @@ interface PaginationProps {
   onPageChange: (page: number) => void;
 }
 
-const TransactionsPage = ({ month = new Date().toISOString().slice(0, 7) }: TransactionsPageProps) => {
+const TransactionsPage = ({ month = new Date().toLocaleDateString('sv-SE').slice(0, 7) }: TransactionsPageProps) => {
   const [currentMonth, setCurrentMonth] = useState(month);
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);

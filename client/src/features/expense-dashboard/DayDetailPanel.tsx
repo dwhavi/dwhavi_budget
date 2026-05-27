@@ -23,13 +23,21 @@ export function DayDetailPanel({
   transactions,
 }: DayDetailPanelProps) {
   const expenseList = transactions.filter((t) => t.type === 'expense')
+  const totalExpense = expenseList.reduce((sum, t) => sum + t.amount, 0)
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} title={formatDateLabel(date)}>
       {expenseList.length === 0 ? (
         <p className="text-center text-gray-400 py-8">이 날의 지출 내역이 없습니다.</p>
       ) : (
-        <ul className="space-y-3">
+        <>
+          <div className="mb-4 p-3 rounded-lg bg-gray-800/70 flex items-center justify-between">
+            <span className="text-sm text-gray-400">총 지출</span>
+            <span className="text-lg font-bold text-red-400 tabular-nums">
+              -{formatWon(totalExpense)}
+            </span>
+          </div>
+          <ul className="space-y-3">
           {expenseList.map((t) => (
             <li
               key={t.id}
@@ -62,6 +70,7 @@ export function DayDetailPanel({
             </li>
           ))}
         </ul>
+        </>
       )}
     </Modal>
   )

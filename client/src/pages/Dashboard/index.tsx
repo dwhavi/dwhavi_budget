@@ -44,7 +44,7 @@ interface CategoryRankingProps {
   totalExpense: number;
 }
 
-export function DashboardPage({ month = new Date().toISOString().slice(0, 7) }: DashboardPageProps) {
+export function DashboardPage({ month = new Date().toLocaleDateString('sv-SE').slice(0, 7) }: DashboardPageProps) {
   const [currentMonth, setCurrentMonth] = useState(month);
   const [dashboardData, setDashboardData] = useState<DashboardSummary | null>(null);
   const [monthlyTrend, setMonthlyTrend] = useState<MonthlyTrend[]>([]);

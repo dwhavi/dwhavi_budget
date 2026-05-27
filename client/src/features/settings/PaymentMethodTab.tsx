@@ -56,6 +56,8 @@ export function PaymentMethodTab() {
           color: req.color,
           is_default: req.is_default ?? false,
           memo: req.memo,
+          billing_start_day: req.billing_start_day,
+          payment_day: req.payment_day,
         })
         addToast('새 결제수단이 추가되었습니다.', 'success')
       }
@@ -131,6 +133,12 @@ export function PaymentMethodTab() {
                   {pm.issuer && <span>{pm.issuer}</span>}
                   {pm.issuer && <span className="mx-1">·</span>}
                   <span>{TYPE_LABELS[pm.type]}</span>
+                  {pm.type === 'credit' && pm.billing_start_day && pm.payment_day && (
+                    <>
+                      <span className="mx-1">·</span>
+                      <span>매월 {pm.billing_start_day}일~결제일 {pm.payment_day}일</span>
+                    </>
+                  )}
                 </div>
               </div>
             </div>

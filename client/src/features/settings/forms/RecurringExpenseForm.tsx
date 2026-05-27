@@ -29,7 +29,7 @@ export function RecurringExpenseForm({
     amount: 0,
     category_id: 0,
     payment_method_id: 0,
-    start_date: new Date().toISOString().slice(0, 10),
+    start_date: new Date().toLocaleDateString('sv-SE'),
     end_date: undefined,
     memo: '',
   })

@@ -15,6 +15,8 @@ import { BudgetProgressList } from './BudgetProgressList'
 import { CalendarSection } from './CalendarSection'
 import { DayDetailPanel } from './DayDetailPanel'
 import { RecentExpenses } from './RecentExpenses'
+import { CreditCardBillingWidget } from './CreditCardBillingWidget'
+import { useCreditCardBilling } from '@/shared/hooks/useCreditCardBilling'
 import { TransactionForm } from '@/features/transactions/TransactionForm'
 import type { TransactionCreateRequest } from '@/shared/types'
 
@@ -23,6 +25,7 @@ export function ExpenseDashboardPage() {
 
   const summaryQuery = useExpenseSummary(selectedMonth)
   const budgetsQuery = useBudgets(selectedMonth)
+  const creditCardBillingQuery = useCreditCardBilling(selectedMonth)
   const transactionsQuery = useTransactions({
     month: selectedMonth,
     type: 'expense',
@@ -47,6 +50,8 @@ export function ExpenseDashboardPage() {
     summaryQuery.isLoading ||
     budgetsQuery.isLoading ||
     transactionsQuery.isLoading
+
+  const creditCardBillings = creditCardBillingQuery.data ?? []
 
   const monthLabel = useMemo(() => {
     const parts = selectedMonth.split('-').map(Number)
@@ -109,6 +114,10 @@ export function ExpenseDashboardPage() {
             totalExpense={summary.totalExpense}
             dailyAllowance={summary.dailyAllowance}
           />
+
+          {creditCardBillings.length > 0 && (
+            <CreditCardBillingWidget billings={creditCardBillings} />
+          )}
 
           <CategoryDonutChart
             categoryBreakdown={summary.categoryBreakdown}

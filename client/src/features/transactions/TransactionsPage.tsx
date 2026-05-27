@@ -15,6 +15,7 @@ import type {
 } from '@/shared/types'
 import { FilterBar, type FilterState } from './FilterBar'
 import { TransactionList } from './TransactionList'
+import { TransactionSummary } from './TransactionSummary'
 import { Pagination } from './Pagination'
 import { TransactionForm } from './TransactionForm'
 import { ConfirmDialog } from '@/shared/components/ConfirmDialog'
@@ -157,6 +158,8 @@ export function TransactionsPage() {
         categories={allCategories ?? []}
         paymentMethods={paymentMethods ?? []}
       />
+
+      <TransactionSummary transactions={transactions} paymentMethods={paymentMethods ?? []} />
 
       <TransactionList
         transactions={transactions}

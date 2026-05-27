@@ -1,4 +1,5 @@
 // 최근 지출 5건 리스트
+import { useNavigate } from 'react-router-dom'
 import type { Transaction } from '@/shared/types'
 import { formatWon } from '@/shared/hooks/useCurrency'
 import { EmptyState } from '@/shared/components/EmptyState'
@@ -14,6 +15,7 @@ function formatShortDate(dateStr: string): string {
 }
 
 export function RecentExpenses({ transactions }: RecentExpensesProps) {
+  const navigate = useNavigate()
   const recentFive = transactions
     .filter((t) => t.type === 'expense')
     .slice(0, 5)
@@ -33,7 +35,10 @@ export function RecentExpenses({ transactions }: RecentExpensesProps) {
     <div className="bg-gray-900 border border-gray-800 rounded-xl p-4">
       <div className="flex items-center justify-between mb-3">
         <h3 className="text-sm font-semibold text-gray-100">최근 지출</h3>
-        <button className="text-xs text-blue-400 hover:text-blue-300 transition min-h-[44px] flex items-center">
+        <button
+          onClick={() => navigate('/transactions')}
+          className="text-xs text-blue-400 hover:text-blue-300 transition min-h-[44px] flex items-center"
+        >
           전체보기 →
         </button>
       </div>

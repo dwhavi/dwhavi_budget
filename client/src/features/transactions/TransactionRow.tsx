@@ -109,28 +109,28 @@ export function TransactionRow({
         </div>
 
         <div className="flex-1 min-w-0">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <span className="text-sm font-medium text-gray-100 truncate">
               {categoryName}
             </span>
-            {subCategory && (
-              <span className="text-xs text-gray-500 truncate">
-                · {subCategory}
-              </span>
-            )}
-          </div>
-          <div className="flex items-center gap-2 mt-0.5">
-            <span className="text-xs text-gray-500 tabular-nums">
+            <span className="text-sm text-gray-500 tabular-nums shrink-0">
               {formatTime(transaction.created_at)}
             </span>
+          </div>
+          <div className="flex items-center gap-2 mt-0.5">
+            {subCategory && (
+              <span className="text-xs text-gray-500 truncate">
+                {subCategory}
+              </span>
+            )}
             {paymentMethodName && (
               <span className="text-xs text-gray-500 truncate">
-                · {paymentMethodName}
+                {paymentMethodName}
               </span>
             )}
             {memo && (
               <span className="text-xs text-gray-600 truncate">
-                · {memo}
+                {memo}
               </span>
             )}
           </div>

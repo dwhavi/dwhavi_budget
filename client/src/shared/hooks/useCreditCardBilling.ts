@@ -24,21 +24,23 @@ export function useCreditCardBilling(month: string) {
         const billingStart = card.billing_start_day!
         const paymentDay = card.payment_day!
 
-        const [year, mon] = month.split('-').map(Number)
-        const periodStart = `${year}-${String(mon).padStart(2, '0')}-${String(billingStart).padStart(2, '0')}`
+        const year = Number(month.split('-')[0])
+        const mon = Number(month.split('-')[1])
 
-        // 종료일: 다음달 (billingStart - 1)일. 시작일 기준 한 달
-        // 예: 시작일 16 → 5/16 ~ 6/15, 시작일 1 → 5/1 ~ 5/31
-        const endYear = mon! === 12 ? year! + 1 : year!
-        const endMon = mon! === 12 ? 1 : mon! + 1
-        const endDateDay = billingStart <= 1
-          ? new Date(year!, mon!, 0).getDate()
-          : billingStart - 1
-        const periodEnd = `${endYear}-${String(endMon).padStart(2, '0')}-${String(Math.min(endDateDay, new Date(endYear, endMon, 0).getDate())).padStart(2, '0')}`
+        const startDayClamped = Math.min(billingStart, new Date(year, mon, 0).getDate())
+        const periodStart = `${year}-${String(mon).padStart(2, '0')}-${String(startDayClamped).padStart(2, '0')}`
 
-        const paymentYear = mon! === 12 ? year! + 1 : year!
-        const paymentMon = mon! === 12 ? 1 : mon! + 1
-        const nextPaymentDate = `${paymentYear}-${String(paymentMon).padStart(2, '0')}-${String(Math.min(paymentDay, new Date(paymentYear, paymentMon, 0).getDate())).padStart(2, '0')}`
+        // 취합 종료일: 다음달 (billingStart - 1)일
+        // JS Date에서 mon은 1-indexed이므로 new Date(year, mon, N-1)은 다음달 N-1일
+        // billingStart=1 → new Date(year, mon, 0) = 당월 말일 (예: 5/31)
+        // billingStart=16 → new Date(year, mon, 15) = 다음달 15일 (예: 6/15)
+        const periodEndDate = new Date(year, mon, billingStart - 1)
+        const periodEnd = `${periodEndDate.getFullYear()}-${String(periodEndDate.getMonth() + 1).padStart(2, '0')}-${String(periodEndDate.getDate()).padStart(2, '0')}`
+
+        // 결제일: 취합 종료일 다음 달
+        const payMonth = new Date(periodEndDate.getFullYear(), periodEndDate.getMonth() + 1, 1)
+        const payMaxDay = new Date(payMonth.getFullYear(), payMonth.getMonth() + 1, 0).getDate()
+        const nextPaymentDate = `${payMonth.getFullYear()}-${String(payMonth.getMonth() + 1).padStart(2, '0')}-${String(Math.min(paymentDay, payMaxDay)).padStart(2, '0')}`
 
         const { data: txData, error } = await supabase
           .from('transactions')

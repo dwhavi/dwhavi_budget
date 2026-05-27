@@ -112,8 +112,7 @@ export function ExpenseDashboardPage() {
           <ExpenseSummaryCards
              totalExpense={summary.totalExpense}
              dailyAllowance={summary.dailyAllowance}
-             transactions={transactions}
-             paymentMethods={allPaymentMethods ?? []}
+             paymentMethodBreakdown={summary.paymentMethodBreakdown}
              creditCardBillings={creditCardBillings}
            />
 

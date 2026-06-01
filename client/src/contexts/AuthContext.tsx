@@ -1,4 +1,4 @@
-// Supabase Auth 기반 인증 컨텍스트
+// Google OAuth 기반 인증 컨텍스트
 import {
   createContext,
   useContext,
@@ -7,60 +7,45 @@ import {
   useCallback,
   type ReactNode,
 } from 'react'
-import type { User, Session } from '@supabase/supabase-js'
-import { supabase } from '@/shared/lib/supabase'
+import {
+  initTokenClient,
+  ensureAuthenticated,
+  logout as gDriveLogout,
+} from '@/shared/lib/google-drive-service'
 
 interface AuthContextValue {
-  user: User | null
-  session: Session | null
+  authenticated: boolean
   loading: boolean
-  signInWithGoogle: () => Promise<void>
-  signOut: () => Promise<void>
+  signIn: () => Promise<void>
+  signOut: () => void
 }
 
 const AuthContext = createContext<AuthContextValue | null>(null)
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<User | null>(null)
-  const [session, setSession] = useState<Session | null>(null)
+  const [authenticated, setAuthenticated] = useState(false)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session: currentSession } }) => {
-      setSession(currentSession)
-      setUser(currentSession?.user ?? null)
-      setLoading(false)
-    })
-
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      (_event, newSession) => {
-        setSession(newSession)
-        setUser(newSession?.user ?? null)
-        setLoading(false)
-      },
-    )
-
-    return () => {
-      subscription.unsubscribe()
-    }
+    initTokenClient()
+    ensureAuthenticated()
+      .then(() => setAuthenticated(true))
+      .catch(() => setAuthenticated(false))
+      .finally(() => setLoading(false))
   }, [])
 
-  const signInWithGoogle = useCallback(async () => {
-    const origin = window.location.origin
-    await supabase.auth.signInWithOAuth({
-      provider: 'google',
-      options: {
-        redirectTo: `${origin}/auth/callback`,
-      },
-    })
+  const signIn = useCallback(async () => {
+    await ensureAuthenticated()
+    setAuthenticated(true)
   }, [])
 
-  const signOut = useCallback(async () => {
-    await supabase.auth.signOut()
+  const signOut = useCallback(() => {
+    gDriveLogout()
+    setAuthenticated(false)
   }, [])
 
   return (
-    <AuthContext.Provider value={{ user, session, loading, signInWithGoogle, signOut }}>
+    <AuthContext.Provider value={{ authenticated, loading, signIn, signOut }}>
       {children}
     </AuthContext.Provider>
   )

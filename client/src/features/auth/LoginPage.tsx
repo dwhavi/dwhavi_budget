@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { useAuth } from '@/contexts/AuthContext'
 
 export function LoginPage() {
-  const { signInWithGoogle } = useAuth()
+  const { signIn } = useAuth()
   const [error, setError] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false)
 
@@ -11,7 +11,7 @@ export function LoginPage() {
     setError(null)
     setIsLoading(true)
     try {
-      await signInWithGoogle()
+      await signIn()
     } catch (err) {
       setError('로그인에 실패했습니다. 다시 시도해주세요.')
       setIsLoading(false)

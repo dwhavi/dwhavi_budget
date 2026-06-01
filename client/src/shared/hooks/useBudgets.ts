@@ -1,45 +1,50 @@
-// 예산 CRUD 훅
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import { supabase } from '@/shared/lib/supabase'
-import { useAuth } from '@/contexts/AuthContext'
-import type { Budget, BudgetUpsertRequest } from '@/shared/types'
+// 예산 CRUD 훅 — DataContext 기반 인메모리 처리
+import { useMemo } from 'react'
+import { useData } from '@/shared/contexts/DataContext'
+import { v4 as uuidv4 } from 'uuid'
+import type { BudgetUpsertRequest } from '@/shared/types'
 
 export function useBudgets(month: string) {
-  const { user } = useAuth()
-  return useQuery({
-    queryKey: ['budgets', user?.id, month],
-    queryFn: async () => {
-      const { data, error } = await supabase
-        .from('budgets')
-        .select('*, category:categories(*)')
-        .eq('user_id', user!.id)
-        .eq('month', month)
-      if (error) throw error
-      return (data ?? []) as Budget[]
-    },
-    enabled: !!user,
-  })
+  const { data, upsertBudget } = useData()
+
+  const list = useMemo(() => {
+    if (!data) return []
+    const categoryMap = new Map(data.categories.map((c) => [c.id, c]))
+    return data.budgets
+      .filter((b) => b.month === month)
+      .map((b) => ({ ...b, category: categoryMap.get(b.category_id) }))
+  }, [data, month])
+
+  const doUpsert = (input: BudgetUpsertRequest) => {
+    const existing = data?.budgets.find(
+      (b) => b.category_id === input.category_id && b.month === input.month,
+    )
+    upsertBudget({
+      id: existing?.id ?? uuidv4(),
+      ...input,
+    })
+  }
+
+  return {
+    data: list,
+    budgets: list,
+    upsertBudget: doUpsert,
+    isLoading: !data,
+  }
 }
 
 export function useUpsertBudget() {
-  const qc = useQueryClient()
-  const { user } = useAuth()
-  return useMutation({
-    mutationFn: async (input: BudgetUpsertRequest) => {
-      const { data, error } = await supabase
-        .from('budgets')
-        .upsert(
-          { ...input, user_id: user!.id },
-          { onConflict: 'user_id,category_id,month' },
-        )
-        .select()
-        .single()
-      if (error) throw error
-      return data as Budget
+  const { data, upsertBudget } = useData()
+
+  return {
+    mutateAsync: (input: BudgetUpsertRequest) => {
+      const existing = data?.budgets.find(
+        (b) => b.category_id === input.category_id && b.month === input.month,
+      )
+      upsertBudget({
+        id: existing?.id ?? uuidv4(),
+        ...input,
+      })
     },
-    onSuccess: (_data, variables) => {
-      qc.invalidateQueries({ queryKey: ['budgets', user?.id, variables.month] })
-      qc.invalidateQueries({ queryKey: ['stats'] })
-    },
-  })
+  }
 }

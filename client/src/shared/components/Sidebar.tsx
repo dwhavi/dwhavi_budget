@@ -12,7 +12,7 @@ const NAV_ITEMS = [
 export function Sidebar() {
   const location = useLocation()
   const navigate = useNavigate()
-  const { user, signOut } = useAuth()
+  const { signOut } = useAuth()
 
   const isActive = (path: string) => {
     if (path === '/') return location.pathname === '/'
@@ -52,9 +52,6 @@ export function Sidebar() {
       </nav>
 
       <div className="px-4 py-4 border-t border-gray-800">
-        {user?.email && (
-          <p className="text-xs text-gray-500 truncate mb-3">{user.email}</p>
-        )}
         <button
           onClick={handleSignOut}
           className="w-full px-4 py-2.5 text-sm font-medium text-gray-400 hover:text-gray-200

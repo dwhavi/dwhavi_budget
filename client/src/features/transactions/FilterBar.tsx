@@ -4,8 +4,8 @@ import type { Category, PaymentMethod } from '@/shared/types'
 
 export interface FilterState {
   type: 'income' | 'expense' | undefined
-  category_id: number | undefined
-  payment_method_id: number | undefined
+  category_id: string | undefined
+  payment_method_id: string | undefined
   keyword: string
 }
 
@@ -36,7 +36,7 @@ export function FilterBar({
       const value = e.target.value
       onChange({
         ...filters,
-        category_id: value ? Number(value) : undefined,
+        category_id: value || undefined,
       })
     },
     [filters, onChange],
@@ -47,7 +47,7 @@ export function FilterBar({
       const value = e.target.value
       onChange({
         ...filters,
-        payment_method_id: value ? Number(value) : undefined,
+        payment_method_id: value || undefined,
       })
     },
     [filters, onChange],

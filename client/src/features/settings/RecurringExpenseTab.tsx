@@ -13,7 +13,6 @@ import {
 import { Modal } from '@/shared/components/Modal'
 import { ConfirmDialog } from '@/shared/components/ConfirmDialog'
 import { EmptyState } from '@/shared/components/EmptyState'
-import { SkeletonList } from '@/shared/components/Skeleton'
 import { RecurringExpenseForm } from './forms/RecurringExpenseForm'
 import { formatWon } from '@/shared/hooks/useCurrency'
 import type {
@@ -26,7 +25,7 @@ export function RecurringExpenseTab() {
   const { addToast } = useToast()
   const { data: categories = [] } = useCategories()
   const { data: paymentMethods = [] } = usePaymentMethods()
-  const { data: expenses = [], isLoading } = useRecurringExpenses()
+  const { data: expenses = [] } = useRecurringExpenses()
   const createMutation = useCreateRecurringExpense()
   const updateMutation = useUpdateRecurringExpense()
   const deleteMutation = useDeleteRecurringExpense()
@@ -34,7 +33,7 @@ export function RecurringExpenseTab() {
 
   const [showModal, setShowModal] = useState(false)
   const [editing, setEditing] = useState<RecurringExpense | null>(null)
-  const [deleteTarget, setDeleteTarget] = useState<number | null>(null)
+  const [deleteTarget, setDeleteTarget] = useState<string | null>(null)
 
   const categoryMap = new Map(categories.map((c) => [c.id, c.name]))
   const paymentMethodMap = new Map(paymentMethods.map((pm) => [pm.id, pm.name]))
@@ -56,14 +55,14 @@ export function RecurringExpenseTab() {
 
   const handleSubmit = async (
     data: RecurringExpenseCreateRequest | RecurringExpenseUpdateRequest,
-    id?: number,
+    id?: string,
   ) => {
     try {
       if (id) {
         await updateMutation.mutateAsync({ id, ...data })
         addToast('고정비가 업데이트되었습니다.', 'success')
       } else {
-        await createMutation.mutateAsync(data as RecurringExpenseCreateRequest)
+        await createMutation.mutateAsync({ ...data, is_active: true } as RecurringExpenseCreateRequest & { is_active: boolean })
         addToast('새 고정비가 추가되었습니다.', 'success')
       }
       closeModal()
@@ -84,7 +83,7 @@ export function RecurringExpenseTab() {
     }
   }
 
-  const handleToggle = async (id: number) => {
+  const handleToggle = async (id: string) => {
     try {
       await toggleMutation.mutateAsync(id)
     } catch {
@@ -92,14 +91,9 @@ export function RecurringExpenseTab() {
     }
   }
 
-  if (isLoading) {
-    return <SkeletonList items={4} />
-  }
-
   return (
     <div className="space-y-3">
-      {expenses.length === 0 ? (
-        <EmptyState
+      {expenses.length === 0 ? (<EmptyState
           icon="🔄"
           title="등록된 고정비가 없습니다"
           description="월 고정 지출을 등록해 보세요."

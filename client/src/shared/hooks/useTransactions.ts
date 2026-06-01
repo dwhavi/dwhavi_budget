@@ -1,19 +1,13 @@
-// 거래 CRUD + 필터/페이징 훅
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
-import { supabase } from '@/shared/lib/supabase'
-import { useAuth } from '@/contexts/AuthContext'
-import type {
-  Transaction,
-  PaymentMethod,
-  TransactionCreateRequest,
-  TransactionUpdateRequest,
-} from '@/shared/types'
+// 거래 CRUD + 필터/페이징 훅 — DataContext 기반 인메모리 처리
+import { useMemo } from 'react'
+import { useData } from '@/shared/contexts/DataContext'
+import type { Transaction, PaymentMethod } from '@/shared/types'
 
 interface TransactionFilters {
   month: string
   type?: 'income' | 'expense'
-  category_id?: number
-  payment_method_id?: number
+  category_id?: string
+  payment_method_id?: string
   keyword?: string
   page?: number
   limit?: number
@@ -23,167 +17,102 @@ interface TransactionRow extends Transaction {
   payment_method?: PaymentMethod
 }
 
-interface TransactionListResult {
-  transactions: TransactionRow[]
-  pagination: {
-    page: number
-    limit: number
-    total: number
-    totalPages: number
-  }
+function getMonthEnd(month: string): string {
+  const [y, m] = month.split('-').map(Number)
+  return `${month}-${String(new Date(y!, m!, 0).getDate()).padStart(2, '0')}`
 }
 
 export function useTransactions(params: TransactionFilters) {
-  const { user } = useAuth()
-  const page = params.page ?? 1
-  const limit = params.limit ?? 20
-  const monthEnd = (() => {
-    const [y, m] = params.month.split('-').map(Number)
-    return `${params.month}-${String(new Date(y!, m!, 0).getDate()).padStart(2, '0')}`
-  })()
+  const { data } = useData()
 
-  return useQuery({
-    queryKey: [
-      'transactions',
-      user?.id,
-      params.month,
-      params.type,
-      params.category_id,
-      params.payment_method_id,
-      params.keyword,
-      page,
-      limit,
-    ],
-    queryFn: async (): Promise<TransactionListResult> => {
-      const from = (page - 1) * limit
-      const to = from + limit - 1
+  const result = useMemo(() => {
+    if (!data) return { data: null, isLoading: true }
 
-      let query = supabase
-        .from('transactions')
-        .select(
-          '*, category:categories(*), payment_method:payment_methods(*)',
-          { count: 'exact' },
-        )
-        .eq('user_id', user!.id)
-        .gte('date', `${params.month}-01`)
-        .lte('date', monthEnd)
-        .is('deleted_at', null)
+    const page = params.page ?? 1
+    const limit = params.limit ?? 20
+    const monthEnd = getMonthEnd(params.month)
 
-      if (params.type) query = query.eq('type', params.type)
-      if (params.category_id)
-        query = query.eq('category_id', params.category_id)
-      if (params.payment_method_id)
-        query = query.eq('payment_method_id', params.payment_method_id)
+    const filtered = data.transactions.filter((t) => {
+      if (t.date < `${params.month}-01` || t.date > monthEnd) return false
+      if (t.deleted_at) return false
+      if (params.type && t.type !== params.type) return false
+      if (params.category_id && t.category_id !== params.category_id) return false
+      if (params.payment_method_id && t.payment_method_id !== params.payment_method_id) return false
       if (params.keyword) {
-        query = query.or(
-          `memo.ilike.%${params.keyword}%,sub_category.ilike.%${params.keyword}%`,
-        )
+        const kw = params.keyword.toLowerCase()
+        if (!t.memo?.toLowerCase().includes(kw) && !t.sub_category?.toLowerCase().includes(kw)) return false
       }
+      return true
+    })
 
-      const { data, error, count } = await query
-        .order('date', { ascending: false })
-        .order('created_at', { ascending: false })
-        .range(from, to)
+    const categoryMap = new Map(data.categories.map((c) => [c.id, c]))
+    const pmMap = new Map(data.paymentMethods.map((p) => [p.id, p]))
 
-      if (error) throw error
+    const enriched = filtered
+      .map((t) => {
+        const cat = categoryMap.get(t.category_id)
+        const pm = t.payment_method_id ? pmMap.get(t.payment_method_id) : undefined
+        return {
+          ...t,
+          category: cat,
+          category_name: cat?.name,
+          category_color: cat?.color,
+          payment_method: pm,
+          payment_method_name: pm?.name,
+          payment_method_color: pm?.color,
+        } as TransactionRow
+      })
+      .sort((a, b) => b.date.localeCompare(a.date) || b.created_at.localeCompare(a.created_at))
 
-      const total = count ?? 0
-      return {
-        transactions: (data ?? []) as TransactionRow[],
-        pagination: {
-          page,
-          limit,
-          total,
-          totalPages: Math.ceil(total / limit),
-        },
-      }
-    },
-    enabled: !!user && !!params.month,
-  })
+    const total = enriched.length
+    const totalPages = Math.ceil(total / limit)
+    const start = (page - 1) * limit
+    const paged = enriched.slice(start, start + limit)
+
+    return {
+      data: {
+        transactions: paged,
+        pagination: { page, limit, total, totalPages },
+      },
+      isLoading: false,
+    }
+  }, [data, params.month, params.type, params.category_id, params.payment_method_id, params.keyword, params.page, params.limit])
+
+  return result
 }
 
 export function useCreateTransaction() {
-  const qc = useQueryClient()
-  const { user } = useAuth()
-  return useMutation({
-    mutationFn: async (input: TransactionCreateRequest) => {
-      const { data, error } = await supabase
-        .from('transactions')
-        .insert({ ...input, user_id: user!.id })
-        .select(
-          '*, category:categories(*), payment_method:payment_methods(*)',
-        )
-        .single()
-      if (error) throw error
-      return data as TransactionRow
-    },
-    onSuccess: () => {
-      qc.invalidateQueries({ queryKey: ['transactions'] })
-      qc.invalidateQueries({ queryKey: ['stats'] })
-    },
-  })
+  const { addTransaction } = useData()
+  return {
+    mutateAsync: (input: {
+      type: 'income' | 'expense' | 'transfer'
+      amount: number
+      category_id: string
+      payment_method_id?: string
+      date: string
+      sub_category?: string
+      memo?: string
+    }) => addTransaction(input),
+  }
 }
 
 export function useUpdateTransaction() {
-  const qc = useQueryClient()
-  return useMutation({
-    mutationFn: async ({
-      id,
-      ...updates
-    }: TransactionUpdateRequest & { id: number }) => {
-      const { data, error } = await supabase
-        .from('transactions')
-        .update(updates)
-        .eq('id', id)
-        .select(
-          '*, category:categories(*), payment_method:payment_methods(*)',
-        )
-        .single()
-      if (error) throw error
-      return data as TransactionRow
-    },
-    onSuccess: () => {
-      qc.invalidateQueries({ queryKey: ['transactions'] })
-      qc.invalidateQueries({ queryKey: ['stats'] })
-    },
-  })
+  const { updateTransaction } = useData()
+  return {
+    mutateAsync: (input: { id: string } & Partial<Transaction>) => updateTransaction(input.id, input),
+  }
 }
 
 export function useDeleteTransaction() {
-  const qc = useQueryClient()
-  return useMutation({
-    mutationFn: async (id: number) => {
-      const { error } = await supabase
-        .from('transactions')
-        .update({ deleted_at: new Date().toISOString() })
-        .eq('id', id)
-      if (error) throw error
-    },
-    onSuccess: () => {
-      qc.invalidateQueries({ queryKey: ['transactions'] })
-      qc.invalidateQueries({ queryKey: ['stats'] })
-    },
-  })
+  const { deleteTransaction } = useData()
+  return {
+    mutateAsync: (id: string) => deleteTransaction(id),
+  }
 }
 
 export function useRestoreTransaction() {
-  const qc = useQueryClient()
-  return useMutation({
-    mutationFn: async (id: number) => {
-      const { data, error } = await supabase
-        .from('transactions')
-        .update({ deleted_at: null })
-        .eq('id', id)
-        .select(
-          '*, category:categories(*), payment_method:payment_methods(*)',
-        )
-        .single()
-      if (error) throw error
-      return data as TransactionRow
-    },
-    onSuccess: () => {
-      qc.invalidateQueries({ queryKey: ['transactions'] })
-      qc.invalidateQueries({ queryKey: ['stats'] })
-    },
-  })
+  const { updateTransaction } = useData()
+  return {
+    mutateAsync: (id: string) => updateTransaction(id, { deleted_at: undefined as unknown as string }),
+  }
 }

@@ -73,7 +73,7 @@ export function ExpenseDashboardPage() {
     let finalCategoryId = data.category_id
     let finalPaymentMethodId = data.payment_method_id
 
-    if (finalCategoryId === -1 && customCategoryName) {
+    if (finalCategoryId === '__custom__' && customCategoryName) {
       const result = await createCategory.mutateAsync({
         name: customCategoryName,
         type: data.type as 'income' | 'expense',
@@ -84,7 +84,7 @@ export function ExpenseDashboardPage() {
       finalCategoryId = result.id
     }
 
-    if (finalPaymentMethodId === -1 && customPaymentMethodName) {
+    if (finalPaymentMethodId === '__custom__' && customPaymentMethodName) {
       const pmType = customPaymentMethodName.includes('카드')
         ? ('credit' as const)
         : ('cash' as const)
@@ -100,7 +100,7 @@ export function ExpenseDashboardPage() {
       ...data,
       category_id: finalCategoryId,
       payment_method_id:
-        finalPaymentMethodId === -1 ? undefined : finalPaymentMethodId,
+        finalPaymentMethodId === '__custom__' ? undefined : finalPaymentMethodId,
     })
     setIsFormOpen(false)
   }

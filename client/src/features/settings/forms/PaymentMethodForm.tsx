@@ -16,7 +16,7 @@ const TYPE_LABELS: Record<PaymentMethodCreateRequest['type'], string> = {
 
 interface PaymentMethodFormProps {
   initialData?: PaymentMethod
-  onSubmit: (data: PaymentMethodCreateRequest | PaymentMethodUpdateRequest, id?: number) => void
+  onSubmit: (data: PaymentMethodCreateRequest | PaymentMethodUpdateRequest, id?: string) => void
   onCancel: () => void
 }
 

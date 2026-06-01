@@ -9,7 +9,7 @@ interface BudgetProgressListProps {
 }
 
 interface BudgetItem {
-  id: number
+  id: string
   categoryName: string
   categoryColor: string
   spent: number
@@ -38,7 +38,7 @@ export function BudgetProgressList({
     if (budgets.length === 0) return []
 
     // 카테고리별 지출 합계
-    const spentMap = new Map<number, number>()
+    const spentMap = new Map<string, number>()
     for (const t of transactions) {
       if (t.type !== 'expense') continue
       spentMap.set(t.category_id, (spentMap.get(t.category_id) ?? 0) + t.amount)

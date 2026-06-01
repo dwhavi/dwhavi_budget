@@ -12,7 +12,7 @@ interface BudgetFormProps {
 }
 
 export function BudgetForm({ initialData, categories, currentMonth, onSubmit, onCancel }: BudgetFormProps) {
-  const [selectedCategory, setSelectedCategory] = useState<number | null>(null)
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
   const [amount, setAmount] = useState<number>(0)
 
   useEffect(() => {
@@ -44,7 +44,7 @@ export function BudgetForm({ initialData, categories, currentMonth, onSubmit, on
         <label className="block text-sm font-medium text-gray-300 mb-2">지출 카테고리</label>
         <select
           value={selectedCategory ?? ''}
-          onChange={(e) => setSelectedCategory(parseInt(e.target.value))}
+          onChange={(e) => setSelectedCategory(e.target.value)}
           className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-100
                      focus:outline-none focus:border-blue-500"
           required

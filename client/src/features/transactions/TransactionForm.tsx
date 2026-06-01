@@ -22,7 +22,7 @@ interface TransactionFormProps {
   ) => Promise<void>
 }
 
-const CUSTOM_VALUE = -1
+const CUSTOM_VALUE = '__custom__'
 
 export function TransactionForm({
   isOpen,
@@ -38,9 +38,9 @@ export function TransactionForm({
     initialData?.type === 'income' ? 'income' : 'expense',
   )
   const [amount, setAmount] = useState(initialData?.amount ?? 0)
-  const [categoryId, setCategoryId] = useState(initialData?.category_id ?? 0)
+  const [categoryId, setCategoryId] = useState<string>(initialData?.category_id ?? '')
   const [paymentMethodId, setPaymentMethodId] = useState<
-    number | undefined
+    string | undefined
   >(initialData?.payment_method_id)
   const [subCategory, setSubCategory] = useState(
     initialData?.sub_category ?? '',
@@ -72,7 +72,7 @@ export function TransactionForm({
     if (!isOpen) return
     setType(initialData?.type === 'income' ? 'income' : 'expense')
     setAmount(initialData?.amount ?? 0)
-    setCategoryId(initialData?.category_id ?? 0)
+    setCategoryId(initialData?.category_id ?? '')
     setPaymentMethodId(initialData?.payment_method_id)
     setSubCategory(initialData?.sub_category ?? '')
     setDate(initialData?.date ?? new Date().toLocaleDateString('sv-SE') ?? '')
@@ -92,7 +92,7 @@ export function TransactionForm({
 
   const handleTypeChange = useCallback((newType: 'income' | 'expense') => {
     setType(newType)
-    setCategoryId(0)
+    setCategoryId('')
     setSubCategory('')
   }, [])
 
@@ -190,7 +190,7 @@ export function TransactionForm({
 
   const canSubmit =
     amount > 0 &&
-    (categoryId > 0 || categoryId === CUSTOM_VALUE) &&
+    (categoryId || categoryId === CUSTOM_VALUE) &&
     !isSubmitting
 
   return (
@@ -253,7 +253,7 @@ export function TransactionForm({
           <select
             value={categoryId || ''}
             onChange={(e) => {
-              setCategoryId(Number(e.target.value))
+              setCategoryId(e.target.value)
               setSubCategory('')
               setCategoryError('')
             }}
@@ -296,7 +296,7 @@ export function TransactionForm({
             value={paymentMethodId ?? ''}
             onChange={(e) => {
               setPaymentMethodId(
-                e.target.value ? Number(e.target.value) : undefined,
+                e.target.value ? e.target.value : undefined,
               )
               setPaymentMethodError('')
             }}

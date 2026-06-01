@@ -13,7 +13,7 @@ interface RecurringExpenseFormProps {
   initialData?: RecurringExpense
   categories: Category[]
   paymentMethods: PaymentMethod[]
-  onSubmit: (data: RecurringExpenseCreateRequest | RecurringExpenseUpdateRequest, id?: number) => void
+  onSubmit: (data: RecurringExpenseCreateRequest | RecurringExpenseUpdateRequest, id?: string) => void
   onCancel: () => void
 }
 
@@ -27,8 +27,8 @@ export function RecurringExpenseForm({
   const [formData, setFormData] = useState<RecurringExpenseCreateRequest>({
     name: '',
     amount: 0,
-    category_id: 0,
-    payment_method_id: 0,
+    category_id: '',
+    payment_method_id: '',
     start_date: new Date().toLocaleDateString('sv-SE'),
     end_date: undefined,
     memo: '',
@@ -86,7 +86,7 @@ export function RecurringExpenseForm({
           value={formData.category_id || ''}
           onChange={(e) => setFormData({
             ...formData,
-            category_id: parseInt(e.target.value) || 0,
+            category_id: e.target.value,
           })}
           className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-100
                      focus:outline-none focus:border-blue-500"
@@ -105,7 +105,7 @@ export function RecurringExpenseForm({
           value={formData.payment_method_id || ''}
           onChange={(e) => setFormData({
             ...formData,
-            payment_method_id: parseInt(e.target.value) || 0,
+            payment_method_id: e.target.value,
           })}
           className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg text-gray-100
                      focus:outline-none focus:border-blue-500"

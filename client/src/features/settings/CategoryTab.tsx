@@ -10,7 +10,6 @@ import {
 import { Modal } from '@/shared/components/Modal'
 import { ConfirmDialog } from '@/shared/components/ConfirmDialog'
 import { EmptyState } from '@/shared/components/EmptyState'
-import { SkeletonList } from '@/shared/components/Skeleton'
 import { CategoryForm } from './forms/CategoryForm'
 import type { Category } from '@/shared/types'
 
@@ -24,14 +23,14 @@ const SUB_TABS: { key: SubTab; label: string }[] = [
 export function CategoryTab() {
   const { addToast } = useToast()
   const [subTab, setSubTab] = useState<SubTab>('expense')
-  const { data: allCategories = [], isLoading } = useCategories()
+  const { data: allCategories = [] } = useCategories()
   const createMutation = useCreateCategory()
   const updateMutation = useUpdateCategory()
   const deleteMutation = useDeleteCategory()
 
   const [showModal, setShowModal] = useState(false)
   const [editing, setEditing] = useState<Category | null>(null)
-  const [deleteTarget, setDeleteTarget] = useState<number | null>(null)
+  const [deleteTarget, setDeleteTarget] = useState<string | null>(null)
 
   const categories = allCategories.filter((c) => c.type === subTab)
 
@@ -58,7 +57,7 @@ export function CategoryTab() {
       color: string
       sort_order: number
     },
-    id?: number,
+    id?: string,
   ) => {
     try {
       if (id) {
@@ -84,10 +83,6 @@ export function CategoryTab() {
       addToast('삭제 중 오류가 발생했습니다.', 'error')
       setDeleteTarget(null)
     }
-  }
-
-  if (isLoading) {
-    return <SkeletonList items={4} />
   }
 
   return (

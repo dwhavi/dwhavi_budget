@@ -5,7 +5,6 @@ import { usePaymentMethods, useCreatePaymentMethod, useUpdatePaymentMethod, useD
 import { Modal } from '@/shared/components/Modal'
 import { ConfirmDialog } from '@/shared/components/ConfirmDialog'
 import { EmptyState } from '@/shared/components/EmptyState'
-import { SkeletonList } from '@/shared/components/Skeleton'
 import { PaymentMethodForm } from './forms/PaymentMethodForm'
 import type { PaymentMethod, PaymentMethodCreateRequest, PaymentMethodUpdateRequest } from '@/shared/types'
 
@@ -18,14 +17,14 @@ const TYPE_LABELS: Record<PaymentMethod['type'], string> = {
 
 export function PaymentMethodTab() {
   const { addToast } = useToast()
-  const { data: paymentMethods = [], isLoading } = usePaymentMethods()
+  const { data: paymentMethods = [] } = usePaymentMethods()
   const createMutation = useCreatePaymentMethod()
   const updateMutation = useUpdatePaymentMethod()
   const deleteMutation = useDeletePaymentMethod()
 
   const [showModal, setShowModal] = useState(false)
   const [editing, setEditing] = useState<PaymentMethod | null>(null)
-  const [deleteTarget, setDeleteTarget] = useState<number | null>(null)
+  const [deleteTarget, setDeleteTarget] = useState<string | null>(null)
 
   const openCreate = () => {
     setEditing(null)
@@ -42,7 +41,7 @@ export function PaymentMethodTab() {
     setEditing(null)
   }
 
-  const handleSubmit = async (data: PaymentMethodCreateRequest | PaymentMethodUpdateRequest, id?: number) => {
+  const handleSubmit = async (data: PaymentMethodCreateRequest | PaymentMethodUpdateRequest, id?: string) => {
     try {
       if (id) {
         await updateMutation.mutateAsync({ id, ...data })
@@ -78,10 +77,6 @@ export function PaymentMethodTab() {
       addToast(message, 'error')
       setDeleteTarget(null)
     }
-  }
-
-  if (isLoading) {
-    return <SkeletonList items={4} />
   }
 
   if (paymentMethods.length === 0) {

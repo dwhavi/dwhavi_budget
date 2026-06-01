@@ -26,8 +26,8 @@ export function DayDetailPanel({
   const totalExpense = expenseList.reduce((sum, t) => sum + t.amount, 0)
 
   const grouped = Object.values(
-    expenseList.reduce<Record<number, {
-      categoryId: number
+    expenseList.reduce<Record<string, {
+      categoryId: string
       name: string
       color: string
       icon: string

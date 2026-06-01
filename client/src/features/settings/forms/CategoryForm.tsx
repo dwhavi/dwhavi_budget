@@ -15,7 +15,7 @@ interface CategoryFormProps {
     icon: string
     color: string
     sort_order: number
-  }, id?: number) => void
+  }, id?: string) => void
   onCancel: () => void
 }
 

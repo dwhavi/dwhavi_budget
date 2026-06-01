@@ -1,24 +1,15 @@
-// 대시보드/현황 집계 훅
-import { useQuery } from '@tanstack/react-query'
+// 대시보드/현황 집계 훅 — DataContext 기반 인메모리 계산
 import { useMemo } from 'react'
-import { supabase } from '@/shared/lib/supabase'
-import { useAuth } from '@/contexts/AuthContext'
-import type {
-  Category,
-  PaymentMethod,
-  CategoryStat,
-  PaymentMethodStat,
-  MonthlyTrend,
-} from '@/shared/types'
+import { useData } from '@/shared/contexts/DataContext'
+import type { Category, CategoryStat, PaymentMethodStat, MonthlyTrend } from '@/shared/types'
 
 interface TransactionRow {
-  type: 'income' | 'expense'
+  type: 'income' | 'expense' | 'transfer'
   amount: number
   date: string
-  category_id: number
-  payment_method_id?: number | null
+  category_id: string
+  payment_method_id?: string | null
   category?: Category | null
-  payment_method?: PaymentMethod | null
 }
 
 interface DailyBreakdown {
@@ -49,59 +40,43 @@ interface OverviewSummary {
 
 function shiftMonth(month: string, direction: 1 | -1): string {
   const parts = month.split('-').map(Number)
-  const year = parts[0]!
-  const m = parts[1]!
-  const d = new Date(year, m - 1 + direction)
+  const d = new Date(parts[0]!, parts[1]! - 1 + direction)
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`
 }
 
-function getMonthEndDate(month: string): string {
-  const parts = month.split('-').map(Number)
-  const year = parts[0]!
-  const m = parts[1]!
-  const lastDay = new Date(year, m, 0).getDate()
-  return `${month}-${String(lastDay).padStart(2, '0')}`
+function getMonthEnd(month: string): string {
+  const [y, m] = month.split('-').map(Number)
+  return `${month}-${String(new Date(y!, m!, 0).getDate()).padStart(2, '0')}`
 }
 
 function getRemainingDays(month: string): number {
-  const parts = month.split('-').map(Number)
-  const year = parts[0]!
-  const m = parts[1]!
+  const [y, m] = month.split('-').map(Number)
   const now = new Date()
-  const endOfMonth = new Date(year, m, 0)
+  const endOfMonth = new Date(y!, m!, 0)
   const currentMonth = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`
   if (currentMonth !== month) return endOfMonth.getDate()
   return Math.max(1, endOfMonth.getDate() - now.getDate() + 1)
 }
 
-async function fetchMonthTransactions(
-  userId: string,
-  month: string,
-): Promise<TransactionRow[]> {
-  const { data, error } = await supabase
-    .from('transactions')
-    .select('*, category:categories(*), payment_method:payment_methods(*)')
-    .eq('user_id', userId)
-    .gte('date', `${month}-01`)
-    .lte('date', getMonthEndDate(month))
-    .is('deleted_at', null)
-  if (error) throw error
-  return (data ?? []) as TransactionRow[]
+function getMonthTransactions(data: NonNullable<ReturnType<typeof useData>['data']>, month: string): TransactionRow[] {
+  const monthEnd = getMonthEnd(month)
+  const categoryMap = new Map(data.categories.map((c) => [c.id, c]))
+
+  return data.transactions
+    .filter((t) => {
+      if (t.deleted_at) return false
+      if (t.date < `${month}-01` || t.date > monthEnd) return false
+      return true
+    })
+    .map((t) => ({ ...t, category: categoryMap.get(t.category_id) ?? null }))
 }
 
-function buildCategoryBreakdown(
-  rows: TransactionRow[],
-  total: number,
-): CategoryStat[] {
-  const map = new Map<number, { name: string; total: number; color: string }>()
+function buildCategoryBreakdown(rows: TransactionRow[], total: number): CategoryStat[] {
+  const map = new Map<string, { name: string; total: number; color: string }>()
   for (const row of rows) {
     const cat = row.category
     if (!cat) continue
-    const prev = map.get(row.category_id) ?? {
-      name: cat.name,
-      total: 0,
-      color: cat.color,
-    }
+    const prev = map.get(row.category_id) ?? { name: cat.name, total: 0, color: cat.color }
     prev.total += row.amount
     map.set(row.category_id, prev)
   }
@@ -118,17 +93,15 @@ function buildCategoryBreakdown(
 
 function buildPaymentMethodBreakdown(
   rows: TransactionRow[],
+  pmMap: Map<string, { name: string }>,
   total: number,
 ): PaymentMethodStat[] {
-  const map = new Map<number, { name: string; total: number }>()
+  const map = new Map<string, { name: string; total: number }>()
   for (const row of rows) {
     if (!row.payment_method_id) continue
-    const pm = row.payment_method
+    const pm = pmMap.get(row.payment_method_id)
     if (!pm) continue
-    const prev = map.get(row.payment_method_id) ?? {
-      name: pm.name,
-      total: 0,
-    }
+    const prev = map.get(row.payment_method_id) ?? { name: pm.name, total: 0 }
     prev.total += row.amount
     map.set(row.payment_method_id, prev)
   }
@@ -143,17 +116,17 @@ function buildPaymentMethodBreakdown(
 }
 
 export function useExpenseSummary(month: string) {
-  const { user } = useAuth()
+  const { data, loading } = useData()
 
-  const { data: transactions, ...queryResult } = useQuery({
-    queryKey: ['stats', 'expense-summary', user?.id, month],
-    queryFn: () => fetchMonthTransactions(user!.id, month),
-    enabled: !!user,
-  })
+  const pmMap = useMemo(
+    () => new Map(data?.paymentMethods.map((p) => [p.id, { name: p.name }]) ?? []),
+    [data],
+  )
 
-  const summary = useMemo<ExpenseSummary | null>(() => {
-    if (!transactions) return null
+  const summary = useMemo((): ExpenseSummary | null => {
+    if (!data) return null
 
+    const transactions = getMonthTransactions(data, month)
     const expenses = transactions.filter((t) => t.type === 'expense')
     const incomes = transactions.filter((t) => t.type === 'income')
 
@@ -164,8 +137,7 @@ export function useExpenseSummary(month: string) {
 
     const dailyMap = new Map<string, number>()
     for (const t of expenses) {
-      const day = t.date
-      dailyMap.set(day, (dailyMap.get(day) ?? 0) + t.amount)
+      dailyMap.set(t.date, (dailyMap.get(t.date) ?? 0) + t.amount)
     }
     const dailyBreakdown = Array.from(dailyMap.entries())
       .map(([date, total]) => ({ date, total }))
@@ -173,69 +145,48 @@ export function useExpenseSummary(month: string) {
 
     return {
       totalExpense,
-      dailyAllowance:
-        remainingDays > 0 ? Math.floor(remaining / remainingDays) : 0,
+      dailyAllowance: remainingDays > 0 ? Math.floor(remaining / remainingDays) : 0,
       categoryBreakdown: buildCategoryBreakdown(expenses, totalExpense),
       dailyBreakdown,
-      paymentMethodBreakdown: buildPaymentMethodBreakdown(
-        expenses,
-        totalExpense,
-      ),
+      paymentMethodBreakdown: buildPaymentMethodBreakdown(expenses, pmMap, totalExpense),
     }
-  }, [transactions, month])
+  }, [data, month, pmMap])
 
-  return { ...queryResult, data: summary }
+  return { data: summary, isLoading: loading }
 }
 
 export function useOverviewSummary(month: string) {
-  const { user } = useAuth()
+  const { data, loading } = useData()
   const prevMonth = shiftMonth(month, -1)
 
-  const { data: current, ...currentResult } = useQuery({
-    queryKey: ['stats', 'overview', user?.id, month],
-    queryFn: () => fetchMonthTransactions(user!.id, month),
-    enabled: !!user,
-  })
+  const pmMap = useMemo(
+    () => new Map(data?.paymentMethods.map((p) => [p.id, { name: p.name }]) ?? []),
+    [data],
+  )
 
-  const { data: prev, ...prevResult } = useQuery({
-    queryKey: ['stats', 'overview', user?.id, prevMonth],
-    queryFn: () => fetchMonthTransactions(user!.id, prevMonth),
-    enabled: !!user,
-  })
+  const summary = useMemo((): OverviewSummary | null => {
+    if (!data) return null
 
-  const summary = useMemo<OverviewSummary | null>(() => {
-    if (!current) return null
+    const current = getMonthTransactions(data, month)
+    const prev = getMonthTransactions(data, prevMonth)
 
-    const totalIncome = current
-      .filter((t) => t.type === 'income')
-      .reduce((s, t) => s + t.amount, 0)
-    const totalExpense = current
-      .filter((t) => t.type === 'expense')
-      .reduce((s, t) => s + t.amount, 0)
+    const totalIncome = current.filter((t) => t.type === 'income').reduce((s, t) => s + t.amount, 0)
+    const totalExpense = current.filter((t) => t.type === 'expense').reduce((s, t) => s + t.amount, 0)
     const balance = totalIncome - totalExpense
-    const savingsRate =
-      totalIncome > 0
-        ? Math.round((balance / totalIncome) * 1000) / 10
-        : 0
+    const savingsRate = totalIncome > 0 ? Math.round((balance / totalIncome) * 1000) / 10 : 0
 
-    const incomeTransactions = current.filter((t) => t.type === 'income')
     const incomeBreakdown = buildCategoryBreakdown(
-      incomeTransactions,
+      current.filter((t) => t.type === 'income'),
       totalIncome,
     )
-
-    const expenseTransactions = current.filter((t) => t.type === 'expense')
     const paymentMethodBreakdown = buildPaymentMethodBreakdown(
-      expenseTransactions,
+      current.filter((t) => t.type === 'expense'),
+      pmMap,
       totalExpense,
     )
 
-    const prevIncome = (prev ?? [])
-      .filter((t) => t.type === 'income')
-      .reduce((s, t) => s + t.amount, 0)
-    const prevExpense = (prev ?? [])
-      .filter((t) => t.type === 'expense')
-      .reduce((s, t) => s + t.amount, 0)
+    const prevIncome = prev.filter((t) => t.type === 'income').reduce((s, t) => s + t.amount, 0)
+    const prevExpense = prev.filter((t) => t.type === 'expense').reduce((s, t) => s + t.amount, 0)
 
     return {
       totalIncome,
@@ -249,50 +200,27 @@ export function useOverviewSummary(month: string) {
       incomeChange: prevIncome > 0 ? totalIncome - prevIncome : 0,
       expenseChange: prevExpense > 0 ? totalExpense - prevExpense : 0,
     }
-  }, [current, prev])
+  }, [data, month, prevMonth, pmMap])
 
-  const isLoading = currentResult.isLoading || prevResult.isLoading
-  const isError = currentResult.isError || prevResult.isError
-  const error = currentResult.error ?? prevResult.error
-
-  return {
-    data: summary,
-    isLoading,
-    isError,
-    error,
-    isFetching: currentResult.isFetching || prevResult.isFetching,
-  }
+  return { data: summary, isLoading: loading }
 }
 
 export function useMonthlyTrend(months: number = 6) {
-  const { user } = useAuth()
+  const { data } = useData()
 
-  const { data: transactions, ...queryResult } = useQuery({
-    queryKey: ['stats', 'monthly-trend', user?.id, months],
-    queryFn: async () => {
-      const now = new Date()
-      const start = new Date(now.getFullYear(), now.getMonth() - months + 1, 1)
-      const startDate = `${start.getFullYear()}-${String(start.getMonth() + 1).padStart(2, '0')}-01`
-      const endYear = now.getFullYear()
-      const endMonth = now.getMonth() + 1
-      const endMonthStr = `${endYear}-${String(endMonth).padStart(2, '0')}`
-      const endDate = getMonthEndDate(endMonthStr)
+  const trend = useMemo((): MonthlyTrend[] => {
+    if (!data) return []
 
-      const { data, error } = await supabase
-        .from('transactions')
-        .select('type, amount, date')
-        .eq('user_id', user!.id)
-        .gte('date', startDate)
-        .lte('date', endDate)
-        .is('deleted_at', null)
-      if (error) throw error
-      return data ?? []
-    },
-    enabled: !!user,
-  })
+    const now = new Date()
+    const start = new Date(now.getFullYear(), now.getMonth() - months + 1, 1)
+    const startDate = `${start.getFullYear()}-${String(start.getMonth() + 1).padStart(2, '0')}-01`
+    const endDate = getMonthEnd(`${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}`)
 
-  const trend = useMemo<MonthlyTrend[]>(() => {
-    if (!transactions) return []
+    const transactions = data.transactions.filter((t) => {
+      if (t.deleted_at) return false
+      if (t.date < startDate || t.date > endDate) return false
+      return true
+    })
 
     const monthMap = new Map<string, { income: number; expense: number }>()
     for (const t of transactions) {
@@ -306,7 +234,7 @@ export function useMonthlyTrend(months: number = 6) {
     return Array.from(monthMap.entries())
       .map(([month, { income, expense }]) => ({ month, income, expense }))
       .sort((a, b) => a.month.localeCompare(b.month))
-  }, [transactions])
+  }, [data, months])
 
-  return { ...queryResult, data: trend }
+  return { data: trend, isLoading: false }
 }

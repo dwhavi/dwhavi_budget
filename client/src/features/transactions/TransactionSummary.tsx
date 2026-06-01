@@ -17,7 +17,7 @@ export function TransactionSummary({ transactions, paymentMethods }: Transaction
 
     const byMethod = new Map<string, { label: string; color: string; total: number }>()
     for (const t of expenses) {
-      const pm = pmMap.get(t.payment_method_id ?? 0)
+      const pm = pmMap.get(t.payment_method_id ?? '')
       const key = pm ? String(pm.id) : 'unassigned'
       const label = pm?.name ?? '미지정'
       const color = pm?.color ?? '#6B7280'

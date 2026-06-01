@@ -6,7 +6,6 @@ import { useCategories } from '@/shared/hooks/useCategories'
 import { useBudgets, useUpsertBudget } from '@/shared/hooks/useBudgets'
 import { Modal } from '@/shared/components/Modal'
 import { EmptyState } from '@/shared/components/EmptyState'
-import { SkeletonList } from '@/shared/components/Skeleton'
 import { BudgetForm } from './forms/BudgetForm'
 import { formatWon } from '@/shared/hooks/useCurrency'
 
@@ -14,11 +13,11 @@ export function BudgetTab() {
   const { addToast } = useToast()
   const { selectedMonth, goToPrevMonth, goToNextMonth } = useMonthNavigation()
   const { data: categories = [] } = useCategories('expense')
-  const { data: budgets = [], isLoading } = useBudgets(selectedMonth)
+  const { data: budgets = [] } = useBudgets(selectedMonth)
   const upsertMutation = useUpsertBudget()
 
   const [showModal, setShowModal] = useState(false)
-  const [editingBudgetId, setEditingBudgetId] = useState<number | null>(null)
+  const [editingBudgetId, setEditingBudgetId] = useState<string | null>(null)
 
   const editingBudget = editingBudgetId
     ? budgets.find((b) => b.id === editingBudgetId)
@@ -29,7 +28,7 @@ export function BudgetTab() {
     setShowModal(true)
   }
 
-  const openEdit = (budgetId: number) => {
+  const openEdit = (budgetId: string) => {
     setEditingBudgetId(budgetId)
     setShowModal(true)
   }
@@ -53,10 +52,6 @@ export function BudgetTab() {
     const [y, m] = selectedMonth.split('-')
     return `${y}년 ${parseInt(m!)}월`
   })()
-
-  if (isLoading) {
-    return <SkeletonList items={3} />
-  }
 
   return (
     <div className="space-y-3">

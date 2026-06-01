@@ -50,6 +50,15 @@ export function TransactionForm({
   )
   const [memo, setMemo] = useState(initialData?.memo ?? '')
 
+  const [time, setTime] = useState(() => {
+    if (initialData?.created_at) {
+      const d = new Date(initialData.created_at)
+      return `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`
+    }
+    const now = new Date()
+    return `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`
+  })
+
   const [customCategoryName, setCustomCategoryName] = useState('')
   const [customPaymentMethodName, setCustomPaymentMethodName] = useState('')
   const [categoryError, setCategoryError] = useState('')
@@ -68,6 +77,13 @@ export function TransactionForm({
     setSubCategory(initialData?.sub_category ?? '')
     setDate(initialData?.date ?? new Date().toLocaleDateString('sv-SE') ?? '')
     setMemo(initialData?.memo ?? '')
+    if (initialData?.created_at) {
+      const d = new Date(initialData.created_at)
+      setTime(`${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`)
+    } else {
+      const now = new Date()
+      setTime(`${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`)
+    }
     setCustomCategoryName('')
     setCustomPaymentMethodName('')
     setCategoryError('')
@@ -135,6 +151,9 @@ export function TransactionForm({
           date,
           sub_category: subCategory || undefined,
           memo: memo || undefined,
+          ...(isEditing && initialData?.created_at
+            ? { created_at: `${initialData.created_at.split('T')[0]}T${time}:00` }
+            : {}),
         }
         await onSubmit(
           payload,
@@ -159,6 +178,7 @@ export function TransactionForm({
       paymentMethodId,
       paymentMethods,
       subCategory,
+      time,
       type,
     ],
   )
@@ -323,12 +343,22 @@ export function TransactionForm({
           <label className="block text-sm font-medium text-gray-300 mb-2">
             날짜
           </label>
-          <input
-            type="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          />
+          <div className="flex gap-2">
+            <input
+              type="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              className="flex-1 bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
+            {isEditing && (
+              <input
+                type="time"
+                value={time}
+                onChange={(e) => setTime(e.target.value)}
+                className="w-32 bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-gray-100 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              />
+            )}
+          </div>
         </div>
 
         <div>

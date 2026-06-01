@@ -51,6 +51,7 @@ export interface TransactionCreateRequest {
   date: string;
   sub_category?: string;
   memo?: string;
+  created_at?: string;
 }
 
 export interface TransactionUpdateRequest {
@@ -61,6 +62,7 @@ export interface TransactionUpdateRequest {
   date?: string;
   sub_category?: string;
   memo?: string;
+  created_at?: string;
 }
 
 export interface TransactionQueryParams {

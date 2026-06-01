@@ -152,7 +152,12 @@ export function TransactionForm({
           sub_category: subCategory || undefined,
           memo: memo || undefined,
           ...(isEditing && initialData?.created_at
-            ? { created_at: `${initialData.created_at.split('T')[0]}T${time}:00` }
+            ? (() => {
+                const d = new Date(initialData.created_at)
+                const [hh, mm] = time.split(':').map(Number)
+                d.setHours(hh!, mm ?? 0, 0)
+                return { created_at: d.toISOString() }
+              })()
             : {}),
         }
         await onSubmit(

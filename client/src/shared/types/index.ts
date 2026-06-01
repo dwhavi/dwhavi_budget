@@ -1,204 +1,178 @@
 export interface Category {
-  id: number;
-  user_id: number | null;
-  name: string;
-  type: 'income' | 'expense';
-  icon: string;
-  color: string;
-  sort_order: number;
+  id: string
+  name: string
+  type: 'income' | 'expense'
+  icon: string
+  color: string
+  sort_order: number
 }
 
 export interface SubCategorySuggestion {
-  sub_category: string;
-  frequency: number;
+  sub_category: string
+  frequency: number
 }
 
 export interface Transaction {
-  id: number;
-  user_id: number;
-  type: 'income' | 'expense' | 'transfer';
-  amount: number;
-  category_id: number;
-  payment_method_id?: number;
-  date: string;
-  sub_category?: string;
-  memo?: string;
-  created_at: string;
-  updated_at: string;
-  deleted_at?: string;
-  category?: Category;
-  category_name?: string;
-  category_color?: string;
-  payment_method_name?: string;
-  payment_method_color?: string;
-}
-
-export interface TransactionListResponse {
-  transactions: Transaction[];
-  pagination: {
-    page: number;
-    limit: number;
-    total: number;
-    totalPages: number;
-  };
+  id: string
+  type: 'income' | 'expense' | 'transfer'
+  amount: number
+  category_id: string
+  payment_method_id?: string
+  date: string
+  sub_category?: string
+  memo?: string
+  created_at: string
+  updated_at: string
+  deleted_at?: string
+  category?: Category
+  category_name?: string
+  category_color?: string
+  payment_method_name?: string
+  payment_method_color?: string
 }
 
 export interface TransactionCreateRequest {
-  type: 'income' | 'expense' | 'transfer';
-  amount: number;
-  category_id: number;
-  payment_method_id?: number;
-  date: string;
-  sub_category?: string;
-  memo?: string;
-  created_at?: string;
+  type: 'income' | 'expense' | 'transfer'
+  amount: number
+  category_id: string
+  payment_method_id?: string
+  date: string
+  sub_category?: string
+  memo?: string
+  created_at?: string
 }
 
 export interface TransactionUpdateRequest {
-  type?: 'income' | 'expense' | 'transfer';
-  amount?: number;
-  category_id?: number;
-  payment_method_id?: number;
-  date?: string;
-  sub_category?: string;
-  memo?: string;
-  created_at?: string;
-}
-
-export interface TransactionQueryParams {
-  page?: number;
-  limit?: number;
-  type?: 'income' | 'expense';
-  category_id?: number;
-  payment_method_id?: number;
-  start_date?: string;
-  end_date?: string;
-  search?: string;
+  type?: 'income' | 'expense' | 'transfer'
+  amount?: number
+  category_id?: string
+  payment_method_id?: string
+  date?: string
+  sub_category?: string
+  memo?: string
+  created_at?: string
 }
 
 export interface PaymentMethod {
-  id: number;
-  user_id: number;
-  name: string;
-  issuer?: string;
-  type: 'credit' | 'debit' | 'cash' | 'transfer';
-  color?: string;
-  is_default: boolean;
-  memo?: string;
-  billing_start_day?: number;
-  payment_day?: number;
+  id: string
+  name: string
+  issuer?: string
+  type: 'credit' | 'debit' | 'cash' | 'transfer'
+  color?: string
+  is_default: boolean
+  memo?: string
+  billing_start_day?: number
+  payment_day?: number
 }
 
 export interface PaymentMethodCreateRequest {
-  name: string;
-  issuer?: string;
-  type: 'credit' | 'debit' | 'cash' | 'transfer';
-  color?: string;
-  is_default?: boolean;
-  memo?: string;
-  billing_start_day?: number;
-  payment_day?: number;
+  name: string
+  issuer?: string
+  type: 'credit' | 'debit' | 'cash' | 'transfer'
+  color?: string
+  is_default?: boolean
+  memo?: string
+  billing_start_day?: number
+  payment_day?: number
 }
 
 export interface PaymentMethodUpdateRequest {
-  name?: string;
-  issuer?: string;
-  type?: 'credit' | 'debit' | 'cash' | 'transfer';
-  color?: string;
-  is_default?: boolean;
-  memo?: string;
-  billing_start_day?: number;
-  payment_day?: number;
+  name?: string
+  issuer?: string
+  type?: 'credit' | 'debit' | 'cash' | 'transfer'
+  color?: string
+  is_default?: boolean
+  memo?: string
+  billing_start_day?: number
+  payment_day?: number
 }
 
 export interface Budget {
-  id: number;
-  user_id: number;
-  category_id: number;
-  month: string;
-  amount: number;
-  category?: Category;
+  id: string
+  category_id: string
+  month: string
+  amount: number
+  category?: Category
 }
 
 export interface BudgetUpsertRequest {
-  category_id: number;
-  month: string;
-  amount: number;
+  category_id: string
+  month: string
+  amount: number
 }
 
 export interface RecurringExpense {
-  id: number;
-  user_id: number;
-  name: string;
-  amount: number;
-  category_id: number;
-  payment_method_id: number;
-  start_date: string;
-  end_date?: string;
-  memo?: string;
-  is_active: boolean;
+  id: string
+  name: string
+  amount: number
+  category_id: string
+  payment_method_id: string
+  start_date: string
+  end_date?: string
+  memo?: string
+  is_active: boolean
 }
 
 export interface RecurringExpenseCreateRequest {
-  name: string;
-  amount: number;
-  category_id: number;
-  payment_method_id: number;
-  start_date: string;
-  end_date?: string;
-  memo?: string;
+  name: string
+  amount: number
+  category_id: string
+  payment_method_id: string
+  start_date: string
+  end_date?: string
+  memo?: string
 }
 
 export interface RecurringExpenseUpdateRequest {
-  name?: string;
-  amount?: number;
-  category_id?: number;
-  payment_method_id?: number;
-  start_date?: string;
-  end_date?: string;
-  memo?: string;
-  is_active?: boolean;
+  name?: string
+  amount?: number
+  category_id?: string
+  payment_method_id?: string
+  start_date?: string
+  end_date?: string
+  memo?: string
+  is_active?: boolean
 }
 
 export interface CategoryRanking {
-  category_id: number;
-  category_name: string;
-  total: number;
-  color: string;
+  category_id: string
+  category_name: string
+  total: number
+  color: string
 }
 
 export interface DashboardSummary {
-  totalIncome: number;
-  totalExpense: number;
-  balance: number;
-  dailyAllowance: number;
-  categoryRanking: CategoryRanking[];
-  recentTransactions: Transaction[];
+  totalIncome: number
+  totalExpense: number
+  balance: number
+  dailyAllowance: number
+  categoryRanking: CategoryRanking[]
+  recentTransactions: Transaction[]
 }
 
 export interface MonthlyTrend {
-  month: string;
-  income: number;
-  expense: number;
+  month: string
+  income: number
+  expense: number
 }
 
 export interface CategoryStat {
-  category_id: number;
-  category_name: string;
-  total: number;
-  percentage: number;
-  color: string;
+  category_id: string
+  category_name: string
+  total: number
+  percentage: number
+  color: string
 }
 
 export interface PaymentMethodStat {
-  payment_method_id: number;
-  payment_method_name: string;
-  total: number;
-  percentage: number;
+  payment_method_id: string
+  payment_method_name: string
+  total: number
+  percentage: number
 }
 
 export interface CreditCardBilling {
-  paymentMethodId: number
+  paymentMethodId: string
   paymentMethodName: string
   paymentMethodColor: string
   billingPeriodStart: string

@@ -15,7 +15,11 @@ interface TransactionFormProps {
   initialData?: Transaction
   categories: Category[]
   paymentMethods: PaymentMethod[]
-  onSubmit: (data: TransactionCreateRequest) => Promise<void>
+  onSubmit: (
+    data: TransactionCreateRequest,
+    customCategoryName?: string,
+    customPaymentMethodName?: string,
+  ) => Promise<void>
 }
 
 const CUSTOM_VALUE = -1
@@ -132,7 +136,11 @@ export function TransactionForm({
           sub_category: subCategory || undefined,
           memo: memo || undefined,
         }
-        await onSubmit(payload)
+        await onSubmit(
+          payload,
+          categoryId === CUSTOM_VALUE ? customCategoryName : undefined,
+          paymentMethodId === CUSTOM_VALUE ? customPaymentMethodName : undefined,
+        )
         onClose()
       } finally {
         setIsSubmitting(false)

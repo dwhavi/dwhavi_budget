@@ -4,8 +4,14 @@ import { useMonthNavigation } from '@/shared/hooks/useMonthNavigation'
 import { useExpenseSummary } from '@/shared/hooks/useStats'
 import { useBudgets } from '@/shared/hooks/useBudgets'
 import { useTransactions, useCreateTransaction } from '@/shared/hooks/useTransactions'
-import { useCategories } from '@/shared/hooks/useCategories'
-import { usePaymentMethods } from '@/shared/hooks/usePaymentMethods'
+import {
+  useCategories,
+  useCreateCategory,
+} from '@/shared/hooks/useCategories'
+import {
+  usePaymentMethods,
+  useCreatePaymentMethod,
+} from '@/shared/hooks/usePaymentMethods'
 import { SkeletonCard } from '@/shared/components/Skeleton'
 import { ExpenseSummaryCards } from './ExpenseSummaryCards'
 import { CategoryDonutChart } from './CategoryDonutChart'
@@ -37,6 +43,8 @@ export function ExpenseDashboardPage() {
   const { data: allCategories } = useCategories()
   const { data: allPaymentMethods } = usePaymentMethods()
   const createTransaction = useCreateTransaction()
+  const createCategory = useCreateCategory()
+  const createPaymentMethod = useCreatePaymentMethod()
 
   const dayTransactions = useMemo(() => {
     if (!selectedDate || !transactionsQuery.data?.transactions) return []
@@ -56,6 +64,46 @@ export function ExpenseDashboardPage() {
     const parts = selectedMonth.split('-').map(Number)
     return `${parts[0]}년 ${parts[1]}월`
   }, [selectedMonth])
+
+  const handleFormSubmit = async (
+    data: TransactionCreateRequest,
+    customCategoryName?: string,
+    customPaymentMethodName?: string,
+  ) => {
+    let finalCategoryId = data.category_id
+    let finalPaymentMethodId = data.payment_method_id
+
+    if (finalCategoryId === -1 && customCategoryName) {
+      const result = await createCategory.mutateAsync({
+        name: customCategoryName,
+        type: data.type as 'income' | 'expense',
+        icon: '💵',
+        color: '#6B7280',
+        sort_order: 0,
+      })
+      finalCategoryId = result.id
+    }
+
+    if (finalPaymentMethodId === -1 && customPaymentMethodName) {
+      const pmType = customPaymentMethodName.includes('카드')
+        ? ('credit' as const)
+        : ('cash' as const)
+      const result = await createPaymentMethod.mutateAsync({
+        name: customPaymentMethodName,
+        type: pmType,
+        is_default: false,
+      })
+      finalPaymentMethodId = result.id
+    }
+
+    await createTransaction.mutateAsync({
+      ...data,
+      category_id: finalCategoryId,
+      payment_method_id:
+        finalPaymentMethodId === -1 ? undefined : finalPaymentMethodId,
+    })
+    setIsFormOpen(false)
+  }
 
   if (isLoading) {
     return (
@@ -160,10 +208,7 @@ export function ExpenseDashboardPage() {
         onClose={() => setIsFormOpen(false)}
         categories={allCategories ?? []}
         paymentMethods={allPaymentMethods ?? []}
-        onSubmit={async (data: TransactionCreateRequest) => {
-          await createTransaction.mutateAsync(data)
-          setIsFormOpen(false)
-        }}
+        onSubmit={handleFormSubmit}
       />
     </div>
   )

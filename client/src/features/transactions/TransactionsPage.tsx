@@ -7,8 +7,14 @@ import {
   useUpdateTransaction,
   useDeleteTransaction,
 } from '@/shared/hooks/useTransactions'
-import { useCategories } from '@/shared/hooks/useCategories'
-import { usePaymentMethods } from '@/shared/hooks/usePaymentMethods'
+import {
+  useCategories,
+  useCreateCategory,
+} from '@/shared/hooks/useCategories'
+import {
+  usePaymentMethods,
+  useCreatePaymentMethod,
+} from '@/shared/hooks/usePaymentMethods'
 import type {
   Transaction,
   TransactionCreateRequest,
@@ -28,6 +34,9 @@ export function TransactionsPage() {
     useMonthNavigation()
   const { data: allCategories } = useCategories()
   const { data: paymentMethods } = usePaymentMethods()
+
+  const createCategory = useCreateCategory()
+  const createPaymentMethod = useCreatePaymentMethod()
 
   const [filters, setFilters] = useState<FilterState>({
     type: undefined,
@@ -90,22 +99,64 @@ export function TransactionsPage() {
   }, [])
 
   const handleFormSubmit = useCallback(
-    async (data: TransactionCreateRequest) => {
+    async (
+      data: TransactionCreateRequest,
+      customCategoryName?: string,
+      customPaymentMethodName?: string,
+    ) => {
       let finalCategoryId = data.category_id
       let finalPaymentMethodId = data.payment_method_id
 
-      if (editingTransaction) {
-        await updateTransaction.mutateAsync({ id: editingTransaction.id, ...data })
-        addToast('거래가 수정되었습니다.', 'success')
-      } else {
-        await createTransaction.mutateAsync(data)
-        addToast('거래가 등록되었습니다.', 'success')
+      if (finalCategoryId === -1 && customCategoryName) {
+        const result = await createCategory.mutateAsync({
+          name: customCategoryName,
+          type: data.type as 'income' | 'expense',
+          icon: '💵',
+          color: '#6B7280',
+          sort_order: 0,
+        })
+        finalCategoryId = result.id
       }
 
-      void finalCategoryId
-      void finalPaymentMethodId
+      if (finalPaymentMethodId === -1 && customPaymentMethodName) {
+        const pmType = customPaymentMethodName.includes('카드')
+          ? ('credit' as const)
+          : ('cash' as const)
+        const result = await createPaymentMethod.mutateAsync({
+          name: customPaymentMethodName,
+          type: pmType,
+          is_default: false,
+        })
+        finalPaymentMethodId = result.id
+      }
+
+      if (editingTransaction) {
+        await updateTransaction.mutateAsync({
+          id: editingTransaction.id,
+          ...data,
+          category_id: finalCategoryId,
+          payment_method_id:
+            finalPaymentMethodId === -1 ? undefined : finalPaymentMethodId,
+        })
+        addToast('거래가 수정되었습니다.', 'success')
+      } else {
+        await createTransaction.mutateAsync({
+          ...data,
+          category_id: finalCategoryId,
+          payment_method_id:
+            finalPaymentMethodId === -1 ? undefined : finalPaymentMethodId,
+        })
+        addToast('거래가 등록되었습니다.', 'success')
+      }
     },
-    [editingTransaction, updateTransaction, createTransaction, addToast],
+    [
+      editingTransaction,
+      updateTransaction,
+      createTransaction,
+      addToast,
+      createCategory,
+      createPaymentMethod,
+    ],
   )
 
   const handleConfirmDelete = useCallback(async () => {

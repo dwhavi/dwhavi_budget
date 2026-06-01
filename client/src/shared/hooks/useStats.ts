@@ -55,6 +55,14 @@ function shiftMonth(month: string, direction: 1 | -1): string {
   return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`
 }
 
+function getMonthEndDate(month: string): string {
+  const parts = month.split('-').map(Number)
+  const year = parts[0]!
+  const m = parts[1]!
+  const lastDay = new Date(year, m, 0).getDate()
+  return `${month}-${String(lastDay).padStart(2, '0')}`
+}
+
 function getRemainingDays(month: string): number {
   const parts = month.split('-').map(Number)
   const year = parts[0]!
@@ -75,7 +83,7 @@ async function fetchMonthTransactions(
     .select('*, category:categories(*), payment_method:payment_methods(*)')
     .eq('user_id', userId)
     .gte('date', `${month}-01`)
-    .lte('date', `${month}-31`)
+    .lte('date', getMonthEndDate(month))
     .is('deleted_at', null)
   if (error) throw error
   return (data ?? []) as TransactionRow[]
@@ -267,7 +275,8 @@ export function useMonthlyTrend(months: number = 6) {
       const startDate = `${start.getFullYear()}-${String(start.getMonth() + 1).padStart(2, '0')}-01`
       const endYear = now.getFullYear()
       const endMonth = now.getMonth() + 1
-      const endDate = `${endYear}-${String(endMonth).padStart(2, '0')}-31`
+      const endMonthStr = `${endYear}-${String(endMonth).padStart(2, '0')}`
+      const endDate = getMonthEndDate(endMonthStr)
 
       const { data, error } = await supabase
         .from('transactions')

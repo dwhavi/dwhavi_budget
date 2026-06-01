@@ -37,6 +37,10 @@ export function useTransactions(params: TransactionFilters) {
   const { user } = useAuth()
   const page = params.page ?? 1
   const limit = params.limit ?? 20
+  const monthEnd = (() => {
+    const [y, m] = params.month.split('-').map(Number)
+    return `${params.month}-${String(new Date(y!, m!, 0).getDate()).padStart(2, '0')}`
+  })()
 
   return useQuery({
     queryKey: [
@@ -62,7 +66,7 @@ export function useTransactions(params: TransactionFilters) {
         )
         .eq('user_id', user!.id)
         .gte('date', `${params.month}-01`)
-        .lte('date', `${params.month}-31`)
+        .lte('date', monthEnd)
         .is('deleted_at', null)
 
       if (params.type) query = query.eq('type', params.type)

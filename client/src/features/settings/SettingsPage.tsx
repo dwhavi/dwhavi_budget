@@ -1,5 +1,5 @@
 // 설정 페이지 — 카드/예산/고정비/카테고리 4개 탭 라우팅
-import { useState } from 'react'
+import { useState, type ReactNode } from 'react'
 import { useAuth } from '@/contexts/AuthContext'
 import { useToast } from '@/contexts/ToastContext'
 import { PaymentMethodTab } from './PaymentMethodTab'
@@ -9,11 +9,11 @@ import { CategoryTab } from './CategoryTab'
 
 type TabKey = 'payment-methods' | 'budgets' | 'recurring-expenses' | 'categories'
 
-const TABS: { key: TabKey; label: string }[] = [
+const TABS: { key: TabKey; label: ReactNode }[] = [
   { key: 'payment-methods', label: '카드' },
   { key: 'budgets', label: '예산' },
   { key: 'recurring-expenses', label: '고정비' },
-  { key: 'categories', label: '카테고리' },
+  { key: 'categories', label: <>카테<br/>고리</> },
 ]
 
 export function SettingsPage() {

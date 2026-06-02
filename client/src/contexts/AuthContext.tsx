@@ -3,40 +3,28 @@ import {
   createContext,
   useContext,
   useState,
-  useEffect,
   useCallback,
   type ReactNode,
 } from 'react'
 import {
-  initTokenClient,
-  ensureAuthenticated,
+  extractTokenFromHash,
+  getAuthUrl,
   logout as gDriveLogout,
 } from '@/shared/lib/google-drive-service'
 
 interface AuthContextValue {
   authenticated: boolean
-  loading: boolean
-  signIn: () => Promise<void>
+  signIn: () => void
   signOut: () => void
 }
 
 const AuthContext = createContext<AuthContextValue | null>(null)
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [authenticated, setAuthenticated] = useState(false)
-  const [loading, setLoading] = useState(true)
+  const [authenticated, setAuthenticated] = useState(() => !!extractTokenFromHash())
 
-  useEffect(() => {
-    initTokenClient()
-    ensureAuthenticated()
-      .then(() => setAuthenticated(true))
-      .catch(() => setAuthenticated(false))
-      .finally(() => setLoading(false))
-  }, [])
-
-  const signIn = useCallback(async () => {
-    await ensureAuthenticated()
-    setAuthenticated(true)
+  const signIn = useCallback(() => {
+    window.location.href = getAuthUrl('select_account')
   }, [])
 
   const signOut = useCallback(() => {
@@ -45,7 +33,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, [])
 
   return (
-    <AuthContext.Provider value={{ authenticated, loading, signIn, signOut }}>
+    <AuthContext.Provider value={{ authenticated, signIn, signOut }}>
       {children}
     </AuthContext.Provider>
   )

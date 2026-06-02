@@ -1,100 +1,84 @@
-// Google Drive API 서비스 — gapi.js를 통해 AppData 폴더에 JSON 파일 CRUD
-const DISCOVERY_DOC = 'https://www.googleapis.com/discovery/v1/apis/drive/v3/rest';
+// Google Drive API 서비스 — 리다이렉트 OAuth + fetch로 AppData 폴더에 JSON 파일 CRUD
+const DRIVE_API = 'https://www.googleapis.com/drive/v3';
+const UPLOAD_API = 'https://www.googleapis.com/upload/drive/v3';
 const FILE_NAME = 'budget_data.json';
+const TOKEN_KEY = 'budget_app_access_token';
 
-let gapiInitialized = false;
-let tokenClient: google.accounts.oauth2.TokenClient | null = null;
-let accessToken = '';
+let accessToken = sessionStorage.getItem(TOKEN_KEY) ?? '';
 
-async function withAuthRetry<T>(apiCall: () => Promise<T>): Promise<T> {
-  try {
-    return await apiCall();
-  } catch (error: any) {
-    if (error?.status === 401 || error?.result?.error?.code === 401) {
-      if (tokenClient) {
-        const client = tokenClient;
-        await new Promise<void>((resolve, reject) => {
-          client.callback = (resp: google.accounts.oauth2.TokenResponse) => {
-            if (resp.error) reject(resp.error);
-            else resolve();
-          };
-          client.requestAccessToken();
-        });
-        return await apiCall();
-      }
-    }
-    throw error;
-  }
+function storeToken(token: string) {
+  accessToken = token;
+  sessionStorage.setItem(TOKEN_KEY, token);
 }
 
-async function ensureGapiInitialized() {
-  if (gapiInitialized) return;
-  await gapi.client.init({ apiKey: import.meta.env.VITE_GOOGLE_API_KEY });
-  await gapi.client.load(DISCOVERY_DOC);
-  gapiInitialized = true;
+function clearStoredToken() {
+  accessToken = '';
+  sessionStorage.removeItem(TOKEN_KEY);
 }
 
-export async function initTokenClient() {
-  tokenClient = google.accounts.oauth2.initTokenClient({
+function authedFetch(url: string, init: RequestInit = {}): Promise<Response> {
+  return fetch(url, {
+    ...init,
+    headers: {
+      ...init.headers,
+      Authorization: `Bearer ${accessToken}`,
+    },
+  });
+}
+
+export function getAuthUrl(prompt: string = 'select_account'): string {
+  const params = new URLSearchParams({
     client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID,
+    redirect_uri: window.location.origin,
+    response_type: 'token',
     scope: 'https://www.googleapis.com/auth/drive.appdata',
-    callback: '',
+    prompt,
   });
+  return `https://accounts.google.com/o/oauth2/v2/auth?${params}`;
 }
 
-export async function ensureAuthenticated(): Promise<void> {
-  if (accessToken) {
-    try {
-      const response = await fetch('https://www.googleapis.com/oauth2/v1/tokeninfo', {
-        headers: { Authorization: `Bearer ${accessToken}` }
-      });
-      if (response.ok) return;
-    } catch {}
+export function extractTokenFromHash(): string | null {
+  const hash = window.location.hash;
+  if (hash.includes('access_token')) {
+    const params = new URLSearchParams(hash.substring(1));
+    const token = params.get('access_token');
+    if (token) {
+      storeToken(token);
+      window.history.replaceState(null, '', window.location.pathname + window.location.search);
+      return token;
+    }
   }
-
-  if (!tokenClient) {
-    throw new Error('Token client가 초기화되지 않았습니다. initTokenClient()를 먼저 호출하세요.');
-  }
-
-  const client = tokenClient;
-  return new Promise<void>((resolve, reject) => {
-    client.callback = (response: google.accounts.oauth2.TokenResponse) => {
-      if (response.error) {
-        reject(response.error);
-        return;
-      }
-      accessToken = response.access_token;
-      resolve();
-    };
-    client.requestAccessToken();
-  });
+  return accessToken || null;
 }
 
 async function findFileId(): Promise<string | null> {
-  const response = await withAuthRetry(() =>
-    gapi.client.drive.files.list({
-      spaces: 'appDataFolder',
-      q: `name='${FILE_NAME}'`,
-      fields: 'files(id, name, modifiedTime)',
-    })
+  const response = await authedFetch(
+    `${DRIVE_API}/files?spaces=appDataFolder&q=name='${FILE_NAME}'&fields=files(id,name,modifiedTime)`,
   );
-  const files = response.result.files;
-  return files && files.length > 0 ? files[0].id : null;
+  if (!response.ok) {
+    const err = new Error(`Drive files.list 실패: ${response.status}`);
+    (err as any).status = response.status;
+    throw err;
+  }
+  const data = await response.json();
+  const files: Array<{ id: string }> = data.files;
+  return files?.[0]?.id ?? null;
 }
 
 export async function loadFile(): Promise<{ content: string; fileId: string | null } | null> {
-  await ensureGapiInitialized();
-
   try {
     const fileId = await findFileId();
     if (!fileId) return null;
 
-    const response = await withAuthRetry(() =>
-      gapi.client.drive.files.get({ fileId, alt: 'media' })
-    );
+    const response = await authedFetch(`${DRIVE_API}/files/${fileId}?alt=media`);
+    if (!response.ok) {
+      const err = new Error(`Drive files.get 실패: ${response.status}`);
+      (err as any).status = response.status;
+      throw err;
+    }
 
     return {
-      content: response.body,
+      content: await response.text(),
       fileId,
     };
   } catch (error: any) {
@@ -104,34 +88,44 @@ export async function loadFile(): Promise<{ content: string; fileId: string | nu
 }
 
 export async function saveFile(content: string): Promise<void> {
-  await ensureGapiInitialized();
-
   if (!accessToken) throw new Error('인증되지 않았습니다.');
 
   const fileId = await findFileId();
 
   if (!fileId) {
-    await withAuthRetry(() =>
-      gapi.client.drive.files.create({
-        resource: {
-          name: FILE_NAME,
-          mimeType: 'application/json',
-          parents: ['appDataFolder'],
-        },
-        media: { mimeType: 'application/json', body: content },
-        fields: 'id',
-      })
+    const metadata = JSON.stringify({
+      name: FILE_NAME,
+      mimeType: 'application/json',
+      parents: ['appDataFolder'],
+    });
+    const boundary = 'budget_boundary';
+    const body = [
+      `--${boundary}\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n${metadata}\r\n`,
+      `--${boundary}\r\nContent-Type: application/json\r\n\r\n${content}\r\n`,
+      `--${boundary}--`,
+    ].join('');
+
+    const response = await authedFetch(
+      `${UPLOAD_API}/files?uploadType=multipart&fields=id`,
+      { method: 'POST', headers: { 'Content-Type': `multipart/related; boundary=${boundary}` }, body },
     );
+    if (!response.ok) {
+      const err = new Error(`Drive files.create 실패: ${response.status}`);
+      (err as any).status = response.status;
+      throw err;
+    }
     return;
   }
 
-  await withAuthRetry(() =>
-    gapi.client.drive.files.update({
-      fileId,
-      media: { mimeType: 'application/json', body: content },
-      fields: 'id',
-    })
+  const response = await authedFetch(
+    `${UPLOAD_API}/files/${fileId}?uploadType=media&fields=id`,
+    { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: content },
   );
+  if (!response.ok) {
+    const err = new Error(`Drive files.update 실패: ${response.status}`);
+    (err as any).status = response.status;
+    throw err;
+  }
 }
 
 export function isAuthenticated(): boolean {
@@ -139,8 +133,5 @@ export function isAuthenticated(): boolean {
 }
 
 export function logout(): void {
-  accessToken = '';
-  if (tokenClient) {
-    google.accounts.id.disableAutoSelect(true);
-  }
+  clearStoredToken();
 }

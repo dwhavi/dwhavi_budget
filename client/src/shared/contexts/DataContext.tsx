@@ -10,6 +10,7 @@ import {
 } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import { loadFile, saveFile } from '@/shared/lib/google-drive-service'
+import { useAuth } from '@/contexts/AuthContext'
 import type {
   Category,
   PaymentMethod,
@@ -87,13 +88,17 @@ function createDefaultData(): BudgetData {
 }
 
 export function DataProvider({ children }: { children: ReactNode }) {
+  const { authenticated } = useAuth()
   const [data, setData] = useState<BudgetData | null>(null)
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
   const [uploadError, setUploadError] = useState<string | null>(null)
 
   const saveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const retryTimerRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const pendingSaveRef = useRef(false)
+
+  // dataRef: 연속 mutate 호출 시(예: 카테고리 생성→트랜잭션 생성) closure 스테일 문제 방지
+  const dataRef = useRef(data ?? null)
 
   const persist = useCallback(async (content: string) => {
     try {
@@ -104,30 +109,29 @@ export function DataProvider({ children }: { children: ReactNode }) {
         clearInterval(retryTimerRef.current)
         retryTimerRef.current = null
       }
-    } catch {
+    } catch (err) {
+      console.error('[BudgetApp] Google Drive 저장 실패:', err)
       setUploadError('Google Drive 저장에 실패했습니다. 잠시 후 재시도합니다.')
       pendingSaveRef.current = true
       if (!retryTimerRef.current) {
         retryTimerRef.current = setInterval(() => {
           if (pendingSaveRef.current) {
-            const current = data
-            if (current) {
-              saveFile(JSON.stringify(current)).then(() => {
-                setUploadError(null)
-                pendingSaveRef.current = false
-                if (retryTimerRef.current) {
-                  clearInterval(retryTimerRef.current)
-                  retryTimerRef.current = null
-                }
-              }).catch(() => {})
-            }
+            saveFile(content).then(() => {
+              setUploadError(null)
+              pendingSaveRef.current = false
+              if (retryTimerRef.current) {
+                clearInterval(retryTimerRef.current)
+                retryTimerRef.current = null
+              }
+            }).catch(() => {})
           }
         }, 30000)
       }
     }
-  }, [data])
+  }, [])
 
   const scheduleSave = useCallback((nextData: BudgetData) => {
+    dataRef.current = nextData
     setData(nextData)
     if (saveTimerRef.current) clearTimeout(saveTimerRef.current)
     saveTimerRef.current = setTimeout(() => {
@@ -141,14 +145,17 @@ export function DataProvider({ children }: { children: ReactNode }) {
     if (result && result.content) {
       try {
         const parsed = JSON.parse(result.content) as BudgetData
+        dataRef.current = parsed
         setData(parsed)
       } catch {
         const fallback = createDefaultData()
+        dataRef.current = fallback
         setData(fallback)
         await saveFile(JSON.stringify(fallback))
       }
     } else {
       const fresh = createDefaultData()
+      dataRef.current = fresh
       setData(fresh)
       await saveFile(JSON.stringify(fresh))
     }
@@ -156,58 +163,69 @@ export function DataProvider({ children }: { children: ReactNode }) {
   }, [])
 
   useEffect(() => {
-    load()
+    if (authenticated) {
+      load()
+    }
     return () => {
       if (saveTimerRef.current) clearTimeout(saveTimerRef.current)
       if (retryTimerRef.current) clearInterval(retryTimerRef.current)
     }
-  }, [load])
+  }, [authenticated, load])
+
+  useEffect(() => {
+    if (!authenticated) return
+    const handleVisibility = () => {
+      if (document.visibilityState === 'visible') load()
+    }
+    document.addEventListener('visibilitychange', handleVisibility)
+    return () => document.removeEventListener('visibilitychange', handleVisibility)
+  }, [authenticated, load])
 
   const addCategory = useCallback((input: Omit<Category, 'id'>) => {
-    const current = data
+    const current = dataRef.current
     if (!current) throw new Error('데이터가 로드되지 않았습니다.')
     const newItem: Category = { ...input, id: uuidv4() }
     scheduleSave({ ...current, categories: [...current.categories, newItem] })
     return newItem
-  }, [data, scheduleSave])
+  }, [scheduleSave])
 
   const updateCategory = useCallback((id: string, updates: Partial<Category>) => {
-    const current = data
+    const current = dataRef.current
     if (!current) return
     scheduleSave({
       ...current,
       categories: current.categories.map((c) => (c.id === id ? { ...c, ...updates } : c)),
     })
-  }, [data, scheduleSave])
+  }, [scheduleSave])
 
   const deleteCategory = useCallback((id: string) => {
-    const current = data
+    const current = dataRef.current
     if (!current) return
     scheduleSave({
       ...current,
       categories: current.categories.filter((c) => c.id !== id),
     })
-  }, [data, scheduleSave])
+  }, [scheduleSave])
 
   const addPaymentMethod = useCallback((input: Omit<PaymentMethod, 'id'>) => {
-    const current = data
+    const current = dataRef.current
     if (!current) throw new Error('데이터가 로드되지 않았습니다.')
     const newItem: PaymentMethod = { ...input, id: uuidv4() }
     scheduleSave({ ...current, paymentMethods: [...current.paymentMethods, newItem] })
     return newItem
-  }, [data, scheduleSave])
+  }, [scheduleSave])
 
   const updatePaymentMethod = useCallback((id: string, updates: Partial<PaymentMethod>) => {
-    const current = data
+    const current = dataRef.current
     if (!current) return
     scheduleSave({
       ...current,
       paymentMethods: current.paymentMethods.map((p) => (p.id === id ? { ...p, ...updates } : p)),
     })
-  }, [data, scheduleSave])
+  }, [scheduleSave])
 
   const deletePaymentMethod = useCallback((id: string) => {
-    const current = data
+    const current = dataRef.current
     if (!current) return
     const target = current.paymentMethods.find((p) => p.id === id)
     if (target?.name === '현금') throw new Error('현금 결제수단은 삭제할 수 없습니다')
@@ -215,19 +233,19 @@ export function DataProvider({ children }: { children: ReactNode }) {
       ...current,
       paymentMethods: current.paymentMethods.filter((p) => p.id !== id),
     })
-  }, [data, scheduleSave])
+  }, [scheduleSave])
 
   const addTransaction = useCallback((input: Omit<Transaction, 'id' | 'created_at' | 'updated_at'>) => {
-    const current = data
+    const current = dataRef.current
     if (!current) throw new Error('데이터가 로드되지 않았습니다.')
     const now = new Date().toISOString()
     const newItem: Transaction = { ...input, id: uuidv4(), created_at: now, updated_at: now }
     scheduleSave({ ...current, transactions: [...current.transactions, newItem] })
     return newItem
-  }, [data, scheduleSave])
+  }, [scheduleSave])
 
   const updateTransaction = useCallback((id: string, updates: Partial<Transaction>) => {
-    const current = data
+    const current = dataRef.current
     if (!current) return
     scheduleSave({
       ...current,
@@ -235,19 +253,19 @@ export function DataProvider({ children }: { children: ReactNode }) {
         t.id === id ? { ...t, ...updates, updated_at: new Date().toISOString() } : t,
       ),
     })
-  }, [data, scheduleSave])
+  }, [scheduleSave])
 
   const deleteTransaction = useCallback((id: string) => {
-    const current = data
+    const current = dataRef.current
     if (!current) return
     scheduleSave({
       ...current,
       transactions: current.transactions.filter((t) => t.id !== id),
     })
-  }, [data, scheduleSave])
+  }, [scheduleSave])
 
   const upsertBudget = useCallback((input: Budget) => {
-    const current = data
+    const current = dataRef.current
     if (!current) return
     const exists = current.budgets.find(
       (b) => b.category_id === input.category_id && b.month === input.month,
@@ -260,18 +278,18 @@ export function DataProvider({ children }: { children: ReactNode }) {
     } else {
       scheduleSave({ ...current, budgets: [...current.budgets, input] })
     }
-  }, [data, scheduleSave])
+  }, [scheduleSave])
 
   const addRecurringExpense = useCallback((input: Omit<RecurringExpense, 'id'>) => {
-    const current = data
+    const current = dataRef.current
     if (!current) throw new Error('데이터가 로드되지 않았습니다.')
     const newItem: RecurringExpense = { ...input, id: uuidv4() }
     scheduleSave({ ...current, recurringExpenses: [...current.recurringExpenses, newItem] })
     return newItem
-  }, [data, scheduleSave])
+  }, [scheduleSave])
 
   const updateRecurringExpense = useCallback((id: string, updates: Partial<RecurringExpense>) => {
-    const current = data
+    const current = dataRef.current
     if (!current) return
     scheduleSave({
       ...current,
@@ -279,19 +297,19 @@ export function DataProvider({ children }: { children: ReactNode }) {
         r.id === id ? { ...r, ...updates } : r,
       ),
     })
-  }, [data, scheduleSave])
+  }, [scheduleSave])
 
   const deleteRecurringExpense = useCallback((id: string) => {
-    const current = data
+    const current = dataRef.current
     if (!current) return
     scheduleSave({
       ...current,
       recurringExpenses: current.recurringExpenses.filter((r) => r.id !== id),
     })
-  }, [data, scheduleSave])
+  }, [scheduleSave])
 
   const toggleRecurringExpense = useCallback((id: string) => {
-    const current = data
+    const current = dataRef.current
     if (!current) return
     scheduleSave({
       ...current,
@@ -299,7 +317,7 @@ export function DataProvider({ children }: { children: ReactNode }) {
         r.id === id ? { ...r, is_active: !r.is_active } : r,
       ),
     })
-  }, [data, scheduleSave])
+  }, [scheduleSave])
 
   return (
     <DataContext.Provider

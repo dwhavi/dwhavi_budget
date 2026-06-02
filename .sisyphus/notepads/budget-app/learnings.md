@@ -1,96 +1,51 @@
 # Learnings - Budget App
 
 ## Project Context
-- Greenfield project: React + Express + SQLite 가계부 웹 앱
+- Greenfield project → Supabase 전환 완료 (Express+SQLite → Supabase 직접 쿼리, Google OAuth 로그인)
 - Korean language interface (hardcoded, no i18n)
-- Tech stack: React 18 + Vite + TypeScript, Express + TypeScript, SQLite + Sequelize, Tailwind CSS + Recharts
-- Auth: JWT (access 15m + refresh 7d via httpOnly cookie)
-- Testing: Vitest (TDD approach), supertest for API tests, React Testing Library for components
-- No state management libs (React Context + hooks only)
-- No CSS-in-JS (Tailwind only)
-- Mobile-first with bottom tab bar, desktop sidebar
+- Tech stack: React 19 + Vite + TypeScript, Tailwind CSS + Recharts, TanStack React Query
+- PWA (vite-plugin-pwa, Workbox, generateSW)
+- 배포: Vercel (GitHub 연동 안 됨, `vercel --prod` 수동 배포 필요)
+- Auth: Supabase Auth + Google OAuth, RLS 기반 접근 제어
+- **모든 시간은 KST(UTC+9) 기준** — DB에 UTC 저장되더라도 표시/입력/변환 모두 KST
+
+## Active Routes (App.tsx)
+- `/` → ExpenseDashboardPage (features/expense-dashboard/)
+- `/overview` → OverviewPage (features/overview/)
+- `/transactions` → TransactionsPage (features/transactions/)
+- `/settings` → SettingsPage (features/settings/)
+- `/login` → LoginPage (features/auth/)
+- 구버전 pages/ 디렉토리 있으나 사용 안 함 (라우팅 안 됨)
 
 ## Key Spec Notes
-- First registered user gets admin role
-- Auto-create "현금" PaymentMethod on registration
-- PaymentMethod type ENUM includes 'transfer' (credit, debit, cash, transfer)
-- RecurringExpense: start_date/end_date (no payment_day, no auto-registration)
-- Soft delete on: Category, Transaction, PaymentMethod, RecurringExpense (deleted_at field)
-- Amount validation: 1 ~ 99,999,999 (INTEGER)
-- Category type validation: income→income, expense→expense
-- SubCategories: autocomplete from user's previous entries, frequency-ranked
+- First registered user → profile 트리거 → 기본 카테고리 12개 + 현금 결제수단 자동 생성
+- Category: user_id=null이면 전역 카테고리, not null이면 개인 카테고리
+- Soft delete: deleted_at 필드 (Category, Transaction, PaymentMethod, RecurringExpense)
+- Amount: 1 ~ 99,999,999 (INTEGER)
+- Transaction.type: 'income' | 'expense' | 'transfer' (migration 00004에서 transfer 추가)
+- PaymentMethod에 billing_start_day, payment_day 추가됨 (migration 00004)
 
-## API Response Format
-- Success: { "success": true, "data": { ... } }
-- Error: { "success": false, "message": "에러 메시지" }
+## 이번 세션에서 발견한 버그/수정 내역
 
-## Vitest Testing Infrastructure Setup
-- Created vitest.config.ts for server (node environment) with globals: true
-- Created vitest.config.ts for client (jsdom environment) with React plugin and @ alias
-- Added test scripts to both package.json files: "test": "vitest run" and "test:watch": "vitest"
-- Created basic test setup with @testing-library/jest-dom import for client
-- Added smoke tests in both server/src/__tests__/smoke.test.ts and client/src/test/smoke.test.ts
-- Both test suites pass successfully, confirming proper Vitest configuration
+### 1. 커스텀 카테고리/결제수단 직접입력 미동작 (feat)
+- **원인**: features/TransactionForm이 onSubmit에 customCategoryName/customPaymentMethodName 전달 안 함
+- **해결**: onSubmit 시그니처 확장 + 부모 핸들러에서 useCreateCategory/useCreatePaymentMethod로 선 생성
 
-## Sequelize Models (6 models created)
-- Models: User, Category, Transaction, PaymentMethod, Budget, RecurringExpense
-- All models use `underscored: true` with explicit `created_at`/`updated_at` in both attributes and init
-- Sequelize define options use camelCase keys: `createdAt: 'created_at'`, `updatedAt: 'updated_at'` (not snake_case)
-- TS requires `created_at`/`updated_at` fields explicitly in `Model.init()` to satisfy type checking
-- ModelRegistry type uses `typeof import('./X.js').X` (not instance type) since db holds model classes
-- Dynamic `await import()` in `loadModels()` avoids circular dependency issues
-- Associations set up after all models loaded in `setupAssociations()`
-- Budget has unique composite index on (user_id, category_id, month)
-- Category.user_id is nullable (null = global category)
-- PaymentMethod.payment_method_id on Transaction and RecurringExpense is nullable
-- No paranoid: true — deleted_at handled manually in queries
-- 12 default seed categories (3 income + 9 expense), all user_id: null
-- Seeder is idempotent: checks existing count before seeding
-- Imports use `.js` extensions (tsx resolves them for CommonJS)
-- Pre-existing smoke.test.ts TS error: vitest globals not recognized by tsc (vitest config has globals:true but tsconfig doesn't reference vitest types)
+### 2. 30일 이하 달에서 날짜 쿼리 실패 (fix)
+- **원인**: 모든 월별 쿼리가 `${month}-31` 하드코딩 → 6월(30일)에서 `'2026-06-31'` 유효하지 않은 날짜 → Postgres 에러
+- **해결**: `getMonthEndDate()` 유훨리티로 실제 마지막 날 계산 (useStats.ts, useTransactions.ts)
 
-## Test Isolation Solution
-- Problem: 63 tests passed individually but failed when run together due to shared SQLite database state
-- Solution: Vitest pool isolation with in-memory SQLite databases
-- Key changes:
-  1. Modified `models/index.ts` to handle `:memory:` storage path properly (bypass path.resolve for in-memory DB)
-  2. Added `sequelize.sync()` to `setupApp()` to ensure tables are created for tests
-  3. Removed duplicate `sequelize.sync()` from `startServer()` since it's now in setupApp
-  4. Guarded `startServer()` call with `!process.env.VITEST` to prevent server startup in test environment
-  5. Created `__tests__/setup.ts` to set `DB_PATH=:memory:` and test JWT secrets
-  6. Updated `vitest.config.ts` with `pool: 'forks'` for complete process isolation and `setupFiles` for environment setup
-- Result: Each test file runs in its own process with separate in-memory SQLite database, eliminating shared state issues
-- Architecture insight: Routes import `db` from `models/index.js` - with fork isolation, each test gets its own sequelize/db instances
-## Budgets API (Task 11)
-- Budget model has unique composite index on (user_id, category_id, month) — enables `bulkCreate` with `updateOnDuplicate`
-- `bulkCreate` with `updateOnDuplicate: ['amount', 'updated_at']` gives clean upsert behavior
-- Sequelize include uses the association `as` alias (e.g., `as: 'category'` → result has `.category` not `.Category`)
-- Zod regex for YYYY-MM: `/^\d{4}-(0[1-9]|1[0-2])$/` — validates month format properly
-- PUT route uses `validate(budgetUpsertSchema)` — validation middleware applies to body
-- Budget association: Budget belongsTo Category with `as: 'category'` (lowercase)
-- admin.test.ts has 18 pre-existing failures (admin routes not yet implemented)
+### 3. PWA 서비스워커 API 응답 캐싱으로 화면 갱신 안 됨 (fix)
+- **원인**: vite.config.ts에 `runtimeCaching`에서 Supabase API를 `StaleWhileRevalidate`로 24시간 캐싱
+- **해결**: `NetworkFirst`로 변경 (온라인 시 항상 최신 데이터, 오프라인 시에만 캐시 폴백)
 
-## Admin API (Task 13)
-- Admin routes use BOTH `authMiddleware` AND `adminMiddleware` in chain
-- `db.User.findAll({ attributes: { exclude: ['password_hash'] } })` strips sensitive fields from user list
-- In-memory settings store (module-level object) works fine for small app — no DB table needed
-- Admin category CRUD has no ownership checks — admin can modify/delete global AND personal categories
-- Settings validation with Zod: `budget_alert_threshold: z.number().int().min(1).max(100)` ensures valid range
-- Test suite: 18 admin tests, total suite now 90 tests across 9 files
-- When updating user role/status, return sanitized user object (exclude password_hash) in response
+### 4. 거래 수정 시 created_at 시차 버그 (fix)
+- **원인**: UTC 날짜 + KST 로컬 시간을 단순 문자열 조합 → 시차 꼬임
+- **해결**: `new Date()` → `setHours()` → `toISOString()` 으로 UTC/KST 변환 정상 처리
 
-## React Client Scaffold (Task 14)
-- react-router-dom v7 still supports v6-style API: BrowserRouter, Routes, Route, Navigate all still available
-- v7 exports everything from 'react-router' re-exported through 'react-router-dom'
-- tsconfig has `verbatimModuleSyntax: true` → MUST use `import type { ... }` for type-only imports
-- tsconfig has `erasableSyntaxOnly: true` → no `enum` declarations allowed (use string literal unions instead)
-- tsconfig has `noUncheckedIndexedAccess: true` → optional chaining needed for array/object index access
-- tsconfig has `noUnusedLocals`/`noUnusedParameters` → no unused variables allowed
-- Path alias `@/*` → `src/*` available but not required (relative imports work fine)
-- Axios interceptor pattern: request interceptor adds Bearer token, response interceptor handles 401 with refresh queue to prevent concurrent refresh calls
-- AuthContext restores session on mount: tries /auth/me first, falls back to /auth/refresh, then /auth/me again
-- ThemeContext persists to localStorage under 'theme' key, applies 'dark' class to document.documentElement
-- All API modules follow same pattern: import api from axios.ts, export object with typed async functions
-- `.js` extensions required in imports for ESM compatibility (tsx/ts resolve them correctly)
-- Placeholder components used in App.tsx routes (PlaceholderPage div with Korean page name)
-- ProtectedRoute redirects to /login when not authenticated, AdminRoute checks user.role === 'admin'
+## Architecture Patterns
+- TransactionForm: features/ 버전이 활성 (components/ 버전은 미사용)
+- ExpenseDashboardPage: useCreateTransaction → handleFormSubmit에서 커스텀 생성 후 insert
+- React Query: staleTime 5분, refetchOnWindowFocus false (서비스워커가 API 캐싱 담당)
+- Query key: ['stats', 'expense-summary', ...], ['transactions', ...] — invalidateQueries로 prefix matching
+- Supabase RLS: 모든 테이블 user_id = auth.uid() 기반 단순 정책

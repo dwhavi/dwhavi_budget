@@ -110,7 +110,6 @@ export function DataProvider({ children }: { children: ReactNode }) {
         retryTimerRef.current = null
       }
     } catch (err) {
-      console.error('[BudgetApp] Google Drive 저장 실패:', err)
       setUploadError('Google Drive 저장에 실패했습니다. 잠시 후 재시도합니다.')
       pendingSaveRef.current = true
       if (!retryTimerRef.current) {
@@ -123,7 +122,7 @@ export function DataProvider({ children }: { children: ReactNode }) {
                 clearInterval(retryTimerRef.current)
                 retryTimerRef.current = null
               }
-            }).catch(() => {})
+            }).catch(() => setUploadError('Google Drive 저장에 실패했습니다. 잠시 후 재시도합니다.'))
           }
         }, 30000)
       }

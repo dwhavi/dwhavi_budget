@@ -4,6 +4,17 @@ const UPLOAD_API = 'https://www.googleapis.com/upload/drive/v3';
 const FILE_NAME = 'budget_data.json';
 const TOKEN_KEY = 'budget_app_access_token';
 
+// Google Drive API 에러 — HTTP status를 포함한 커스텀 에러
+export class DriveApiError extends Error {
+  status: number;
+
+  constructor(message: string, status: number) {
+    super(message);
+    this.name = 'DriveApiError';
+    this.status = status;
+  }
+}
+
 let accessToken = sessionStorage.getItem(TOKEN_KEY) ?? '';
 
 function storeToken(token: string) {
@@ -56,9 +67,7 @@ async function findFileId(): Promise<string | null> {
     `${DRIVE_API}/files?spaces=appDataFolder&q=name='${FILE_NAME}'&fields=files(id,name,modifiedTime)`,
   );
   if (!response.ok) {
-    const err = new Error(`Drive files.list 실패: ${response.status}`);
-    (err as any).status = response.status;
-    throw err;
+    throw new DriveApiError(`Drive files.list 실패: ${response.status}`, response.status);
   }
   const data = await response.json();
   const files: Array<{ id: string }> = data.files;
@@ -72,17 +81,14 @@ export async function loadFile(): Promise<{ content: string; fileId: string | nu
 
     const response = await authedFetch(`${DRIVE_API}/files/${fileId}?alt=media`);
     if (!response.ok) {
-      const err = new Error(`Drive files.get 실패: ${response.status}`);
-      (err as any).status = response.status;
-      throw err;
+      throw new DriveApiError(`Drive files.get 실패: ${response.status}`, response.status);
     }
 
     return {
       content: await response.text(),
       fileId,
     };
-  } catch (error: any) {
-    console.error('Google Drive 파일 로드 실패:', error);
+  } catch {
     return null;
   }
 }
@@ -110,9 +116,7 @@ export async function saveFile(content: string): Promise<void> {
       { method: 'POST', headers: { 'Content-Type': `multipart/related; boundary=${boundary}` }, body },
     );
     if (!response.ok) {
-      const err = new Error(`Drive files.create 실패: ${response.status}`);
-      (err as any).status = response.status;
-      throw err;
+      throw new DriveApiError(`Drive files.create 실패: ${response.status}`, response.status);
     }
     return;
   }
@@ -122,9 +126,7 @@ export async function saveFile(content: string): Promise<void> {
     { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: content },
   );
   if (!response.ok) {
-    const err = new Error(`Drive files.update 실패: ${response.status}`);
-    (err as any).status = response.status;
-    throw err;
+    throw new DriveApiError(`Drive files.update 실패: ${response.status}`, response.status);
   }
 }
 

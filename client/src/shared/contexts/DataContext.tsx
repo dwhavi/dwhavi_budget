@@ -35,6 +35,7 @@ interface DataContextValue {
   data: BudgetData | null
   loading: boolean
   uploadError: string | null
+  loadError: string | null
   reload: () => Promise<void>
 
   addCategory: (input: Omit<Category, 'id'>) => Category
@@ -92,6 +93,7 @@ export function DataProvider({ children }: { children: ReactNode }) {
   const [data, setData] = useState<BudgetData | null>(null)
   const [loading, setLoading] = useState(false)
   const [uploadError, setUploadError] = useState<string | null>(null)
+  const [loadError, setLoadError] = useState<string | null>(null)
 
   const saveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
   const retryTimerRef = useRef<ReturnType<typeof setInterval> | null>(null)
@@ -140,23 +142,47 @@ export function DataProvider({ children }: { children: ReactNode }) {
 
   const load = useCallback(async () => {
     setLoading(true)
-    const result = await loadFile()
-    if (result && result.content) {
-      try {
-        const parsed = JSON.parse(result.content) as BudgetData
-        dataRef.current = parsed
-        setData(parsed)
-      } catch {
-        const fallback = createDefaultData()
-        dataRef.current = fallback
-        setData(fallback)
-        await saveFile(JSON.stringify(fallback))
+    setLoadError(null)
+    try {
+      const result = await loadFile()
+      if (result && result.content) {
+        try {
+          const parsed = JSON.parse(result.content) as BudgetData
+          if (!parsed.version || !parsed.lastSync || !Array.isArray(parsed.categories)) {
+            throw new Error('데이터 형식이 올바르지 않습니다.')
+          }
+          dataRef.current = parsed
+          setData(parsed)
+        } catch {
+          if (dataRef.current) {
+            // 인메모리에 이전 데이터가 있으면 유지하고 에러만 표시
+            setData(dataRef.current)
+            setLoadError('데이터 불러오기에 실패했습니다. 이전 데이터를 표시합니다.')
+          } else {
+            // 첫 로드인데 파싱 실패 → 새 데이터로 시작하되 Drive에는 쓰지 않음
+            const fresh = createDefaultData()
+            dataRef.current = fresh
+            setData(fresh)
+            setLoadError('기존 데이터를 불러올 수 없어 새로 시작합니다.')
+          }
+        }
+      } else {
+        // 파일이 없으면 새로 생성 (초기 사용자)
+        const fresh = createDefaultData()
+        dataRef.current = fresh
+        setData(fresh)
+        await saveFile(JSON.stringify(fresh))
       }
-    } else {
-      const fresh = createDefaultData()
-      dataRef.current = fresh
-      setData(fresh)
-      await saveFile(JSON.stringify(fresh))
+    } catch {
+      if (dataRef.current) {
+        setData(dataRef.current)
+        setLoadError('Google Drive 연결에 실패했습니다. 이전 데이터를 표시합니다.')
+      } else {
+        const fresh = createDefaultData()
+        dataRef.current = fresh
+        setData(fresh)
+        setLoadError('Google Drive 연결에 실패했습니다. 잠시 후 다시 시도해주세요.')
+      }
     }
     setLoading(false)
   }, [])
@@ -324,6 +350,7 @@ export function DataProvider({ children }: { children: ReactNode }) {
         data,
         loading,
         uploadError,
+        loadError,
         reload: load,
         addCategory,
         updateCategory,
